@@ -88,7 +88,26 @@ public class ChessPiece {
         }
 
         else if (the_piece.getPieceType() == PieceType.QUEEN) {
-            // do queen stuff
+            // Rook like moves
+            Collection<ChessMove> List_1 = move_itter(board, myPosition, 1,0);
+            Collection<ChessMove> List_2 = move_itter(board, myPosition, 0,1);
+            Collection<ChessMove> List_3 = move_itter(board, myPosition, -1,0);
+            Collection<ChessMove> List_4 = move_itter(board, myPosition, 0,-1);
+            List_1.addAll(List_2);
+            List_1.addAll(List_3);
+            List_1.addAll(List_4);
+
+            //Bishop like moves
+            Collection<ChessMove> List_5 = move_itter(board, myPosition, 1,1);
+            Collection<ChessMove> List_6 = move_itter(board, myPosition, -1,1);
+            Collection<ChessMove> List_7 = move_itter(board, myPosition, -1,-1);
+            Collection<ChessMove> List_8 = move_itter(board, myPosition, 1,-1);
+            List_1.addAll(List_5);
+            List_1.addAll(List_6);
+            List_1.addAll(List_7);
+            List_1.addAll(List_8);
+
+            return List_1;
         }
 
         else if (the_piece.getPieceType() == PieceType.ROOK) {
@@ -133,12 +152,12 @@ public class ChessPiece {
 
 //        System.out.printf("Old Piece type %s   New Piece type%s",board.getPiece(myPosition).getTeamColor(), board.getPiece(newPosition).getTeamColor());
         if (board.getPiece(myPosition).getTeamColor() == board.getPiece(newPosition).getTeamColor()) {
-            System.out.printf("can't take %d, %d", newPosition.getRow(), newPosition.getColumn());
-            System.out.println();
+//            System.out.printf("can't take %d, %d", newPosition.getRow(), newPosition.getColumn());
+//            System.out.println();
             return false; //can't take, same color
         }
-        System.out.printf("CAN take %d, %d", newPosition.getRow(), newPosition.getColumn());
-        System.out.println();
+//        System.out.printf("CAN take %d, %d", newPosition.getRow(), newPosition.getColumn());
+//        System.out.println();
         return true; //different colors, can take
     }
     private List<ChessMove> move_itter(ChessBoard board, ChessPosition myPosition, int row_scalar, int col_scalar) {
