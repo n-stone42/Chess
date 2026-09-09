@@ -92,7 +92,14 @@ public class ChessPiece {
         }
 
         else if (the_piece.getPieceType() == PieceType.ROOK) {
-            // do rook stuff
+            Collection<ChessMove> List_1 = move_itter(board, myPosition, 1,0);
+            Collection<ChessMove> List_2 = move_itter(board, myPosition, 0,1);
+            Collection<ChessMove> List_3 = move_itter(board, myPosition, -1,0);
+            Collection<ChessMove> List_4 = move_itter(board, myPosition, 0,-1);
+            List_1.addAll(List_2);
+            List_1.addAll(List_3);
+            List_1.addAll(List_4);
+            return List_1;
         }
 
         else {
