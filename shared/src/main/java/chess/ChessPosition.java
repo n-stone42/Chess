@@ -11,6 +11,11 @@ public class ChessPosition {
     private final int row;
     private final int col;
 
+//    @Override
+//    public boolean equals(Object o) {
+//        return true;
+//    }
+
     public ChessPosition(int row, int col) { //Click on ChessPosition, wait for lightblub, right click, Bind to Field
         this.row = row;
         this.col = col;

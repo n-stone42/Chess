@@ -8,6 +8,11 @@ package chess;
  */
 public class ChessBoard {
 
+//    @Override
+//    public boolean equals(Object o) {
+//        return true;
+//    }
+
     private ChessPiece[][] chess_array = new ChessPiece[8][8];
     public ChessBoard() {
         

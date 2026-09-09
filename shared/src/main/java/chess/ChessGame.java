@@ -10,6 +10,11 @@ import java.util.Collection;
  */
 public class ChessGame {
 
+//    @Override
+//    public boolean equals(Object o) {
+//        return true;
+//    }
+
     public ChessGame() {
 
     }
