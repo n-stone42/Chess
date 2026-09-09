@@ -124,9 +124,14 @@ public class ChessPiece {
 
     private boolean can_take(ChessBoard board, ChessPosition myPosition, ChessPosition newPosition) {
 
-        if (board.getPiece(myPosition).getPieceType() == board.getPiece(newPosition).getPieceType()) {
+//        System.out.printf("Old Piece type %s   New Piece type%s",board.getPiece(myPosition).getTeamColor(), board.getPiece(newPosition).getTeamColor());
+        if (board.getPiece(myPosition).getTeamColor() == board.getPiece(newPosition).getTeamColor()) {
+            System.out.printf("can't take %d, %d", newPosition.getRow(), newPosition.getColumn());
+            System.out.println();
             return false; //can't take, same color
         }
+        System.out.printf("CAN take %d, %d", newPosition.getRow(), newPosition.getColumn());
+        System.out.println();
         return true; //different colors, can take
     }
     private List<ChessMove> move_itter(ChessBoard board, ChessPosition myPosition, int row_scalar, int col_scalar) {
@@ -140,12 +145,20 @@ public class ChessPiece {
 //            System.out.printf("Finding new move. Row %d col %d  ",new_row, new_col);
             ChessPosition new_pos = new ChessPosition (new_row, new_col);
 
-            if (is_empty(board, new_pos) || can_take(board, myPosition, new_pos)) {
-
+            if (is_empty(board, new_pos)) {
                 ChessMove new_move = new ChessMove(myPosition, new_pos, null);
                 moves.add(new_move);
 //                System.out.printf("adding the following move %d %d   ", new_row, new_col);
             }
+            else if (can_take(board, myPosition, new_pos)) { // next piece can be taken, add it to list then return
+                ChessMove new_move = new ChessMove(myPosition, new_pos, null);
+                moves.add(new_move);
+                return moves;
+            }
+            else { //we have hit another piece that can't be taken, return the list
+                return moves;
+            }
+
             new_row = new_row + row_scalar;
             new_col = new_col + col_scalar;
         }
