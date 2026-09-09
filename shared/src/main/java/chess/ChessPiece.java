@@ -76,11 +76,25 @@ public class ChessPiece {
         }
 
         else if (the_piece.getPieceType() == PieceType.KING){
-
+            Collection<ChessMove> Lst = new ArrayList<>();
+            //vectors [1,0] [1,1] [0,1] [-1,1], [-1,0], [-1,-1], [0,-1], [1,-1]
+            int[][] moves = {
+                    {1,0}, {1,1}, {0,1}, {-1,1}, {-1,0}, {-1,-1}, {0,-1}, {1,-1}
+            };
+            for (var move: moves) {
+                if (can_move(board, myPosition, move[0], move[1])) {
+                    int new_row = myPosition.getRow() + move[0];
+                    int new_col = myPosition.getColumn() + move[1];
+                    ChessPosition new_pos = new ChessPosition (new_row, new_col);
+                    ChessMove new_move = new ChessMove(myPosition, new_pos, null);
+                    Lst.add(new_move);
+                }
+            }
+            return Lst;
         }
 
         else if (the_piece.getPieceType() == PieceType.KNIGHT) {
-            //do knight stuff
+
         }
 
         else if (the_piece.getPieceType() == PieceType.PAWN) {
@@ -160,6 +174,22 @@ public class ChessPiece {
 //        System.out.println();
         return true; //different colors, can take
     }
+
+    private boolean can_move(ChessBoard board, ChessPosition myPosition, int row_scalar, int col_scalar) { // takes the other 3 helper function to see if a piece can move so a given position
+        int new_row = myPosition.getRow() + row_scalar;
+        int new_col = myPosition.getColumn() + col_scalar;
+        ChessPosition new_pos = new ChessPosition (new_row, new_col);
+        if (in_bounds(new_row, new_col)) { // move in bounds to empty square
+            if (is_empty(board, new_pos)) {
+                return true;
+            }
+            else if (can_take(board, myPosition, new_pos)) {
+                return true;
+            }
+            return false; // can't take
+        }
+        return false; //out of bounds
+    }
     private List<ChessMove> move_itter(ChessBoard board, ChessPosition myPosition, int row_scalar, int col_scalar) {
 
         List<ChessMove> moves = new ArrayList<>();
@@ -184,7 +214,6 @@ public class ChessPiece {
             else { //we have hit another piece that can't be taken, return the list
                 return moves;
             }
-
             new_row = new_row + row_scalar;
             new_col = new_col + col_scalar;
         }
