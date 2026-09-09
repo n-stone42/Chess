@@ -94,7 +94,20 @@ public class ChessPiece {
         }
 
         else if (the_piece.getPieceType() == PieceType.KNIGHT) {
-
+            Collection<ChessMove> Lst = new ArrayList<>();
+            int[][] moves = {
+                    {2,1}, {1,2}, {-1,2}, {-2,1}, {-2,-1}, {-1,-2}, {1,-2}, {2,-1}
+            };
+            for (var move: moves) {
+                if (can_move(board, myPosition, move[0], move[1])) {
+                    int new_row = myPosition.getRow() + move[0];
+                    int new_col = myPosition.getColumn() + move[1];
+                    ChessPosition new_pos = new ChessPosition (new_row, new_col);
+                    ChessMove new_move = new ChessMove(myPosition, new_pos, null);
+                    Lst.add(new_move);
+                }
+            }
+            return Lst;
         }
 
         else if (the_piece.getPieceType() == PieceType.PAWN) {
