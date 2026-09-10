@@ -124,27 +124,30 @@ public class ChessPiece {
                 // see if we can move forward 1
                 ChessPosition new_pos = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn());
                 if (is_empty(board, new_pos)) {
+                    System.out.println("can move forward 1");
                     ChessMove new_move = new ChessMove(myPosition, new_pos, null);
                     Lst.add(new_move);
 
                     if (myPosition.getRow() == 2) { // move forward 2
                         ChessPosition new_pos2 = new ChessPosition(myPosition.getRow() + 2, myPosition.getColumn());
-                        ChessMove new_move2 = new ChessMove(myPosition, new_pos2, null);
-                        Lst.add(new_move2);
+                        if (is_empty(board, new_pos2)) {
+                            ChessMove new_move2 = new ChessMove(myPosition, new_pos2, null);
+                            Lst.add(new_move2);
+                        }
                     }
                 }
 
-                // check pawn taking logic
-//                ChessPosition take_left = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() -1);
-//                if (can_take(board, myPosition,take_left)) {
-//                    ChessMove left = new ChessMove(myPosition, take_left, null);
-//                    Lst.add(left);
-//                }
-//                ChessPosition take_right = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() +1);
-//                if (can_take(board, myPosition, take_right)) {
-//                    ChessMove right = new ChessMove(myPosition, take_right, null);
-//                    Lst.add(right);
-//                }
+//                 check pawn taking logic
+                ChessPosition take_left = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() -1);
+                if (can_take(board, myPosition,take_left)) {
+                    ChessMove left = new ChessMove(myPosition, take_left, null);
+                    Lst.add(left);
+                }
+                ChessPosition take_right = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() +1);
+                if (can_take(board, myPosition, take_right)) {
+                    ChessMove right = new ChessMove(myPosition, take_right, null);
+                    Lst.add(right);
+                }
 
             }
 
@@ -160,12 +163,15 @@ public class ChessPiece {
                     ChessPosition new_pos = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn());
                     ChessMove new_move = new ChessMove(myPosition, new_pos, null);
                     Lst.add(new_move);
-                }
 
-                if (myPosition.getRow() == 7) { // move forward 2
-                    ChessPosition new_pos2 = new ChessPosition(myPosition.getRow() - 2, myPosition.getColumn());
-                    ChessMove new_move2 = new ChessMove(myPosition, new_pos2, null);
-                    Lst.add(new_move2);
+
+                    if (myPosition.getRow() == 7) { // move forward 2
+                        ChessPosition new_pos2 = new ChessPosition(myPosition.getRow() - 2, myPosition.getColumn());
+                        if (is_empty(board, new_pos2)) {
+                            ChessMove new_move2 = new ChessMove(myPosition, new_pos2, null);
+                            Lst.add(new_move2);
+                        }
+                    }
                 }
 
                 // check pawn taking logic
@@ -247,6 +253,10 @@ public class ChessPiece {
     }
 
     private boolean can_take(ChessBoard board, ChessPosition myPosition, ChessPosition newPosition) {
+        if (!in_bounds(newPosition.getRow(), newPosition.getColumn())) {
+            return false;
+        }
+
         if (board.getPiece(newPosition) == null) { // make sure there is a piece there
             return false;
         }
