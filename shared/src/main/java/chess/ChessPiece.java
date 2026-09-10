@@ -115,47 +115,48 @@ public class ChessPiece {
             Collection<ChessMove> Lst = new ArrayList<>();
             if (the_piece.getTeamColor() == ChessGame.TeamColor.WHITE) {
                 // Promotion
-                if (myPosition.getRow() == 7) {
-                    //promotion
-                    // take + promotion
-                    //return
-                }
-
-                if (can_move(board, myPosition, 1,0 )) { // move forward 1
-                    ChessPosition new_pos = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn());
-                    ChessMove new_move = new ChessMove(myPosition, new_pos, null);
-                    Lst.add(new_move);
-                }
-
-                    if (myPosition.getRow() == 2) { // move forward 2
-                        ChessPosition new_pos2 = new ChessPosition(myPosition.getRow() + 2, myPosition.getColumn());
-                        ChessMove new_move2 = new ChessMove(myPosition, new_pos2, null);
-                        Lst.add(new_move2);
-                    }
-
-                    // check pawn taking logic
-                ChessPosition take_left = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() -1);
-                if (can_take(board, myPosition,take_left)) {
-                    ChessMove left = new ChessMove(myPosition, take_left, null);
-                    Lst.add(left);
-                }
-                ChessPosition take_right = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() +1);
-                if (can_take(board, myPosition, take_right)) {
-                    ChessMove right = new ChessMove(myPosition, take_right, null);
-                    Lst.add(right);
-                }
-
-            }
-
-            if (the_piece.getTeamColor() == ChessGame.TeamColor.WHITE) {
-                // Promotion
                 if (myPosition.getRow() == 2) {
                     //promotion
                     // take + promotion
                     //return
                 }
 
-                if (can_move(board, myPosition, 1,0 )) { // move forward 1
+                // see if we can move forward 1
+                ChessPosition new_pos = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn());
+                if (is_empty(board, new_pos)) {
+                    ChessMove new_move = new ChessMove(myPosition, new_pos, null);
+                    Lst.add(new_move);
+
+                    if (myPosition.getRow() == 2) { // move forward 2
+                        ChessPosition new_pos2 = new ChessPosition(myPosition.getRow() + 2, myPosition.getColumn());
+                        ChessMove new_move2 = new ChessMove(myPosition, new_pos2, null);
+                        Lst.add(new_move2);
+                    }
+                }
+
+                // check pawn taking logic
+//                ChessPosition take_left = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() -1);
+//                if (can_take(board, myPosition,take_left)) {
+//                    ChessMove left = new ChessMove(myPosition, take_left, null);
+//                    Lst.add(left);
+//                }
+//                ChessPosition take_right = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() +1);
+//                if (can_take(board, myPosition, take_right)) {
+//                    ChessMove right = new ChessMove(myPosition, take_right, null);
+//                    Lst.add(right);
+//                }
+
+            }
+
+            if (the_piece.getTeamColor() == ChessGame.TeamColor.BLACK) {
+                // Promotion
+                if (myPosition.getRow() == 7) {
+                    //promotion
+                    // take + promotion
+                    //return
+                }
+
+                if (can_move(board, myPosition, -1,0 )) { // move forward 1
                     ChessPosition new_pos = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn());
                     ChessMove new_move = new ChessMove(myPosition, new_pos, null);
                     Lst.add(new_move);
@@ -168,16 +169,16 @@ public class ChessPiece {
                 }
 
                 // check pawn taking logic
-                ChessPosition take_left = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() +1);
-                if (can_take(board, myPosition,take_left)) {
-                    ChessMove left = new ChessMove(myPosition, take_left, null);
-                    Lst.add(left);
-                }
-                ChessPosition take_right = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() -1);
-                if (can_take(board, myPosition, take_right)) {
-                    ChessMove right = new ChessMove(myPosition, take_right, null);
-                    Lst.add(right);
-                }
+//                ChessPosition take_left = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() +1);
+//                if (can_take(board, myPosition,take_left)) {
+//                    ChessMove left = new ChessMove(myPosition, take_left, null);
+//                    Lst.add(left);
+//                }
+//                ChessPosition take_right = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() -1);
+//                if (can_take(board, myPosition, take_right)) {
+//                    ChessMove right = new ChessMove(myPosition, take_right, null);
+//                    Lst.add(right);
+//                }
 
             }
 
@@ -246,9 +247,11 @@ public class ChessPiece {
     }
 
     private boolean can_take(ChessBoard board, ChessPosition myPosition, ChessPosition newPosition) {
-
+        if (board.getPiece(newPosition) == null) { // make sure there is a piece there
+            return false;
+        }
 //        System.out.printf("Old Piece type %s   New Piece type%s",board.getPiece(myPosition).getTeamColor(), board.getPiece(newPosition).getTeamColor());
-        if (board.getPiece(myPosition).getTeamColor() == board.getPiece(newPosition).getTeamColor()) {
+        else if (board.getPiece(myPosition).getTeamColor() == board.getPiece(newPosition).getTeamColor()) {
 //            System.out.printf("can't take %d, %d", newPosition.getRow(), newPosition.getColumn());
 //            System.out.println();
             return false; //can't take, same color
