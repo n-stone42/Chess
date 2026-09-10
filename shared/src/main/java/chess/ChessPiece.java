@@ -175,16 +175,16 @@ public class ChessPiece {
                 }
 
                 // check pawn taking logic
-//                ChessPosition take_left = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() +1);
-//                if (can_take(board, myPosition,take_left)) {
-//                    ChessMove left = new ChessMove(myPosition, take_left, null);
-//                    Lst.add(left);
-//                }
-//                ChessPosition take_right = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() -1);
-//                if (can_take(board, myPosition, take_right)) {
-//                    ChessMove right = new ChessMove(myPosition, take_right, null);
-//                    Lst.add(right);
-//                }
+                ChessPosition take_left = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() +1);
+                if (can_take(board, myPosition,take_left)) {
+                    ChessMove left = new ChessMove(myPosition, take_left, null);
+                    Lst.add(left);
+                }
+                ChessPosition take_right = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() -1);
+                if (can_take(board, myPosition, take_right)) {
+                    ChessMove right = new ChessMove(myPosition, take_right, null);
+                    Lst.add(right);
+                }
 
             }
 
