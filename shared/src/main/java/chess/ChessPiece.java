@@ -3,6 +3,7 @@ package chess;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Represents a single chess piece
@@ -114,19 +115,22 @@ public class ChessPiece {
             // do pawn stuff
             Collection<ChessMove> Lst = new ArrayList<>();
             if (the_piece.getTeamColor() == ChessGame.TeamColor.WHITE) {
-                // Promotion
-                if (myPosition.getRow() == 2) {
-                    //promotion
-                    // take + promotion
-                    //return
-                }
+
 
                 // see if we can move forward 1
                 ChessPosition new_pos = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn());
                 if (is_empty(board, new_pos)) {
-                    System.out.println("can move forward 1");
-                    ChessMove new_move = new ChessMove(myPosition, new_pos, null);
-                    Lst.add(new_move);
+//                  System.out.println("can move forward 1");
+                    if (myPosition.getRow() == 7) {
+                        Lst.add(new ChessMove(myPosition, new_pos,PieceType.ROOK));
+                        Lst.add(new ChessMove(myPosition, new_pos,PieceType.BISHOP));
+                        Lst.add(new ChessMove(myPosition, new_pos,PieceType.QUEEN));
+                        Lst.add(new ChessMove(myPosition, new_pos,PieceType.KNIGHT));
+                    }
+                    else {
+                        ChessMove new_move = new ChessMove(myPosition, new_pos, null);
+                        Lst.add(new_move);
+                    }
 
                     if (myPosition.getRow() == 2) { // move forward 2
                         ChessPosition new_pos2 = new ChessPosition(myPosition.getRow() + 2, myPosition.getColumn());
@@ -140,8 +144,16 @@ public class ChessPiece {
 //                 check pawn taking logic
                 ChessPosition take_left = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() -1);
                 if (can_take(board, myPosition,take_left)) {
-                    ChessMove left = new ChessMove(myPosition, take_left, null);
-                    Lst.add(left);
+                    if (myPosition.getRow() == 7) { //promotion takes
+                        Lst.add(new ChessMove(myPosition, take_left, PieceType.ROOK));
+                        Lst.add(new ChessMove(myPosition, take_left, PieceType.BISHOP));
+                        Lst.add(new ChessMove(myPosition, take_left, PieceType.QUEEN));
+                        Lst.add(new ChessMove(myPosition, take_left, PieceType.KNIGHT));
+                    }
+                    else {
+                        ChessMove left = new ChessMove(myPosition, take_left, null);
+                        Lst.add(left);
+                    }
                 }
                 ChessPosition take_right = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() +1);
                 if (can_take(board, myPosition, take_right)) {
@@ -152,12 +164,6 @@ public class ChessPiece {
             }
 
             if (the_piece.getTeamColor() == ChessGame.TeamColor.BLACK) {
-                // Promotion
-                if (myPosition.getRow() == 7) {
-                    //promotion
-                    // take + promotion
-                    //return
-                }
 
                 if (can_move(board, myPosition, -1,0 )) { // move forward 1
                     ChessPosition new_pos = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn());
@@ -314,5 +320,17 @@ public class ChessPiece {
             new_col = new_col + col_scalar;
         }
         return moves;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        ChessPiece that = (ChessPiece) o;
+        return pieceColor == that.pieceColor && type == that.type;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pieceColor, type);
     }
 }
