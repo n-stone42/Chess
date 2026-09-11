@@ -178,7 +178,6 @@ public class ChessPiece {
                     ChessPosition new_pos = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn());
 
                     if (myPosition.getRow() == 2) {
-                        System.out.println("can promote forward");
                         Lst.add(new ChessMove(myPosition, new_pos,PieceType.ROOK));
                         Lst.add(new ChessMove(myPosition, new_pos,PieceType.BISHOP));
                         Lst.add(new ChessMove(myPosition, new_pos,PieceType.QUEEN));
@@ -186,11 +185,9 @@ public class ChessPiece {
                     }
 
                     else {
-                        System.out.println("can NOT promote forward");
                         ChessMove new_move = new ChessMove(myPosition, new_pos, null);
                         Lst.add(new_move);
                     }
-
 
                     if (myPosition.getRow() == 7) { // move forward 2
                         ChessPosition new_pos2 = new ChessPosition(myPosition.getRow() - 2, myPosition.getColumn());

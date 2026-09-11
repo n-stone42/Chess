@@ -422,8 +422,16 @@ public class PawnMoveTests {
             validMoves.add(new ChessMove(startingPosition, end, ChessPiece.PieceType.ROOK));
             validMoves.add(new ChessMove(startingPosition, end, ChessPiece.PieceType.KNIGHT));
         }
-
         TestUtilities.validateMoves(board, testPiece, startingPosition, validMoves);
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }
