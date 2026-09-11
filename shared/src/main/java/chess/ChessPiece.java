@@ -157,8 +157,16 @@ public class ChessPiece {
                 }
                 ChessPosition take_right = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() +1);
                 if (can_take(board, myPosition, take_right)) {
-                    ChessMove right = new ChessMove(myPosition, take_right, null);
-                    Lst.add(right);
+                    if (myPosition.getRow() == 7) { //promotion takes
+                        Lst.add(new ChessMove(myPosition, take_right, PieceType.ROOK));
+                        Lst.add(new ChessMove(myPosition, take_right, PieceType.BISHOP));
+                        Lst.add(new ChessMove(myPosition, take_right, PieceType.QUEEN));
+                        Lst.add(new ChessMove(myPosition, take_right, PieceType.KNIGHT));
+                    }
+                    else {
+                        ChessMove right = new ChessMove(myPosition, take_right, null);
+                        Lst.add(right);
+                    }
                 }
 
             }
@@ -166,9 +174,22 @@ public class ChessPiece {
             if (the_piece.getTeamColor() == ChessGame.TeamColor.BLACK) {
 
                 if (can_move(board, myPosition, -1,0 )) { // move forward 1
+
                     ChessPosition new_pos = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn());
-                    ChessMove new_move = new ChessMove(myPosition, new_pos, null);
-                    Lst.add(new_move);
+
+                    if (myPosition.getRow() == 2) {
+                        System.out.println("can promote forward");
+                        Lst.add(new ChessMove(myPosition, new_pos,PieceType.ROOK));
+                        Lst.add(new ChessMove(myPosition, new_pos,PieceType.BISHOP));
+                        Lst.add(new ChessMove(myPosition, new_pos,PieceType.QUEEN));
+                        Lst.add(new ChessMove(myPosition, new_pos,PieceType.KNIGHT));
+                    }
+
+                    else {
+                        System.out.println("can NOT promote forward");
+                        ChessMove new_move = new ChessMove(myPosition, new_pos, null);
+                        Lst.add(new_move);
+                    }
 
 
                     if (myPosition.getRow() == 7) { // move forward 2
@@ -183,13 +204,32 @@ public class ChessPiece {
                 // check pawn taking logic
                 ChessPosition take_left = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() +1);
                 if (can_take(board, myPosition,take_left)) {
-                    ChessMove left = new ChessMove(myPosition, take_left, null);
-                    Lst.add(left);
+
+                    if (myPosition.getRow() == 2) { //promotion takes
+                        Lst.add(new ChessMove(myPosition, take_left, PieceType.ROOK));
+                        Lst.add(new ChessMove(myPosition, take_left, PieceType.BISHOP));
+                        Lst.add(new ChessMove(myPosition, take_left, PieceType.QUEEN));
+                        Lst.add(new ChessMove(myPosition, take_left, PieceType.KNIGHT));
+                    }
+                    else {
+                        ChessMove left = new ChessMove(myPosition, take_left, null);
+                        Lst.add(left);
+                    }
                 }
                 ChessPosition take_right = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() -1);
                 if (can_take(board, myPosition, take_right)) {
-                    ChessMove right = new ChessMove(myPosition, take_right, null);
-                    Lst.add(right);
+
+                    if (myPosition.getRow() == 2) { //promotion takes
+                        Lst.add(new ChessMove(myPosition, take_right, PieceType.ROOK));
+                        Lst.add(new ChessMove(myPosition, take_right, PieceType.BISHOP));
+                        Lst.add(new ChessMove(myPosition, take_right, PieceType.QUEEN));
+                        Lst.add(new ChessMove(myPosition, take_right, PieceType.KNIGHT));
+                    }
+
+                    else {
+                        ChessMove right = new ChessMove(myPosition, take_right, null);
+                        Lst.add(right);
+                    }
                 }
 
             }
