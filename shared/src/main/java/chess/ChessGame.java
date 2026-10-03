@@ -104,6 +104,7 @@ public class ChessGame {
 
         // the move is valid, make the move on the real chess board
         myBoard = boardCopy;
+        advanceTurn();
         
         
     }
@@ -173,6 +174,14 @@ public class ChessGame {
      */
     public ChessBoard getBoard() {
         return myBoard;
+    }
+
+    private void advanceTurn() {
+        if (turn == TeamColor.WHITE) {
+            turn = TeamColor.BLACK;
+            return;
+        }
+        turn = TeamColor.WHITE;
     }
 
 
