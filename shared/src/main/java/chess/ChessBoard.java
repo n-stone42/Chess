@@ -11,10 +11,6 @@ import java.util.Objects;
  */
 public class ChessBoard {
 
-//    @Override
-//    public boolean equals(Object o) {
-//        return true;
-//    }
 
     private ChessPiece[][] chess_array = new ChessPiece[8][8];
     public ChessBoard() {
@@ -74,6 +70,34 @@ public class ChessBoard {
         chess_array[7][7] = new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.ROOK);
 
     }
+
+    public ChessPosition getKing(ChessGame.TeamColor color) {
+        // a helper function that returns the  position of the king
+        if (color == ChessGame.TeamColor.WHITE) {
+            if (chess_array[0][4] != null && chess_array[0][4].getPieceType() == ChessPiece.PieceType.KING) {
+                return new ChessPosition(0,4);
+            }
+        }
+
+        else if (color == ChessGame.TeamColor.BLACK) {
+            if (chess_array[7][4] != null && chess_array[7][4].getPieceType() == ChessPiece.PieceType.KING) {
+                return new ChessPosition(7,4);
+            }
+        }
+
+
+        for (int i=0; i <8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (chess_array[i][j] != null &&
+                        chess_array[i][j].getPieceType() == ChessPiece.PieceType.KING &&
+                        chess_array[i][j].getTeamColor() == color) {
+                    return new ChessPosition(i, j);
+                }
+            }
+        }
+    System.out.print("can't find the king");
+        return null; //somehow the king is not on the board of the logic failed
+            }
 
     @Override
     public boolean equals(Object o) {

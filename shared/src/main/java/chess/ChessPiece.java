@@ -16,11 +16,6 @@ public class ChessPiece {
     private final ChessGame.TeamColor pieceColor;
     private final PieceType type;
 
-//    @Override
-//    public boolean equals(Object o) {
-//        return true;
-//    }
-
     public ChessPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type) {
         this.pieceColor = pieceColor;
         this.type = type;
@@ -78,7 +73,6 @@ public class ChessPiece {
 
         else if (the_piece.getPieceType() == PieceType.KING){
             Collection<ChessMove> Lst = new ArrayList<>();
-            //vectors [1,0] [1,1] [0,1] [-1,1], [-1,0], [-1,-1], [0,-1], [1,-1]
             int[][] moves = {
                     {1,0}, {1,1}, {0,1}, {-1,1}, {-1,0}, {-1,-1}, {0,-1}, {1,-1}
             };
@@ -284,7 +278,7 @@ public class ChessPiece {
         }
     }
 
-    private boolean in_bounds(int row, int col) {
+    public boolean in_bounds(int row, int col) {
         if ( 0 < row && row < 9 && 0 < col && col < 9){
 //            System.out.printf("row %d col %d is in bounds   ", row, col);
             return true;
@@ -295,7 +289,7 @@ public class ChessPiece {
         }
     }
 
-    private boolean can_take(ChessBoard board, ChessPosition myPosition, ChessPosition newPosition) {
+    public boolean can_take(ChessBoard board, ChessPosition myPosition, ChessPosition newPosition) {
         if (!in_bounds(newPosition.getRow(), newPosition.getColumn())) {
             return false;
         }
