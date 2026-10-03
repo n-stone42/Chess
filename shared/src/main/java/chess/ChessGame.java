@@ -15,9 +15,12 @@ public class ChessGame {
     private TeamColor turn;
     private ChessBoard myBoard = new ChessBoard();
 
+
     public ChessGame() {
         this.turn = turn;
         this.myBoard = myBoard;
+        myBoard.resetBoard();
+        turn = TeamColor.WHITE;
     }
 
     public ChessGame(ChessGame other) {
@@ -60,6 +63,21 @@ public class ChessGame {
         throw new RuntimeException("Not implemented");
     }
 
+    public ChessPosition findKing(TeamColor color) {
+        for (int i = 1; i <= 8; i++) {
+            for (int j = 1; j <= 8; j++) {
+                ChessPosition testPosition = new ChessPosition(i, j);
+                if (myBoard.getPiece(testPosition) != null) {
+                    if (myBoard.getPiece(testPosition).getPieceType() == ChessPiece.PieceType.KING && myBoard.getPiece(testPosition).getTeamColor() == color) {
+                        return testPosition;
+                    }
+
+                }
+            }
+        }
+        System.out.print("King NOT found");
+        return null;
+    }
     /**
      * Makes a move in the chess game
      *
@@ -99,6 +117,7 @@ public class ChessGame {
 
         ChessGame testGame = new ChessGame();
         if (testGame.isInCheck(turn)) {
+            System.out.print("thowing in Check error ");
             throw new InvalidMoveException("Can't make move, would put King in Check");
         }
 
@@ -116,7 +135,8 @@ public class ChessGame {
      * @return True if the specified team is in check
      */
     public boolean isInCheck(TeamColor teamColor) {
-        ChessPosition King_position = myBoard.getKing(teamColor);
+        System.out.println(myBoard);
+        ChessPosition King_position = findKing(teamColor);
         // create a copy of the board, remove the king and add a queen then a Knight then a pawn
         //if these pieces can take something check the piece type and if it matches, we are in check
         ChessBoard boardCopy = new ChessBoard(myBoard); //deep copy of the chess board
@@ -128,6 +148,7 @@ public class ChessGame {
                     for (ChessMove testMove: testPiece.pieceMoves(boardCopy, test_pos)) {
                         if (testMove.getEndPosition().getRow() == King_position.getRow() &&
                                 testMove.getEndPosition().getColumn() == King_position.getColumn()) {
+                            System.out.println("is in check, returning true");
                             return true;
                         }
                     }

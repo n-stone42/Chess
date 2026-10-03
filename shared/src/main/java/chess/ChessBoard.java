@@ -83,20 +83,23 @@ public class ChessBoard {
 
     public ChessPosition getKing(ChessGame.TeamColor color) {
         // a helper function that returns the  position of the king
-        if (color == ChessGame.TeamColor.WHITE) {
-            if (chess_array[0][4] != null && chess_array[0][4].getPieceType() == ChessPiece.PieceType.KING) {
-                return new ChessPosition(1 ,5);
-            }
-        }
+//        if (color == ChessGame.TeamColor.WHITE) {
+//            if (chess_array[0][4] != null && chess_array[0][4].getPieceType() == ChessPiece.PieceType.KING) {
+//                return new ChessPosition(1 ,5);
+//            }
+//        }
+//
+//        else if (color == ChessGame.TeamColor.BLACK) {
+//            if (chess_array[7][4] != null && chess_array[7][4].getPieceType() == ChessPiece.PieceType.KING) {
+//                return new ChessPosition(8,5);
+//            }
+//        }
 
-        else if (color == ChessGame.TeamColor.BLACK) {
-            if (chess_array[7][4] != null && chess_array[7][4].getPieceType() == ChessPiece.PieceType.KING) {
-                return new ChessPosition(8,5);
-            }
-        }
-
-        for (int i=0; i <8; i++) {
+        for (int i=0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
+                if (this.getPiece(new ChessPosition(i+1,j+1)) != null) {
+                    System.out.println(chess_array[i][j].getPieceType().toString());
+                }
                 if (chess_array[i][j] != null &&
                         chess_array[i][j].getPieceType() == ChessPiece.PieceType.KING &&
                         chess_array[i][j].getTeamColor() == color) {
@@ -107,6 +110,7 @@ public class ChessBoard {
     System.out.print("can't find the king");
         return null; //somehow the king is not on the board of the logic failed
             }
+
 
     @Override
     public boolean equals(Object o) {
