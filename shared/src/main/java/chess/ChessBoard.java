@@ -14,8 +14,14 @@ public class ChessBoard {
 
     private ChessPiece[][] chess_array = new ChessPiece[8][8];
     public ChessBoard() {
-        
+        this.chess_array = chess_array;
     }
+
+    public ChessBoard(ChessBoard other) { // for making a deepcopy of the board
+        this.chess_array = other.chess_array;
+    }
+
+
 
     /**
      * Adds a chess piece to the chessboard
@@ -25,6 +31,10 @@ public class ChessBoard {
      */
     public void addPiece(ChessPosition position, ChessPiece piece) {
         chess_array[position.getRow() -1][position.getColumn()-1] = piece; //rows are first
+    }
+
+    public void removePiece(ChessPosition position) {
+        chess_array[position.getRow() -1][position.getColumn()-1] = null; //rows are first
     }
 
     /**
@@ -75,23 +85,22 @@ public class ChessBoard {
         // a helper function that returns the  position of the king
         if (color == ChessGame.TeamColor.WHITE) {
             if (chess_array[0][4] != null && chess_array[0][4].getPieceType() == ChessPiece.PieceType.KING) {
-                return new ChessPosition(0,4);
+                return new ChessPosition(1 ,5);
             }
         }
 
         else if (color == ChessGame.TeamColor.BLACK) {
             if (chess_array[7][4] != null && chess_array[7][4].getPieceType() == ChessPiece.PieceType.KING) {
-                return new ChessPosition(7,4);
+                return new ChessPosition(8,5);
             }
         }
-
 
         for (int i=0; i <8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (chess_array[i][j] != null &&
                         chess_array[i][j].getPieceType() == ChessPiece.PieceType.KING &&
                         chess_array[i][j].getTeamColor() == color) {
-                    return new ChessPosition(i, j);
+                    return new ChessPosition(i +1, j + 1);
                 }
             }
         }

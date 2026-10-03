@@ -137,7 +137,7 @@ public class ChessPiece {
 
 //                 check pawn taking logic
                 ChessPosition take_left = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() -1);
-                if (can_take(board, myPosition,take_left)) {
+                if (differentColors(board, myPosition,take_left)) {
                     if (myPosition.getRow() == 7) { //promotion takes
                         Lst.add(new ChessMove(myPosition, take_left, PieceType.ROOK));
                         Lst.add(new ChessMove(myPosition, take_left, PieceType.BISHOP));
@@ -150,7 +150,7 @@ public class ChessPiece {
                     }
                 }
                 ChessPosition take_right = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() +1);
-                if (can_take(board, myPosition, take_right)) {
+                if (differentColors(board, myPosition, take_right)) {
                     if (myPosition.getRow() == 7) { //promotion takes
                         Lst.add(new ChessMove(myPosition, take_right, PieceType.ROOK));
                         Lst.add(new ChessMove(myPosition, take_right, PieceType.BISHOP));
@@ -194,7 +194,7 @@ public class ChessPiece {
 
                 // check pawn taking logic
                 ChessPosition take_left = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() +1);
-                if (can_take(board, myPosition,take_left)) {
+                if (differentColors(board, myPosition,take_left)) {
 
                     if (myPosition.getRow() == 2) { //promotion takes
                         Lst.add(new ChessMove(myPosition, take_left, PieceType.ROOK));
@@ -208,7 +208,7 @@ public class ChessPiece {
                     }
                 }
                 ChessPosition take_right = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() -1);
-                if (can_take(board, myPosition, take_right)) {
+                if (differentColors(board, myPosition, take_right)) {
 
                     if (myPosition.getRow() == 2) { //promotion takes
                         Lst.add(new ChessMove(myPosition, take_right, PieceType.ROOK));
@@ -289,7 +289,7 @@ public class ChessPiece {
         }
     }
 
-    public boolean can_take(ChessBoard board, ChessPosition myPosition, ChessPosition newPosition) {
+    public boolean differentColors(ChessBoard board, ChessPosition myPosition, ChessPosition newPosition) {
         if (!in_bounds(newPosition.getRow(), newPosition.getColumn())) {
             return false;
         }
@@ -316,7 +316,7 @@ public class ChessPiece {
             if (is_empty(board, new_pos)) {
                 return true;
             }
-            else if (can_take(board, myPosition, new_pos)) {
+            else if (differentColors(board, myPosition, new_pos)) {
                 return true;
             }
             return false; // can't take
@@ -339,7 +339,7 @@ public class ChessPiece {
                 moves.add(new_move);
 //                System.out.printf("adding the following move %d %d   ", new_row, new_col);
             }
-            else if (can_take(board, myPosition, new_pos)) { // next piece can be taken, add it to list then return
+            else if (differentColors(board, myPosition, new_pos)) { // next piece can be taken, add it to list then return
                 ChessMove new_move = new ChessMove(myPosition, new_pos, null);
                 moves.add(new_move);
                 return moves;
