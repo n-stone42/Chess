@@ -1,8 +1,8 @@
 package chess;
 
-import java.util.ArrayList;
+
 import java.util.Collection;
-import java.util.List;
+
 
 /**
  * A class that can manage a chess game, making moves on a board
@@ -16,7 +16,13 @@ public class ChessGame {
     private ChessBoard myBoard = new ChessBoard();
 
     public ChessGame() {
-        turn = TeamColor.WHITE;
+        this.turn = turn;
+        this.myBoard = myBoard;
+    }
+
+    public ChessGame(ChessGame other) {
+        this.turn = other.turn;
+        this.myBoard = other.myBoard;
     }
 
     /**
@@ -61,7 +67,45 @@ public class ChessGame {
      * @throws InvalidMoveException if move is invalid
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
-        throw new RuntimeException("Not implemented");
+        
+        // creat new board, make move there and see if the move results in the king being in check 
+        ChessBoard boardCopy = new ChessBoard(myBoard);
+        ChessPosition startPosition = move.getStartPosition();
+        ChessPosition endPosition = move.getEndPosition();
+        ChessPiece startPiece = boardCopy.getPiece(startPosition);
+
+        // see if the move was taking a pice. Maybe  taken piece was putting us in check
+        if (boardCopy.getPiece(endPosition) != null) {
+            if (startPiece.getTeamColor() != boardCopy.getPiece(endPosition).getTeamColor()) { // we can take
+                boardCopy.removePiece(endPosition);
+            }
+            else { // it's the same piece color
+                throw new InvalidMoveException("Can't make move, can't take a piece of your own color");
+            }
+        }
+
+        // add the piece to its end square -- it should be empty now
+        if (move.getPromotionPiece() == null) { //it's not a pawn
+            boardCopy.addPiece(endPosition, startPiece);
+        }
+        
+        else { // it's a pawn
+            ChessPiece newPiece = new ChessPiece(startPiece.getTeamColor(), startPiece.getPieceType());
+            boardCopy.addPiece(endPosition, newPiece);
+        }
+
+        // remove piece from the start position
+        boardCopy.removePiece(startPosition);
+
+        ChessGame testGame = new ChessGame();
+        if (testGame.isInCheck(turn)) {
+            throw new InvalidMoveException("Can't make move, would put King in Check");
+        }
+
+        // the move is valid, make the move on the real chess board
+        myBoard = boardCopy;
+        
+        
     }
 
     /**
@@ -72,7 +116,6 @@ public class ChessGame {
      */
     public boolean isInCheck(TeamColor teamColor) {
         ChessPosition King_position = myBoard.getKing(teamColor);
-
         // create a copy of the board, remove the king and add a queen then a Knight then a pawn
         //if these pieces can take something check the piece type and if it matches, we are in check
         ChessBoard boardCopy = new ChessBoard(myBoard); //deep copy of the chess board
@@ -84,7 +127,6 @@ public class ChessGame {
                     for (ChessMove testMove: testPiece.pieceMoves(boardCopy, test_pos)) {
                         if (testMove.getEndPosition().getRow() == King_position.getRow() &&
                                 testMove.getEndPosition().getColumn() == King_position.getColumn()) {
-                            System.out.println("CHECK found");
                             return true;
                         }
                     }
@@ -93,71 +135,6 @@ public class ChessGame {
         }
         return false;
     }
-
-
-
-
-//        int test_col;
-//        int test_row;
-//        int king_row = King_position.getRow();
-//        int king_col = King_position.getColumn();
-//        List<int[]> vectors = new ArrayList<>();
-//
-//        vectors.add(new int[]{1, -1}); vectors.add(new int[]{1, 0}); vectors.add(new int[]{1, 1});
-//        vectors.add(new int[]{0, 1}); vectors.add(new int[]{0, -1});
-//        vectors.add(new int[]{-1, -1}); vectors.add(new int[]{-1, 0}); vectors.add(new int[]{-1, 1});
-//
-//        for (int[] vector : vectors) {
-//            System.out.print("testing vector");
-//            test_row = king_row + vector[0];
-//            test_col = king_col + vector[1];
-//
-//            while ( 0 < test_row && test_row < 9 && 0 < test_col && test_col < 9) { // make sure what were are testing is in bounds
-//                ChessPosition new_pos = new ChessPosition(test_row, test_col);
-//
-//                if (myBoard.getPiece(new_pos) != null &&
-//                myBoard.getPiece(new_pos).getTeamColor() != teamColor) {
-//                    if (myBoard.getPiece(new_pos).differentColors(myBoard, new_pos, King_position)) {
-//                        // we have spotted a piece than can take the king, we are in check
-//                        System.out.println("we are in Check");
-//                        return true;
-//                    }
-//                    break; //this means we have hit out own team color. We can break our while loop,
-//                    // and go back into our for loop for the next vector
-//                }
-//                // we have not hit another piece, continue the while loop
-//                test_row += vector[0];
-//                test_col += vector[1];
-//            }
-//        }
-//        List<int[]> Knight_moves = new ArrayList<>();
-//        Knight_moves.add(new int []{1,2}); Knight_moves.add(new int []{2,1});
-//        Knight_moves.add(new int []{1,-2}); Knight_moves.add(new int []{2,-1});
-//        Knight_moves.add(new int []{-1,-2}); Knight_moves.add(new int []{-2,-1});
-//        Knight_moves.add(new int []{-1,2}); Knight_moves.add(new int []{-2,1});
-//
-//        for (int[] vector : Knight_moves ) {
-//            test_row = king_row + vector[0];
-//            test_col = king_col + vector[1];
-//            while ( 0 < test_row && test_row < 9 && 0 < test_col && test_col < 9) { // make sure what were are testing is in bounds
-//                ChessPosition new_pos = new ChessPosition(test_row, test_col);
-//
-//                if (myBoard.getPiece(new_pos) != null &&
-//                        myBoard.getPiece(new_pos).getTeamColor() != teamColor) {
-//                    if (myBoard.getPiece(new_pos).getPieceType() == ChessPiece.PieceType.KNIGHT) {
-//                        // the only piece we need to check is the knight, it does not matter if its pinned and we already know its the right color
-//                        // we have spotted a piece than can take the king, we are in check
-//                        System.out.println("we are in Check by a KNIGHT");
-//                        return true;
-//                    }
-//                    break;
-//                }
-//                // we have not hit another piece, continue the while loop
-//                test_row += vector[0];
-//                test_col += vector[0];
-//            }
-//        }
-//
 
     /**
      * Determines if the given team is in checkmate
