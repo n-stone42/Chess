@@ -1,7 +1,9 @@
 package chess;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -24,8 +26,9 @@ public class ChessGame {
         turn = TeamColor.WHITE;
     }
 
-    public ChessGame(ChessBoard board) {
+    public ChessGame(ChessBoard board, TeamColor newTurn) {
         this.myBoard = board;
+        this.turn = newTurn;
     }
 
     /**
@@ -86,11 +89,7 @@ public class ChessGame {
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
 
-//        System.out.print("start position ");
-//        System.out.print(move.getStartPosition());
-//        System.out.print(" end position ");
-//        System.out.println(move.getEndPosition());
-        if (myBoard.getPiece(move.getStartPosition()) == null) {
+        if (this.myBoard.getPiece(move.getStartPosition()) == null) {
             throw new InvalidMoveException("No Piece");
         }
 
@@ -100,17 +99,20 @@ public class ChessGame {
         ChessPosition endPosition = move.getEndPosition();
         ChessPiece startPiece = boardCopy.getPiece(startPosition);
 
-        Collection<ChessMove> pieceMoves = startPiece.pieceMoves(myBoard, startPosition);
+        Collection<ChessMove> pieceMoves = startPiece.pieceMoves(boardCopy, startPosition);
         if (!pieceMoves.contains(move)) {
+
             throw new InvalidMoveException("Not a legal move");
         }
 
-        if (startPiece.getTeamColor() != turn) {
-            throw new InvalidMoveException("movement out of turn");
-        }
+//        if (startPiece.getTeamColor() != getTeamTurn()) {
+//            throw new InvalidMoveException("movement out of turn");
+//        }
 
         // see if the move was taking a pice. Maybe  taken piece was putting us in check
+        System.out.println("seeing if we can take piece");
         if (boardCopy.getPiece(endPosition) != null) {
+            System.out.println("taking piece");
             if (startPiece.getTeamColor() != boardCopy.getPiece(endPosition).getTeamColor()) { // we can take
                 boardCopy.removePiece(endPosition);
             }
@@ -132,12 +134,13 @@ public class ChessGame {
         // remove piece from the start position
         boardCopy.removePiece(startPosition);
 
-        ChessGame testGame = new ChessGame(boardCopy);
+        ChessGame testGame = new ChessGame(boardCopy, turn);
         if (testGame.isInCheck(turn)) {
             throw new InvalidMoveException("Can't make move, would put King in Check");
         }
 
         // the move is valid, make the move on the real chess board
+        System.out.println("move is valid");
         myBoard = boardCopy;
         advanceTurn();
 
@@ -151,8 +154,6 @@ public class ChessGame {
      * @return True if the specified team is in check
      */
     public boolean isInCheck(TeamColor teamColor) {
-
-
         ChessPosition King_position = findKing(teamColor);
         // create a copy of the board, remove the king and add a queen then a Knight then a pawn
         //if these pieces can take something check the piece type and if it matches, we are in check
@@ -165,17 +166,9 @@ public class ChessGame {
                 ChessPosition test_pos =  new ChessPosition(i,j);
                 if (boardCopy.getPiece(test_pos) != null) {
                     ChessPiece testPiece = boardCopy.getPiece(test_pos);
-//                    System.out.println(" ");
-//                    System.out.println(" ");
-//                    System.out.print("Start");
-//                    System.out.println(test_pos);
                     for (ChessMove testMove: testPiece.pieceMoves(boardCopy, test_pos)) {
-
-//                        System.out.print(testMove.getEndPosition());
-//                        System.out.print(" ");
                         if (testMove.getEndPosition().getRow() == King_position.getRow() &&
                                 testMove.getEndPosition().getColumn() == King_position.getColumn()) {
-//                            System.out.println("is in check, returning true");
                             return true;
                         }
                     }
@@ -192,7 +185,47 @@ public class ChessGame {
      * @return True if the specified team is in checkmate
      */
     public boolean isInCheckmate(TeamColor teamColor) {
-        throw new RuntimeException("Not implemented");
+
+        // else return true
+        if (this.isInCheck(teamColor)) {     // if in check
+            Collection<ChessMove> allValidMoves = new ArrayList<>();
+
+            // iterate through pieces on the chess board of our color
+            for (int i = 1; i <= 8; i++) {
+                for (int j = 1; j <= 8; j++) {
+                    ChessPosition testPosition = new ChessPosition(i, j);
+                    if (myBoard.getPiece(testPosition) != null) {
+                        if (myBoard.getPiece(testPosition).getTeamColor() == teamColor) {
+                            ChessPiece newPiece = myBoard.getPiece(testPosition);
+                            // add all valid moves
+                            allValidMoves.addAll(newPiece.pieceMoves(myBoard, testPosition));
+                        }
+
+                    }
+                }
+            }
+            // implement those moves and if any result in a position not in check, return false
+            for (ChessMove move : allValidMoves) {
+
+                ChessBoard boardCopy =  new ChessBoard(myBoard);
+                ChessGame testGame = new ChessGame(boardCopy, turn);
+                try {
+//                    System.out.print("trying new move ");
+//                    System.out.print(move);
+//                    testGame.advanceTurn();
+                    testGame.makeMove(move);
+                    if (!testGame.isInCheck(teamColor)) {
+                        System.out.println("SUCCESS");
+                        return false;
+                    }
+                    return false;
+                } catch (InvalidMoveException e) {
+                    System.out.println(e);
+                }
+            }
+        return true;
+        }
+        return false;
     }
 
     /**
@@ -230,6 +263,10 @@ public class ChessGame {
             return;
         }
         turn = TeamColor.WHITE;
+    }
+
+    private void SetTurn(TeamColor newTurn) {
+        turn = newTurn;
     }
 
     @Override
