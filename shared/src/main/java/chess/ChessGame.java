@@ -88,12 +88,17 @@ public class ChessGame {
         if (myBoard.getPiece(move.getStartPosition()) == null) {
             throw new InvalidMoveException("Now Piece");
         }
-        
+
         // creat new board, make move there and see if the move results in the king being in check
         ChessBoard boardCopy =  new ChessBoard(myBoard);
         ChessPosition startPosition = move.getStartPosition();
         ChessPosition endPosition = move.getEndPosition();
         ChessPiece startPiece = boardCopy.getPiece(startPosition);
+
+        Collection<ChessMove> pieceMoves = startPiece.pieceMoves(myBoard, startPosition);
+        if (!pieceMoves.contains(move)) {
+            throw new InvalidMoveException("Not a legal move");
+        }
 
         // see if the move was taking a pice. Maybe  taken piece was putting us in check
         if (boardCopy.getPiece(endPosition) != null) {
