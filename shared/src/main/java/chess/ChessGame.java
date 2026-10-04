@@ -84,6 +84,10 @@ public class ChessGame {
      * @throws InvalidMoveException if move is invalid
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
+
+        if (myBoard.getPiece(move.getStartPosition()) == null) {
+            throw new InvalidMoveException("Now Piece");
+        }
         
         // creat new board, make move there and see if the move results in the king being in check
         ChessBoard boardCopy =  new ChessBoard(myBoard);
