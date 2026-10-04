@@ -23,9 +23,8 @@ public class ChessGame {
         turn = TeamColor.WHITE;
     }
 
-    public ChessGame(ChessGame other) {
-        this.turn = other.turn;
-        this.myBoard = new ChessBoard(other.myBoard);
+    public ChessGame(ChessBoard board) {
+        this.myBoard = board;
     }
 
     /**
@@ -86,7 +85,7 @@ public class ChessGame {
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
         
-        // creat new board, make move there and see if the move results in the king being in check 
+        // creat new board, make move there and see if the move results in the king being in check
         ChessBoard boardCopy =  new ChessBoard(myBoard);
         ChessPosition startPosition = move.getStartPosition();
         ChessPosition endPosition = move.getEndPosition();
@@ -115,7 +114,7 @@ public class ChessGame {
         // remove piece from the start position
         boardCopy.removePiece(startPosition);
 
-        ChessGame testGame = new ChessGame();
+        ChessGame testGame = new ChessGame(boardCopy);
         if (testGame.isInCheck(TeamColor.BLACK) || testGame.isInCheck(TeamColor.WHITE)) {
             System.out.print("thowing in Check error ");
             throw new InvalidMoveException("Can't make move, would put King in Check");
@@ -140,7 +139,7 @@ public class ChessGame {
         ChessPosition King_position = findKing(teamColor);
         // create a copy of the board, remove the king and add a queen then a Knight then a pawn
         //if these pieces can take something check the piece type and if it matches, we are in check
-        ChessBoard boardCopy = new ChessBoard(myBoard); //deep copy of the chess board
+        ChessBoard boardCopy =  new ChessBoard(myBoard); //deep copy of the chess board
 
         // iterate though the chess board
         for (int i=1; i <=8; i++) {

@@ -18,15 +18,17 @@ public class ChessBoard {
     }
 
     public ChessBoard(ChessBoard other) { // for making a deepcopy of the board
-        ChessPiece[][] copy_array = new ChessPiece[8][8];
+        this.chess_array = new ChessPiece[8][8];
         for (int i = 0; i <8; i++) {
             for (int j = 0; j <8; j++) {
                 if (other.chess_array[i][j] != null) {
-                    copy_array[i][j] = new ChessPiece(other.chess_array[i][j].getTeamColor(), other.chess_array[i][j].getPieceType());
+                    this.chess_array[i][j] = new ChessPiece(other.chess_array[i][j].getTeamColor(), other.chess_array[i][j].getPieceType());
+                    System.out.printf(" %d %d ", i,j);
+                    System.out.println(this.chess_array[i][j].toString());
+
                 }
             }
         }
-        this.chess_array = copy_array;
     }
 
 
