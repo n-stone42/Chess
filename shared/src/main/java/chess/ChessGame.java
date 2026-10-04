@@ -63,7 +63,24 @@ public class ChessGame {
      * startPosition
      */
     public Collection<ChessMove> validMoves(ChessPosition startPosition) {
-        throw new RuntimeException("Not implemented");
+
+        turn = myBoard.getPiece(startPosition).getTeamColor();
+        Collection<ChessMove> validMoves = new ArrayList<>();
+        Collection<ChessMove> testMoves = new ArrayList<>();
+        ChessPiece thePiece = myBoard.getPiece(startPosition);
+        testMoves = thePiece.pieceMoves(myBoard, startPosition);
+        for (ChessMove move: testMoves) {
+            ChessBoard boardCopy =  new ChessBoard(myBoard);
+            ChessGame testGame = new ChessGame(boardCopy, turn);
+            try {
+                testGame.makeMove(move);
+                // no exception
+                validMoves.add(move);
+            } catch (InvalidMoveException e) {
+
+            }
+        }
+        return validMoves;
     }
 
     public ChessPosition findKing(TeamColor color) {
