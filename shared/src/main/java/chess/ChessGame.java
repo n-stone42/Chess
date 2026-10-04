@@ -119,7 +119,7 @@ public class ChessGame {
         boardCopy.removePiece(startPosition);
 
         ChessGame testGame = new ChessGame(boardCopy);
-        if (testGame.isInCheck(TeamColor.BLACK) || testGame.isInCheck(TeamColor.WHITE)) {
+        if (testGame.isInCheck(turn)) {
             System.out.print("thowing in Check error ");
             throw new InvalidMoveException("Can't make move, would put King in Check");
         }
