@@ -186,7 +186,7 @@ public class ChessGame {
                 }
             }
         }
-        System.out.println("not in Check");
+//        System.out.println("not in Check");
         return false;
     }
 
@@ -247,7 +247,44 @@ public class ChessGame {
      * @return True if the specified team is in stalemate, otherwise false
      */
     public boolean isInStalemate(TeamColor teamColor) {
-        throw new RuntimeException("Not implemented");
+        if (!this.isInCheck(teamColor)) {     // if in check
+            Collection<ChessMove> allValidMoves = new ArrayList<>();
+
+            // iterate through pieces on the chess board of our color
+            for (int i = 1; i <= 8; i++) {
+                for (int j = 1; j <= 8; j++) {
+                    ChessPosition testPosition = new ChessPosition(i, j);
+                    if (myBoard.getPiece(testPosition) != null) {
+                        if (myBoard.getPiece(testPosition).getTeamColor() == teamColor) {
+                            ChessPiece newPiece = myBoard.getPiece(testPosition);
+                            // add all valid moves
+                            allValidMoves.addAll(newPiece.pieceMoves(myBoard, testPosition));
+                        }
+
+                    }
+                }
+            }
+            // implement those moves and if any result in a position not in check, return false
+            for (ChessMove move : allValidMoves) {
+
+                ChessBoard boardCopy = new ChessBoard(myBoard);
+                ChessGame testGame = new ChessGame(boardCopy, turn);
+                try {
+//                    System.out.print("trying new move ");
+//                    System.out.print(move);
+                    testGame.makeMove(move);
+                    if (!testGame.isInCheck(teamColor)) {
+                        System.out.println("SUCCESS");
+                        return false;
+                    }
+                    return false;
+                } catch (InvalidMoveException e) {
+                    System.out.println(e);
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     /**
