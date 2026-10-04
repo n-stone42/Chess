@@ -247,7 +247,8 @@ public class ChessGame {
      * @return True if the specified team is in stalemate, otherwise false
      */
     public boolean isInStalemate(TeamColor teamColor) {
-        if (!this.isInCheck(teamColor)) {     // if in check
+        turn = teamColor;
+        if (!this.isInCheck(teamColor)) {     // if NOT in check
             Collection<ChessMove> allValidMoves = new ArrayList<>();
 
             // iterate through pieces on the chess board of our color
@@ -260,7 +261,6 @@ public class ChessGame {
                             // add all valid moves
                             allValidMoves.addAll(newPiece.pieceMoves(myBoard, testPosition));
                         }
-
                     }
                 }
             }
@@ -277,11 +277,11 @@ public class ChessGame {
                         System.out.println("SUCCESS");
                         return false;
                     }
-                    return false;
                 } catch (InvalidMoveException e) {
-                    System.out.println(e);
+//                    System.out.println(e);
                 }
             }
+            // no valid move was found
             return true;
         }
         return false;
