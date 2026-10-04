@@ -85,8 +85,12 @@ public class ChessGame {
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
 
+//        System.out.print("start position ");
+//        System.out.print(move.getStartPosition());
+//        System.out.print(" end position ");
+//        System.out.println(move.getEndPosition());
         if (myBoard.getPiece(move.getStartPosition()) == null) {
-            throw new InvalidMoveException("Now Piece");
+            throw new InvalidMoveException("No Piece");
         }
 
         // creat new board, make move there and see if the move results in the king being in check
@@ -120,7 +124,7 @@ public class ChessGame {
         }
         
         else { // it's a pawn
-            ChessPiece newPiece = new ChessPiece(startPiece.getTeamColor(), startPiece.getPieceType());
+            ChessPiece newPiece = new ChessPiece(startPiece.getTeamColor(), move.getPromotionPiece());
             boardCopy.addPiece(endPosition, newPiece);
         }
 
@@ -129,7 +133,6 @@ public class ChessGame {
 
         ChessGame testGame = new ChessGame(boardCopy);
         if (testGame.isInCheck(turn)) {
-            System.out.print("thowing in Check error ");
             throw new InvalidMoveException("Can't make move, would put King in Check");
         }
 
@@ -155,35 +158,29 @@ public class ChessGame {
         ChessBoard boardCopy =  new ChessBoard(myBoard); //deep copy of the chess board
 
         // iterate though the chess board
-        for (int i=1; i <=8; i++) {
-            for (int j=1; j <=8; j++) {
+        for (int i=1; i <8; i++) {
+            for (int j=1; j <8; j++) {
                 // create and test new chess position
                 ChessPosition test_pos =  new ChessPosition(i,j);
                 if (boardCopy.getPiece(test_pos) != null) {
                     ChessPiece testPiece = boardCopy.getPiece(test_pos);
-                    System.out.println(" ");
-                    System.out.println(" ");
-                    System.out.print("Start");
-                    System.out.println(test_pos);
+//                    System.out.println(" ");
+//                    System.out.println(" ");
+//                    System.out.print("Start");
+//                    System.out.println(test_pos);
                     for (ChessMove testMove: testPiece.pieceMoves(boardCopy, test_pos)) {
 
-                        System.out.print(testMove.getEndPosition());
-                        System.out.print(" ");
+//                        System.out.print(testMove.getEndPosition());
+//                        System.out.print(" ");
                         if (testMove.getEndPosition().getRow() == King_position.getRow() &&
                                 testMove.getEndPosition().getColumn() == King_position.getColumn()) {
-                            System.out.println("is in check, returning true");
+//                            System.out.println("is in check, returning true");
                             return true;
                         }
                     }
                 }
             }
         }
-
-
-
-
-
-
         return false;
     }
 

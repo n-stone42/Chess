@@ -23,8 +23,8 @@ public class ChessBoard {
             for (int j = 0; j <8; j++) {
                 if (other.chess_array[i][j] != null) {
                     this.chess_array[i][j] = new ChessPiece(other.chess_array[i][j].getTeamColor(), other.chess_array[i][j].getPieceType());
-                    System.out.printf(" %d %d ", i,j);
-                    System.out.println(this.chess_array[i][j].toString());
+//                    System.out.printf(" %d %d ", i,j);
+//                    System.out.println(this.chess_array[i][j].toString());
 
                 }
             }
@@ -38,11 +38,11 @@ public class ChessBoard {
      * @param piece    the piece to add
      */
     public void addPiece(ChessPosition position, ChessPiece piece) {
-        chess_array[position.getRow() -1][position.getColumn()-1] = piece; //rows are first
+        chess_array[position.getRow() -1][position.getColumn()-1] = piece;
     }
 
     public void removePiece(ChessPosition position) {
-        chess_array[position.getRow() -1][position.getColumn()-1] = null; //rows are first
+        chess_array[position.getRow() -1][position.getColumn()-1] = null;
     }
 
     /**
@@ -53,6 +53,8 @@ public class ChessBoard {
      * position
      */
     public ChessPiece getPiece(ChessPosition position) {
+//        System.out.print(" position ");
+//        System.out.println(position.toString());
         return chess_array[position.getRow() -1][position.getColumn()-1];
     }
 
@@ -88,37 +90,6 @@ public class ChessBoard {
         chess_array[7][7] = new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.ROOK);
 
     }
-
-    public ChessPosition getKing(ChessGame.TeamColor color) {
-        // a helper function that returns the  position of the king
-//        if (color == ChessGame.TeamColor.WHITE) {
-//            if (chess_array[0][4] != null && chess_array[0][4].getPieceType() == ChessPiece.PieceType.KING) {
-//                return new ChessPosition(1 ,5);
-//            }
-//        }
-//
-//        else if (color == ChessGame.TeamColor.BLACK) {
-//            if (chess_array[7][4] != null && chess_array[7][4].getPieceType() == ChessPiece.PieceType.KING) {
-//                return new ChessPosition(8,5);
-//            }
-//        }
-
-        for (int i=0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                if (this.getPiece(new ChessPosition(i+1,j+1)) != null) {
-                    System.out.println(chess_array[i][j].getPieceType().toString());
-                }
-                if (chess_array[i][j] != null &&
-                        chess_array[i][j].getPieceType() == ChessPiece.PieceType.KING &&
-                        chess_array[i][j].getTeamColor() == color) {
-                    return new ChessPosition(i +1, j + 1);
-                }
-            }
-        }
-    System.out.print("can't find the king");
-        return null; //somehow the king is not on the board of the logic failed
-            }
-
 
     @Override
     public boolean equals(Object o) {
