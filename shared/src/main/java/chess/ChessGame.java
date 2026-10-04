@@ -100,6 +100,10 @@ public class ChessGame {
             throw new InvalidMoveException("Not a legal move");
         }
 
+        if (startPiece.getTeamColor() != turn) {
+            throw new InvalidMoveException("movement out of turn");
+        }
+
         // see if the move was taking a pice. Maybe  taken piece was putting us in check
         if (boardCopy.getPiece(endPosition) != null) {
             if (startPiece.getTeamColor() != boardCopy.getPiece(endPosition).getTeamColor()) { // we can take
