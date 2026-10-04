@@ -2,6 +2,7 @@ package chess;
 
 
 import java.util.Collection;
+import java.util.Objects;
 
 
 /**
@@ -231,5 +232,15 @@ public class ChessGame {
         turn = TeamColor.WHITE;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        ChessGame chessGame = (ChessGame) o;
+        return turn == chessGame.turn && Objects.equals(myBoard, chessGame.myBoard);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(turn, myBoard);
+    }
 }
