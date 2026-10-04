@@ -99,20 +99,18 @@ public class ChessGame {
         ChessPosition endPosition = move.getEndPosition();
         ChessPiece startPiece = boardCopy.getPiece(startPosition);
 
+        // testing move logic -- seeing if the move follows the movement logic of the piece
         Collection<ChessMove> pieceMoves = startPiece.pieceMoves(boardCopy, startPosition);
         if (!pieceMoves.contains(move)) {
-
             throw new InvalidMoveException("Not a legal move");
         }
 
-//        if (startPiece.getTeamColor() != getTeamTurn()) {
-//            throw new InvalidMoveException("movement out of turn");
-//        }
+        if (startPiece.getTeamColor() != getTeamTurn()) {
+            throw new InvalidMoveException("movement out of turn");
+        }
 
         // see if the move was taking a pice. Maybe  taken piece was putting us in check
-        System.out.println("seeing if we can take piece");
         if (boardCopy.getPiece(endPosition) != null) {
-            System.out.println("taking piece");
             if (startPiece.getTeamColor() != boardCopy.getPiece(endPosition).getTeamColor()) { // we can take
                 boardCopy.removePiece(endPosition);
             }
@@ -140,11 +138,10 @@ public class ChessGame {
         }
 
         // the move is valid, make the move on the real chess board
-        System.out.println("move is valid");
+//        System.out.print(move.toString());
+//        System.out.println("move is valid");
         myBoard = boardCopy;
         advanceTurn();
-
-
     }
 
     /**
@@ -155,26 +152,41 @@ public class ChessGame {
      */
     public boolean isInCheck(TeamColor teamColor) {
         ChessPosition King_position = findKing(teamColor);
+//        System.out.print("king Position");
+//        System.out.println(King_position);
         // create a copy of the board, remove the king and add a queen then a Knight then a pawn
         //if these pieces can take something check the piece type and if it matches, we are in check
         ChessBoard boardCopy =  new ChessBoard(myBoard); //deep copy of the chess board
 
         // iterate though the chess board
-        for (int i=1; i <8; i++) {
-            for (int j=1; j <8; j++) {
+        for (int i=1; i <= 8; i++) {
+            for (int j=1; j <= 8; j++) {
                 // create and test new chess position
                 ChessPosition test_pos =  new ChessPosition(i,j);
                 if (boardCopy.getPiece(test_pos) != null) {
+                    // somehow it can't find the enemey king
+                    // if we have a new chess piece there
                     ChessPiece testPiece = boardCopy.getPiece(test_pos);
-                    for (ChessMove testMove: testPiece.pieceMoves(boardCopy, test_pos)) {
-                        if (testMove.getEndPosition().getRow() == King_position.getRow() &&
-                                testMove.getEndPosition().getColumn() == King_position.getColumn()) {
-                            return true;
+//                    System.out.println(testPiece.getPieceType());
+                    if (testPiece.getTeamColor() != teamColor) {
+//                        System.out.println("enemy piece found");
+
+                        // get that pieces moves and see if it can take the king
+                        for (ChessMove testMove : testPiece.pieceMoves(boardCopy, test_pos)) {
+//                            System.out.print(testPiece.getPieceType().toString());
+//                            System.out.println(testMove.toString());
+                            if (testMove.getEndPosition().getRow() == King_position.getRow() &&
+                                    testMove.getEndPosition().getColumn() == King_position.getColumn()) {
+//                                System.out.println("IS IN Check");
+//                                System.out.println();
+                                return true;
+                            }
                         }
                     }
                 }
             }
         }
+        System.out.println("not in Check");
         return false;
     }
 
@@ -212,7 +224,6 @@ public class ChessGame {
                 try {
 //                    System.out.print("trying new move ");
 //                    System.out.print(move);
-//                    testGame.advanceTurn();
                     testGame.makeMove(move);
                     if (!testGame.isInCheck(teamColor)) {
                         System.out.println("SUCCESS");
@@ -225,7 +236,7 @@ public class ChessGame {
             }
         return true;
         }
-        return false;
+    return false;
     }
 
     /**
