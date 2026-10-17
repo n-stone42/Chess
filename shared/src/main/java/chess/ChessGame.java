@@ -151,7 +151,8 @@ public class ChessGame {
 
         ChessGame testGame = new ChessGame(boardCopy, turn);
         if (testGame.isInCheck(turn)) {
-            throw new InvalidMoveException("Can't make move, would put King in Check");
+            throw new InvalidMoveException();
+//            throw new InvalidMoveException("Can't make move, would put King in Check");
         }
 
         // the move is valid, make the move on the real chess board
@@ -243,7 +244,6 @@ public class ChessGame {
 //                    System.out.print(move);
                     testGame.makeMove(move);
                     if (!testGame.isInCheck(teamColor)) {
-                        System.out.println("SUCCESS");
                         return false;
                     }
                     return false;
@@ -291,7 +291,7 @@ public class ChessGame {
 //                    System.out.print(move);
                     testGame.makeMove(move);
                     if (!testGame.isInCheck(teamColor)) {
-                        System.out.println("SUCCESS");
+//                        System.out.println("SUCCESS");
                         return false;
                     }
                 } catch (InvalidMoveException e) {
