@@ -5,11 +5,13 @@ import dataaccess.DataAccessException;
 import dataaccess.MemoryUserDAO;
 import dataaccess.UserDataAccess;
 import model.*;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.Objects;
 import java.util.UUID;
 
 public class UserService {
-    private final UserDataAccess UserData;
-    private final AuthDataAccess AuthData;
+    private UserDataAccess UserData;
+    private AuthDataAccess AuthData;
 
     //list of methods on diagra, for service to dataaccess ,
     //getUser(username)
@@ -60,13 +62,17 @@ public class UserService {
     }
 
     public RegisterResult register(RegisterRequest request) throws DataAccessException {
-        if (UserData.getUser(request.username()) !=null) { // username not in database
+        try {
+            UserData.getUser(request.username()); // username not in database
+            throw new DataAccessException("Username already exists");
+
+        }
+        catch (Exception e){
             UserData.createUser(request.username(), request.password(), request.email());
             String AuthToken = generateToken();
-            AuthData.createAuth(AuthToken,request.username());
-            return new RegisterResult(request.username(),AuthToken);
-        }
-        return null;
+            AuthData.createAuth(AuthToken, request.username());
+            return new RegisterResult(request.username(), AuthToken);
+            }
     }
 
     public LoginResult Login(LoginRequest request) throws DataAccessException {
@@ -86,5 +92,17 @@ public class UserService {
             return new LogoutResult();
         }
         return null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        UserService that = (UserService) o;
+        return Objects.equals(UserData, that.UserData) && Objects.equals(AuthData, that.AuthData);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(UserData, AuthData);
     }
 }

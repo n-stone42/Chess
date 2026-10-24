@@ -2,6 +2,7 @@ package dataaccess;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import chess.ChessGame;
 import chess.ChessMove;
@@ -50,5 +51,17 @@ public class MemoryGameDAO implements GameDataAccess {
         catch (InvalidMoveException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        MemoryGameDAO that = (MemoryGameDAO) o;
+        return Objects.equals(Map_GameData, that.Map_GameData);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(Map_GameData);
     }
 }
