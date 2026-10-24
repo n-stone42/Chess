@@ -2,15 +2,13 @@ package dataaccess;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 import chess.ChessGame;
 import chess.ChessMove;
 import chess.InvalidMoveException;
 import model.*;
-import service.GameService;
 
-public class GameDAO implements GameService {
+public class MemoryGameDAO implements GameDataAccess {
     public HashMap<String, GameData> Map_GameData = new HashMap<>();
 
     public void clear() {

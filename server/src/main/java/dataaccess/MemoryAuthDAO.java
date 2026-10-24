@@ -1,16 +1,9 @@
 package dataaccess;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
 
-import chess.ChessGame;
-import chess.ChessMove;
-import chess.InvalidMoveException;
 import model.*;
-import service.AuthService;
 
-public class AuthDAO implements AuthService {
+public class MemoryAuthDAO implements AuthDataAccess {
     public HashMap<String, AuthData> Map_AuthData = new HashMap<>();
 
     public void clear() {
