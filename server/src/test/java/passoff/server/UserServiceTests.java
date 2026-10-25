@@ -1,5 +1,6 @@
 package passoff.server;
 import dataaccess.*;
+import model.AuthData;
 import model.UserData;
 import org.junit.jupiter.api.*;
 import dataaccess.UserDataAccess;
@@ -43,8 +44,22 @@ public class UserServiceTests {
             UserService.RegisterResult result = userService.register(request);
             UserService.LoginResult loginResult = userService.login(new UserService.LoginRequest(User_Bob.username(), User_Bob.password()));
             assertTrue(loginResult.username() == User_Bob.username() && loginResult.authToken() != result.authToken());
+            assertEquals(authMemory.getAuth(loginResult.authToken(), User_Bob.username()), new AuthData(loginResult.authToken(),User_Bob.username()));
         }
         catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Test
+    public void testLogout() {
+        try {
+            UserService.RegisterRequest request= new UserService.RegisterRequest(User_Bob.username(), User_Bob.password(),User_Bob.email());
+            UserService.RegisterResult result = userService.register(request);
+            UserService.LoginResult loginResult = userService.login(new UserService.LoginRequest(User_Bob.username(), User_Bob.password()));
+            UserService.LogoutRequest logoutRequest = new UserService.LogoutRequest(loginResult.username(), loginResult.authToken());
+            assertEquals(userService.logout(logoutRequest), new UserService.LogoutResult());
+            assertThrows(DataAccessException.class,() -> authMemory.getAuth(loginResult.authToken(), User_Bob.username()));
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
