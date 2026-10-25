@@ -58,7 +58,9 @@ public class GameService {
             if (GameData.getGame(GameID) != null) {
                 AuthData userAuthData = AuthData.getAuth(authToken);
                 String username = userAuthData.username();
-                return new JoinGameResult();
+                if (GameData.joinGame(GameID, PlayerColor,username)) {
+                    return new JoinGameResult();
+                }
             }
             throw new DataAccessException("Game ID not found");
         }
