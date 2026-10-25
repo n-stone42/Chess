@@ -41,24 +41,29 @@ public class MemoryGameDAO implements GameDataAccess {
         }
         return gameIDs;
     }
-    public void updateGame(int gameID, ChessMove move)throws DataAccessException {
+    public void updateChessGame(int gameID, ChessMove move)throws DataAccessException {
         if (Map_GameData.get(gameID) == null) {
             throw new DataAccessException("gameID not found");
         }
         GameData oldGamedata = Map_GameData.get(gameID);
         ChessGame game = oldGamedata.game();
         try {
-            // make the move on the game
             game.makeMove(move);
+            GameData newGameData = new GameData(oldGamedata.gameID(), oldGamedata.whiteUsername(),
+                    oldGamedata.blackUsername(), oldGamedata.gameName(), game);
             // remove the old record
-            Map_GameData.remove(oldGamedata.gameID());
-            // make a new record with  the new game
-            Map_GameData.put(oldGamedata.gameID(),new GameData(oldGamedata.gameID(), oldGamedata.whiteUsername(),
-                    oldGamedata.blackUsername(), oldGamedata.gameName(), game));
+            swapGameData(gameID, newGameData);
         }
         catch (InvalidMoveException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void swapGameData(int gameID, GameData newGameData ) {
+        GameData oldGamedata = Map_GameData.get(gameID);
+        Map_GameData.remove(oldGamedata.gameID());
+        Map_GameData.put(oldGamedata.gameID(), newGameData);
+
     }
 
     public boolean joinGame(int gameID, ChessGame.TeamColor playerColor, String newUsername) throws DataAccessException{
@@ -66,13 +71,15 @@ public class MemoryGameDAO implements GameDataAccess {
         if (playerColor == ChessGame.TeamColor.WHITE) {
             if (pendigGameData.whiteUsername() == null) {
                 GameData newGameData = new GameData(pendigGameData.gameID(), newUsername, pendigGameData.blackUsername(), pendigGameData.gameName(), pendigGameData.game());
+                swapGameData(gameID, newGameData);
                 return true;
             }
             throw new DataAccessException("White UserName already taken");
         }
         else { // player color black
             if (pendigGameData.blackUsername() == null) {
-                GameData newGameData = new GameData(pendigGameData.gameID(),pendigGameData.whiteUsername(), newUsername, pendigGameData.gameName(), pendigGameData.game());
+                GameData newGameData = new GameData(pendigGameData.gameID(), pendigGameData.whiteUsername(), newUsername, pendigGameData.gameName(), pendigGameData.game());
+                swapGameData(gameID, newGameData);
                 return true;
             }
             throw new DataAccessException("Black UserName already taken");
