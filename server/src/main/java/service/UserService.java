@@ -5,12 +5,12 @@ import dataaccess.DataAccessException;
 import dataaccess.MemoryUserDAO;
 import dataaccess.UserDataAccess;
 import model.*;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Assertions.*;
 import java.util.Objects;
 import java.util.UUID;
 
 public class UserService {
-    private UserDataAccess UserData;
+    private  UserDataAccess UserData;
     private AuthDataAccess AuthData;
 
     //list of methods on diagra, for service to dataaccess ,
@@ -75,7 +75,7 @@ public class UserService {
             }
     }
 
-    public LoginResult Login(LoginRequest request) throws DataAccessException {
+    public LoginResult login(LoginRequest request) throws DataAccessException {
         if (UserData.getUser(request.username()) !=null) {
             if (UserData.MatchPassword(request.username(), request.password())) {
                 String AuthToken = generateToken();
@@ -86,7 +86,7 @@ public class UserService {
         return null;
     }
 
-    public LogoutResult Logout(LogoutRequest request) throws DataAccessException {
+    public LogoutResult logout(LogoutRequest request) throws DataAccessException {
         if (AuthData.getAuth(request.AuthToken(), request.username()) !=null) {
             AuthData.DeleteAuth(request.AuthToken());
             return new LogoutResult();
