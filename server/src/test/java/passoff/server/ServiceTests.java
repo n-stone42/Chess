@@ -1,6 +1,7 @@
 package passoff.server;
 import chess.ChessGame;
 import dataaccess.*;
+import model.AuthData;
 import model.GameData;
 import model.UserData;
 import org.junit.jupiter.api.*;
@@ -11,9 +12,8 @@ import service.UserService;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static passoff.server.UserServiceTests.userService;
 
-public class GameServiceTests {
+public class ServiceTests {
     public  MemoryUserDAO userMemory = new MemoryUserDAO();
     public MemoryAuthDAO authMemory = new MemoryAuthDAO();
     public MemoryGameDAO gameMemory = new MemoryGameDAO();
@@ -39,6 +39,42 @@ public class GameServiceTests {
     public UserService.RegisterResult registerTom() throws DataAccessException{
         UserService.RegisterRequest request= new UserService.RegisterRequest(User_Tom.username(), User_Tom.password(),User_Tom.email());
         return userService.register(request);
+    }
+
+    @Test
+    public void CreateUserInMemory() {
+        try {
+            UserService.RegisterResult result = registerBob();
+            String authToken = result.authToken();
+            assertNotNull(authMemory.getAuth(authToken));
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Test
+    public void testLogin() {
+        try {
+            UserService.RegisterResult result = registerBob();
+            UserService.LoginResult loginResult = userService.login(new UserService.LoginRequest(User_Bob.username(), User_Bob.password()));
+            assertTrue(loginResult.username() == User_Bob.username() && loginResult.authToken() != result.authToken());
+            assertEquals(authMemory.getAuth(loginResult.authToken()), new AuthData(loginResult.authToken(),User_Bob.username()));
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Test
+    public void testLogout() {
+        try {
+            UserService.RegisterResult result = registerBob();
+            UserService.LoginResult loginResult = userService.login(new UserService.LoginRequest(User_Bob.username(), User_Bob.password()));
+            UserService.LogoutRequest logoutRequest = new UserService.LogoutRequest(loginResult.username(), loginResult.authToken());
+            assertEquals(userService.logout(logoutRequest), new UserService.LogoutResult());
+            assertThrows(DataAccessException.class,() -> authMemory.getAuth(loginResult.authToken()));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
     @Test
     public void testCreateGame() throws DataAccessException{
