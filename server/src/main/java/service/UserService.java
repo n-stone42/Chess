@@ -13,24 +13,6 @@ public class UserService {
     private  UserDataAccess UserData;
     private AuthDataAccess AuthData;
 
-    //list of methods on diagra, for service to dataaccess ,
-    //getUser(username)
-    //creterUser(userData)
-    //createAuth(authData)
-    //MatchPasswors(UserName, password)
-    //CreateAuthDataToekn(AuthData)
-    //GetAuth(AuthData)
-    //deleat(AuthToken)
-    //GEtGames(authToken)
-    //GetData(authToken) -- gameData?
-    //NewGaem(gameId)
-    //Clear()
-
-    //list of methods on diagram from handler to service for the user
-    //register(RegisterRequest)
-    //Login(LoginRequest)
-    //Logout(LogoutRequest)
-
     public UserService(UserDataAccess UserData, AuthDataAccess AuthData) {
         this.UserData = UserData;
         this.AuthData = AuthData;
@@ -87,7 +69,7 @@ public class UserService {
     }
 
     public LogoutResult logout(LogoutRequest request) throws DataAccessException {
-        if (AuthData.getAuth(request.AuthToken(), request.username()) !=null) {
+        if (AuthData.getAuth(request.AuthToken()) !=null) {
             AuthData.DeleteAuth(request.AuthToken());
             return new LogoutResult();
         }

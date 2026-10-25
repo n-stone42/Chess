@@ -10,46 +10,72 @@ import chess.InvalidMoveException;
 import model.*;
 
 public class MemoryGameDAO implements GameDataAccess {
-    public HashMap<String, GameData> Map_GameData = new HashMap<>();
+    public HashMap<Integer, GameData> Map_GameData = new HashMap<>();
 
     public void clear() {
         Map_GameData.clear();
     }
 
-    public void createGame(int gameID, String whiteUsername, String blackUsername, String gameName) throws DataAccessException {
+    public void createGame(int gameID,String gameName) throws DataAccessException {
         // we are creating a new chess game so this parameter will just be a new chess game from the starting position
         if (Map_GameData.get(gameID) != null) {
             throw new DataAccessException("game ID taken");
         }
-        Map_GameData.put(gameName, new GameData(gameID, whiteUsername, blackUsername, blackUsername, new ChessGame()));
+        Map_GameData.put(gameID, new GameData(gameID, null,null,gameName, new ChessGame()));
     }
+
+    public GameData getGame(int GameID) throws DataAccessException{
+        if (Map_GameData.get(GameID) != null) {
+            return Map_GameData.get(GameID);
+        }
+        throw new DataAccessException("GameID not found");
+    }
+
     public List listGame() throws DataAccessException{
-        List<String> gameIDs = new ArrayList<>();
+        List<Integer> gameIDs = new ArrayList<>();
         if (Map_GameData.isEmpty()) {
             throw new DataAccessException("There are no games to list");
         }
-        for (String gameID : Map_GameData.keySet()) {
+        for (int gameID : Map_GameData.keySet()) {
             gameIDs.add(gameID);
         }
         return gameIDs;
     }
-    public void updateGame(String gameName, ChessMove move)throws DataAccessException {
-        if (Map_GameData.get(gameName) == null) {
+    public void updateGame(int gameID, ChessMove move)throws DataAccessException {
+        if (Map_GameData.get(gameID) == null) {
             throw new DataAccessException("gameID not found");
         }
-        GameData oldGamedata = Map_GameData.get(gameName);
+        GameData oldGamedata = Map_GameData.get(gameID);
         ChessGame game = oldGamedata.game();
         try {
             // make the move on the game
             game.makeMove(move);
             // remove the old record
-            Map_GameData.remove(oldGamedata.gameName());
+            Map_GameData.remove(oldGamedata.gameID());
             // make a new record with  the new game
-            Map_GameData.put(oldGamedata.gameName(),new GameData(oldGamedata.gameID(), oldGamedata.whiteUsername(),
+            Map_GameData.put(oldGamedata.gameID(),new GameData(oldGamedata.gameID(), oldGamedata.whiteUsername(),
                     oldGamedata.blackUsername(), oldGamedata.gameName(), game));
         }
         catch (InvalidMoveException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public boolean joinGame(int gameID, ChessGame.TeamColor playerColor, String newUsername) throws DataAccessException{
+        GameData pendigGameData = Map_GameData.get(gameID);
+        if (playerColor == ChessGame.TeamColor.WHITE) {
+            if (pendigGameData.whiteUsername() == null) {
+                GameData newGameData = new GameData(pendigGameData.gameID(), newUsername, pendigGameData.blackUsername(), pendigGameData.gameName(), pendigGameData.game());
+                return true;
+            }
+            throw new DataAccessException("White UserName already taken");
+        }
+        else { // player color black
+            if (pendigGameData.blackUsername() == null) {
+                GameData newGameData = new GameData(pendigGameData.gameID(),pendigGameData.whiteUsername(), newUsername, pendigGameData.gameName(), pendigGameData.game());
+                return true;
+            }
+            throw new DataAccessException("Black UserName already taken");
         }
     }
 

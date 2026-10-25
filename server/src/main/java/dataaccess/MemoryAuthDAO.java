@@ -4,6 +4,8 @@ import java.util.Objects;
 
 import model.*;
 
+import javax.xml.crypto.Data;
+
 public class MemoryAuthDAO implements AuthDataAccess {
     public HashMap<String, AuthData> Map_AuthData = new HashMap<>();
 
@@ -17,7 +19,7 @@ public class MemoryAuthDAO implements AuthDataAccess {
         Map_AuthData.put(authToken, new AuthData(authToken, username));
     }
 
-    public AuthData getAuth(String authToken, String username) throws DataAccessException {
+    public AuthData getAuth(String authToken) throws DataAccessException {
         if (Map_AuthData.get(authToken) == null) {
             throw new DataAccessException("Auth Token invalid");
         }
