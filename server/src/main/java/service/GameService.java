@@ -16,7 +16,6 @@ public class GameService {
     private GameDataAccess GameData;
     private AuthDataAccess AuthData;
 
-
     private int GameIDcounter;
 
     public GameService(UserDataAccess UserData, GameDataAccess GameData, AuthDataAccess AuthData) {
@@ -24,6 +23,13 @@ public class GameService {
         this.GameData = GameData;
         this.AuthData = AuthData;
     }
+
+    public record CreateGameResult(
+            int GameId ) {}
+    public record ListGameResult(
+            ArrayList<GameData> Games) {}
+    public record JoinGameResult() {}
+
     public Boolean verifyAuthToken(String authToken) {
         try {
             if (AuthData.getAuth(authToken) != null) {
@@ -38,30 +44,30 @@ public class GameService {
         return newID;
     }
 
-    public int creatGame(String authToken, String gameName) throws DataAccessException {// returns the game ID
+    public CreateGameResult creatGame(String authToken, String gameName) throws DataAccessException {// returns the game ID
         if (verifyAuthToken(authToken)) {
             int NewGameID =createGameID();
             GameData.createGame(NewGameID, gameName);
-            return NewGameID;
+            return new CreateGameResult(NewGameID);
         }
     throw new DataAccessException("AuthToken not verfied");
     }
 
-    public boolean joinGame(String authToken, ChessGame.TeamColor PlayerColor, int GameID) throws DataAccessException{
+    public JoinGameResult joinGame(String authToken, ChessGame.TeamColor PlayerColor, int GameID) throws DataAccessException{
         if (verifyAuthToken(authToken)) {
             if (GameData.getGame(GameID) != null) {
                 AuthData userAuthData = AuthData.getAuth(authToken);
                 String username = userAuthData.username();
-                return GameData.joinGame(GameID, PlayerColor, username);
+                return new JoinGameResult();
             }
             throw new DataAccessException("Game ID not found");
         }
-        return false;
+        throw new DataAccessException("Auth Token not found");
     }
 
-    public List listGames(String authToken) throws DataAccessException {
+    public ListGameResult listGames(String authToken) throws DataAccessException {
         if (verifyAuthToken(authToken)) {
-            return GameData.listGame();
+            return new ListGameResult(GameData.listGame());
         }
         throw new DataAccessException("AuthToken not verfied");
     }
