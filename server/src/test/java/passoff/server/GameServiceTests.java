@@ -7,6 +7,9 @@ import model.UserData;
 import org.junit.jupiter.api.*;
 import service.GameService;
 import service.UserService;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static passoff.server.UserServiceTests.userService;
 
@@ -55,6 +58,33 @@ public class GameServiceTests {
 
         gameService.joinGame(TomRegisterResult.authToken(), ChessGame.TeamColor.BLACK, GameID);
         assertEquals(new GameData(GameID, User_Bob.username(), User_Tom.username(), TestGameName,new ChessGame()), gameMemory.getGame(GameID));
+    }
+    // can test errors like if white username is already filled, game ID is wrong  ect
+
+    @Test
+    public void testGameList() throws DataAccessException {
+        UserService.RegisterResult BobRegisterResult = registerBob();
+        UserService.RegisterResult TomRegisterResult = registerTom();
+        String TestGameName1 = "Game1";
+        String TestGameName2 = "Game2";
+
+        //Create 1st game
+        int GameID1 = gameService.creatGame(BobRegisterResult.authToken(), TestGameName1);
+        gameService.joinGame(BobRegisterResult.authToken(), ChessGame.TeamColor.WHITE, GameID1);
+        gameService.joinGame(TomRegisterResult.authToken(), ChessGame.TeamColor.BLACK, GameID1);
+        GameData expectedGameData1 = new GameData(GameID1, User_Bob.username(), User_Tom.username(), TestGameName1,new ChessGame());
+
+        //Create 2nd game
+        int GameID2 = gameService.creatGame(TomRegisterResult.authToken(), TestGameName2);
+        gameService.joinGame(TomRegisterResult.authToken(), ChessGame.TeamColor.WHITE, GameID2);
+        gameService.joinGame(BobRegisterResult.authToken(), ChessGame.TeamColor.BLACK, GameID2);
+        GameData expectedGameData2 = new GameData(GameID2, User_Tom.username(), User_Bob.username(), TestGameName2,new ChessGame());
+
+        ArrayList<GameData> expectedResult = new ArrayList<GameData>();
+        expectedResult.add(expectedGameData1);
+        expectedResult.add(expectedGameData2);
+        assertEquals(expectedResult, gameService.listGames(TomRegisterResult.authToken()));
+
     }
 
 }

@@ -4,12 +4,13 @@ import chess.ChessGame;
 import chess.ChessMove;
 import model.GameData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface GameDataAccess {
     void clear() throws DataAccessException;
     void createGame(int gameID,  String gameName) throws DataAccessException;
-    List listGame() throws DataAccessException;
+    ArrayList<GameData> listGame() throws DataAccessException;
 
     void updateChessGame(int gameID, ChessMove move)throws DataAccessException;
 

@@ -31,15 +31,15 @@ public class MemoryGameDAO implements GameDataAccess {
         throw new DataAccessException("GameID not found");
     }
 
-    public List listGame() throws DataAccessException{
-        List<Integer> gameIDs = new ArrayList<>();
+    public ArrayList<GameData> listGame() throws DataAccessException{
+        ArrayList<GameData> Games = new ArrayList<GameData>();
         if (Map_GameData.isEmpty()) {
             throw new DataAccessException("There are no games to list");
         }
         for (int gameID : Map_GameData.keySet()) {
-            gameIDs.add(gameID);
+            Games.add(Map_GameData.get(gameID));
         }
-        return gameIDs;
+        return Games;
     }
     public void updateChessGame(int gameID, ChessMove move)throws DataAccessException {
         if (Map_GameData.get(gameID) == null) {
