@@ -23,7 +23,6 @@ public class GameService {
         this.UserData = UserData;
         this.GameData = GameData;
         this.AuthData = AuthData;
-
     }
     public Boolean verifyAuthToken(String authToken) {
         try {
