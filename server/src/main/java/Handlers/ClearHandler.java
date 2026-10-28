@@ -7,10 +7,11 @@ public class ClearHandler {
     public ClearService clearService;
 
     public ClearHandler(ClearService clearService) {
-        clearService = clearService;
+        this.clearService = clearService;
     }
 
     public void clear() throws DataAccessException {
+        System.out.println("called clear() in ClearHandler");
         clearService.eraseAllData();
     }
 }
