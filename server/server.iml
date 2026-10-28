@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
+    <orderEntry type="library" exported="" name="slf4j.simple" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES />

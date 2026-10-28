@@ -14,8 +14,8 @@ public class UserService {
     private AuthDataAccess AuthData;
 
     public UserService(UserDataAccess UserData, AuthDataAccess AuthData) {
-        this.UserData = UserData;
-        this.AuthData = AuthData;
+        UserData = UserData;
+        AuthData = AuthData;
     }
     public record RegisterRequest(
             String username,
