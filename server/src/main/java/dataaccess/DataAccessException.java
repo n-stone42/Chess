@@ -56,6 +56,7 @@ public class DataAccessException extends Exception {
         HashMap map = new Gson().fromJson(error, HashMap.class);
         var statusCode = Code.valueOf(map.get("status").toString());
         String errorMessage = map.get("message").toString();
+//        String fullMessage = "Error: " +  errorMessage;
         return new DataAccessException(errorMessage, statusCode);
     }
 }

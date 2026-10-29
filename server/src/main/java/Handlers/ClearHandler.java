@@ -11,7 +11,6 @@ public class ClearHandler {
     }
 
     public void clear() throws DataAccessException {
-        System.out.println("called clear() in ClearHandler");
         clearService.eraseAllData();
     }
 }

@@ -46,7 +46,7 @@ public class UserService {
     public RegisterResult register(RegisterRequest request) throws DataAccessException {
         try {
             UserData.getUser(request.username()); // username not in database
-            throw new DataAccessException("Username already exists", DataAccessException.Code.AlreadyTaken);
+            throw new DataAccessException("Error: Username already exists", DataAccessException.Code.AlreadyTaken);
 
         }
         catch (Exception e){
@@ -64,8 +64,9 @@ public class UserService {
                 AuthData.createAuth(AuthToken,request.username());
                 return new LoginResult(request.username(), AuthToken);
             }
+            throw new DataAccessException("Error: Password does not match ",DataAccessException.Code.BadRequest);
         }
-        return null;
+        throw new DataAccessException("Error: Usename not found",DataAccessException.Code.BadRequest );
     }
 
     public LogoutResult logout(LogoutRequest request) throws DataAccessException {

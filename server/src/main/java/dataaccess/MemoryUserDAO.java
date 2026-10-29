@@ -16,20 +16,20 @@ public class MemoryUserDAO implements UserDataAccess {
         if (Map_UserData.get(username) != null) {
             return Map_UserData.get(username);
         }
-        throw new DataAccessException("Username not found", DataAccessException.Code.BadRequest);
+        throw new DataAccessException("Error: Username not found", DataAccessException.Code.BadRequest);
     }
     public void createUser(String username, String password, String email) throws DataAccessException {
         if (Map_UserData.get(username) == null) { //oppsite of get User Check
             Map_UserData.put(username, new UserData(username, password, email));
             return;
         }
-        throw new DataAccessException("duplicate Username", DataAccessException.Code.AlreadyTaken);
+        throw new DataAccessException("Error: Duplicate Username", DataAccessException.Code.AlreadyTaken);
     }
-    public boolean MatchPassword(String username, String password ) {
+    public boolean MatchPassword(String username, String password )throws DataAccessException {
         if (Map_UserData.containsKey(username)) {
             return Objects.equals(Map_UserData.get(username).password(), password);
         }
-        return false;
+        throw new DataAccessException("Error: Password did not match",DataAccessException.Code.BadRequest);
     }
 
     @Override

@@ -50,7 +50,7 @@ public class GameService {
             GameData.createGame(NewGameID, gameName);
             return new CreateGameResult(NewGameID);
         }
-    throw new DataAccessException("AuthToken not verfied", DataAccessException.Code.Unathurized);
+    throw new DataAccessException("Error: AuthToken not verfied", DataAccessException.Code.Unathurized);
     }
 
     public JoinGameResult joinGame(String authToken, ChessGame.TeamColor PlayerColor, int GameID) throws DataAccessException{
@@ -62,16 +62,16 @@ public class GameService {
                     return new JoinGameResult();
                 }
             }
-            throw new DataAccessException("Game ID not found", DataAccessException.Code.BadRequest);
+            throw new DataAccessException("Error: Game ID not found", DataAccessException.Code.BadRequest);
         }
-        throw new DataAccessException("Auth Token not found", DataAccessException.Code.Unathurized);
+        throw new DataAccessException("Error: Auth Token not found", DataAccessException.Code.Unathurized);
     }
 
     public ListGameResult listGames(String authToken) throws DataAccessException {
         if (verifyAuthToken(authToken)) {
             return new ListGameResult(GameData.listGame());
         }
-        throw new DataAccessException("AuthToken not verfied", DataAccessException.Code.Unathurized);
+        throw new DataAccessException("Error: AuthToken not verfied", DataAccessException.Code.Unathurized);
     }
 
     @Override
