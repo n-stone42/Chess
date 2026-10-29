@@ -11,6 +11,8 @@ import service.ClearService;
 import service.GameService;
 import service.UserService;
 
+import javax.xml.crypto.Data;
+
 public class Server {
 
     // the DAOs
@@ -37,6 +39,7 @@ public class Server {
             javalin.post("/user",this::RegisterUsesr);
             javalin.post("/session",this::Login);
             javalin.delete("/session",this::Logout);
+            javalin.post("/game", this::createGame);
             javalin.exception(DataAccessException.class, this::exceptionHandler);
 
         // Register your endpoints and exception handlers here.
@@ -74,6 +77,27 @@ public class Server {
         UserService.LogoutResult result = userService.logout(logoutRequest);
         context.result(new Gson().toJson(result));
     }
+
+    public void createGame(@NotNull Context context) throws DataAccessException {
+        String authToken = context.header("authorization");
+        GameService.CreateGameResult result = gameService.creatGame(authToken, context.body());
+        context.result(new Gson().toJson(result));
+    }
+
+    public void listGame(@NotNull Context context) throws DataAccessException {
+        String authToken = context.header("authorization");
+        GameService.ListGameResult result = gameService.listGames(authToken);
+        context.result(new Gson().toJson(result));
+    }
+
+    public void joinGame(@NotNull Context context) throws DataAccessException {
+//        UserService.LoginRequest request = new Gson().fromJson(context.body(), UserService.LoginRequest.class);
+        String authToken = context.header("authorization");
+        GameService.JoinGameRequest request = new Gson().fromJson(context.body(), GameService.JoinGameRequest.class);
+        GameService.JoinGameResult result = gameService.joinGame(authToken, request);
+        context.result(new Gson().toJson(result));
+    }
+
 
 //    private void handle(Context ctx) {
 //        var r = Map.of();

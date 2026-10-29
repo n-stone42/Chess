@@ -92,10 +92,11 @@ public class ServiceTests {
         String TestGameName = "What's A good game Name?";
         service.GameService.CreateGameResult  createGameResult = gameService.creatGame(BobRegisterResult.authToken(), TestGameName);
         int GameID = createGameResult.GameId();
-        gameService.joinGame(BobRegisterResult.authToken(), ChessGame.TeamColor.WHITE, GameID);
+        GameService.JoinGameRequest whiteRequest = new GameService.JoinGameRequest("WHITE",GameID);
+        gameService.joinGame(BobRegisterResult.authToken(), whiteRequest);
         assertEquals(new GameData(GameID, User_Bob.username(), null,TestGameName,new ChessGame()), gameMemory.getGame(GameID));
-
-        gameService.joinGame(TomRegisterResult.authToken(), ChessGame.TeamColor.BLACK, GameID);
+        GameService.JoinGameRequest blackRequest = new GameService.JoinGameRequest("BLACK",GameID);
+        gameService.joinGame(TomRegisterResult.authToken(), blackRequest);
         assertEquals(new GameData(GameID, User_Bob.username(), User_Tom.username(), TestGameName,new ChessGame()), gameMemory.getGame(GameID));
     }
     // can test errors like if white username is already filled, game ID is wrong  ect
@@ -110,15 +111,19 @@ public class ServiceTests {
         //Create 1st game
         service.GameService.CreateGameResult  createGameResult1 = gameService.creatGame(BobRegisterResult.authToken(), TestGameName1);
         int GameID1 = createGameResult1.GameId();
-        gameService.joinGame(BobRegisterResult.authToken(), ChessGame.TeamColor.WHITE, GameID1);
-        gameService.joinGame(TomRegisterResult.authToken(), ChessGame.TeamColor.BLACK, GameID1);
+        GameService.JoinGameRequest whiteRequest1 = new GameService.JoinGameRequest("WHITE",GameID1);
+        GameService.JoinGameRequest blackRequest1 = new GameService.JoinGameRequest("BLACK",GameID1);
+        gameService.joinGame(BobRegisterResult.authToken(), whiteRequest1 );
+        gameService.joinGame(TomRegisterResult.authToken(), blackRequest1);
         GameData expectedGameData1 = new GameData(GameID1, User_Bob.username(), User_Tom.username(), TestGameName1,new ChessGame());
 
         //Create 2nd game
         service.GameService.CreateGameResult  createGameResult2 = gameService.creatGame(TomRegisterResult.authToken(), TestGameName2);
         int GameID2 = createGameResult2.GameId();
-        gameService.joinGame(TomRegisterResult.authToken(), ChessGame.TeamColor.WHITE, GameID2);
-        gameService.joinGame(BobRegisterResult.authToken(), ChessGame.TeamColor.BLACK, GameID2);
+        GameService.JoinGameRequest whiteRequest2 = new GameService.JoinGameRequest("WHITE",GameID2);
+        GameService.JoinGameRequest blackRequest2 = new GameService.JoinGameRequest("BLACK",GameID2);
+        gameService.joinGame(TomRegisterResult.authToken(), whiteRequest2);
+        gameService.joinGame(BobRegisterResult.authToken(), blackRequest2);
         GameData expectedGameData2 = new GameData(GameID2, User_Tom.username(), User_Bob.username(), TestGameName2,new ChessGame());
 
         ArrayList<GameData> expectedList = new ArrayList<GameData>();
@@ -138,15 +143,19 @@ public class ServiceTests {
         //Create 1st game
         service.GameService.CreateGameResult  createGameResult1 = gameService.creatGame(BobRegisterResult.authToken(), TestGameName1);
         int GameID1 = createGameResult1.GameId();
-        gameService.joinGame(BobRegisterResult.authToken(), ChessGame.TeamColor.WHITE, GameID1);
-        gameService.joinGame(TomRegisterResult.authToken(), ChessGame.TeamColor.BLACK, GameID1);
+        GameService.JoinGameRequest whiteRequest1 = new GameService.JoinGameRequest("WHITE",GameID1);
+        GameService.JoinGameRequest blackRequest1 = new GameService.JoinGameRequest("BLACK",GameID1);
+        gameService.joinGame(BobRegisterResult.authToken(), whiteRequest1);
+        gameService.joinGame(TomRegisterResult.authToken(), blackRequest1);
         GameData expectedGameData1 = new GameData(GameID1, User_Bob.username(), User_Tom.username(), TestGameName1,new ChessGame());
 
         //Create 2nd game
         service.GameService.CreateGameResult  createGameResult2 = gameService.creatGame(TomRegisterResult.authToken(), TestGameName2);
         int GameID2 = createGameResult2.GameId();
-        gameService.joinGame(TomRegisterResult.authToken(), ChessGame.TeamColor.WHITE, GameID2);
-        gameService.joinGame(BobRegisterResult.authToken(), ChessGame.TeamColor.BLACK, GameID2);
+        GameService.JoinGameRequest whiteRequest2 = new GameService.JoinGameRequest("WHITE",GameID2);
+        GameService.JoinGameRequest blackRequest2 = new GameService.JoinGameRequest("BLACK",GameID2);
+        gameService.joinGame(TomRegisterResult.authToken(), whiteRequest2);
+        gameService.joinGame(BobRegisterResult.authToken(), blackRequest2);
         clearService.eraseAllData();
         assertThrows(DataAccessException.class,() -> userMemory.getUser(User_Bob.username()));
         assertThrows(DataAccessException.class,() -> userMemory.getUser(User_Tom.username()));

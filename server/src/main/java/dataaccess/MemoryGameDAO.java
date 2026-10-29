@@ -66,13 +66,13 @@ public class MemoryGameDAO implements GameDataAccess {
 
     }
 
-    public boolean joinGame(int gameID, ChessGame.TeamColor playerColor, String newUsername) throws DataAccessException{
+    public void joinGame(int gameID, ChessGame.TeamColor playerColor, String newUsername) throws DataAccessException{
         GameData pendigGameData = Map_GameData.get(gameID);
         if (playerColor == ChessGame.TeamColor.WHITE) {
             if (pendigGameData.whiteUsername() == null) {
                 GameData newGameData = new GameData(pendigGameData.gameID(), newUsername, pendigGameData.blackUsername(), pendigGameData.gameName(), pendigGameData.game());
                 swapGameData(gameID, newGameData);
-                return true;
+                return;
             }
             throw new DataAccessException("White UserName already taken", DataAccessException.Code.AlreadyTaken);
         }
@@ -80,7 +80,7 @@ public class MemoryGameDAO implements GameDataAccess {
             if (pendigGameData.blackUsername() == null) {
                 GameData newGameData = new GameData(pendigGameData.gameID(), pendigGameData.whiteUsername(), newUsername, pendigGameData.gameName(), pendigGameData.game());
                 swapGameData(gameID, newGameData);
-                return true;
+                return;
             }
             throw new DataAccessException("Black UserName already taken", DataAccessException.Code.AlreadyTaken);
         }

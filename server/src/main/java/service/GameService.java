@@ -28,6 +28,11 @@ public class GameService {
             int GameId ) {}
     public record ListGameResult(
             ArrayList<GameData> Games) {}
+
+    public record JoinGameRequest(
+            String PlayerColor,
+            int gameID
+    ) {}
     public record JoinGameResult() {}
 
     public Boolean verifyAuthToken(String authToken) {
@@ -53,18 +58,21 @@ public class GameService {
     throw new DataAccessException("Error: AuthToken not verfied", DataAccessException.Code.Unathurized);
     }
 
-    public JoinGameResult joinGame(String authToken, ChessGame.TeamColor PlayerColor, int GameID) throws DataAccessException{
-        if (verifyAuthToken(authToken)) {
-            if (GameData.getGame(GameID) != null) {
-                AuthData userAuthData = AuthData.getAuth(authToken);
-                String username = userAuthData.username();
-                if (GameData.joinGame(GameID, PlayerColor,username)) {
-                    return new JoinGameResult();
-                }
+    public JoinGameResult joinGame(String authToken, JoinGameRequest request) throws DataAccessException{
+        if (GameData.getGame(request.gameID()) != null) {
+            AuthData userAuthData = AuthData.getAuth(authToken);
+            String username = userAuthData.username();
+            ChessGame.TeamColor color;
+            if (request.PlayerColor == "WHITE") {
+                GameData.joinGame(request.gameID(), ChessGame.TeamColor.WHITE, username);
+                return new JoinGameResult();
             }
-            throw new DataAccessException("Error: Game ID not found", DataAccessException.Code.BadRequest);
+            else if (request.PlayerColor == "BLACK") {
+                GameData.joinGame(request.gameID(), ChessGame.TeamColor.BLACK, username);
+                return new JoinGameResult();
+            }
         }
-        throw new DataAccessException("Error: Auth Token not found", DataAccessException.Code.Unathurized);
+        throw new DataAccessException("Error: Game ID not found", DataAccessException.Code.BadRequest);
     }
 
     public ListGameResult listGames(String authToken) throws DataAccessException {
