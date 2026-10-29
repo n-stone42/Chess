@@ -37,6 +37,7 @@ public class Server {
             javalin.post("/user",this::RegisterUsesr);
             javalin.post("/session",this::Login);
             javalin.delete("/session",this::Logout);
+            javalin.exception(DataAccessException.class, this::exceptionHandler);
 
         // Register your endpoints and exception handlers here.
     }
@@ -66,12 +67,16 @@ public class Server {
         context.result(new Gson().toJson(result));
     }
 
-    private void handle(Context ctx) {
-        var r = Map.of();
-        var json = new Gson();
-        ctx.json(json.toJson(r));
-    }
+//    private void handle(Context ctx) {
+//        var r = Map.of();
+//        var json = new Gson();
+//        ctx.json(json.toJson(r));
+//    }
 
+    public void exceptionHandler(DataAccessException exception, Context context) {
+        context.status(exception.toHttpStatuscode());
+        context.result(exception.toJson());
+    }
 
     public int run(int desiredPort) {
         javalin.start(desiredPort);

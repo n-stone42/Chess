@@ -16,7 +16,7 @@ public class MemoryUserDAO implements UserDataAccess {
         if (Map_UserData.get(username) != null) {
             return Map_UserData.get(username);
         }
-        throw new DataAccessException("UserName not found", DataAccessException.Code.BadRequest);
+        throw new DataAccessException("Username not found", DataAccessException.Code.BadRequest);
     }
     public void createUser(String username, String password, String email) throws DataAccessException {
         if (Map_UserData.get(username) == null) { //oppsite of get User Check
