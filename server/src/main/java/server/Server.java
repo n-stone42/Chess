@@ -35,11 +35,13 @@ public class Server {
     public Server () {
 
         javalin = Javalin.create(config -> config.staticFiles.add("web"));
-            javalin.delete("/db", this::clearDb);
             javalin.post("/user",this::RegisterUsesr);
             javalin.post("/session",this::Login);
             javalin.delete("/session",this::Logout);
+            javalin.get("/game", this::listGame);
             javalin.post("/game", this::createGame);
+            javalin.put("/game", this::joinGame);
+            javalin.delete("/db", this::clearDb);
             javalin.exception(DataAccessException.class, this::exceptionHandler);
 
         // Register your endpoints and exception handlers here.
@@ -80,15 +82,19 @@ public class Server {
 
     public void createGame(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
-        GameService.CreateGameResult result = gameService.creatGame(authToken, context.body());
-        System.out.println("create Game result");
-        System.out.print(result);
+        if (context.body().length() <= 2) {
+            throw new DataAccessException("Error: Game name is null", DataAccessException.Code.BadRequest);
+        }
+
+        GameService.CreateGameResult result = gameService.creatGame(authToken, new Gson().fromJson(context.body(), GameService.CreateGameRequest.class));
         context.result(new Gson().toJson(result));
     }
 
     public void listGame(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
         GameService.ListGameResult result = gameService.listGames(authToken);
+        System.out.println("list game result: ");
+        System.out.println(new Gson().toJson(result));
         context.result(new Gson().toJson(result));
     }
 

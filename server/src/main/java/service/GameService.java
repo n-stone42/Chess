@@ -23,14 +23,14 @@ public class GameService {
         this.GameData = GameData;
         this.AuthData = AuthData;
     }
-
+    public record CreateGameRequest(String gameName) {};
     public record CreateGameResult(
             int gameID ) {}
     public record ListGameResult(
-            ArrayList<GameData> Games) {}
+            ArrayList<GameData> games) {}
 
     public record JoinGameRequest(
-            String PlayerColor,
+            String playerColor,
             int gameID
     ) {}
     public record JoinGameResult() {}
@@ -49,10 +49,10 @@ public class GameService {
         return newID;
     }
 
-    public CreateGameResult creatGame(String authToken, String gameName) throws DataAccessException {// returns the game ID
+    public CreateGameResult creatGame(String authToken, CreateGameRequest request) throws DataAccessException {// returns the game ID
         if (verifyAuthToken(authToken)) {
             int NewGameID =createGameID();
-            GameData.createGame(NewGameID, gameName);
+            GameData.createGame(NewGameID, request.gameName());
             return new CreateGameResult(NewGameID);
         }
     throw new DataAccessException("Error: AuthToken not verfied", DataAccessException.Code.Unathurized);
@@ -63,13 +63,16 @@ public class GameService {
             AuthData userAuthData = AuthData.getAuth(authToken);
             String username = userAuthData.username();
             ChessGame.TeamColor color;
-            if (request.PlayerColor == "WHITE") {
+            if (request.playerColor.equals("WHITE")) {
                 GameData.joinGame(request.gameID(), ChessGame.TeamColor.WHITE, username);
                 return new JoinGameResult();
             }
-            else if (request.PlayerColor == "BLACK") {
+            else if (request.playerColor.equals("BLACK")) {
                 GameData.joinGame(request.gameID(), ChessGame.TeamColor.BLACK, username);
                 return new JoinGameResult();
+            }
+            else {
+                throw new DataAccessException("Error: Player color not found", DataAccessException.Code.BadRequest);
             }
         }
         throw new DataAccessException("Error: Game ID not found", DataAccessException.Code.BadRequest);

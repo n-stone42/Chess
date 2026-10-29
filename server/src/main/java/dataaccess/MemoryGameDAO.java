@@ -16,30 +16,36 @@ public class MemoryGameDAO implements GameDataAccess {
         Map_GameData.clear();
     }
 
-    public void createGame(int gameID,String gameName) throws DataAccessException {
+    public record modifiedGameData(int gameID, String whiteUsername, String blackUsername, String gameName) {};
+
+
+
+    public void createGame(int gameID, String gameName) throws DataAccessException {
         // we are creating a new chess game so this parameter will just be a new chess game from the starting position
         if (Map_GameData.get(gameID) != null) {
             throw new DataAccessException("Game ID taken", DataAccessException.Code.AlreadyTaken);
         }
+        System.out.println("in ccreateGame, gameName");
+        System.out.println(gameName);
         Map_GameData.put(gameID, new GameData(gameID, null,null,gameName, new ChessGame()));
     }
 
-    public GameData getGame(int GameID) throws DataAccessException{
-        if (Map_GameData.get(GameID) != null) {
-            return Map_GameData.get(GameID);
+    public GameData getGame(int gameID) throws DataAccessException{
+        if (Map_GameData.get(gameID) != null) {
+            return Map_GameData.get(gameID);
         }
         throw new DataAccessException("GameID not found", DataAccessException.Code.BadRequest);
     }
 
-    public ArrayList<GameData> listGame() throws DataAccessException{
-        ArrayList<GameData> Games = new ArrayList<GameData>();
-//        if (Map_GameData.isEmpty()) {
-//            throw new DataAccessException("There are no games to list");
-//        }
+    public ArrayList listGame() throws DataAccessException{
+        ArrayList<modifiedGameData> games = new ArrayList<modifiedGameData>();
         for (int gameID : Map_GameData.keySet()) {
-            Games.add(Map_GameData.get(gameID));
+            GameData gameData = Map_GameData.get(gameID);
+            modifiedGameData mofGameData = new modifiedGameData(gameData.gameID(), gameData.whiteUsername(), gameData.blackUsername(), gameData.gameName());
+
+            games.add(mofGameData);
         }
-        return Games;
+        return games;
     }
     public void updateChessGame(int gameID, ChessMove move)throws DataAccessException {
         if (Map_GameData.get(gameID) == null) {
