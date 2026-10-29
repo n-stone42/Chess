@@ -115,7 +115,7 @@ public class ServiceTests {
         GameService.JoinGameRequest blackRequest1 = new GameService.JoinGameRequest("BLACK" ,GameID1);
         gameService.joinGame(BobRegisterResult.authToken(), whiteRequest1 );
         gameService.joinGame(TomRegisterResult.authToken(), blackRequest1);
-        GameData expectedGameData1 = new GameData(GameID1, User_Bob.username(), User_Tom.username(), TestGameName1,new ChessGame());
+        MemoryGameDAO.modifiedGameData expectedGameData1 = new MemoryGameDAO.modifiedGameData(GameID1, User_Bob.username(), User_Tom.username(), TestGameName1);
 
         //Create 2nd game
         service.GameService.CreateGameResult  createGameResult2 = gameService.creatGame(TomRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName2));
@@ -124,9 +124,9 @@ public class ServiceTests {
         GameService.JoinGameRequest blackRequest2 = new GameService.JoinGameRequest("BLACK" ,GameID2);
         gameService.joinGame(TomRegisterResult.authToken(), whiteRequest2);
         gameService.joinGame(BobRegisterResult.authToken(), blackRequest2);
-        GameData expectedGameData2 = new GameData(GameID2, User_Tom.username(), User_Bob.username(), TestGameName2,new ChessGame());
+        MemoryGameDAO.modifiedGameData expectedGameData2 = new MemoryGameDAO.modifiedGameData(GameID2, User_Tom.username(), User_Bob.username(), TestGameName2);
 
-        ArrayList<GameData> expectedList = new ArrayList<GameData>();
+        ArrayList<MemoryGameDAO.modifiedGameData> expectedList = new ArrayList<MemoryGameDAO.modifiedGameData>();
         expectedList.add(expectedGameData1);
         expectedList.add(expectedGameData2);
         GameService.ListGameResult expectedResult = new GameService.ListGameResult(expectedList);

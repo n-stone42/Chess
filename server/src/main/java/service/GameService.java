@@ -26,8 +26,11 @@ public class GameService {
     public record CreateGameRequest(String gameName) {};
     public record CreateGameResult(
             int gameID ) {}
+//    public record ListGameResult(
+//            ArrayList<GameData> games) {}
+
     public record ListGameResult(
-            ArrayList<GameData> games) {}
+            ArrayList<MemoryGameDAO.modifiedGameData> games) {}
 
     public record JoinGameRequest(
             String playerColor,

@@ -35,7 +35,7 @@ public class MemoryGameDAO implements GameDataAccess {
         throw new DataAccessException("Error: GameID not found", DataAccessException.Code.BadRequest);
     }
 
-    public ArrayList listGame() throws DataAccessException{
+    public ArrayList<modifiedGameData> listGame() throws DataAccessException{
         ArrayList<modifiedGameData> games = new ArrayList<modifiedGameData>();
         for (int gameID : Map_GameData.keySet()) {
             GameData gameData = Map_GameData.get(gameID);
