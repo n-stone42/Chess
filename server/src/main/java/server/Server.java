@@ -44,14 +44,13 @@ public class Server {
 
     public void clearDb(@NotNull Context context) throws DataAccessException { // there is no context
         clearHandler.clear();
-//        System.out.print("called clearDB in Server");
         context.status(200);
     }
 
     public void RegisterUsesr(@NotNull Context context) throws DataAccessException {
         UserService.RegisterRequest request = new Gson().fromJson(context.body(), UserService.RegisterRequest.class);
         if (request.username() == null || request.password() == null ) {
-            throw new DataAccessException("Error: Username is null", DataAccessException.Code.BadRequest);
+            throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
         }
         UserService.RegisterResult result = userService.register(request);
         context.result(new Gson().toJson(result));
@@ -61,18 +60,18 @@ public class Server {
     public void Login(@NotNull Context context) throws DataAccessException {
         UserService.LoginRequest request = new Gson().fromJson(context.body(), UserService.LoginRequest.class);
         if (request.username() == null || request.password() == null ) {
-            throw new DataAccessException("Error: Username is null", DataAccessException.Code.BadRequest);
+            throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
         }
         UserService.LoginResult result = userService.login(request);
         context.result(new Gson().toJson(result));
     }
 
     public void Logout(@NotNull Context context) throws DataAccessException {
-        UserService.LogoutRequest request = new Gson().fromJson(context.body(), UserService.LogoutRequest.class);
-        if (request.username() == null ) {
-            throw new DataAccessException("Error: Username is null", DataAccessException.Code.BadRequest);
-        }
-        UserService.LogoutResult result = userService.logout(request);
+        String authToken = context.header("authorization");
+        String username = authDAO.getUsername(authToken);
+        UserService.LogoutRequest logoutRequest = new UserService.LogoutRequest(username, authToken);
+
+        UserService.LogoutResult result = userService.logout(logoutRequest);
         context.result(new Gson().toJson(result));
     }
 

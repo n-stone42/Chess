@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Assertions.*;
 import java.util.Objects;
 import java.util.UUID;
 
+import static java.lang.System.*;
+
 public class UserService {
     private  UserDataAccess UserData;
     private AuthDataAccess AuthData;
