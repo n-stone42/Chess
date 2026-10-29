@@ -21,14 +21,14 @@ public class MemoryAuthDAO implements AuthDataAccess {
 
     public AuthData getAuth(String authToken) throws DataAccessException {
         if (Map_AuthData.get(authToken) == null) {
-            throw new DataAccessException("Auth Token invalid");
+            throw new DataAccessException("Auth Token invalid", DataAccessException.Code.Unathurized);
         }
         return Map_AuthData.get(authToken);
     }
 
     public void DeleteAuth(String authToken) throws DataAccessException{
         if (Map_AuthData.get(authToken) == null) {
-            throw new DataAccessException("Auth Token invalid");
+            throw new DataAccessException("Auth Token invalid", DataAccessException.Code.Unathurized);
         }
         Map_AuthData.remove(authToken);
     }

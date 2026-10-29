@@ -14,8 +14,8 @@ public class UserService {
     private AuthDataAccess AuthData;
 
     public UserService(UserDataAccess UserData, AuthDataAccess AuthData) {
-        UserData = UserData;
-        AuthData = AuthData;
+        this.UserData = UserData;
+        this.AuthData = AuthData;
     }
     public record RegisterRequest(
             String username,
@@ -46,7 +46,7 @@ public class UserService {
     public RegisterResult register(RegisterRequest request) throws DataAccessException {
         try {
             UserData.getUser(request.username()); // username not in database
-            throw new DataAccessException("Username already exists");
+            throw new DataAccessException("Username already exists", DataAccessException.Code.AlreadyTaken);
 
         }
         catch (Exception e){

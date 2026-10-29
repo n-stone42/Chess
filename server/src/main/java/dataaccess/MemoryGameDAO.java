@@ -19,7 +19,7 @@ public class MemoryGameDAO implements GameDataAccess {
     public void createGame(int gameID,String gameName) throws DataAccessException {
         // we are creating a new chess game so this parameter will just be a new chess game from the starting position
         if (Map_GameData.get(gameID) != null) {
-            throw new DataAccessException("game ID taken");
+            throw new DataAccessException("Game ID taken", DataAccessException.Code.AlreadyTaken);
         }
         Map_GameData.put(gameID, new GameData(gameID, null,null,gameName, new ChessGame()));
     }
@@ -28,14 +28,14 @@ public class MemoryGameDAO implements GameDataAccess {
         if (Map_GameData.get(GameID) != null) {
             return Map_GameData.get(GameID);
         }
-        throw new DataAccessException("GameID not found");
+        throw new DataAccessException("GameID not found", DataAccessException.Code.BadRequest);
     }
 
     public ArrayList<GameData> listGame() throws DataAccessException{
         ArrayList<GameData> Games = new ArrayList<GameData>();
-        if (Map_GameData.isEmpty()) {
-            throw new DataAccessException("There are no games to list");
-        }
+//        if (Map_GameData.isEmpty()) {
+//            throw new DataAccessException("There are no games to list");
+//        }
         for (int gameID : Map_GameData.keySet()) {
             Games.add(Map_GameData.get(gameID));
         }
@@ -43,7 +43,7 @@ public class MemoryGameDAO implements GameDataAccess {
     }
     public void updateChessGame(int gameID, ChessMove move)throws DataAccessException {
         if (Map_GameData.get(gameID) == null) {
-            throw new DataAccessException("gameID not found");
+            throw new DataAccessException("GameID not found", DataAccessException.Code.BadRequest);
         }
         GameData oldGamedata = Map_GameData.get(gameID);
         ChessGame game = oldGamedata.game();
@@ -74,7 +74,7 @@ public class MemoryGameDAO implements GameDataAccess {
                 swapGameData(gameID, newGameData);
                 return true;
             }
-            throw new DataAccessException("White UserName already taken");
+            throw new DataAccessException("White UserName already taken", DataAccessException.Code.AlreadyTaken);
         }
         else { // player color black
             if (pendigGameData.blackUsername() == null) {
@@ -82,7 +82,7 @@ public class MemoryGameDAO implements GameDataAccess {
                 swapGameData(gameID, newGameData);
                 return true;
             }
-            throw new DataAccessException("Black UserName already taken");
+            throw new DataAccessException("Black UserName already taken", DataAccessException.Code.AlreadyTaken);
         }
     }
 

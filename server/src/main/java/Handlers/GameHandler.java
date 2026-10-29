@@ -7,11 +7,11 @@ public class GameHandler {
 
     public GameService gameService;
     public GameHandler(GameService gameService) {
-        gameService = gameService;
+        this.gameService = gameService;
     }
+
+//    public UserService.RegisterResult RegisterUser(UserService.RegisterResult) {
 //
-//    public UserService userService;
-//    public UserHandler(UserService userService) {
-//        userService = userService;
 //    }
+
 }

@@ -15,7 +15,6 @@ public class ClearService {
     }
 
     public void eraseAllData() throws DataAccessException{
-        System.out.print("called eraseALLdata in Clear service");
         userData.clear();
         gameData.clear();
         authData.clear();
