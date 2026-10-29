@@ -57,12 +57,18 @@ public class Server {
 
     public void Login(@NotNull Context context) throws DataAccessException {
         UserService.LoginRequest request = new Gson().fromJson(context.body(), UserService.LoginRequest.class);
+        if (request.username() == null || request.password() == null ) {
+            throw new DataAccessException("Error: Username is null", DataAccessException.Code.BadRequest);
+        }
         UserService.LoginResult result = userService.login(request);
         context.result(new Gson().toJson(result));
     }
 
     public void Logout(@NotNull Context context) throws DataAccessException {
         UserService.LogoutRequest request = new Gson().fromJson(context.body(), UserService.LogoutRequest.class);
+        if (request.username() == null ) {
+            throw new DataAccessException("Error: Username is null", DataAccessException.Code.BadRequest);
+        }
         UserService.LogoutResult result = userService.logout(request);
         context.result(new Gson().toJson(result));
     }
