@@ -78,7 +78,7 @@ public class MemoryGameDAO implements GameDataAccess {
                 swapGameData(gameID, newGameData);
                 return;
             }
-            throw new DataAccessException("White UserName already taken", DataAccessException.Code.BadRequest);
+            throw new DataAccessException("Error: White UserName already taken", DataAccessException.Code.AlreadyTaken);
         }
         else { // player color black
             if (pendigGameData.blackUsername() == null) {
@@ -86,7 +86,7 @@ public class MemoryGameDAO implements GameDataAccess {
                 swapGameData(gameID, newGameData);
                 return;
             }
-            throw new DataAccessException("Black UserName already taken", DataAccessException.Code.BadRequest);
+            throw new DataAccessException("Error: Black UserName already taken", DataAccessException.Code.AlreadyTaken);
         }
     }
 
