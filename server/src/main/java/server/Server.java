@@ -50,6 +50,9 @@ public class Server {
 
     public void RegisterUsesr(@NotNull Context context) throws DataAccessException {
         UserService.RegisterRequest request = new Gson().fromJson(context.body(), UserService.RegisterRequest.class);
+        if (request.username() == null || request.password() == null ) {
+            throw new DataAccessException("Error: Username is null", DataAccessException.Code.BadRequest);
+        }
         UserService.RegisterResult result = userService.register(request);
         context.result(new Gson().toJson(result));
 //        userHandler.RegisterUser(handle(context));
