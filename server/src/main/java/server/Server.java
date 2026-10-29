@@ -82,10 +82,13 @@ public class Server {
 
     public void createGame(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
-        if (context.body().length() <= 2) {
+//        if (context.body().length() <= 2) {
+//            throw new DataAccessException("Error: Game name is null", DataAccessException.Code.BadRequest);
+//        }
+        GameService.CreateGameRequest request = new Gson().fromJson(context.body(), GameService.CreateGameRequest.class);
+        if (request.gameName() == null) {
             throw new DataAccessException("Error: Game name is null", DataAccessException.Code.BadRequest);
         }
-
         GameService.CreateGameResult result = gameService.creatGame(authToken, new Gson().fromJson(context.body(), GameService.CreateGameRequest.class));
         context.result(new Gson().toJson(result));
     }
@@ -102,6 +105,9 @@ public class Server {
 //        UserService.LoginRequest request = new Gson().fromJson(context.body(), UserService.LoginRequest.class);
         String authToken = context.header("authorization");
         GameService.JoinGameRequest request = new Gson().fromJson(context.body(), GameService.JoinGameRequest.class);
+        if (request.playerColor() == null) {
+            throw new DataAccessException("Error: player color in null", DataAccessException.Code.BadRequest);
+        }
         GameService.JoinGameResult result = gameService.joinGame(authToken, request);
         context.result(new Gson().toJson(result));
     }

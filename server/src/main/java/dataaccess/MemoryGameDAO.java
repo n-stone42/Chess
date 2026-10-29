@@ -25,8 +25,6 @@ public class MemoryGameDAO implements GameDataAccess {
         if (Map_GameData.get(gameID) != null) {
             throw new DataAccessException("Game ID taken", DataAccessException.Code.AlreadyTaken);
         }
-        System.out.println("in ccreateGame, gameName");
-        System.out.println(gameName);
         Map_GameData.put(gameID, new GameData(gameID, null,null,gameName, new ChessGame()));
     }
 
@@ -80,7 +78,7 @@ public class MemoryGameDAO implements GameDataAccess {
                 swapGameData(gameID, newGameData);
                 return;
             }
-            throw new DataAccessException("White UserName already taken", DataAccessException.Code.AlreadyTaken);
+            throw new DataAccessException("White UserName already taken", DataAccessException.Code.BadRequest);
         }
         else { // player color black
             if (pendigGameData.blackUsername() == null) {
@@ -88,7 +86,7 @@ public class MemoryGameDAO implements GameDataAccess {
                 swapGameData(gameID, newGameData);
                 return;
             }
-            throw new DataAccessException("Black UserName already taken", DataAccessException.Code.AlreadyTaken);
+            throw new DataAccessException("Black UserName already taken", DataAccessException.Code.BadRequest);
         }
     }
 
