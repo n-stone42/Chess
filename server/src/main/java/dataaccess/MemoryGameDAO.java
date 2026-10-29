@@ -23,7 +23,7 @@ public class MemoryGameDAO implements GameDataAccess {
     public void createGame(int gameID, String gameName) throws DataAccessException {
         // we are creating a new chess game so this parameter will just be a new chess game from the starting position
         if (Map_GameData.get(gameID) != null) {
-            throw new DataAccessException("Game ID taken", DataAccessException.Code.AlreadyTaken);
+            throw new DataAccessException("Error: Game ID taken", DataAccessException.Code.AlreadyTaken);
         }
         Map_GameData.put(gameID, new GameData(gameID, null,null,gameName, new ChessGame()));
     }
@@ -32,7 +32,7 @@ public class MemoryGameDAO implements GameDataAccess {
         if (Map_GameData.get(gameID) != null) {
             return Map_GameData.get(gameID);
         }
-        throw new DataAccessException("GameID not found", DataAccessException.Code.BadRequest);
+        throw new DataAccessException("Error: GameID not found", DataAccessException.Code.BadRequest);
     }
 
     public ArrayList listGame() throws DataAccessException{
@@ -47,7 +47,7 @@ public class MemoryGameDAO implements GameDataAccess {
     }
     public void updateChessGame(int gameID, ChessMove move)throws DataAccessException {
         if (Map_GameData.get(gameID) == null) {
-            throw new DataAccessException("GameID not found", DataAccessException.Code.BadRequest);
+            throw new DataAccessException("Error: GameID not found", DataAccessException.Code.BadRequest);
         }
         GameData oldGamedata = Map_GameData.get(gameID);
         ChessGame game = oldGamedata.game();
