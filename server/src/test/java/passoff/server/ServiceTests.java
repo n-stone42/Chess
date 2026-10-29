@@ -23,6 +23,8 @@ public class ServiceTests {
 
     UserData User_Bob = new UserData("Bob", "password", "BobTheGOAT67@gmail.com");
     UserData User_Tom = new UserData("Tom", "banana", "TomTheM0M@gmail.com");
+    String TestGameName1 = "Game1";
+    String TestGameName2 = "Game2";
 
     @BeforeEach
     public void reset() {
@@ -39,6 +41,21 @@ public class ServiceTests {
     public UserService.RegisterResult registerTom() throws DataAccessException{
         UserService.RegisterRequest request= new UserService.RegisterRequest(User_Tom.username(), User_Tom.password(),User_Tom.email());
         return userService.register(request);
+    }
+
+    public service.GameService.CreateGameResult createGame1(UserService.RegisterResult BobRegisterResult,UserService.RegisterResult TomRegisterResult) throws DataAccessException{
+        return gameService.creatGame(BobRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName1));
+//        service.GameService.CreateGameResult  createGameResult1 = gameService.creatGame(BobRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName1));
+//        int GameID1 = createGameResult1.gameID();
+//        GameService.JoinGameRequest whiteRequest1 = new GameService.JoinGameRequest("WHITE",GameID1);
+//        GameService.JoinGameRequest blackRequest1 = new GameService.JoinGameRequest("BLACK" ,GameID1);
+//        gameService.joinGame(BobRegisterResult.authToken(), whiteRequest1 );
+//        gameService.joinGame(TomRegisterResult.authToken(), blackRequest1);
+//        return new MemoryGameDAO.modifiedGameData(GameID1, User_Bob.username(), User_Tom.username(), TestGameName1);
+    }
+
+    public service.GameService.CreateGameResult  createGame2(UserService.RegisterResult BobRegisterResult,UserService.RegisterResult TomRegisterResult  ) throws DataAccessException{
+        return gameService.creatGame(TomRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName2));
     }
 
     @Test
@@ -103,32 +120,28 @@ public class ServiceTests {
 
     @Test
     public void testGameList() throws DataAccessException {
+        //Register users
         UserService.RegisterResult BobRegisterResult = registerBob();
         UserService.RegisterResult TomRegisterResult = registerTom();
-        String TestGameName1 = "Game1";
-        String TestGameName2 = "Game2";
 
-        //Create 1st game
-        service.GameService.CreateGameResult  createGameResult1 = gameService.creatGame(BobRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName1));
+        ArrayList<MemoryGameDAO.modifiedGameData> expectedList = new ArrayList<MemoryGameDAO.modifiedGameData>();
+
+        GameService.CreateGameResult createGameResult1 = createGame1(BobRegisterResult,TomRegisterResult);
         int GameID1 = createGameResult1.gameID();
         GameService.JoinGameRequest whiteRequest1 = new GameService.JoinGameRequest("WHITE",GameID1);
         GameService.JoinGameRequest blackRequest1 = new GameService.JoinGameRequest("BLACK" ,GameID1);
         gameService.joinGame(BobRegisterResult.authToken(), whiteRequest1 );
         gameService.joinGame(TomRegisterResult.authToken(), blackRequest1);
-        GameData expectedGameData1 = new GameData(GameID1, User_Bob.username(), User_Tom.username(), TestGameName1,new ChessGame());
+        expectedList.add(new MemoryGameDAO.modifiedGameData(GameID1, User_Bob.username(), User_Tom.username(), "Game1"));
 
-        //Create 2nd game
-        service.GameService.CreateGameResult  createGameResult2 = gameService.creatGame(TomRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName2));
+        GameService.CreateGameResult createGameResult2 = createGame2(BobRegisterResult,TomRegisterResult);
         int GameID2 = createGameResult2.gameID();
         GameService.JoinGameRequest whiteRequest2 = new GameService.JoinGameRequest("WHITE",GameID2);
         GameService.JoinGameRequest blackRequest2 = new GameService.JoinGameRequest("BLACK" ,GameID2);
         gameService.joinGame(TomRegisterResult.authToken(), whiteRequest2);
         gameService.joinGame(BobRegisterResult.authToken(), blackRequest2);
-        GameData expectedGameData2 = new GameData(GameID2, User_Tom.username(), User_Bob.username(), TestGameName2,new ChessGame());
+        expectedList.add(new MemoryGameDAO.modifiedGameData(GameID2, User_Tom.username(), User_Bob.username(), "Game2"));
 
-        ArrayList<GameData> expectedList = new ArrayList<GameData>();
-        expectedList.add(expectedGameData1);
-        expectedList.add(expectedGameData2);
         GameService.ListGameResult expectedResult = new GameService.ListGameResult(expectedList);
         assertEquals(expectedResult, gameService.listGames(TomRegisterResult.authToken()));
     }
@@ -140,17 +153,8 @@ public class ServiceTests {
         String TestGameName1 = "Game1";
         String TestGameName2 = "Game2";
 
-        //Create 1st game
-        service.GameService.CreateGameResult  createGameResult1 = gameService.creatGame(BobRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName1));
-        int GameID1 = createGameResult1.gameID();
-        GameService.JoinGameRequest whiteRequest1 = new GameService.JoinGameRequest("WHITE",GameID1);
-        GameService.JoinGameRequest blackRequest1 = new GameService.JoinGameRequest("BLACK" ,GameID1);
-        gameService.joinGame(BobRegisterResult.authToken(), whiteRequest1);
-        gameService.joinGame(TomRegisterResult.authToken(), blackRequest1);
-        GameData expectedGameData1 = new GameData(GameID1, User_Bob.username(), User_Tom.username(), TestGameName1,new ChessGame());
-
-        //Create 2nd game
-        service.GameService.CreateGameResult  createGameResult2 = gameService.creatGame(TomRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName2));
+        createGame1(BobRegisterResult,TomRegisterResult);
+        service.GameService.CreateGameResult createGameResult2 = createGame2(BobRegisterResult,TomRegisterResult);
         int GameID2 = createGameResult2.gameID();
         GameService.JoinGameRequest whiteRequest2 = new GameService.JoinGameRequest("WHITE",GameID2);
         GameService.JoinGameRequest blackRequest2 = new GameService.JoinGameRequest("BLACK" ,GameID2);
@@ -163,6 +167,9 @@ public class ServiceTests {
         assertThrows(DataAccessException.class,() -> gameService.creatGame(BobRegisterResult.authToken(), new GameService.CreateGameRequest("Game1")));
 
     }
+    @Test
+    public void testDeleteAuthWithBadAuth () {
 
+    }
 
 }

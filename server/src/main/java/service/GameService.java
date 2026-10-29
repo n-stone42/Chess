@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class GameService {
-    private  UserDataAccess UserData;
+    private UserDataAccess UserData;
     private GameDataAccess GameData;
     private AuthDataAccess AuthData;
 
@@ -23,26 +23,41 @@ public class GameService {
         this.GameData = GameData;
         this.AuthData = AuthData;
     }
-    public record CreateGameRequest(String gameName) {};
+
+    public record CreateGameRequest(String gameName) {
+    }
+
+    ;
+
     public record CreateGameResult(
-            int gameID ) {}
+            int gameID) {
+    }
+//    public record ListGameResult(
+//            ArrayList<GameData> games) {}
+
     public record ListGameResult(
-            ArrayList<GameData> games) {}
+            ArrayList<MemoryGameDAO.modifiedGameData> games) {
+    }
 
     public record JoinGameRequest(
             String playerColor,
             int gameID
-    ) {}
-    public record JoinGameResult() {}
+    ) {
+    }
+
+    public record JoinGameResult() {
+    }
 
     public Boolean verifyAuthToken(String authToken) {
         try {
             if (AuthData.getAuth(authToken) != null) {
                 return true;
             }
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
         return false;
     }
+
     private int createGameID() {
         int newID = GameIDcounter;
         GameIDcounter++;
@@ -51,14 +66,14 @@ public class GameService {
 
     public CreateGameResult creatGame(String authToken, CreateGameRequest request) throws DataAccessException {// returns the game ID
         if (verifyAuthToken(authToken)) {
-            int NewGameID =createGameID();
+            int NewGameID = createGameID();
             GameData.createGame(NewGameID, request.gameName());
             return new CreateGameResult(NewGameID);
         }
-    throw new DataAccessException("Error: AuthToken not verfied", DataAccessException.Code.Unathurized);
+        throw new DataAccessException("Error: AuthToken not verfied", DataAccessException.Code.Unathurized);
     }
 
-    public JoinGameResult joinGame(String authToken, JoinGameRequest request) throws DataAccessException{
+    public JoinGameResult joinGame(String authToken, JoinGameRequest request) throws DataAccessException {
         if (GameData.getGame(request.gameID()) != null) {
             AuthData userAuthData = AuthData.getAuth(authToken);
             String username = userAuthData.username();
@@ -66,12 +81,10 @@ public class GameService {
             if (request.playerColor.equals("WHITE")) {
                 GameData.joinGame(request.gameID(), ChessGame.TeamColor.WHITE, username);
                 return new JoinGameResult();
-            }
-            else if (request.playerColor.equals("BLACK")) {
+            } else if (request.playerColor.equals("BLACK")) {
                 GameData.joinGame(request.gameID(), ChessGame.TeamColor.BLACK, username);
                 return new JoinGameResult();
-            }
-            else {
+            } else {
                 throw new DataAccessException("Error: Player color not found", DataAccessException.Code.BadRequest);
             }
         }
@@ -83,17 +96,5 @@ public class GameService {
             return new ListGameResult(GameData.listGame());
         }
         throw new DataAccessException("Error: AuthToken not verfied", DataAccessException.Code.Unathurized);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        GameService that = (GameService) o;
-        return GameIDcounter == that.GameIDcounter && Objects.equals(UserData, that.UserData) && Objects.equals(GameData, that.GameData) && Objects.equals(AuthData, that.AuthData);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(UserData, GameData, AuthData, GameIDcounter);
     }
 }

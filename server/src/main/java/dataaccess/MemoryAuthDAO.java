@@ -12,7 +12,8 @@ public class MemoryAuthDAO implements AuthDataAccess {
     public void clear() {
         Map_AuthData.clear();
     }
-    public void createAuth(String authToken, String username) throws DataAccessException{
+
+    public void createAuth(String authToken, String username) throws DataAccessException {
         if (Map_AuthData.get(authToken) != null) {
 
         }
@@ -33,22 +34,10 @@ public class MemoryAuthDAO implements AuthDataAccess {
         return Map_AuthData.get(authToken).username();
     }
 
-    public void DeleteAuth(String authToken) throws DataAccessException{
+    public void DeleteAuth(String authToken) throws DataAccessException {
         if (Map_AuthData.get(authToken) == null) {
             throw new DataAccessException("Auth Token invalid", DataAccessException.Code.Unathurized);
         }
         Map_AuthData.remove(authToken);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        MemoryAuthDAO that = (MemoryAuthDAO) o;
-        return Objects.equals(Map_AuthData, that.Map_AuthData);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(Map_AuthData);
     }
 }
