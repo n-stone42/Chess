@@ -81,6 +81,8 @@ public class Server {
     public void createGame(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
         GameService.CreateGameResult result = gameService.creatGame(authToken, context.body());
+        System.out.println("create Game result");
+        System.out.print(result);
         context.result(new Gson().toJson(result));
     }
 

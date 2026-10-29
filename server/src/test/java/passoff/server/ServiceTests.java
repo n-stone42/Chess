@@ -81,7 +81,7 @@ public class ServiceTests {
         UserService.RegisterResult BobRegisterResult = registerBob();
         String TestGameName = "What's A good game Name?";
         service.GameService.CreateGameResult  createGameResult= gameService.creatGame(BobRegisterResult.authToken(), TestGameName);
-        int GameID = createGameResult.GameId();
+        int GameID = createGameResult.gameID();
         assertEquals(gameMemory.getGame(GameID), new GameData(GameID,null,null,TestGameName,new ChessGame()));
     }
 
@@ -91,7 +91,7 @@ public class ServiceTests {
         UserService.RegisterResult TomRegisterResult = registerTom();
         String TestGameName = "What's A good game Name?";
         service.GameService.CreateGameResult  createGameResult = gameService.creatGame(BobRegisterResult.authToken(), TestGameName);
-        int GameID = createGameResult.GameId();
+        int GameID = createGameResult.gameID();
         GameService.JoinGameRequest whiteRequest = new GameService.JoinGameRequest("WHITE",GameID);
         gameService.joinGame(BobRegisterResult.authToken(), whiteRequest);
         assertEquals(new GameData(GameID, User_Bob.username(), null,TestGameName,new ChessGame()), gameMemory.getGame(GameID));
@@ -110,7 +110,7 @@ public class ServiceTests {
 
         //Create 1st game
         service.GameService.CreateGameResult  createGameResult1 = gameService.creatGame(BobRegisterResult.authToken(), TestGameName1);
-        int GameID1 = createGameResult1.GameId();
+        int GameID1 = createGameResult1.gameID();
         GameService.JoinGameRequest whiteRequest1 = new GameService.JoinGameRequest("WHITE",GameID1);
         GameService.JoinGameRequest blackRequest1 = new GameService.JoinGameRequest("BLACK",GameID1);
         gameService.joinGame(BobRegisterResult.authToken(), whiteRequest1 );
@@ -119,7 +119,7 @@ public class ServiceTests {
 
         //Create 2nd game
         service.GameService.CreateGameResult  createGameResult2 = gameService.creatGame(TomRegisterResult.authToken(), TestGameName2);
-        int GameID2 = createGameResult2.GameId();
+        int GameID2 = createGameResult2.gameID();
         GameService.JoinGameRequest whiteRequest2 = new GameService.JoinGameRequest("WHITE",GameID2);
         GameService.JoinGameRequest blackRequest2 = new GameService.JoinGameRequest("BLACK",GameID2);
         gameService.joinGame(TomRegisterResult.authToken(), whiteRequest2);
@@ -142,7 +142,7 @@ public class ServiceTests {
 
         //Create 1st game
         service.GameService.CreateGameResult  createGameResult1 = gameService.creatGame(BobRegisterResult.authToken(), TestGameName1);
-        int GameID1 = createGameResult1.GameId();
+        int GameID1 = createGameResult1.gameID();
         GameService.JoinGameRequest whiteRequest1 = new GameService.JoinGameRequest("WHITE",GameID1);
         GameService.JoinGameRequest blackRequest1 = new GameService.JoinGameRequest("BLACK",GameID1);
         gameService.joinGame(BobRegisterResult.authToken(), whiteRequest1);
@@ -151,7 +151,7 @@ public class ServiceTests {
 
         //Create 2nd game
         service.GameService.CreateGameResult  createGameResult2 = gameService.creatGame(TomRegisterResult.authToken(), TestGameName2);
-        int GameID2 = createGameResult2.GameId();
+        int GameID2 = createGameResult2.gameID();
         GameService.JoinGameRequest whiteRequest2 = new GameService.JoinGameRequest("WHITE",GameID2);
         GameService.JoinGameRequest blackRequest2 = new GameService.JoinGameRequest("BLACK",GameID2);
         gameService.joinGame(TomRegisterResult.authToken(), whiteRequest2);

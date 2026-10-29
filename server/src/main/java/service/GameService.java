@@ -16,7 +16,7 @@ public class GameService {
     private GameDataAccess GameData;
     private AuthDataAccess AuthData;
 
-    private int GameIDcounter;
+    private int GameIDcounter = 1;
 
     public GameService(UserDataAccess UserData, GameDataAccess GameData, AuthDataAccess AuthData) {
         this.UserData = UserData;
@@ -25,7 +25,7 @@ public class GameService {
     }
 
     public record CreateGameResult(
-            int GameId ) {}
+            int gameID ) {}
     public record ListGameResult(
             ArrayList<GameData> Games) {}
 
