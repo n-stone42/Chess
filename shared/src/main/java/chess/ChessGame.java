@@ -87,7 +87,8 @@ public class ChessGame {
             for (int j = 1; j <= 8; j++) {
                 ChessPosition testPosition = new ChessPosition(i, j);
                 if (myBoard.getPiece(testPosition) != null) {
-                    if (myBoard.getPiece(testPosition).getPieceType() == ChessPiece.PieceType.KING && myBoard.getPiece(testPosition).getTeamColor() == color) {
+                    if (myBoard.getPiece(testPosition).getPieceType() == ChessPiece.PieceType.KING && myBoard.getPiece(
+                            testPosition).getTeamColor() == color) {
                         return testPosition;
                     }
                 }
@@ -173,21 +174,18 @@ public class ChessGame {
             for (int j = 1; j <= 8; j++) {
                 // create and test new chess position
                 ChessPosition test_pos = new ChessPosition(i, j);
-                if (boardCopy.getPiece(test_pos) != null) {
-                    // somehow it can't find the enemey king
-                    // if we have a new chess piece there
-                    ChessPiece testPiece = boardCopy.getPiece(test_pos);
+                if (boardCopy.getPiece(test_pos) == null) {
+                    continue;
+                }
+                ChessPiece testPiece = boardCopy.getPiece(test_pos);
 
-                    if (testPiece.getTeamColor() != teamColor) {
-
-                        // get that pieces moves and see if it can take the king
-                        for (ChessMove testMove : testPiece.pieceMoves(boardCopy, test_pos)) {
-
-                            if (testMove.getEndPosition().getRow() == kingPosition.getRow() &&
-                                    testMove.getEndPosition().getColumn() == kingPosition.getColumn()) {
-                                return true;
-                            }
-                        }
+                if (testPiece.getTeamColor() == teamColor) {
+                    continue;
+                }
+                for (ChessMove testMove : testPiece.pieceMoves(boardCopy, test_pos)) {
+                    if (testMove.getEndPosition().getRow() == kingPosition.getRow() &&
+                            testMove.getEndPosition().getColumn() == kingPosition.getColumn()) {
+                        return true;
                     }
                 }
             }
@@ -310,7 +308,9 @@ public class ChessGame {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         ChessGame chessGame = (ChessGame) o;
         return turn == chessGame.turn && Objects.equals(myBoard, chessGame.myBoard);
     }

@@ -35,7 +35,8 @@ public class MemoryGameDAO implements GameDataAccess {
         ArrayList<ModifiedGameData> games = new ArrayList<ModifiedGameData>();
         for (int gameID : mapGameData.keySet()) {
             GameData gameData = mapGameData.get(gameID);
-            ModifiedGameData mofGameData = new ModifiedGameData(gameData.gameID(), gameData.whiteUsername(), gameData.blackUsername(), gameData.gameName());
+            ModifiedGameData mofGameData = new ModifiedGameData(gameData.gameID(), gameData.whiteUsername(),
+                    gameData.blackUsername(), gameData.gameName());
 
             games.add(mofGameData);
         }
@@ -53,14 +54,16 @@ public class MemoryGameDAO implements GameDataAccess {
         GameData pendigGameData = mapGameData.get(gameID);
         if (playerColor == ChessGame.TeamColor.WHITE) {
             if (pendigGameData.whiteUsername() == null) {
-                GameData newGameData = new GameData(pendigGameData.gameID(), newUsername, pendigGameData.blackUsername(), pendigGameData.gameName(), pendigGameData.game());
+                GameData newGameData = new GameData(pendigGameData.gameID(), newUsername,
+                        pendigGameData.blackUsername(), pendigGameData.gameName(), pendigGameData.game());
                 swapGameData(gameID, newGameData);
                 return;
             }
             throw new DataAccessException("Error: White UserName already taken", DataAccessException.Code.AlreadyTaken);
         } else { // player color black
             if (pendigGameData.blackUsername() == null) {
-                GameData newGameData = new GameData(pendigGameData.gameID(), pendigGameData.whiteUsername(), newUsername, pendigGameData.gameName(), pendigGameData.game());
+                GameData newGameData = new GameData(pendigGameData.gameID(), pendigGameData.whiteUsername(),
+                        newUsername, pendigGameData.gameName(), pendigGameData.game());
                 swapGameData(gameID, newGameData);
                 return;
             }

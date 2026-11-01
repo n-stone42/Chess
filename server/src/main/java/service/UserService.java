@@ -69,7 +69,8 @@ public class UserService {
                 authData.createAuth(authToken, request.username());
                 return new LoginResult(request.username(), authToken);
             }
-            throw new DataAccessException("Error: Password does not match US67", DataAccessException.Code.Unathurized); //change
+            throw new DataAccessException("Error: Password does not match US67",
+                    DataAccessException.Code.Unathurized); //change
         }
         throw new DataAccessException("Error: Usename not found US69", DataAccessException.Code.Unathurized); // change
     }

@@ -58,7 +58,8 @@ public class GameService {
         return newID;
     }
 
-    public CreateGameResult creatGame(String authToken, CreateGameRequest request) throws DataAccessException {// returns the game ID
+    public CreateGameResult creatGame(String authToken,
+                                      CreateGameRequest request) throws DataAccessException {// returns the game ID
         if (verifyAuthToken(authToken)) {
             int newGameID = createGameID();
             gameData.createGame(newGameID, request.gameName());

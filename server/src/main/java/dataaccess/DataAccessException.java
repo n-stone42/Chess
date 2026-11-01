@@ -25,9 +25,10 @@ public class DataAccessException extends Exception {
     }
 
 //    public DataAccessException(String message, Throwable ex, Code code) {
-    ////        super(message, ex);
-    ////        this.code = code;
-    ////    }
+
+    /// /        super(message, ex);
+    /// /        this.code = code;
+    /// /    }
 
     public int toHttpStatuscode() {
         return switch (code) {
@@ -38,25 +39,7 @@ public class DataAccessException extends Exception {
         };
     }
 
-//    public static Code fromHttpStatusCode(int httpStatusCode) {
-//        return switch (httpStatusCode) {
-//            case 400 -> Code.BadRequest;
-//            case 401 -> Code.Unathurized;
-//            case 403 -> Code.AlreadyTaken;
-//            case 500 -> Code.OtherError;
-//            default -> throw new IllegalArgumentException("Unknown HTTP status code: " + httpStatusCode);
-//        };
-//    }
-
     public String toJson() {
         return new Gson().toJson(Map.of("message", getMessage(), "status", code));
     }
-
-//    public static DataAccessException fromJson(String error) {
-//        HashMap map = new Gson().fromJson(error, HashMap.class);
-//        var statusCode = Code.valueOf(map.get("status").toString());
-//        String errorMessage = map.get("message").toString();
-////        String fullMessage = "Error: " +  errorMessage;
-//        return new DataAccessException(errorMessage, statusCode);
-//    }
 }

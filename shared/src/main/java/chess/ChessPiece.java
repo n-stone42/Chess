@@ -118,7 +118,7 @@ public class ChessPiece {
             if (isEmpty(board, newPos)) {
 //                  System.out.println("can move forward 1");
                 if (myPosition.getRow() == 7) {
-                    moves3.addAll(pawnPromotionHelper(myPosition,newPos));
+                    moves3.addAll(pawnPromotionHelper(myPosition, newPos));
                 } else {
                     ChessMove newMove = new ChessMove(myPosition, newPos, null);
                     moves3.add(newMove);
@@ -136,7 +136,7 @@ public class ChessPiece {
             ChessPosition takeLeft = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() - 1);
             if (differentColors(board, myPosition, takeLeft)) {
                 if (myPosition.getRow() == 7) { //promotion takes
-                    moves3.addAll(pawnPromotionHelper(myPosition,takeLeft));
+                    moves3.addAll(pawnPromotionHelper(myPosition, takeLeft));
                 } else {
                     ChessMove left = new ChessMove(myPosition, takeLeft, null);
                     moves3.add(left);
@@ -145,7 +145,7 @@ public class ChessPiece {
             ChessPosition takeRight = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() + 1);
             if (differentColors(board, myPosition, takeRight)) {
                 if (myPosition.getRow() == 7) { //promotion takes
-                    moves3.addAll(pawnPromotionHelper(myPosition,takeRight));
+                    moves3.addAll(pawnPromotionHelper(myPosition, takeRight));
                 } else {
                     ChessMove right = new ChessMove(myPosition, takeRight, null);
                     moves3.add(right);
@@ -160,7 +160,7 @@ public class ChessPiece {
                 ChessPosition newPos = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn());
 
                 if (myPosition.getRow() == 2) {
-                    moves3.addAll(pawnPromotionHelper(myPosition,newPos));
+                    moves3.addAll(pawnPromotionHelper(myPosition, newPos));
                 } else {
                     ChessMove new_move = new ChessMove(myPosition, newPos, null);
                     moves3.add(new_move);
@@ -180,7 +180,7 @@ public class ChessPiece {
             if (differentColors(board, myPosition, takeLeft)) {
 
                 if (myPosition.getRow() == 2) { //promotion takes
-                    moves3.addAll(pawnPromotionHelper(myPosition,takeLeft));
+                    moves3.addAll(pawnPromotionHelper(myPosition, takeLeft));
                 } else {
                     ChessMove left = new ChessMove(myPosition, takeLeft, null);
                     moves3.add(left);
@@ -190,7 +190,7 @@ public class ChessPiece {
             if (differentColors(board, myPosition, takeRight)) {
 
                 if (myPosition.getRow() == 2) { //promotion takes
-                    moves3.addAll(pawnPromotionHelper(myPosition,takeRight));
+                    moves3.addAll(pawnPromotionHelper(myPosition, takeRight));
                 } else {
                     ChessMove right = new ChessMove(myPosition, takeRight, null);
                     moves3.add(right);
@@ -312,7 +312,9 @@ public class ChessPiece {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         ChessPiece that = (ChessPiece) o;
         return pieceColor == that.pieceColor && type == that.type;
     }

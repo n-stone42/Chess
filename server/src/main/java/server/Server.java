@@ -76,11 +76,13 @@ public class Server {
 
     public void createGame(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
-        GameService.CreateGameRequest request = new Gson().fromJson(context.body(), GameService.CreateGameRequest.class);
+        GameService.CreateGameRequest request = new Gson().fromJson(context.body(),
+                GameService.CreateGameRequest.class);
         if (request.gameName() == null) {
             throw new DataAccessException("Error: Game name is null", DataAccessException.Code.BadRequest);
         }
-        GameService.CreateGameResult result = gameService.creatGame(authToken, new Gson().fromJson(context.body(), GameService.CreateGameRequest.class));
+        GameService.CreateGameResult result = gameService.creatGame(authToken,
+                new Gson().fromJson(context.body(), GameService.CreateGameRequest.class));
         context.result(new Gson().toJson(result));
     }
 
