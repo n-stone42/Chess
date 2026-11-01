@@ -110,6 +110,15 @@ public class ChessPiece {
         return chessMovesList1;
     }
 
+    private Collection<ChessMove> pawnPromotionHelper(ChessPosition myPosition, ChessPosition newPos) {
+        Collection<ChessMove> chessMoves = new ArrayList<>();
+        chessMoves.add(new ChessMove(myPosition, newPos, PieceType.ROOK));
+        chessMoves.add(new ChessMove(myPosition, newPos, PieceType.BISHOP));
+        chessMoves.add(new ChessMove(myPosition, newPos, PieceType.QUEEN));
+        chessMoves.add(new ChessMove(myPosition, newPos, PieceType.KNIGHT));
+        return chessMoves;
+    }
+
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         // takes in the board and the position of the piece
         // returns the moves
@@ -130,10 +139,7 @@ public class ChessPiece {
                 if (isEmpty(board, newPos)) {
 //                  System.out.println("can move forward 1");
                     if (myPosition.getRow() == 7) {
-                        moves3.add(new ChessMove(myPosition, newPos, PieceType.ROOK));
-                        moves3.add(new ChessMove(myPosition, newPos, PieceType.BISHOP));
-                        moves3.add(new ChessMove(myPosition, newPos, PieceType.QUEEN));
-                        moves3.add(new ChessMove(myPosition, newPos, PieceType.KNIGHT));
+                        moves3.addAll(pawnPromotionHelper(myPosition,newPos));
                     } else {
                         ChessMove newMove = new ChessMove(myPosition, newPos, null);
                         moves3.add(newMove);
@@ -151,10 +157,7 @@ public class ChessPiece {
                 ChessPosition takeLeft = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() - 1);
                 if (differentColors(board, myPosition, takeLeft)) {
                     if (myPosition.getRow() == 7) { //promotion takes
-                        moves3.add(new ChessMove(myPosition, takeLeft, PieceType.ROOK));
-                        moves3.add(new ChessMove(myPosition, takeLeft, PieceType.BISHOP));
-                        moves3.add(new ChessMove(myPosition, takeLeft, PieceType.QUEEN));
-                        moves3.add(new ChessMove(myPosition, takeLeft, PieceType.KNIGHT));
+                        moves3.addAll(pawnPromotionHelper(myPosition,takeLeft));
                     } else {
                         ChessMove left = new ChessMove(myPosition, takeLeft, null);
                         moves3.add(left);
@@ -163,10 +166,7 @@ public class ChessPiece {
                 ChessPosition takeRight = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() + 1);
                 if (differentColors(board, myPosition, takeRight)) {
                     if (myPosition.getRow() == 7) { //promotion takes
-                        moves3.add(new ChessMove(myPosition, takeRight, PieceType.ROOK));
-                        moves3.add(new ChessMove(myPosition, takeRight, PieceType.BISHOP));
-                        moves3.add(new ChessMove(myPosition, takeRight, PieceType.QUEEN));
-                        moves3.add(new ChessMove(myPosition, takeRight, PieceType.KNIGHT));
+                        moves3.addAll(pawnPromotionHelper(myPosition,takeRight));
                     } else {
                         ChessMove right = new ChessMove(myPosition, takeRight, null);
                         moves3.add(right);
@@ -181,10 +181,7 @@ public class ChessPiece {
                     ChessPosition newPos = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn());
 
                     if (myPosition.getRow() == 2) {
-                        moves3.add(new ChessMove(myPosition, newPos, PieceType.ROOK));
-                        moves3.add(new ChessMove(myPosition, newPos, PieceType.BISHOP));
-                        moves3.add(new ChessMove(myPosition, newPos, PieceType.QUEEN));
-                        moves3.add(new ChessMove(myPosition, newPos, PieceType.KNIGHT));
+                        moves3.addAll(pawnPromotionHelper(myPosition,newPos));
                     } else {
                         ChessMove new_move = new ChessMove(myPosition, newPos, null);
                         moves3.add(new_move);
@@ -204,10 +201,7 @@ public class ChessPiece {
                 if (differentColors(board, myPosition, takeLeft)) {
 
                     if (myPosition.getRow() == 2) { //promotion takes
-                        moves3.add(new ChessMove(myPosition, takeLeft, PieceType.ROOK));
-                        moves3.add(new ChessMove(myPosition, takeLeft, PieceType.BISHOP));
-                        moves3.add(new ChessMove(myPosition, takeLeft, PieceType.QUEEN));
-                        moves3.add(new ChessMove(myPosition, takeLeft, PieceType.KNIGHT));
+                        moves3.addAll(pawnPromotionHelper(myPosition,takeLeft));
                     } else {
                         ChessMove left = new ChessMove(myPosition, takeLeft, null);
                         moves3.add(left);
@@ -217,10 +211,7 @@ public class ChessPiece {
                 if (differentColors(board, myPosition, takeRight)) {
 
                     if (myPosition.getRow() == 2) { //promotion takes
-                        moves3.add(new ChessMove(myPosition, takeRight, PieceType.ROOK));
-                        moves3.add(new ChessMove(myPosition, takeRight, PieceType.BISHOP));
-                        moves3.add(new ChessMove(myPosition, takeRight, PieceType.QUEEN));
-                        moves3.add(new ChessMove(myPosition, takeRight, PieceType.KNIGHT));
+                        moves3.addAll(pawnPromotionHelper(myPosition,takeRight));
                     } else {
                         ChessMove right = new ChessMove(myPosition, takeRight, null);
                         moves3.add(right);
