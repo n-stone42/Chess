@@ -47,23 +47,6 @@ public class MemoryGameDAO implements GameDataAccess {
         }
         return games;
     }
-//    public void updateChessGame(int gameID, ChessMove move)throws DataAccessException {
-//        if (Map_GameData.get(gameID) == null) {
-//            throw new DataAccessException("Error: GameID not found", DataAccessException.Code.BadRequest);
-//        }
-//        GameData oldGamedata = Map_GameData.get(gameID);
-//        ChessGame game = oldGamedata.game();
-//        try {
-//            game.makeMove(move);
-//            GameData newGameData = new GameData(oldGamedata.gameID(), oldGamedata.whiteUsername(),
-//                    oldGamedata.blackUsername(), oldGamedata.gameName(), game);
-//            // remove the old record
-//            swapGameData(gameID, newGameData);
-//        }
-//        catch (InvalidMoveException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 
     public void swapGameData(int gameID, GameData newGameData) {
         GameData oldGamedata = Map_GameData.get(gameID);

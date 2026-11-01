@@ -32,8 +32,7 @@ public class GameService {
     public record CreateGameResult(
             int gameID) {
     }
-//    public record ListGameResult(
-//            ArrayList<GameData> games) {}
+
 
     public record ListGameResult(
             ArrayList<MemoryGameDAO.modifiedGameData> games) {

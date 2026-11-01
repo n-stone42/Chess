@@ -12,8 +12,6 @@ public interface GameDataAccess {
     void createGame(int gameID,  String gameName) throws DataAccessException;
     ArrayList<MemoryGameDAO.modifiedGameData> listGame() throws DataAccessException;
 
-//    void updateChessGame(int gameID, ChessMove move)throws DataAccessException;
-
     GameData getGame(int gameID) throws DataAccessException;
 
     void joinGame(int gameID, ChessGame.TeamColor playerColor, String newUsername) throws DataAccessException;

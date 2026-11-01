@@ -60,12 +60,3 @@ public class DataAccessException extends Exception {
 //        return new DataAccessException(errorMessage, statusCode);
 //    }
 }
-    // list of potiental errors
-    // user alreadt take - registration
-    // username not found - login
-    // unauthrized - login badapssword
-    //unauthrized -logout, listgame, create game, join game
-
-    // in join game
-    // color already takne
-
