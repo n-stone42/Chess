@@ -202,34 +202,35 @@ public class ChessGame {
      * @param teamColor which team to check for checkmate
      * @return True if the specified team is in checkmate
      */
+    private Collection<ChessMove> getPiecesSameColor(TeamColor teamColor) {
+        Collection<ChessMove> allValidMoves = new ArrayList<>();
+        for (int i = 1; i <= 8; i++) {
+            for (int j = 1; j <= 8; j++) {
+                ChessPosition testPosition = new ChessPosition(i, j);
+                if (myBoard.getPiece(testPosition) != null) {
+                    if (myBoard.getPiece(testPosition).getTeamColor() == teamColor) {
+                        ChessPiece newPiece = myBoard.getPiece(testPosition);
+                        // add all valid moves
+                        allValidMoves.addAll(newPiece.pieceMoves(myBoard, testPosition));
+                    }
+                }
+            }
+        }
+        return allValidMoves;
+    }
+
     public boolean isInCheckmate(TeamColor teamColor) {
 
         // else return true
         if (this.isInCheck(teamColor)) {     // if in check
-            Collection<ChessMove> allValidMoves = new ArrayList<>();
+            Collection<ChessMove> allValidMoves = getPiecesSameColor(teamColor);
 
-            // iterate through pieces on the chess board of our color
-            for (int i = 1; i <= 8; i++) {
-                for (int j = 1; j <= 8; j++) {
-                    ChessPosition testPosition = new ChessPosition(i, j);
-                    if (myBoard.getPiece(testPosition) != null) {
-                        if (myBoard.getPiece(testPosition).getTeamColor() == teamColor) {
-                            ChessPiece newPiece = myBoard.getPiece(testPosition);
-                            // add all valid moves
-                            allValidMoves.addAll(newPiece.pieceMoves(myBoard, testPosition));
-                        }
-
-                    }
-                }
-            }
             // implement those moves and if any result in a position not in check, return false
             for (ChessMove move : allValidMoves) {
 
                 ChessBoard boardCopy = new ChessBoard(myBoard);
                 ChessGame testGame = new ChessGame(boardCopy, turn);
                 try {
-//                    System.out.print("trying new move ");
-//                    System.out.print(move);
                     testGame.makeMove(move);
                     if (!testGame.isInCheck(teamColor)) {
                         return false;
@@ -254,21 +255,7 @@ public class ChessGame {
     public boolean isInStalemate(TeamColor teamColor) {
         turn = teamColor;
         if (!this.isInCheck(teamColor)) {     // if NOT in check
-            Collection<ChessMove> allValidMoves = new ArrayList<>();
-
-            // iterate through pieces on the chess board of our color
-            for (int i = 1; i <= 8; i++) {
-                for (int j = 1; j <= 8; j++) {
-                    ChessPosition testPosition = new ChessPosition(i, j);
-                    if (myBoard.getPiece(testPosition) != null) {
-                        if (myBoard.getPiece(testPosition).getTeamColor() == teamColor) {
-                            ChessPiece newPiece = myBoard.getPiece(testPosition);
-                            // add all valid moves
-                            allValidMoves.addAll(newPiece.pieceMoves(myBoard, testPosition));
-                        }
-                    }
-                }
-            }
+            Collection<ChessMove> allValidMoves = getPiecesSameColor(teamColor);
             // implement those moves and if any result in a position not in check, return false
             for (ChessMove move : allValidMoves) {
 
