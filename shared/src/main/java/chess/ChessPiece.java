@@ -54,50 +54,73 @@ public class ChessPiece {
      *
      * @return Collection of valid moves
      */
+    private Collection<ChessMove> bishopMoves(ChessBoard board, ChessPosition myPosition) {
+        Collection<ChessMove> chessMoveList1 = moveItter(board, myPosition, 1, 1);
+        Collection<ChessMove> chessMoveList2 = moveItter(board, myPosition, -1, 1);
+        Collection<ChessMove> chessMoveList3 = moveItter(board, myPosition, -1, -1);
+        Collection<ChessMove> chessMoveList4 = moveItter(board, myPosition, 1, -1);
+        chessMoveList1.addAll(chessMoveList2);
+        chessMoveList1.addAll(chessMoveList3);
+        chessMoveList1.addAll(chessMoveList4);
+        return chessMoveList1;
+    }
+
+    private Collection<ChessMove> kingMoves(ChessBoard board, ChessPosition myPosition) {
+        Collection<ChessMove> moves1 = new ArrayList<>();
+        int[][] moves = {
+                {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}, {-1, -1}, {0, -1}, {1, -1}
+        };
+        for (var move : moves) {
+            if (canMove(board, myPosition, move[0], move[1])) {
+                int new_row = myPosition.getRow() + move[0];
+                int new_col = myPosition.getColumn() + move[1];
+                ChessPosition newPos = new ChessPosition(new_row, new_col);
+                ChessMove new_move = new ChessMove(myPosition, newPos, null);
+                moves1.add(new_move);
+            }
+        }
+        return moves1;
+    }
+
+    private Collection<ChessMove> knightMoves(ChessBoard board, ChessPosition myPosition) {
+        Collection<ChessMove> moves2 = new ArrayList<>();
+        int[][] moves = {
+                {2, 1}, {1, 2}, {-1, 2}, {-2, 1}, {-2, -1}, {-1, -2}, {1, -2}, {2, -1}
+        };
+        for (var move : moves) {
+            if (canMove(board, myPosition, move[0], move[1])) {
+                int newRow = myPosition.getRow() + move[0];
+                int newCol = myPosition.getColumn() + move[1];
+                ChessPosition newPos = new ChessPosition(newRow, newCol);
+                ChessMove new_move = new ChessMove(myPosition, newPos, null);
+                moves2.add(new_move);
+            }
+        }
+        return moves2;
+    }
+
+    private Collection<ChessMove> rookMoves(ChessBoard board, ChessPosition myPosition) {
+        Collection<ChessMove> chessMovesList1 = moveItter(board, myPosition, 1, 0);
+        Collection<ChessMove> chessMovesList2 = moveItter(board, myPosition, 0, 1);
+        Collection<ChessMove> chessMovesList3 = moveItter(board, myPosition, -1, 0);
+        Collection<ChessMove> chessMovesList4 = moveItter(board, myPosition, 0, -1);
+        chessMovesList1.addAll(chessMovesList2);
+        chessMovesList1.addAll(chessMovesList3);
+        chessMovesList1.addAll(chessMovesList4);
+        return chessMovesList1;
+    }
+
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         // takes in the board and the position of the piece
         // returns the moves
 
         ChessPiece the_piece = board.getPiece(myPosition);
         if (the_piece.getPieceType() == PieceType.BISHOP) {
-            Collection<ChessMove> chessMoveList1 = moveItter(board, myPosition, 1, 1);
-            Collection<ChessMove> chessMoveList2 = moveItter(board, myPosition, -1, 1);
-            Collection<ChessMove> chessMoveList3 = moveItter(board, myPosition, -1, -1);
-            Collection<ChessMove> chessMoveList4 = moveItter(board, myPosition, 1, -1);
-            chessMoveList1.addAll(chessMoveList2);
-            chessMoveList1.addAll(chessMoveList3);
-            chessMoveList1.addAll(chessMoveList4);
-            return chessMoveList1;
+            return bishopMoves(board, myPosition);
         } else if (the_piece.getPieceType() == PieceType.KING) {
-            Collection<ChessMove> moves1 = new ArrayList<>();
-            int[][] moves = {
-                    {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}, {-1, -1}, {0, -1}, {1, -1}
-            };
-            for (var move : moves) {
-                if (canMove(board, myPosition, move[0], move[1])) {
-                    int new_row = myPosition.getRow() + move[0];
-                    int new_col = myPosition.getColumn() + move[1];
-                    ChessPosition newPos = new ChessPosition(new_row, new_col);
-                    ChessMove new_move = new ChessMove(myPosition, newPos, null);
-                    moves1.add(new_move);
-                }
-            }
-            return moves1;
+            return kingMoves(board, myPosition);
         } else if (the_piece.getPieceType() == PieceType.KNIGHT) {
-            Collection<ChessMove> moves2 = new ArrayList<>();
-            int[][] moves = {
-                    {2, 1}, {1, 2}, {-1, 2}, {-2, 1}, {-2, -1}, {-1, -2}, {1, -2}, {2, -1}
-            };
-            for (var move : moves) {
-                if (canMove(board, myPosition, move[0], move[1])) {
-                    int newRow = myPosition.getRow() + move[0];
-                    int newCol = myPosition.getColumn() + move[1];
-                    ChessPosition newPos = new ChessPosition(newRow, newCol);
-                    ChessMove new_move = new ChessMove(myPosition, newPos, null);
-                    moves2.add(new_move);
-                }
-            }
-            return moves2;
+            return knightMoves(board, myPosition);
         } else if (the_piece.getPieceType() == PieceType.PAWN) {
             // do pawn stuff
             Collection<ChessMove> moves3 = new ArrayList<>();
@@ -124,7 +147,7 @@ public class ChessPiece {
                     }
                 }
 
-//                 check pawn taking logic
+//              check pawn taking logic
                 ChessPosition takeLeft = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() - 1);
                 if (differentColors(board, myPosition, takeLeft)) {
                     if (myPosition.getRow() == 7) { //promotion takes
@@ -149,7 +172,6 @@ public class ChessPiece {
                         moves3.add(right);
                     }
                 }
-
             }
 
             if (the_piece.getTeamColor() == ChessGame.TeamColor.BLACK) {
@@ -207,35 +229,11 @@ public class ChessPiece {
             }
             return moves3;
         } else if (the_piece.getPieceType() == PieceType.QUEEN) {
-            // Rook like moves
-            Collection<ChessMove> chessMovesList1 = moveItter(board, myPosition, 1, 0);
-            Collection<ChessMove> chessMovesList2 = moveItter(board, myPosition, 0, 1);
-            Collection<ChessMove> chessMovesList3 = moveItter(board, myPosition, -1, 0);
-            Collection<ChessMove> chessMovesList4 = moveItter(board, myPosition, 0, -1);
-            chessMovesList1.addAll(chessMovesList2);
-            chessMovesList1.addAll(chessMovesList3);
-            chessMovesList1.addAll(chessMovesList4);
-
-            //Bishop like moves
-            Collection<ChessMove> chessMovesList5 = moveItter(board, myPosition, 1, 1);
-            Collection<ChessMove> chessMovesList6 = moveItter(board, myPosition, -1, 1);
-            Collection<ChessMove> chessMovesList7 = moveItter(board, myPosition, -1, -1);
-            Collection<ChessMove> chessMovesList8 = moveItter(board, myPosition, 1, -1);
-            chessMovesList1.addAll(chessMovesList5);
-            chessMovesList1.addAll(chessMovesList6);
-            chessMovesList1.addAll(chessMovesList7);
-            chessMovesList1.addAll(chessMovesList8);
-
-            return chessMovesList1;
+            Collection<ChessMove> chessMovesList = bishopMoves(board, myPosition);
+            chessMovesList.addAll(rookMoves(board, myPosition));
+            return chessMovesList;
         } else if (the_piece.getPieceType() == PieceType.ROOK) {
-            Collection<ChessMove> chessMovesList1 = moveItter(board, myPosition, 1, 0);
-            Collection<ChessMove> chessMovesList2 = moveItter(board, myPosition, 0, 1);
-            Collection<ChessMove> chessMovesList3 = moveItter(board, myPosition, -1, 0);
-            Collection<ChessMove> chessMovesList4 = moveItter(board, myPosition, 0, -1);
-            chessMovesList1.addAll(chessMovesList2);
-            chessMovesList1.addAll(chessMovesList3);
-            chessMovesList1.addAll(chessMovesList4);
-            return chessMovesList1;
+            return rookMoves(board, myPosition);
         } else {
             return null;
         }
