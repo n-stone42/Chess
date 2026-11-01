@@ -31,6 +31,6 @@ public class MemoryUserDAO implements UserDataAccess {
         if (mapUserData.containsKey(username)) {
             return Objects.equals(mapUserData.get(username).password(), password);
         }
-        throw new DataAccessException("Error: Password did not match MU 32", DataAccessException.Code.BadRequest);
+        throw new DataAccessException("Error: Password did not match", DataAccessException.Code.BadRequest);
     }
 }
