@@ -16,12 +16,12 @@ public class Server {
     // the DAOs
     MemoryAuthDAO authDAO = new MemoryAuthDAO();
     MemoryGameDAO gameDAO = new MemoryGameDAO();
-    MemoryUserDAO UserDAO = new MemoryUserDAO();
+    MemoryUserDAO userDAO = new MemoryUserDAO();
 
     //the Serevices
-    ClearService clearService = new ClearService(UserDAO, gameDAO, authDAO);
-    GameService gameService = new GameService(UserDAO, gameDAO, authDAO);
-    UserService userService = new UserService(UserDAO, authDAO);
+    ClearService clearService = new ClearService(userDAO, gameDAO, authDAO);
+    GameService gameService = new GameService(userDAO, gameDAO, authDAO);
+    UserService userService = new UserService(userDAO, authDAO);
 
 
     private final Javalin javalin;

@@ -10,9 +10,9 @@ public class UserService {
     private UserDataAccess userData;
     private AuthDataAccess authData;
 
-    public UserService(UserDataAccess UserData, AuthDataAccess AuthData) {
-        this.userData = UserData;
-        this.authData = AuthData;
+    public UserService(UserDataAccess userData, AuthDataAccess authData) {
+        this.userData = userData;
+        this.authData = authData;
     }
 
     public record RegisterRequest(
@@ -38,7 +38,7 @@ public class UserService {
 
     public record LogoutRequest(
             String username,
-            String AuthToken) {
+            String authToken) {
     }
 
     public record LogoutResult() {
@@ -75,8 +75,8 @@ public class UserService {
     }
 
     public LogoutResult logout(LogoutRequest request) throws DataAccessException {
-        if (authData.getAuth(request.AuthToken()) != null) {
-            authData.deleteAuth(request.AuthToken());
+        if (authData.getAuth(request.authToken()) != null) {
+            authData.deleteAuth(request.authToken());
             return new LogoutResult();
         }
         return null;

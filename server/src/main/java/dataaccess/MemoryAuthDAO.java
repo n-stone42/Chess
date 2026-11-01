@@ -7,37 +7,37 @@ import model.*;
 
 
 public class MemoryAuthDAO implements AuthDataAccess {
-    public HashMap<String, AuthData> Map_AuthData = new HashMap<>();
+    public HashMap<String, AuthData> mapAuthData = new HashMap<>();
 
     public void clear() {
-        Map_AuthData.clear();
+        mapAuthData.clear();
     }
 
     public void createAuth(String authToken, String username) throws DataAccessException {
-        if (Map_AuthData.get(authToken) != null) {
+        if (mapAuthData.get(authToken) != null) {
 
         }
-        Map_AuthData.put(authToken, new AuthData(authToken, username));
+        mapAuthData.put(authToken, new AuthData(authToken, username));
     }
 
     public AuthData getAuth(String authToken) throws DataAccessException {
-        if (Map_AuthData.get(authToken) == null) {
+        if (mapAuthData.get(authToken) == null) {
             throw new DataAccessException("Error: Auth Token invalid", DataAccessException.Code.Unathurized);
         }
-        return Map_AuthData.get(authToken);
+        return mapAuthData.get(authToken);
     }
 
     public String getUsername(String authToken) throws DataAccessException {
-        if (Map_AuthData.get(authToken) == null) {
+        if (mapAuthData.get(authToken) == null) {
             throw new DataAccessException("Error: Auth Token invalid", DataAccessException.Code.Unathurized);
         }
-        return Map_AuthData.get(authToken).username();
+        return mapAuthData.get(authToken).username();
     }
 
     public void deleteAuth(String authToken) throws DataAccessException {
-        if (Map_AuthData.get(authToken) == null) {
+        if (mapAuthData.get(authToken) == null) {
             throw new DataAccessException("Auth Token invalid", DataAccessException.Code.Unathurized);
         }
-        Map_AuthData.remove(authToken);
+        mapAuthData.remove(authToken);
     }
 }

@@ -163,7 +163,7 @@ public class ChessGame {
      * @return True if the specified team is in check
      */
     public boolean isInCheck(TeamColor teamColor) {
-        ChessPosition King_position = findKing(teamColor);
+        ChessPosition kingPosition = findKing(teamColor);
         // create a copy of the board, remove the king and add a queen then a Knight then a pawn
         //if these pieces can take something check the piece type and if it matches, we are in check
         ChessBoard boardCopy = new ChessBoard(myBoard); //deep copy of the chess board
@@ -183,8 +183,8 @@ public class ChessGame {
                         // get that pieces moves and see if it can take the king
                         for (ChessMove testMove : testPiece.pieceMoves(boardCopy, test_pos)) {
 
-                            if (testMove.getEndPosition().getRow() == King_position.getRow() &&
-                                    testMove.getEndPosition().getColumn() == King_position.getColumn()) {
+                            if (testMove.getEndPosition().getRow() == kingPosition.getRow() &&
+                                    testMove.getEndPosition().getColumn() == kingPosition.getColumn()) {
                                 return true;
                             }
                         }
