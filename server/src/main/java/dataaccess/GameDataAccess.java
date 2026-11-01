@@ -10,7 +10,7 @@ public interface GameDataAccess {
 
     void createGame(int gameID, String gameName) throws DataAccessException;
 
-    ArrayList<MemoryGameDAO.modifiedGameData> listGame() throws DataAccessException;
+    ArrayList<MemoryGameDAO.ModifiedGameData> listGame() throws DataAccessException;
 
     GameData getGame(int gameID) throws DataAccessException;
 

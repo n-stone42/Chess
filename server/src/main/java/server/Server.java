@@ -5,7 +5,7 @@ import dataaccess.*;
 import io.javalin.*;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
-import Handlers.*;
+import handlers.*;
 import service.ClearService;
 import service.GameService;
 import service.UserService;
@@ -31,9 +31,9 @@ public class Server {
     public Server() {
 
         javalin = Javalin.create(config -> config.staticFiles.add("web"));
-        javalin.post("/user", this::RegisterUsesr);
-        javalin.post("/session", this::Login);
-        javalin.delete("/session", this::Logout);
+        javalin.post("/user", this::registerUser);
+        javalin.post("/session", this::login);
+        javalin.delete("/session", this::logout);
         javalin.get("/game", this::listGame);
         javalin.post("/game", this::createGame);
         javalin.put("/game", this::joinGame);
@@ -47,7 +47,7 @@ public class Server {
         context.status(200);
     }
 
-    public void RegisterUsesr(@NotNull Context context) throws DataAccessException {
+    public void registerUser(@NotNull Context context) throws DataAccessException {
         UserService.RegisterRequest request = new Gson().fromJson(context.body(), UserService.RegisterRequest.class);
         if (request.username() == null || request.password() == null) {
             throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
@@ -56,7 +56,7 @@ public class Server {
         context.result(new Gson().toJson(result));
     }
 
-    public void Login(@NotNull Context context) throws DataAccessException {
+    public void login(@NotNull Context context) throws DataAccessException {
         UserService.LoginRequest request = new Gson().fromJson(context.body(), UserService.LoginRequest.class);
         if (request.username() == null || request.password() == null) {
             throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
@@ -65,7 +65,7 @@ public class Server {
         context.result(new Gson().toJson(result));
     }
 
-    public void Logout(@NotNull Context context) throws DataAccessException {
+    public void logout(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
         String username = authDAO.getUsername(authToken);
         UserService.LogoutRequest logoutRequest = new UserService.LogoutRequest(username, authToken);

@@ -1,4 +1,4 @@
-package Handlers;
+package handlers;
 
 import dataaccess.DataAccessException;
 import service.ClearService;

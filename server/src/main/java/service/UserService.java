@@ -7,12 +7,12 @@ import dataaccess.UserDataAccess;
 import java.util.UUID;
 
 public class UserService {
-    private UserDataAccess UserData;
-    private AuthDataAccess AuthData;
+    private UserDataAccess userData;
+    private AuthDataAccess authData;
 
     public UserService(UserDataAccess UserData, AuthDataAccess AuthData) {
-        this.UserData = UserData;
-        this.AuthData = AuthData;
+        this.userData = UserData;
+        this.authData = AuthData;
     }
 
     public record RegisterRequest(
@@ -51,22 +51,22 @@ public class UserService {
 
     public RegisterResult register(RegisterRequest request) throws DataAccessException {
         try {
-            UserData.getUser(request.username()); // username not in database
+            userData.getUser(request.username()); // username not in database
             throw new DataAccessException("Error: Username already exists US49", DataAccessException.Code.AlreadyTaken);
 
         } catch (Exception e) {
-            UserData.createUser(request.username(), request.password(), request.email());
+            userData.createUser(request.username(), request.password(), request.email());
             String AuthToken = generateToken();
-            AuthData.createAuth(AuthToken, request.username());
+            authData.createAuth(AuthToken, request.username());
             return new RegisterResult(request.username(), AuthToken);
         }
     }
 
     public LoginResult login(LoginRequest request) throws DataAccessException {
-        if (UserData.getUser(request.username()) != null) {
-            if (UserData.matchPassword(request.username(), request.password())) {
+        if (userData.getUser(request.username()) != null) {
+            if (userData.matchPassword(request.username(), request.password())) {
                 String AuthToken = generateToken();
-                AuthData.createAuth(AuthToken, request.username());
+                authData.createAuth(AuthToken, request.username());
                 return new LoginResult(request.username(), AuthToken);
             }
             throw new DataAccessException("Error: Password does not match US67", DataAccessException.Code.Unathurized); //change
@@ -75,8 +75,8 @@ public class UserService {
     }
 
     public LogoutResult logout(LogoutRequest request) throws DataAccessException {
-        if (AuthData.getAuth(request.AuthToken()) != null) {
-            AuthData.deleteAuth(request.AuthToken());
+        if (authData.getAuth(request.AuthToken()) != null) {
+            authData.deleteAuth(request.AuthToken());
             return new LogoutResult();
         }
         return null;

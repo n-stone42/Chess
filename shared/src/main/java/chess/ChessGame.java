@@ -3,7 +3,6 @@ package chess;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -318,7 +317,7 @@ public class ChessGame {
         turn = TeamColor.WHITE;
     }
 
-    private void SetTurn(TeamColor newTurn) {
+    private void setTurn(TeamColor newTurn) {
         turn = newTurn;
     }
 

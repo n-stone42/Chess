@@ -8,10 +8,10 @@ public class ClearService {
     private final GameDataAccess gameData;
     private final AuthDataAccess authData;
 
-    public ClearService(UserDataAccess UserData, GameDataAccess GameData, AuthDataAccess AuthData) {
-        userData = UserData;
-        gameData = GameData;
-        authData = AuthData;
+    public ClearService(UserDataAccess userData, GameDataAccess gameData, AuthDataAccess authData) {
+        this.userData = userData;
+        this.gameData = gameData;
+        this.authData = authData;
     }
 
     public void eraseAllData() throws DataAccessException {

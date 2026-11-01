@@ -3,23 +3,18 @@ package service;
 import chess.ChessGame;
 import dataaccess.*;
 import model.*;
-import org.junit.jupiter.api.Assertions.*;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
 
 public class GameService {
-    private UserDataAccess UserData;
+    private UserDataAccess userData;
     private GameDataAccess GameData;
     private AuthDataAccess AuthData;
 
     private int GameIDcounter = 1;
 
     public GameService(UserDataAccess UserData, GameDataAccess GameData, AuthDataAccess AuthData) {
-        this.UserData = UserData;
+        this.userData = UserData;
         this.GameData = GameData;
         this.AuthData = AuthData;
     }
@@ -35,7 +30,7 @@ public class GameService {
 
 
     public record ListGameResult(
-            ArrayList<MemoryGameDAO.modifiedGameData> games) {
+            ArrayList<MemoryGameDAO.ModifiedGameData> games) {
     }
 
     public record JoinGameRequest(

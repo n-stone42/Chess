@@ -7,35 +7,35 @@ import chess.ChessGame;
 import model.*;
 
 public class MemoryGameDAO implements GameDataAccess {
-    public HashMap<Integer, GameData> Map_GameData = new HashMap<>();
+    public HashMap<Integer, GameData> mapGameData = new HashMap<>();
 
     public void clear() {
-        Map_GameData.clear();
+        mapGameData.clear();
     }
 
-    public record modifiedGameData(int gameID, String whiteUsername, String blackUsername, String gameName) {
+    public record ModifiedGameData(int gameID, String whiteUsername, String blackUsername, String gameName) {
     }
 
     public void createGame(int gameID, String gameName) throws DataAccessException {
         // we are creating a new chess game so this parameter will just be a new chess game from the starting position
-        if (Map_GameData.get(gameID) != null) {
+        if (mapGameData.get(gameID) != null) {
             throw new DataAccessException("Error: Game ID taken", DataAccessException.Code.AlreadyTaken);
         }
-        Map_GameData.put(gameID, new GameData(gameID, null, null, gameName, new ChessGame()));
+        mapGameData.put(gameID, new GameData(gameID, null, null, gameName, new ChessGame()));
     }
 
     public GameData getGame(int gameID) throws DataAccessException {
-        if (Map_GameData.get(gameID) != null) {
-            return Map_GameData.get(gameID);
+        if (mapGameData.get(gameID) != null) {
+            return mapGameData.get(gameID);
         }
         throw new DataAccessException("Error: GameID not found", DataAccessException.Code.BadRequest);
     }
 
-    public ArrayList<modifiedGameData> listGame() throws DataAccessException {
-        ArrayList<modifiedGameData> games = new ArrayList<modifiedGameData>();
-        for (int gameID : Map_GameData.keySet()) {
-            GameData gameData = Map_GameData.get(gameID);
-            modifiedGameData mofGameData = new modifiedGameData(gameData.gameID(), gameData.whiteUsername(), gameData.blackUsername(), gameData.gameName());
+    public ArrayList<ModifiedGameData> listGame() throws DataAccessException {
+        ArrayList<ModifiedGameData> games = new ArrayList<ModifiedGameData>();
+        for (int gameID : mapGameData.keySet()) {
+            GameData gameData = mapGameData.get(gameID);
+            ModifiedGameData mofGameData = new ModifiedGameData(gameData.gameID(), gameData.whiteUsername(), gameData.blackUsername(), gameData.gameName());
 
             games.add(mofGameData);
         }
@@ -43,14 +43,14 @@ public class MemoryGameDAO implements GameDataAccess {
     }
 
     public void swapGameData(int gameID, GameData newGameData) {
-        GameData oldGamedata = Map_GameData.get(gameID);
-        Map_GameData.remove(oldGamedata.gameID());
-        Map_GameData.put(oldGamedata.gameID(), newGameData);
+        GameData oldGamedata = mapGameData.get(gameID);
+        mapGameData.remove(oldGamedata.gameID());
+        mapGameData.put(oldGamedata.gameID(), newGameData);
 
     }
 
     public void joinGame(int gameID, ChessGame.TeamColor playerColor, String newUsername) throws DataAccessException {
-        GameData pendigGameData = Map_GameData.get(gameID);
+        GameData pendigGameData = mapGameData.get(gameID);
         if (playerColor == ChessGame.TeamColor.WHITE) {
             if (pendigGameData.whiteUsername() == null) {
                 GameData newGameData = new GameData(pendigGameData.gameID(), newUsername, pendigGameData.blackUsername(), pendigGameData.gameName(), pendigGameData.game());

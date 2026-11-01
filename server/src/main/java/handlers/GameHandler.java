@@ -1,7 +1,6 @@
-package Handlers;
+package handlers;
 
 import service.GameService;
-import service.UserService;
 
 public class GameHandler {
 

@@ -1,6 +1,5 @@
-package Handlers;
+package handlers;
 
-import dataaccess.DataAccessException;
 import service.UserService;
 
 public class UserHandler {
