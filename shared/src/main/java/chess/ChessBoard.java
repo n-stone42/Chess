@@ -52,8 +52,6 @@ public class ChessBoard {
      * position
      */
     public ChessPiece getPiece(ChessPosition position) {
-//        System.out.print(" position ");
-//        System.out.println(position.toString());
         return chess_array[position.getRow() - 1][position.getColumn() - 1];
     }
 

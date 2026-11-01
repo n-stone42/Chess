@@ -60,7 +60,7 @@ public class ServiceTests {
     }
 
     @Test
-    public void CreateUserInMemory() {
+    public void createUserInMemory() {
         try {
             UserService.RegisterResult result = registerBob();
             String authToken = result.authToken();

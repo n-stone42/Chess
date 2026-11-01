@@ -34,7 +34,7 @@ public class MemoryAuthDAO implements AuthDataAccess {
         return Map_AuthData.get(authToken).username();
     }
 
-    public void DeleteAuth(String authToken) throws DataAccessException {
+    public void deleteAuth(String authToken) throws DataAccessException {
         if (Map_AuthData.get(authToken) == null) {
             throw new DataAccessException("Auth Token invalid", DataAccessException.Code.Unathurized);
         }

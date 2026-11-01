@@ -9,5 +9,5 @@ public interface UserDataAccess {
 
     void createUser(String username, String password, String email) throws DataAccessException;
 
-    boolean MatchPassword(String username, String password) throws DataAccessException;
+    boolean matchPassword(String username, String password) throws DataAccessException;
 }

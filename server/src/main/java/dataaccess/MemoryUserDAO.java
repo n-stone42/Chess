@@ -27,7 +27,7 @@ public class MemoryUserDAO implements UserDataAccess {
         throw new DataAccessException("Error: Duplicate Username MU26", DataAccessException.Code.AlreadyTaken);
     }
 
-    public boolean MatchPassword(String username, String password) throws DataAccessException {
+    public boolean matchPassword(String username, String password) throws DataAccessException {
         if (Map_UserData.containsKey(username)) {
             return Objects.equals(Map_UserData.get(username).password(), password);
         }

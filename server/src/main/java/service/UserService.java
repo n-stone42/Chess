@@ -2,15 +2,9 @@ package service;
 
 import dataaccess.AuthDataAccess;
 import dataaccess.DataAccessException;
-import dataaccess.MemoryUserDAO;
 import dataaccess.UserDataAccess;
-import model.*;
-import org.junit.jupiter.api.Assertions.*;
 
-import java.util.Objects;
 import java.util.UUID;
-
-import static java.lang.System.*;
 
 public class UserService {
     private UserDataAccess UserData;
@@ -70,7 +64,7 @@ public class UserService {
 
     public LoginResult login(LoginRequest request) throws DataAccessException {
         if (UserData.getUser(request.username()) != null) {
-            if (UserData.MatchPassword(request.username(), request.password())) {
+            if (UserData.matchPassword(request.username(), request.password())) {
                 String AuthToken = generateToken();
                 AuthData.createAuth(AuthToken, request.username());
                 return new LoginResult(request.username(), AuthToken);
@@ -82,7 +76,7 @@ public class UserService {
 
     public LogoutResult logout(LogoutRequest request) throws DataAccessException {
         if (AuthData.getAuth(request.AuthToken()) != null) {
-            AuthData.DeleteAuth(request.AuthToken());
+            AuthData.deleteAuth(request.AuthToken());
             return new LogoutResult();
         }
         return null;
