@@ -56,18 +56,18 @@ public class UserService {
 
         } catch (Exception e) {
             userData.createUser(request.username(), request.password(), request.email());
-            String AuthToken = generateToken();
-            authData.createAuth(AuthToken, request.username());
-            return new RegisterResult(request.username(), AuthToken);
+            String authToken = generateToken();
+            authData.createAuth(authToken, request.username());
+            return new RegisterResult(request.username(), authToken);
         }
     }
 
     public LoginResult login(LoginRequest request) throws DataAccessException {
         if (userData.getUser(request.username()) != null) {
             if (userData.matchPassword(request.username(), request.password())) {
-                String AuthToken = generateToken();
-                authData.createAuth(AuthToken, request.username());
-                return new LoginResult(request.username(), AuthToken);
+                String authToken = generateToken();
+                authData.createAuth(authToken, request.username());
+                return new LoginResult(request.username(), authToken);
             }
             throw new DataAccessException("Error: Password does not match US67", DataAccessException.Code.Unathurized); //change
         }

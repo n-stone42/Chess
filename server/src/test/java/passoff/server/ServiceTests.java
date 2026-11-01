@@ -48,8 +48,8 @@ public class ServiceTests {
         return gameService.creatGame(bobRegisterResult.authToken(), new GameService.CreateGameRequest(testGameName1));
     }
 
-    public service.GameService.CreateGameResult createGame2(UserService.RegisterResult TomRegisterResult) throws DataAccessException {
-        return gameService.creatGame(TomRegisterResult.authToken(), new GameService.CreateGameRequest(testGameName2));
+    public service.GameService.CreateGameResult createGame2(UserService.RegisterResult tomRegisterResult) throws DataAccessException {
+        return gameService.creatGame(tomRegisterResult.authToken(), new GameService.CreateGameRequest(testGameName2));
     }
 
     @Test
@@ -93,8 +93,8 @@ public class ServiceTests {
         UserService.RegisterResult bobRegisterResult = registerBob();
         String testGameName = "What's A good game Name?";
         service.GameService.CreateGameResult createGameResult = gameService.creatGame(bobRegisterResult.authToken(), new GameService.CreateGameRequest(testGameName));
-        int GameID = createGameResult.gameID();
-        assertEquals(gameMemory.getGame(GameID), new GameData(GameID, null, null, testGameName, new ChessGame()));
+        int gamedID = createGameResult.gameID();
+        assertEquals(gameMemory.getGame(gamedID), new GameData(gamedID, null, null, testGameName, new ChessGame()));
     }
 
     @Test
