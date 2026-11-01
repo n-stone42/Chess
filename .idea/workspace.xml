@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="Phase 3- formatting and nestingDepth" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;n-stone42&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/n-stone42/Chess.git&quot;,
+    &quot;accountId&quot;: &quot;e44d144b-2792-4aae-a089-f7299b069d81&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/dataaccess/GameDataAccess.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryGameDAO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/service/GameService.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="JavaCoverageOptionsProvider">
+    <option name="myRunnerId" value="jacoco" />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0002843589914503" />
+      <entry key="MS500" value="1.2100198908003914" />
+      <entry key="S2" value="2.4485108198817835" />
+      <entry key="S5" value="3.8800898965639568" />
+      <entry key="S10" value="4.759184542822409" />
+      <entry key="S30" value="5.56100507825851" />
+      <entry key="S60" value="5.916365620813125" />
+      <entry key="M2" value="6.302940654988797" />
+      <entry key="M5" value="8.815379471802608" />
+      <entry key="M10" value="18.298878401143863" />
+      <entry key="M15" value="29.77165977053545" />
+      <entry key="M30" value="64.07888350772487" />
+      <entry key="H1" value="116.70017103535322" />
+      <entry key="H2" value="179.70360077558652" />
+      <entry key="H4" value="260.8322250823056" />
+      <entry key="D1" value="807.1571712042348" />
+      <entry key="W1" value="2809.8444105195845" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.4492347731565182E-288" />
+      <entry key="MS500" value="2.7053767239747626E-58" />
+      <entry key="S2" value="4.0556171970276896E-15" />
+      <entry key="S5" value="1.752722120128763E-6" />
+      <entry key="S10" value="0.0013676272759331673" />
+      <entry key="S30" value="0.1452949511180545" />
+      <entry key="S60" value="0.5286652939254789" />
+      <entry key="M2" value="1.1158220377036" />
+      <entry key="M5" value="2.7334118903628934" />
+      <entry key="M10" value="7.107482531194675" />
+      <entry key="M15" value="13.173679016520094" />
+      <entry key="M30" value="35.3861668335989" />
+      <entry key="H1" value="70.84384476481783" />
+      <entry key="H2" value="107.82311761598936" />
+      <entry key="H4" value="145.45369342493444" />
+      <entry key="D1" value="373.333781907227" />
+      <entry key="W1" value="1009.2686208352717" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.959536894704137" />
+      <entry key="MS500" value="1.1999975221102552" />
+      <entry key="S2" value="2.4432200546021483" />
+      <entry key="S5" value="3.8766461250594317" />
+      <entry key="S10" value="4.758217568013704" />
+      <entry key="S30" value="5.697789125759994" />
+      <entry key="S60" value="6.430061494697052" />
+      <entry key="M2" value="7.402894241723523" />
+      <entry key="M5" value="11.531430844433862" />
+      <entry key="M10" value="25.38135463166873" />
+      <entry key="M15" value="42.91421461164372" />
+      <entry key="M30" value="99.42360159971892" />
+      <entry key="H1" value="187.50210450329917" />
+      <entry key="H2" value="287.49385813154726" />
+      <entry key="H4" value="406.26222244887583" />
+      <entry key="D1" value="1180.4784756305464" />
+      <entry key="W1" value="3819.1070717607445" />
+    </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="3J1mQrb6G9LNB8fl11wzaCqdUxR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ServerMain.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.All in server.executor": "Coverage",
+    "JUnit.All in shared.executor": "Run",
+    "JUnit.BishopMoveTests.bishopCaptureEnemy.executor": "Run",
+    "JUnit.BishopMoveTests.bishopMoveUntilEdge.executor": "Run",
+    "JUnit.BishopMoveTests.executor": "Run",
+    "JUnit.ChessBoardTests and 3 more.executor": "Run",
+    "JUnit.ChessBoardTests.defaultGameBoard.executor": "Run",
+    "JUnit.ChessBoardTests.executor": "Run",
+    "JUnit.ChessGameTests.executor": "Run",
+    "JUnit.ChessMoveTests.executor": "Run",
+    "JUnit.ChessMoveTests.hashSetTest.Equals & HashCode Testing.executor": "Run",
+    "JUnit.ChessPieceTests.executor": "Run",
+    "JUnit.ChessPositionTests.executor": "Run",
+    "JUnit.DataAccessTests.clearUserData.executor": "Run",
+    "JUnit.FullGameTest.executor": "Run",
+    "JUnit.GameServiceTests.executor": "Run",
+    "JUnit.GameServiceTests.testClearAll.executor": "Run",
+    "JUnit.GameServiceTests.testCreateGame.executor": "Run",
+    "JUnit.GameServiceTests.testGameList.executor": "Run",
+    "JUnit.GameServiceTests.testJoinGame.executor": "Run",
+    "JUnit.GameStatusTests.blackCheck.executor": "Run",
+    "JUnit.GameStatusTests.checkmateNotStalemate.executor": "Debug",
+    "JUnit.GameStatusTests.escapeCheckByCapturingThreateningPiece.executor": "Debug",
+    "JUnit.GameStatusTests.executor": "Run",
+    "JUnit.GameStatusTests.newGame.executor": "Run",
+    "JUnit.GameStatusTests.noGameStatuses.executor": "Run",
+    "JUnit.GameStatusTests.stalemate.executor": "Debug",
+    "JUnit.GameStatusTests.whiteTeamCheckmate.executor": "Run",
+    "JUnit.KingMoveTests.executor": "Run",
+    "JUnit.KingMoveTests.kingMiddleOfBoard.executor": "Run",
+    "JUnit.KnightMoveTests.executor": "Run",
+    "JUnit.MakeMoveTests.executor": "Run",
+    "JUnit.MakeMoveTests.invalidMakeMoveInCheck.executor": "Run",
+    "JUnit.MakeMoveTests.invalidMakeMoveNoPiece.executor": "Run",
+    "JUnit.MakeMoveTests.promotionMoves.[1] QUEEN.executor": "Run",
+    "JUnit.MakeMoveTests.promotionMoves.executor": "Run",
+    "JUnit.PawnMoveTests.captureAndPromoteBlack.executor": "Run",
+    "JUnit.PawnMoveTests.edgePromotionBlack.executor": "Run",
+    "JUnit.PawnMoveTests.executor": "Run",
+    "JUnit.PawnMoveTests.pawnAdvanceBlockedDoubleMoveBlack.executor": "Run",
+    "JUnit.PawnMoveTests.pawnAdvanceBlockedDoubleMoveWhite.executor": "Run",
+    "JUnit.PawnMoveTests.pawnAdvanceBlockedWhite.executor": "Debug",
+    "JUnit.PawnMoveTests.pawnCaptureFromStartBlack.executor": "Run",
+    "JUnit.PawnMoveTests.pawnMoveFromEdgeWhite.executor": "Run",
+    "JUnit.QueenMoveTests.executor": "Run",
+    "JUnit.RookMoveTests.executor": "Run",
+    "JUnit.ServerTests.basicCleartest.executor": "Run",
+    "JUnit.ServiceTests.executor": "Run",
+    "JUnit.ServiceTests.testClearAll.executor": "Run",
+    "JUnit.ServiceTests.testGameList.executor": "Run",
+    "JUnit.ServiceTests.testJoinGame.executor": "Run",
+    "JUnit.StandardAPITests.clearData.executor": "Run",
+    "JUnit.StandardAPITests.clearMultipleTimes.executor": "Run",
+    "JUnit.StandardAPITests.createGameBadRequest.executor": "Run",
+    "JUnit.StandardAPITests.createGameSuccess.executor": "Run",
+    "JUnit.StandardAPITests.executor": "Run",
+    "JUnit.StandardAPITests.joinGameBadColor.executor": "Run",
+    "JUnit.StandardAPITests.joinGameBadGameId.executor": "Run",
+    "JUnit.StandardAPITests.joinGameStealColor.executor": "Run",
+    "JUnit.StandardAPITests.joinGameSuccess.executor": "Run",
+    "JUnit.StandardAPITests.loginBadRequest.executor": "Run",
+    "JUnit.StandardAPITests.loginUnauthorized.executor": "Run",
+    "JUnit.StandardAPITests.logoutSuccess.executor": "Run",
+    "JUnit.StandardAPITests.logoutTwice.executor": "Run",
+    "JUnit.StandardAPITests.registerBadRequest.executor": "Run",
+    "JUnit.StandardAPITests.staticFilesSuccess.executor": "Run",
+    "JUnit.UserServiceTests.CreateUserInMemory.executor": "Run",
+    "JUnit.UserServiceTests.executor": "Run",
+    "JUnit.UserServiceTests.testLogin.executor": "Run",
+    "JUnit.UserServiceTests.testLogout.executor": "Run",
+    "JUnit.UserServiceTests.testRegisterUser.executor": "Run",
+    "JUnit.ValidMovesTests.executor": "Run",
+    "JUnit.chess in shared.executor": "Run",
+    "JUnit.passoff.chess in shared.executor": "Run",
+    "JUnit.passoff.chess.game in shared.executor": "Run",
+    "JUnit.passoff.chess.piecemoves in shared.executor": "Run",
+    "JUnit.passoff.server in server.executor": "Coverage",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/natha/Desktop/cs240/Chess/server/src/test/java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.sourceCode.JAVA"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\natha\Desktop\cs240\Chess\server\src\test\java" />
+      <recent name="C:\Users\natha\Desktop\cs240\Chess\server\src\main\resources" />
+      <recent name="C:\Users\natha\Desktop\cs240\Chess\starter-code\3-web-api\server" />
+      <recent name="C:\Users\natha\Desktop\cs240\Chess\server\src\main\java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\natha\Desktop\cs240\Chess\server\src\main\java\server" />
+      <recent name="C:\Users\natha\Desktop\cs240\Chess\shared\src\test\java\passoff\chess" />
+      <recent name="C:\Users\natha\Desktop\cs240\Chess\shared\src\test\java" />
+      <recent name="C:\Users\natha\Desktop\cs240\Chess\shared\src\test" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.passoff.chess in shared">
+    <configuration name="All in shared" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="shared" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="chess in shared" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="shared" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="chess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="chess" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="passoff.chess in shared" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="shared" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="passoff.chess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="passoff.chess" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="passoff.chess.piecemoves in shared" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="shared" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="passoff.chess.piecemoves.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="passoff.chess.piecemoves" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="passoff.server in server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage" runner="jacoco">
+        <pattern>
+          <option name="PATTERN" value="passoff.server.*" />
+          <option name="ENABLED" value="false" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="dataaccess.MemoryUserDAO" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="handlers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="model.UserData" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="passoff.server" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.All in shared" />
+      <item itemvalue="JUnit.chess in shared" />
+      <item itemvalue="JUnit.passoff.chess in shared" />
+      <item itemvalue="JUnit.passoff.chess.piecemoves in shared" />
+      <item itemvalue="JUnit.passoff.server in server" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.passoff.chess in shared" />
+        <item itemvalue="JUnit.passoff.chess.piecemoves in shared" />
+        <item itemvalue="JUnit.chess in shared" />
+        <item itemvalue="JUnit.All in shared" />
+        <item itemvalue="JUnit.passoff.server in server" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10315.125" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10315.125" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="" />
+      <created>1757018527936</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1757018527936</updated>
+      <workItem from="1757018571508" duration="1377000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Phase 3- More errors in error handling" />
+    <MESSAGE value="Phase 3- Sending username not found response exception" />
+    <MESSAGE value="Phase 3- some login tests and errors working" />
+    <MESSAGE value="Phase 3- API test bad request working" />
+    <MESSAGE value="Phase 3- API test- register Bad request passing" />
+    <MESSAGE value="Phase 3- API some logout tests working" />
+    <MESSAGE value="Phase 3- restructure of joingame - changed to request record" />
+    <MESSAGE value="Phase 3- valid game creation" />
+    <MESSAGE value="Phase 3- list games working but not error handeling" />
+    <MESSAGE value="Phase 3- API join bad team color working" />
+    <MESSAGE value="Phase 3- API join steal team color working" />
+    <MESSAGE value="Phase 3- ALL API tests passing" />
+    <MESSAGE value="Phase 3- changing tests and code for testing coverage" />
+    <MESSAGE value="Phase 3- ALL API and custom test passing  thus far" />
+    <MESSAGE value="Phase 3- more code qulity updates" />
+    <MESSAGE value="Phase 3- addtional code qulity changes" />
+    <MESSAGE value="Phase 3- namming changes" />
+    <MESSAGE value="Phase 3- more renamming changes" />
+    <MESSAGE value="Phase 3- more re-naming changes" />
+    <MESSAGE value="Phase 3- last renaming - I hope" />
+    <MESSAGE value="Phase 3- splitting ip pieceMoves method" />
+    <MESSAGE value="Phase 3- chessagme duplicate code" />
+    <MESSAGE value="Phase 3- chessPiece cleaning up pawn moves" />
+    <MESSAGE value="Phase 3- making pawn move funciton" />
+    <MESSAGE value="Phase 3- formatting and nestingDepth" />
+    <option name="LAST_COMMIT_MESSAGE" value="Phase 3- formatting and nestingDepth" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="dataaccess.DataAccessException" package="dataaccess" />
+          <option name="timeStamp" value="77" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Chess$passoff_server_in_server.exec" NAME="passoff.server in server Coverage Results" MODIFIED="1793504475646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>dataaccess.MemoryUserDAO</FILTER>
+      <FILTER>server.*</FILTER>
+      <FILTER>service.*</FILTER>
+      <FILTER>handlers.*</FILTER>
+      <FILTER>model.UserData</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Chess$All_in_server.exec" NAME="All in server Coverage Results" MODIFIED="1793499348578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+  </component>
+</project>

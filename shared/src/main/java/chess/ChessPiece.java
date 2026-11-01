@@ -262,7 +262,8 @@ public class ChessPiece {
         return true; //different colors, can take
     }
 
-    private boolean canMove(ChessBoard board, ChessPosition myPosition, int rowScalar, int colScalar) { // takes the other 3 helper function to see if a piece can move so a given position
+    private boolean canMove(ChessBoard board, ChessPosition myPosition, int rowScalar, int colScalar) {
+        // takes the other 3 helper function to see if a piece can move so a given position
         int new_row = myPosition.getRow() + rowScalar;
         int new_col = myPosition.getColumn() + colScalar;
         ChessPosition new_pos = new ChessPosition(new_row, new_col);

@@ -92,7 +92,8 @@ public class ServiceTests {
     public void testCreateGame() throws DataAccessException {
         UserService.RegisterResult bobRegisterResult = registerBob();
         String testGameName = "What's A good game Name?";
-        service.GameService.CreateGameResult createGameResult = gameService.creatGame(bobRegisterResult.authToken(), new GameService.CreateGameRequest(testGameName));
+        service.GameService.CreateGameResult createGameResult = gameService.
+                creatGame(bobRegisterResult.authToken(), new GameService.CreateGameRequest(testGameName));
         int gamedID = createGameResult.gameID();
         assertEquals(gameMemory.getGame(gamedID), new GameData(gamedID, null, null, testGameName, new ChessGame()));
     }
@@ -102,7 +103,8 @@ public class ServiceTests {
         UserService.RegisterResult bobRegisterResult = registerBob();
         UserService.RegisterResult tomRegisterResult = registerTom();
         String testGameName = "What's A good game Name?";
-        service.GameService.CreateGameResult createGameResult = gameService.creatGame(bobRegisterResult.authToken(), new GameService.CreateGameRequest(testGameName));
+        service.GameService.CreateGameResult createGameResult = gameService.
+                creatGame(bobRegisterResult.authToken(), new GameService.CreateGameRequest(testGameName));
         int gameID = createGameResult.gameID();
         GameService.JoinGameRequest whiteRequest = new GameService.JoinGameRequest("WHITE", gameID);
         gameService.joinGame(bobRegisterResult.authToken(), whiteRequest);
@@ -156,7 +158,8 @@ public class ServiceTests {
         assertThrows(DataAccessException.class, () -> userMemory.getUser(userBob.username()));
         assertThrows(DataAccessException.class, () -> userMemory.getUser(userTom.username()));
         assertThrows(DataAccessException.class, () -> gameService.listGames(tomRegisterResult.authToken()));
-        assertThrows(DataAccessException.class, () -> gameService.creatGame(bobRegisterResult.authToken(), new GameService.CreateGameRequest("Game1")));
+        assertThrows(DataAccessException.class, () -> gameService.
+                creatGame(bobRegisterResult.authToken(), new GameService.CreateGameRequest("Game1")));
 
     }
 
