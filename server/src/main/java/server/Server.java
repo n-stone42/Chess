@@ -5,13 +5,11 @@ import dataaccess.*;
 import io.javalin.*;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
-import java.util.Map;
 import Handlers.*;
 import service.ClearService;
 import service.GameService;
 import service.UserService;
 
-import javax.xml.crypto.Data;
 
 public class Server {
 
@@ -28,43 +26,39 @@ public class Server {
 
     private final Javalin javalin;
     private final ClearHandler clearHandler = new ClearHandler(clearService);
-    private final UserHandler userHandler = new UserHandler(userService);
-    private final GameHandler gameHandler = new GameHandler(gameService);
 
 
-    public Server () {
+    public Server() {
 
         javalin = Javalin.create(config -> config.staticFiles.add("web"));
-            javalin.post("/user",this::RegisterUsesr);
-            javalin.post("/session",this::Login);
-            javalin.delete("/session",this::Logout);
-            javalin.get("/game", this::listGame);
-            javalin.post("/game", this::createGame);
-            javalin.put("/game", this::joinGame);
-            javalin.delete("/db", this::clearDb);
-            javalin.exception(DataAccessException.class, this::exceptionHandler);
+        javalin.post("/user", this::RegisterUsesr);
+        javalin.post("/session", this::Login);
+        javalin.delete("/session", this::Logout);
+        javalin.get("/game", this::listGame);
+        javalin.post("/game", this::createGame);
+        javalin.put("/game", this::joinGame);
+        javalin.delete("/db", this::clearDb);
+        javalin.exception(DataAccessException.class, this::exceptionHandler);
 
-        // Register your endpoints and exception handlers here.
     }
 
-    public void clearDb(@NotNull Context context) throws DataAccessException { // there is no context
+    public void clearDb(@NotNull Context context) throws DataAccessException {
         clearHandler.clear();
         context.status(200);
     }
 
     public void RegisterUsesr(@NotNull Context context) throws DataAccessException {
         UserService.RegisterRequest request = new Gson().fromJson(context.body(), UserService.RegisterRequest.class);
-        if (request.username() == null || request.password() == null ) {
+        if (request.username() == null || request.password() == null) {
             throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
         }
         UserService.RegisterResult result = userService.register(request);
         context.result(new Gson().toJson(result));
-//        userHandler.RegisterUser(handle(context));
     }
 
     public void Login(@NotNull Context context) throws DataAccessException {
         UserService.LoginRequest request = new Gson().fromJson(context.body(), UserService.LoginRequest.class);
-        if (request.username() == null || request.password() == null ) {
+        if (request.username() == null || request.password() == null) {
             throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
         }
         UserService.LoginResult result = userService.login(request);
@@ -82,9 +76,6 @@ public class Server {
 
     public void createGame(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
-//        if (context.body().length() <= 2) {
-//            throw new DataAccessException("Error: Game name is null", DataAccessException.Code.BadRequest);
-//        }
         GameService.CreateGameRequest request = new Gson().fromJson(context.body(), GameService.CreateGameRequest.class);
         if (request.gameName() == null) {
             throw new DataAccessException("Error: Game name is null", DataAccessException.Code.BadRequest);
@@ -112,13 +103,6 @@ public class Server {
         context.result(new Gson().toJson(result));
     }
 
-
-//    private void handle(Context ctx) {
-//        var r = Map.of();
-//        var json = new Gson();
-//        ctx.json(json.toJson(r));
-//    }
-
     public void exceptionHandler(DataAccessException exception, Context context) {
         context.status(exception.toHttpStatuscode());
         context.result(exception.toJson());
@@ -128,10 +112,6 @@ public class Server {
         javalin.start(desiredPort);
         return javalin.port();
     }
-
-//    private void exceptionHandler(DataAccessException exception, Context context) {
-//        contest.status(exception.toHttp)
-//    }
 
     public int port() {
         return javalin.port();

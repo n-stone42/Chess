@@ -13,18 +13,17 @@ public class ChessBoard {
 
 
     private ChessPiece[][] chess_array = new ChessPiece[8][8];
+
     public ChessBoard() {
         this.chess_array = chess_array;
     }
 
     public ChessBoard(ChessBoard other) { // for making a deepcopy of the board
         this.chess_array = new ChessPiece[8][8];
-        for (int i = 0; i <8; i++) {
-            for (int j = 0; j <8; j++) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
                 if (other.chess_array[i][j] != null) {
                     this.chess_array[i][j] = new ChessPiece(other.chess_array[i][j].getTeamColor(), other.chess_array[i][j].getPieceType());
-//                    System.out.printf(" %d %d ", i,j);
-//                    System.out.println(this.chess_array[i][j].toString());
 
                 }
             }
@@ -38,11 +37,11 @@ public class ChessBoard {
      * @param piece    the piece to add
      */
     public void addPiece(ChessPosition position, ChessPiece piece) {
-        chess_array[position.getRow() -1][position.getColumn()-1] = piece;
+        chess_array[position.getRow() - 1][position.getColumn() - 1] = piece;
     }
 
     public void removePiece(ChessPosition position) {
-        chess_array[position.getRow() -1][position.getColumn()-1] = null;
+        chess_array[position.getRow() - 1][position.getColumn() - 1] = null;
     }
 
     /**
@@ -55,7 +54,7 @@ public class ChessBoard {
     public ChessPiece getPiece(ChessPosition position) {
 //        System.out.print(" position ");
 //        System.out.println(position.toString());
-        return chess_array[position.getRow() -1][position.getColumn()-1];
+        return chess_array[position.getRow() - 1][position.getColumn() - 1];
     }
 
     /**
@@ -64,9 +63,9 @@ public class ChessBoard {
      */
     public void resetBoard() {
 
-        for (int i =0; i < 8; i++) { //pawns
-                chess_array[1][i] = new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.PAWN);
-                chess_array[6][i] = new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.PAWN);
+        for (int i = 0; i < 8; i++) { //pawns
+            chess_array[1][i] = new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.PAWN);
+            chess_array[6][i] = new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.PAWN);
         }
 
         //White

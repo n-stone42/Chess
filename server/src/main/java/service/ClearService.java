@@ -14,7 +14,7 @@ public class ClearService {
         authData = AuthData;
     }
 
-    public void eraseAllData() throws DataAccessException{
+    public void eraseAllData() throws DataAccessException {
         userData.clear();
         gameData.clear();
         authData.clear();

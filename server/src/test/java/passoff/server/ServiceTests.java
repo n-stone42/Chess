@@ -1,4 +1,5 @@
 package passoff.server;
+
 import chess.ChessGame;
 import dataaccess.*;
 import model.AuthData;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ServiceTests {
-    public  MemoryUserDAO userMemory = new MemoryUserDAO();
+    public MemoryUserDAO userMemory = new MemoryUserDAO();
     public MemoryAuthDAO authMemory = new MemoryAuthDAO();
     public MemoryGameDAO gameMemory = new MemoryGameDAO();
     public UserService userService = new UserService(userMemory, authMemory);
@@ -33,17 +34,17 @@ public class ServiceTests {
         gameMemory.clear();
     }
 
-    public UserService.RegisterResult registerBob() throws DataAccessException{
-        UserService.RegisterRequest request= new UserService.RegisterRequest(User_Bob.username(), User_Bob.password(),User_Bob.email());
+    public UserService.RegisterResult registerBob() throws DataAccessException {
+        UserService.RegisterRequest request = new UserService.RegisterRequest(User_Bob.username(), User_Bob.password(), User_Bob.email());
         return userService.register(request);
     }
 
-    public UserService.RegisterResult registerTom() throws DataAccessException{
-        UserService.RegisterRequest request= new UserService.RegisterRequest(User_Tom.username(), User_Tom.password(),User_Tom.email());
+    public UserService.RegisterResult registerTom() throws DataAccessException {
+        UserService.RegisterRequest request = new UserService.RegisterRequest(User_Tom.username(), User_Tom.password(), User_Tom.email());
         return userService.register(request);
     }
 
-    public service.GameService.CreateGameResult createGame1(UserService.RegisterResult BobRegisterResult,UserService.RegisterResult TomRegisterResult) throws DataAccessException{
+    public service.GameService.CreateGameResult createGame1(UserService.RegisterResult BobRegisterResult, UserService.RegisterResult TomRegisterResult) throws DataAccessException {
         return gameService.creatGame(BobRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName1));
 //        service.GameService.CreateGameResult  createGameResult1 = gameService.creatGame(BobRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName1));
 //        int GameID1 = createGameResult1.gameID();
@@ -54,7 +55,7 @@ public class ServiceTests {
 //        return new MemoryGameDAO.modifiedGameData(GameID1, User_Bob.username(), User_Tom.username(), TestGameName1);
     }
 
-    public service.GameService.CreateGameResult  createGame2(UserService.RegisterResult BobRegisterResult,UserService.RegisterResult TomRegisterResult  ) throws DataAccessException{
+    public service.GameService.CreateGameResult createGame2(UserService.RegisterResult BobRegisterResult, UserService.RegisterResult TomRegisterResult) throws DataAccessException {
         return gameService.creatGame(TomRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName2));
     }
 
@@ -64,23 +65,23 @@ public class ServiceTests {
             UserService.RegisterResult result = registerBob();
             String authToken = result.authToken();
             assertNotNull(authMemory.getAuth(authToken));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
     @Test
     public void testLogin() {
         try {
             UserService.RegisterResult result = registerBob();
             UserService.LoginResult loginResult = userService.login(new UserService.LoginRequest(User_Bob.username(), User_Bob.password()));
             assertTrue(loginResult.username() == User_Bob.username() && loginResult.authToken() != result.authToken());
-            assertEquals(authMemory.getAuth(loginResult.authToken()), new AuthData(loginResult.authToken(),User_Bob.username()));
-        }
-        catch (Exception e) {
+            assertEquals(authMemory.getAuth(loginResult.authToken()), new AuthData(loginResult.authToken(), User_Bob.username()));
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
     @Test
     public void testLogout() {
         try {
@@ -88,18 +89,19 @@ public class ServiceTests {
             UserService.LoginResult loginResult = userService.login(new UserService.LoginRequest(User_Bob.username(), User_Bob.password()));
             UserService.LogoutRequest logoutRequest = new UserService.LogoutRequest(loginResult.username(), loginResult.authToken());
             assertEquals(userService.logout(logoutRequest), new UserService.LogoutResult());
-            assertThrows(DataAccessException.class,() -> authMemory.getAuth(loginResult.authToken()));
+            assertThrows(DataAccessException.class, () -> authMemory.getAuth(loginResult.authToken()));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
     @Test
-    public void testCreateGame() throws DataAccessException{
+    public void testCreateGame() throws DataAccessException {
         UserService.RegisterResult BobRegisterResult = registerBob();
         String TestGameName = "What's A good game Name?";
-        service.GameService.CreateGameResult  createGameResult= gameService.creatGame(BobRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName));
+        service.GameService.CreateGameResult createGameResult = gameService.creatGame(BobRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName));
         int GameID = createGameResult.gameID();
-        assertEquals(gameMemory.getGame(GameID), new GameData(GameID,null,null,TestGameName,new ChessGame()));
+        assertEquals(gameMemory.getGame(GameID), new GameData(GameID, null, null, TestGameName, new ChessGame()));
     }
 
     @Test
@@ -107,14 +109,14 @@ public class ServiceTests {
         UserService.RegisterResult BobRegisterResult = registerBob();
         UserService.RegisterResult TomRegisterResult = registerTom();
         String TestGameName = "What's A good game Name?";
-        service.GameService.CreateGameResult  createGameResult = gameService.creatGame(BobRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName));
+        service.GameService.CreateGameResult createGameResult = gameService.creatGame(BobRegisterResult.authToken(), new GameService.CreateGameRequest(TestGameName));
         int GameID = createGameResult.gameID();
-        GameService.JoinGameRequest whiteRequest = new GameService.JoinGameRequest("WHITE",GameID);
+        GameService.JoinGameRequest whiteRequest = new GameService.JoinGameRequest("WHITE", GameID);
         gameService.joinGame(BobRegisterResult.authToken(), whiteRequest);
-        assertEquals(new GameData(GameID, User_Bob.username(), null,TestGameName,new ChessGame()), gameMemory.getGame(GameID));
-        GameService.JoinGameRequest blackRequest = new GameService.JoinGameRequest("BLACK" ,GameID);
+        assertEquals(new GameData(GameID, User_Bob.username(), null, TestGameName, new ChessGame()), gameMemory.getGame(GameID));
+        GameService.JoinGameRequest blackRequest = new GameService.JoinGameRequest("BLACK", GameID);
         gameService.joinGame(TomRegisterResult.authToken(), blackRequest);
-        assertEquals(new GameData(GameID, User_Bob.username(), User_Tom.username(), TestGameName,new ChessGame()), gameMemory.getGame(GameID));
+        assertEquals(new GameData(GameID, User_Bob.username(), User_Tom.username(), TestGameName, new ChessGame()), gameMemory.getGame(GameID));
     }
     // can test errors like if white username is already filled, game ID is wrong  ect
 
@@ -126,18 +128,18 @@ public class ServiceTests {
 
         ArrayList<MemoryGameDAO.modifiedGameData> expectedList = new ArrayList<MemoryGameDAO.modifiedGameData>();
 
-        GameService.CreateGameResult createGameResult1 = createGame1(BobRegisterResult,TomRegisterResult);
+        GameService.CreateGameResult createGameResult1 = createGame1(BobRegisterResult, TomRegisterResult);
         int GameID1 = createGameResult1.gameID();
-        GameService.JoinGameRequest whiteRequest1 = new GameService.JoinGameRequest("WHITE",GameID1);
-        GameService.JoinGameRequest blackRequest1 = new GameService.JoinGameRequest("BLACK" ,GameID1);
-        gameService.joinGame(BobRegisterResult.authToken(), whiteRequest1 );
+        GameService.JoinGameRequest whiteRequest1 = new GameService.JoinGameRequest("WHITE", GameID1);
+        GameService.JoinGameRequest blackRequest1 = new GameService.JoinGameRequest("BLACK", GameID1);
+        gameService.joinGame(BobRegisterResult.authToken(), whiteRequest1);
         gameService.joinGame(TomRegisterResult.authToken(), blackRequest1);
         expectedList.add(new MemoryGameDAO.modifiedGameData(GameID1, User_Bob.username(), User_Tom.username(), "Game1"));
 
-        GameService.CreateGameResult createGameResult2 = createGame2(BobRegisterResult,TomRegisterResult);
+        GameService.CreateGameResult createGameResult2 = createGame2(BobRegisterResult, TomRegisterResult);
         int GameID2 = createGameResult2.gameID();
-        GameService.JoinGameRequest whiteRequest2 = new GameService.JoinGameRequest("WHITE",GameID2);
-        GameService.JoinGameRequest blackRequest2 = new GameService.JoinGameRequest("BLACK" ,GameID2);
+        GameService.JoinGameRequest whiteRequest2 = new GameService.JoinGameRequest("WHITE", GameID2);
+        GameService.JoinGameRequest blackRequest2 = new GameService.JoinGameRequest("BLACK", GameID2);
         gameService.joinGame(TomRegisterResult.authToken(), whiteRequest2);
         gameService.joinGame(BobRegisterResult.authToken(), blackRequest2);
         expectedList.add(new MemoryGameDAO.modifiedGameData(GameID2, User_Tom.username(), User_Bob.username(), "Game2"));
@@ -147,28 +149,29 @@ public class ServiceTests {
     }
 
     @Test
-    public void testClearAll() throws DataAccessException{
+    public void testClearAll() throws DataAccessException {
         UserService.RegisterResult BobRegisterResult = registerBob();
         UserService.RegisterResult TomRegisterResult = registerTom();
         String TestGameName1 = "Game1";
         String TestGameName2 = "Game2";
 
-        createGame1(BobRegisterResult,TomRegisterResult);
-        service.GameService.CreateGameResult createGameResult2 = createGame2(BobRegisterResult,TomRegisterResult);
+        createGame1(BobRegisterResult, TomRegisterResult);
+        service.GameService.CreateGameResult createGameResult2 = createGame2(BobRegisterResult, TomRegisterResult);
         int GameID2 = createGameResult2.gameID();
-        GameService.JoinGameRequest whiteRequest2 = new GameService.JoinGameRequest("WHITE",GameID2);
-        GameService.JoinGameRequest blackRequest2 = new GameService.JoinGameRequest("BLACK" ,GameID2);
+        GameService.JoinGameRequest whiteRequest2 = new GameService.JoinGameRequest("WHITE", GameID2);
+        GameService.JoinGameRequest blackRequest2 = new GameService.JoinGameRequest("BLACK", GameID2);
         gameService.joinGame(TomRegisterResult.authToken(), whiteRequest2);
         gameService.joinGame(BobRegisterResult.authToken(), blackRequest2);
         clearService.eraseAllData();
-        assertThrows(DataAccessException.class,() -> userMemory.getUser(User_Bob.username()));
-        assertThrows(DataAccessException.class,() -> userMemory.getUser(User_Tom.username()));
-        assertThrows(DataAccessException.class,() -> gameService.listGames(TomRegisterResult.authToken()));
-        assertThrows(DataAccessException.class,() -> gameService.creatGame(BobRegisterResult.authToken(), new GameService.CreateGameRequest("Game1")));
+        assertThrows(DataAccessException.class, () -> userMemory.getUser(User_Bob.username()));
+        assertThrows(DataAccessException.class, () -> userMemory.getUser(User_Tom.username()));
+        assertThrows(DataAccessException.class, () -> gameService.listGames(TomRegisterResult.authToken()));
+        assertThrows(DataAccessException.class, () -> gameService.creatGame(BobRegisterResult.authToken(), new GameService.CreateGameRequest("Game1")));
 
     }
+
     @Test
-    public void testDeleteAuthWithBadAuth () {
+    public void testDeleteAuthWithBadAuth() {
 
     }
 

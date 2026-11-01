@@ -1,12 +1,9 @@
 package dataaccess;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
 
 import chess.ChessGame;
-import chess.ChessMove;
-import chess.InvalidMoveException;
 import model.*;
 
 public class MemoryGameDAO implements GameDataAccess {
@@ -18,9 +15,6 @@ public class MemoryGameDAO implements GameDataAccess {
 
     public record modifiedGameData(int gameID, String whiteUsername, String blackUsername, String gameName) {
     }
-
-    ;
-
 
     public void createGame(int gameID, String gameName) throws DataAccessException {
         // we are creating a new chess game so this parameter will just be a new chess game from the starting position
