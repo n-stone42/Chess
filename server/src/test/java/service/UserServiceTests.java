@@ -1,18 +1,17 @@
+package service;
+
 import chess.ChessGame;
 import dataaccess.*;
 import model.AuthData;
 import model.GameData;
 import model.UserData;
 import org.junit.jupiter.api.*;
-import service.ClearService;
-import service.GameService;
-import service.UserService;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class service {
+public class UserServiceTests {
     public MemoryUserDAO userMemory = new MemoryUserDAO();
     public MemoryAuthDAO authMemory = new MemoryAuthDAO();
     public MemoryGameDAO gameMemory = new MemoryGameDAO();
