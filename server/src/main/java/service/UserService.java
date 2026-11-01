@@ -72,7 +72,7 @@ public class UserService {
             throw new DataAccessException("Error: Password does not match US67",
                     DataAccessException.Code.Unathurized); //change
         }
-        throw new DataAccessException("Error: Usename not found US69", DataAccessException.Code.Unathurized); // change
+        throw new DataAccessException("Error: Username not found US69", DataAccessException.Code.Unathurized); // change
     }
 
     public LogoutResult logout(LogoutRequest request) throws DataAccessException {
