@@ -50,15 +50,16 @@ public class DatabaseUserData implements UserDataAccess{
 
 
     public void clear() throws DataAccessException {
-        return;
-//        DatabaseManager.createDatabase();
-//        try (Connection connection = DatabaseManager.getConnection()) {
-//            try (var preparedStatement = connection.prepareStatement("TRUNCATE TABLE ")) {
-//                preparedStatement.executeUpdate();
-//            } catch (SQLException ex) {
-//                throw new DataAccessException("could not clear DataBase" + ex, DataAccessException.Code.OtherError);
-//            }
-//        }
+        DatabaseManager.createDatabase();
+        try (Connection connection = DatabaseManager.getConnection()) {
+            try (var preparedStatement = connection.prepareStatement("TRUNCATE TABLE User")) {
+                preparedStatement.executeUpdate();
+            } catch (SQLException ex) {
+                throw new DataAccessException("could not clear DataBase" + ex, DataAccessException.Code.OtherError);
+            }
+        } catch (SQLException ex) {
+            throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);
+        }
     }
 
     public UserData getUser(String username) throws DataAccessException {

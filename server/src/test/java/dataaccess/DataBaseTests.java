@@ -2,20 +2,11 @@ package dataaccess;
 
 import org.junit.jupiter.api.Test;
 
-import chess.ChessGame;
-import dataaccess.*;
-import model.AuthData;
-import model.GameData;
-import model.UserData;
-import org.junit.jupiter.api.*;
-
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class DataBaseTests {
-    public DatabaseUserData dataBase = new DatabaseUserData();
+    public DatabaseUserData databaseUserData = new DatabaseUserData();
     public DatabaseManager manger = new DatabaseManager();
 
     @Test
@@ -28,8 +19,15 @@ public class DataBaseTests {
     @Test
     void testCreateUserTable() {
         assertDoesNotThrow(() -> {
-            dataBase.makeUserTable();
+            databaseUserData.makeUserTable();
         });
+    }
+
+    @Test
+    void testClearUserTableWithoutError() {
+        assertDoesNotThrow(() -> {
+            databaseUserData.clear();
+        }, "clearing user data failed " );
     }
 
 }
