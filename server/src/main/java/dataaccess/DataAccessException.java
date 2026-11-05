@@ -16,12 +16,17 @@ public class DataAccessException extends Exception {
         AlreadyTaken, //403
         OtherError, //500
     }
-
+//
     final private Code code;
 
     public DataAccessException(String message, Code code) {
         super(message);
         this.code = code;
+    }
+
+    public DataAccessException(String message, Throwable ex) {
+        super(message, ex);
+        this.code = Code.OtherError;
     }
 
     public int toHttpStatuscode() {
