@@ -87,13 +87,20 @@ public class DataBaseTests {
         });
     }
     @Test
-    void testClearTables() {
-        assertDoesNotThrow(() -> {
-            databaseUserData.clear();
+    void testClearTables() throws DataAccessException{
+        databaseUserData.clear();
+        databaseAuthData.clear();
+        assertThrows(DataAccessException.class, () -> databaseUserData.getUser(userBob.username()));
+        assertThrows(DataAccessException.class, () -> databaseAuthData.getAuth(testAuthData.authToken()));
+    }
+
+    @Test
+    void testDeleteAuth() throws DataAccessException{
+        addAuthData();
+        assertDoesNotThrow( () -> {
+            databaseAuthData.deleteAuth(testAuthData.authToken());
         });
-        assertDoesNotThrow(() -> {
-            databaseAuthData.clear();
-        });
+        assertThrows(DataAccessException.class, () -> databaseAuthData.getAuth(testAuthData.authToken()));
     }
 
 }

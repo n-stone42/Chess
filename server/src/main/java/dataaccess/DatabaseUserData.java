@@ -89,7 +89,7 @@ public class DatabaseUserData implements UserDataAccess{
                         String password = resultSet.getString("Password");
                         String email = resultSet.getString("Email");
                         return new UserData(username, password, email);
-                    }
+                    } throw new DataAccessException("could not get user", DataAccessException.Code.OtherError);
                 }
 
             } catch (SQLException ex) {
@@ -97,7 +97,6 @@ public class DatabaseUserData implements UserDataAccess{
 
         } catch (SQLException ex) {
             throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);}
-        return null;
     }
 
     public void createUser(String username, String password, String email) throws DataAccessException {

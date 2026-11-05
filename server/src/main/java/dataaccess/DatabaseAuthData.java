@@ -87,7 +87,7 @@ public class DatabaseAuthData implements AuthDataAccess{
                     while (resultSet.next()){
                         String username = resultSet.getString("username");
                         return new AuthData(authToken, username);
-                    }
+                    } throw new DataAccessException("auth Token not found", DataAccessException.Code.Unathurized);
                 }
 
             } catch (SQLException ex) {
@@ -95,7 +95,6 @@ public class DatabaseAuthData implements AuthDataAccess{
 
         } catch (SQLException ex) {
             throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);}
-        return null;
     }
 
     public void deleteAuth(String authToken) throws DataAccessException {
