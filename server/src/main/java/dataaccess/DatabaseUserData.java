@@ -86,8 +86,8 @@ public class DatabaseUserData implements UserDataAccess{
                 preparedStatement.setString(1, username);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()){
-                        var password = resultSet.getString("Password");
-                        var email = resultSet.getString("Email");
+                        String password = resultSet.getString("Password");
+                        String email = resultSet.getString("Email");
                         return new UserData(username, password, email);
                     }
                 }
@@ -116,7 +116,6 @@ public class DatabaseUserData implements UserDataAccess{
 
         } catch (SQLException ex) {
             throw new DataAccessException("could not create database/ get connection" + ex, DataAccessException.Code.OtherError); }
-
     }
 
 

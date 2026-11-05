@@ -1,5 +1,6 @@
 package dataaccess;
 
+import model.AuthData;
 import model.UserData;
 import org.eclipse.jetty.server.Authentication;
 import org.junit.jupiter.api.BeforeAll;
@@ -11,21 +12,34 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DataBaseTests {
     public DatabaseUserData databaseUserData = new DatabaseUserData();
+    public DatabaseAuthData databaseAuthData = new DatabaseAuthData();
     public DatabaseManager manger = new DatabaseManager();
 
     public static UserData userBob = new UserData("Bob", "password", "B0BTheGoat67@gmail.com");
+
+    public AuthData testAuthData = new AuthData("token", userBob.username());
     void addUserBob() throws DataAccessException{
         databaseUserData.createUser(userBob.username(), userBob.password(), userBob.email());
     }
 
+    void addAuthData() throws DataAccessException{
+        databaseAuthData.createAuth(testAuthData.authToken(), userBob.username());
+    }
+
+    @BeforeEach
+    void setup()  throws DataAccessException {
+        testCreateDBWithoutError();
+        testClearTables();
+        testCreateTables();
+    }
 
     @Test
-    void createThenDelateUserTable() {
+    void testCreateTables() {
         assertDoesNotThrow(() -> {
             databaseUserData.makeUserTable();
         });
         assertDoesNotThrow(() -> {
-            databaseUserData.deleteUserTable();
+            databaseAuthData.makeAuthDataTable();
         });
     }
 
@@ -37,20 +51,6 @@ public class DataBaseTests {
     }
 
     @Test
-    void testCreateUserTable() {
-        assertDoesNotThrow(() -> {
-            databaseUserData.makeUserTable();
-        });
-    }
-
-    @Test
-    void testClearUserTableWithoutError() {
-        assertDoesNotThrow(() -> {
-            databaseUserData.clear();
-        }, "clearing user data failed " );
-    }
-
-    @Test
     void createUserWithoutError() {
         assertDoesNotThrow( () -> {
             addUserBob();
@@ -58,15 +58,17 @@ public class DataBaseTests {
     }
 
     @Test
-    void testGetUserData() {
-            assertDoesNotThrow( () -> {
-                assertEquals(userBob.username(), databaseUserData.getUser(userBob.username()).username());
-                assertEquals(userBob.email(), databaseUserData.getUser(userBob.username()).email());
-            });
+    void testGetUserData() throws DataAccessException{
+        addUserBob();
+        assertDoesNotThrow( () -> {
+            assertEquals(userBob.username(), databaseUserData.getUser(userBob.username()).username());
+            assertEquals(userBob.email(), databaseUserData.getUser(userBob.username()).email());
+        });
     }
 
     @Test
-    void testMatchPassword() {
+    void testMatchPassword()  throws DataAccessException{
+        addUserBob();
         assertDoesNotThrow( () -> {
             assertTrue(databaseUserData.matchPassword(userBob.username(), userBob.password()));
         });
@@ -75,5 +77,23 @@ public class DataBaseTests {
         });
     }
 
+    @Test
+    void testGetAuthData() {
+        assertDoesNotThrow( () -> {
+            addAuthData();
+        });
+        assertDoesNotThrow( () -> {
+            assertEquals(databaseAuthData.getAuth("token"), testAuthData);
+        });
+    }
+    @Test
+    void testClearTables() {
+        assertDoesNotThrow(() -> {
+            databaseUserData.clear();
+        });
+        assertDoesNotThrow(() -> {
+            databaseAuthData.clear();
+        });
+    }
 
 }
