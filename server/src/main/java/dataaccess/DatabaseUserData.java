@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class DatabaseUserData implements UserDataAccess{
 
     public void databaseAccess() throws DataAccessException {
-        makeDatabase();
+        makeUserTable();
     }
 
     private final String[] createBaiscDatabase = {
@@ -19,27 +19,23 @@ public class DatabaseUserData implements UserDataAccess{
         """
     };
 
-    private final String[] createDatabase = {
+    private final String[] createUserTableStatment = {
         """
-        CREATE DATABASE Chess;
-        USE Chess;
-        
-        CREATE TABLE User (
-        `Username` VARCHAR(255) NOT NULL,
-        `Password` VARCHAR(255) NOT NULL,
-        PRIMARY KEY(Username)
-        
+        CREATE TABLE IF NOT EXISTS User (
+         `Username` VARCHAR(255) NOT NULL,
+         `Password` VARCHAR(255) NOT NULL,
+         PRIMARY KEY(`Username`),
+         INDEX(Username),
+         INDEX(Password)
         );
-    
-        INSERT INTO User (Username, Password) Values ('Test User', 'Test Password');
          """};
 
 
-    public void makeDatabase() throws DataAccessException {
+    public void makeUserTable() throws DataAccessException {
 
         DatabaseManager.createDatabase();
         try (Connection connection = DatabaseManager.getConnection()) {
-            for (String statement : createBaiscDatabase) {
+            for (String statement : createUserTableStatment) {
                 try (var preparedStatement = connection.prepareStatement(statement)) {
                     preparedStatement.executeUpdate();
                 } catch (SQLDataException exception) {
@@ -55,6 +51,14 @@ public class DatabaseUserData implements UserDataAccess{
 
     public void clear() throws DataAccessException {
         return;
+//        DatabaseManager.createDatabase();
+//        try (Connection connection = DatabaseManager.getConnection()) {
+//            try (var preparedStatement = connection.prepareStatement("TRUNCATE TABLE ")) {
+//                preparedStatement.executeUpdate();
+//            } catch (SQLException ex) {
+//                throw new DataAccessException("could not clear DataBase" + ex, DataAccessException.Code.OtherError);
+//            }
+//        }
     }
 
     public UserData getUser(String username) throws DataAccessException {

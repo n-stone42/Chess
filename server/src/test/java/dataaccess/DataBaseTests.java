@@ -16,11 +16,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DataBaseTests {
     public DatabaseUserData dataBase = new DatabaseUserData();
+    public DatabaseManager manger = new DatabaseManager();
+
     @Test
     void testCreateWithoutError() {
         assertDoesNotThrow(() -> {
-            dataBase.makeDatabase();
+            manger.createDatabase();
             }, "making database failed " );
+    }
+
+    @Test
+    void testCreateUserTable() {
+        assertDoesNotThrow(() -> {
+            dataBase.makeUserTable();
+        });
     }
 
 }
