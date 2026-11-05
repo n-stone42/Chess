@@ -1,5 +1,8 @@
 package dataaccess;
 
+import model.UserData;
+import org.eclipse.jetty.server.Authentication;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,10 +13,11 @@ public class DataBaseTests {
     public DatabaseUserData databaseUserData = new DatabaseUserData();
     public DatabaseManager manger = new DatabaseManager();
 
-
+    public static UserData userBob = new UserData("Bob", "password", "B0BTheGoat67@gmail.com");
     void addUserBob() throws DataAccessException{
-        databaseUserData.createUser("Bob", "password", "B0BTheGoat67@gmail.com");
+        databaseUserData.createUser(userBob.username(), userBob.password(), userBob.email());
     }
+
 
     @Test
     void createThenDelateUserTable() {
@@ -48,9 +52,26 @@ public class DataBaseTests {
 
     @Test
     void createUserWithoutError() {
-
         assertDoesNotThrow( () -> {
             addUserBob();
+        });
+    }
+
+    @Test
+    void testGetUserData() {
+            assertDoesNotThrow( () -> {
+                assertEquals(userBob.username(), databaseUserData.getUser(userBob.username()).username());
+                assertEquals(userBob.email(), databaseUserData.getUser(userBob.username()).email());
+            });
+    }
+
+    @Test
+    void testMatchPassword() {
+        assertDoesNotThrow( () -> {
+            assertTrue(databaseUserData.matchPassword(userBob.username(), userBob.password()));
+        });
+        assertDoesNotThrow( () -> {
+            assertFalse(databaseUserData.matchPassword(userBob.username(), "badPassword"));
         });
     }
 

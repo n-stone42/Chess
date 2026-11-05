@@ -1,8 +1,11 @@
 package dataaccess;
 
 import model.UserData;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
+
+import static org.mindrot.jbcrypt.BCrypt.hashpw;
 
 public class DatabaseUserData implements UserDataAccess{
 
@@ -26,6 +29,11 @@ public class DatabaseUserData implements UserDataAccess{
          INDEX(Email)
         );
         """};
+
+    public String hashPassoword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt());
+    }
+
 
     public void deleteUserTable() throws DataAccessException{
         DatabaseManager.createDatabase();
@@ -74,30 +82,31 @@ public class DatabaseUserData implements UserDataAccess{
     public UserData getUser(String username) throws DataAccessException {
         DatabaseManager.createDatabase();
         try (Connection connection = DatabaseManager.getConnection()) {
-            try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT Username, Password, Email FROM User WHERE type=?")) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT Password, Email FROM User WHERE Username=?")) {
                 preparedStatement.setString(1, username);
-                preparedStatement.executeUpdate();
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                        String outUsername = resultSet.getString("Username");
-                        String password = resultSet.getString("Password");
-                        String email = resultSet.getString("Email");
-
-                        return new UserData(outUsername, password, email);
+                    while (resultSet.next()){
+                        var password = resultSet.getString("Password");
+                        var email = resultSet.getString("Email");
+                        return new UserData(username, password, email);
+                    }
                 }
 
             } catch (SQLException ex) {
-                throw new DataAccessException("could not clear DataBase" + ex, DataAccessException.Code.OtherError);}
+                throw new DataAccessException("could not get user" + ex, DataAccessException.Code.OtherError);}
 
         } catch (SQLException ex) {
             throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);}
+        return null;
     }
 
     public void createUser(String username, String password, String email) throws DataAccessException {
         DatabaseManager.createDatabase();
+        String hashedPassword = hashPassoword(password);
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO User (Username, Password, Email) VALUES(?, ?, ?)")) {
                 preparedStatement.setString(1, username);
-                preparedStatement.setString(2, password);
+                preparedStatement.setString(2, hashedPassword);
                 preparedStatement.setString(3, email);
 
                 preparedStatement.executeUpdate();
@@ -113,9 +122,6 @@ public class DatabaseUserData implements UserDataAccess{
 
     public boolean matchPassword(String username, String password) throws DataAccessException {
         UserData userData = getUser(username);
-        if (password.equals(userData.password())) {
-            return true;
-        }
-        return false;
+        return BCrypt.checkpw(password, userData.password());
     }
 }
