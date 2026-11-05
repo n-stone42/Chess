@@ -2,10 +2,7 @@ package dataaccess;
 
 import model.UserData;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLDataException;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DatabaseUserData implements UserDataAccess{
 
@@ -13,29 +10,41 @@ public class DatabaseUserData implements UserDataAccess{
         makeUserTable();
     }
 
-    private final String[] createBaiscDatabase = {
-        """
-        CREATE DATABASE IF NOT EXISTS Chess;
-        """
-    };
+//    public void deleteDataBase() throws DataAccessException  {
+//        DatabaseManager.createDatabase();
+//    }
 
-    private final String[] createUserTableStatment = {
+    private final String[] createUserTableStatement = {
         """
         CREATE TABLE IF NOT EXISTS User (
          `Username` VARCHAR(255) NOT NULL,
          `Password` VARCHAR(255) NOT NULL,
+         `Email` VARCHAR(255) NOT NULL,
          PRIMARY KEY(`Username`),
          INDEX(Username),
-         INDEX(Password)
+         INDEX(Password),
+         INDEX(Email)
         );
-         """};
+        """};
 
+    public void deleteUserTable() throws DataAccessException{
+        DatabaseManager.createDatabase();
+        try (Connection connection = DatabaseManager.getConnection()) {
+            try (var preparedStatement = connection.prepareStatement("DROP TABLE User")) {
+                preparedStatement.executeUpdate();
+            } catch (SQLException ex) {
+                throw new DataAccessException("could not clear DataBase" + ex, DataAccessException.Code.OtherError);
+            }
+        } catch (SQLException ex) {
+            throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);
+        }
+    }
 
     public void makeUserTable() throws DataAccessException {
 
         DatabaseManager.createDatabase();
         try (Connection connection = DatabaseManager.getConnection()) {
-            for (String statement : createUserTableStatment) {
+            for (String statement : createUserTableStatement) {
                 try (var preparedStatement = connection.prepareStatement(statement)) {
                     preparedStatement.executeUpdate();
                 } catch (SQLDataException exception) {
@@ -63,14 +72,50 @@ public class DatabaseUserData implements UserDataAccess{
     }
 
     public UserData getUser(String username) throws DataAccessException {
-        return null;
+        DatabaseManager.createDatabase();
+        try (Connection connection = DatabaseManager.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT Username, Password, Email FROM User WHERE type=?")) {
+                preparedStatement.setString(1, username);
+                preparedStatement.executeUpdate();
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                        String outUsername = resultSet.getString("Username");
+                        String password = resultSet.getString("Password");
+                        String email = resultSet.getString("Email");
+
+                        return new UserData(outUsername, password, email);
+                }
+
+            } catch (SQLException ex) {
+                throw new DataAccessException("could not clear DataBase" + ex, DataAccessException.Code.OtherError);}
+
+        } catch (SQLException ex) {
+            throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);}
     }
 
     public void createUser(String username, String password, String email) throws DataAccessException {
-        return;
+        DatabaseManager.createDatabase();
+        try (Connection connection = DatabaseManager.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO User (Username, Password, Email) VALUES(?, ?, ?)")) {
+                preparedStatement.setString(1, username);
+                preparedStatement.setString(2, password);
+                preparedStatement.setString(3, email);
+
+                preparedStatement.executeUpdate();
+
+            } catch (SQLException ex) {
+                throw new DataAccessException("could not create user " + ex, DataAccessException.Code.OtherError); }
+
+        } catch (SQLException ex) {
+            throw new DataAccessException("could not create database/ get connection" + ex, DataAccessException.Code.OtherError); }
+
     }
 
+
     public boolean matchPassword(String username, String password) throws DataAccessException {
+        UserData userData = getUser(username);
+        if (password.equals(userData.password())) {
+            return true;
+        }
         return false;
     }
 }
