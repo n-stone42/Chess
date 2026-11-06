@@ -66,7 +66,7 @@ public class DatabaseUserData implements UserDataAccess{
 
 
     public void clear() throws DataAccessException {
-        DatabaseManager.createDatabase();
+        makeUserTable();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (var preparedStatement = connection.prepareStatement("TRUNCATE TABLE User")) {
                 preparedStatement.executeUpdate();
@@ -79,7 +79,7 @@ public class DatabaseUserData implements UserDataAccess{
     }
 
     public UserData getUser(String username) throws DataAccessException {
-        DatabaseManager.createDatabase();
+        makeUserTable();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT Password, Email FROM User WHERE Username=?")) {
                 preparedStatement.setString(1, username);
@@ -99,7 +99,7 @@ public class DatabaseUserData implements UserDataAccess{
     }
 
     public void createUser(String username, String password, String email) throws DataAccessException {
-        DatabaseManager.createDatabase();
+        makeUserTable();
         String hashedPassword = hashPassoword(password);
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO User (Username, Password, Email) VALUES(?, ?, ?)")) {

@@ -3,10 +3,9 @@ package dataaccess;
 import chess.ChessGame;
 import com.google.gson.Gson;
 import model.GameData;
+import model.UserData;
 
-import java.sql.Connection;
-import java.sql.SQLDataException;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class DatabaseGameData implements GameDataAccess{
@@ -19,10 +18,10 @@ public class DatabaseGameData implements GameDataAccess{
         """
         CREATE TABLE IF NOT EXISTS GameData (
          `gameID` int NOT NULL,
-         `whiteUser` VARCHAR(255) NOT NULL,
-         `blackUser` VARCHAR(255) NOT NULL,
+         `whiteUser` VARCHAR(255),
+         `blackUser` VARCHAR(255),
          `gameName` VARCHAR(255) NOT NULL,
-         `chessGame` VARCHAR(1023) NOT NULL,
+         `chessGame` VARCHAR(4095) NOT NULL,
          PRIMARY KEY(`gameID`),
          INDEX(gameID),
          INDEX(whiteUser),
@@ -59,7 +58,7 @@ public class DatabaseGameData implements GameDataAccess{
         }
     }
     public void clear() throws DataAccessException {
-        DatabaseManager.createDatabase();
+        makeGameDataTables();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (var preparedStatement = connection.prepareStatement("TRUNCATE TABLE GameData")) {
                 preparedStatement.executeUpdate();
@@ -72,7 +71,7 @@ public class DatabaseGameData implements GameDataAccess{
     }
 
     public void deleteGameTable() throws DataAccessException{
-        DatabaseManager.createDatabase();
+        makeGameDataTables();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (var preparedStatement = connection.prepareStatement("DROP TABLE GameData")) {
                 preparedStatement.executeUpdate();
@@ -85,7 +84,21 @@ public class DatabaseGameData implements GameDataAccess{
     }
 
     public void createGame(int gameID, String gameName) throws DataAccessException {
-        return;
+        makeGameDataTables();
+        try (Connection connection = DatabaseManager.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(
+                    "INSERT INTO GameData (gameID, whiteUser, blackUser, gameName, chessGame) VALUES(?,?,?,?,?)")) {
+                preparedStatement.setInt(1, gameID);
+                preparedStatement.setString(2, null);
+                preparedStatement.setString(3, null);
+                preparedStatement.setString(4, gameName);
+                preparedStatement.setString(5, chessGameToString(new ChessGame()));
+
+                preparedStatement.executeUpdate();
+        }
+        }catch (SQLException exception) {
+        throw new DataAccessException("could not create game " + exception, DataAccessException.Code.OtherError); }
+
     }
 
     public ArrayList<MemoryGameDAO.ModifiedGameData> listGame() throws DataAccessException {
@@ -93,7 +106,26 @@ public class DatabaseGameData implements GameDataAccess{
     }
 
     public GameData getGame(int gameID) throws DataAccessException {
-        return null;
+        makeGameDataTables();
+        try (Connection connection = DatabaseManager.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT whiteUser, blackUser, gameName, chessGame FROM GameData WHERE gameID=?")) {
+                preparedStatement.setInt(1, gameID);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()){
+                        String whiteUser = resultSet.getString("whiteUser");
+                        String blackUser = resultSet.getString("blackUser");
+                        String gameName = resultSet.getString("gameName");
+                        ChessGame chessGame = JSONtoChessGame(resultSet.getString("chessGame"));
+                        return new GameData(gameID,whiteUser, blackUser, gameName, chessGame);
+                    } throw new DataAccessException("could not get user", DataAccessException.Code.OtherError);
+                }
+
+            } catch (SQLException ex) {
+                throw new DataAccessException("could not get user" + ex, DataAccessException.Code.OtherError);}
+
+        } catch (SQLException ex) {
+            throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);}
     }
 
     public void joinGame(int gameID, ChessGame.TeamColor playerColor, String newUsername) throws DataAccessException {

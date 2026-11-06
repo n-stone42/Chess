@@ -2,6 +2,7 @@ package dataaccess;
 
 import chess.ChessGame;
 import model.AuthData;
+import model.GameData;
 import model.UserData;
 import org.eclipse.jetty.server.Authentication;
 import org.junit.jupiter.api.BeforeAll;
@@ -26,6 +27,10 @@ public class DataBaseTests {
 
     void addAuthData() throws DataAccessException{
         databaseAuthData.createAuth(testAuthData.authToken(), userBob.username());
+    }
+
+    void addChessGame() throws  DataAccessException{
+        databaseGameData.createGame(1, "testGame");
     }
 
     @BeforeEach
@@ -118,10 +123,32 @@ public class DataBaseTests {
     }
 
     @Test
-    void deleteGameTable() throws DataAccessException {
+    void deleteGameTable() {
         assertDoesNotThrow( () -> {
             databaseGameData.deleteGameTable();
         });
     }
+
+    @Test
+    void testCreateGame() throws DataAccessException{
+        assertDoesNotThrow( () -> {
+            addChessGame();
+        });
+        ChessGame expectedGame = new ChessGame();
+        GameData expectedGameData = new GameData(1, null, null, "testGame", expectedGame);
+        assertEquals(expectedGameData, databaseGameData.getGame(1));
+    }
+
+//    CREATE TABLE IF NOT EXISTS GameData (
+//         `gameID` int NOT NULL,
+//         `whiteUser` VARCHAR(255),
+//         `blackUser` VARCHAR(255),
+//         `gameName` VARCHAR(255) NOT NULL,
+//         `chessGame` VARCHAR(4095) NOT NULL,
+//    PRIMARY KEY(`gameID`),
+//    INDEX(gameID),
+//    INDEX(whiteUser),
+//    INDEX(blackUser),
+//    INDEX(gameName)
 
 }
