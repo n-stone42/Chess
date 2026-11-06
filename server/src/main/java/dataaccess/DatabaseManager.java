@@ -29,7 +29,7 @@ public class DatabaseManager {
 
             }
         } catch (Exception ex) {
-            throw new RuntimeException("unable to process db.properties. " + ex.getMessage());
+            throw new RuntimeException("Error unable to process db.properties. " + ex.getMessage());
         }
     }
 
@@ -42,7 +42,7 @@ public class DatabaseManager {
              PreparedStatement preparedStatement = connection.prepareStatement(result)) {
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
-            throw new DataAccessException("could not create database", ex);
+            throw new DataAccessException("Error could not create database", ex);
         }
     }
 
@@ -65,20 +65,20 @@ public class DatabaseManager {
             connection.setCatalog(databaseName);
             return connection;
         } catch (SQLException ex) {
-            throw new DataAccessException("failed to get connection", ex);
+            throw new DataAccessException("Error failed to get connection", ex);
         }
     }
 
     private static void loadPropertiesFromResources() {
         try (var propStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties")) {
             if (propStream == null) {
-                throw new Exception("Unable to load db.properties");
+                throw new Exception("Error Unable to load db.properties");
             }
             Properties props = new Properties();
             props.load(propStream);
             loadProperties(props);
         } catch (Exception ex) {
-            throw new RuntimeException("unable to process db.properties", ex);
+            throw new RuntimeException("Error unable to process db.properties", ex);
         }
     }
 

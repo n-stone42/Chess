@@ -30,7 +30,7 @@ public class DatabaseAuthData implements AuthDataAccess{
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("could not create clear AuthData table" + ex, DataAccessException.Code.OtherError);
+            throw new DataAccessException("Error could not create clear AuthData table" + ex, DataAccessException.Code.OtherError);
         }
     }
 
@@ -46,7 +46,7 @@ public class DatabaseAuthData implements AuthDataAccess{
                 }
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("could not create auth Table" + ex, DataAccessException.Code.OtherError);
+            throw new DataAccessException("Error could not create auth Table" + ex, DataAccessException.Code.OtherError);
         }
     }
 
@@ -57,7 +57,7 @@ public class DatabaseAuthData implements AuthDataAccess{
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);
+            throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);
         }
     }
 
@@ -71,10 +71,10 @@ public class DatabaseAuthData implements AuthDataAccess{
                 preparedStatement.executeUpdate();
 
             } catch (SQLException ex) {
-                throw new DataAccessException("could not add Auth Data " + ex, DataAccessException.Code.OtherError); }
+                throw new DataAccessException("Error could not add Auth Data " + ex, DataAccessException.Code.OtherError); }
 
         } catch (SQLException ex) {
-            throw new DataAccessException("could not create database/ get connection" + ex, DataAccessException.Code.OtherError); }
+            throw new DataAccessException("Error could not create database/ get connection" + ex, DataAccessException.Code.OtherError); }
         return;
     }
 
@@ -87,14 +87,14 @@ public class DatabaseAuthData implements AuthDataAccess{
                     while (resultSet.next()){
                         String username = resultSet.getString("username");
                         return new AuthData(authToken, username);
-                    } throw new DataAccessException("auth Token not found", DataAccessException.Code.Unathurized);
+                    } throw new DataAccessException("Error auth Token not found", DataAccessException.Code.Unathurized);
                 }
 
             } catch (SQLException ex) {
-                throw new DataAccessException("could not get user" + ex, DataAccessException.Code.OtherError);}
+                throw new DataAccessException("Error could not get user" + ex, DataAccessException.Code.OtherError);}
 
         } catch (SQLException ex) {
-            throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);}
+            throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);}
     }
 
     public void deleteAuth(String authToken) throws DataAccessException {
@@ -104,7 +104,7 @@ public class DatabaseAuthData implements AuthDataAccess{
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("could clear Auth table" + ex, DataAccessException.Code.OtherError);
+            throw new DataAccessException("Error could clear Auth table" + ex, DataAccessException.Code.OtherError);
         }
     }
 

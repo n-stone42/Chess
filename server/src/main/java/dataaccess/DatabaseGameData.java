@@ -53,7 +53,7 @@ public class DatabaseGameData implements GameDataAccess{
                 }
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);
+            throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);
         }
     }
     public void clear() throws DataAccessException {
@@ -62,10 +62,10 @@ public class DatabaseGameData implements GameDataAccess{
             try (var preparedStatement = connection.prepareStatement("TRUNCATE TABLE GameData")) {
                 preparedStatement.executeUpdate();
             } catch (SQLException ex) {
-                throw new DataAccessException("could not clear Chess game data table " + ex, DataAccessException.Code.OtherError);
+                throw new DataAccessException("Error could not clear Chess game data table " + ex, DataAccessException.Code.OtherError);
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("could not create Chess game data table " + ex, DataAccessException.Code.OtherError);
+            throw new DataAccessException("Error could not create Chess game data table " + ex, DataAccessException.Code.OtherError);
         }
     }
 
@@ -75,10 +75,10 @@ public class DatabaseGameData implements GameDataAccess{
             try (var preparedStatement = connection.prepareStatement("DROP TABLE GameData")) {
                 preparedStatement.executeUpdate();
             } catch (SQLException ex) {
-                throw new DataAccessException("could not delete Game Table" + ex, DataAccessException.Code.OtherError);
+                throw new DataAccessException("Error could not delete Game Table" + ex, DataAccessException.Code.OtherError);
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("could not delete Game Table" + ex, DataAccessException.Code.OtherError);
+            throw new DataAccessException("Error could not delete Game Table" + ex, DataAccessException.Code.OtherError);
         }
     }
 
@@ -118,13 +118,13 @@ public class DatabaseGameData implements GameDataAccess{
                     }
                 }
                 catch (SQLException exception){
-                    throw new DataAccessException("could not find get chess games",
+                    throw new DataAccessException("Error could not find get chess games",
                             DataAccessException.Code.OtherError);
                 } return gameList;
         }
 
     } catch (SQLException ex) {
-        throw new DataAccessException("error in listing games " + ex, DataAccessException.Code.OtherError);}
+        throw new DataAccessException("Error in listing games " + ex, DataAccessException.Code.OtherError);}
     }
 
     public GameData getGame(int gameID) throws DataAccessException {
@@ -140,14 +140,14 @@ public class DatabaseGameData implements GameDataAccess{
                         String gameName = resultSet.getString("gameName");
                         ChessGame chessGame = JSONtoChessGame(resultSet.getString("chessGame"));
                         return new GameData(gameID,whiteUser, blackUser, gameName, chessGame);
-                    } throw new DataAccessException("could not find chess game ID= " + gameID, DataAccessException.Code.OtherError);
+                    } throw new DataAccessException("Error could not find chess game ID= " + gameID, DataAccessException.Code.OtherError);
                 }
 
             } catch (SQLException ex) {
-                throw new DataAccessException("could not get user" + ex, DataAccessException.Code.OtherError);}
+                throw new DataAccessException("Error could not get user" + ex, DataAccessException.Code.OtherError);}
 
         } catch (SQLException ex) {
-            throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);}
+            throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);}
     }
 
     public void joinGame(int gameID, ChessGame.TeamColor playerColor, String newUsername) throws DataAccessException {
@@ -163,9 +163,9 @@ public class DatabaseGameData implements GameDataAccess{
                         return;
                         }
                 } catch (SQLException ex) {
-                    throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);}
+                    throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);}
 
-            } throw new DataAccessException("username taken", DataAccessException.Code.AlreadyTaken);
+            } throw new DataAccessException("Error username taken", DataAccessException.Code.AlreadyTaken);
         }
 
         else if (playerColor == ChessGame.TeamColor.BLACK) {
@@ -179,9 +179,9 @@ public class DatabaseGameData implements GameDataAccess{
                         return;
                     }
                 } catch (SQLException ex) {
-                    throw new DataAccessException("could not create database" + ex, DataAccessException.Code.AlreadyTaken);}
+                    throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.AlreadyTaken);}
             }
-            throw new DataAccessException("username taken", DataAccessException.Code.AlreadyTaken);
-        } throw new DataAccessException("could not match color on pending join game request", DataAccessException.Code.OtherError);
+            throw new DataAccessException("Error username taken", DataAccessException.Code.AlreadyTaken);
+        } throw new DataAccessException("Error could not match color on pending join game request", DataAccessException.Code.OtherError);
     }
 }

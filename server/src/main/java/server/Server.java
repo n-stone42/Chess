@@ -14,14 +14,17 @@ import service.UserService;
 public class Server {
 
     // the DAOs
-    MemoryAuthDAO authDAO = new MemoryAuthDAO();
-    MemoryGameDAO gameDAO = new MemoryGameDAO();
-    MemoryUserDAO userDAO = new MemoryUserDAO();
+//    MemoryAuthDAO authDAO = new MemoryAuthDAO();
+//    MemoryGameDAO gameDAO = new MemoryGameDAO();
+//    MemoryUserDAO userDAO = new MemoryUserDAO();
+    DatabaseAuthData authData = new DatabaseAuthData();
+    DatabaseGameData gameData = new DatabaseGameData();
+    DatabaseUserData userData = new DatabaseUserData();
 
     //the Serevices
-    ClearService clearService = new ClearService(userDAO, gameDAO, authDAO);
-    GameService gameService = new GameService(userDAO, gameDAO, authDAO);
-    UserService userService = new UserService(userDAO, authDAO);
+    ClearService clearService = new ClearService(userData, gameData, authData);
+    GameService gameService = new GameService(userData, gameData, authData);
+    UserService userService = new UserService(userData, authData);
 
 
     private final Javalin javalin;
@@ -67,7 +70,7 @@ public class Server {
 
     public void logout(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
-        String username = authDAO.getUsername(authToken);
+        String username = authData.getAuth(authToken).username();
         UserService.LogoutRequest logoutRequest = new UserService.LogoutRequest(username, authToken);
 
         UserService.LogoutResult result = userService.logout(logoutRequest);

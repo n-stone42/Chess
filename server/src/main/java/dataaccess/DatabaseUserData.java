@@ -41,10 +41,10 @@ public class DatabaseUserData implements UserDataAccess{
             try (var preparedStatement = connection.prepareStatement("DROP TABLE User")) {
                 preparedStatement.executeUpdate();
             } catch (SQLException ex) {
-                throw new DataAccessException("could not clear DataBase" + ex, DataAccessException.Code.OtherError);
+                throw new DataAccessException("Error could not clear DataBase" + ex, DataAccessException.Code.OtherError);
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);
+            throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);
         }
     }
 
@@ -71,10 +71,10 @@ public class DatabaseUserData implements UserDataAccess{
             try (var preparedStatement = connection.prepareStatement("TRUNCATE TABLE User")) {
                 preparedStatement.executeUpdate();
             } catch (SQLException ex) {
-                throw new DataAccessException("could not clear DataBase" + ex, DataAccessException.Code.OtherError);
+                throw new DataAccessException("Error could not clear DataBase" + ex, DataAccessException.Code.OtherError);
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);
+            throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);
         }
     }
 
@@ -88,14 +88,14 @@ public class DatabaseUserData implements UserDataAccess{
                         String password = resultSet.getString("Password");
                         String email = resultSet.getString("Email");
                         return new UserData(username, password, email);
-                    } throw new DataAccessException("could not get user", DataAccessException.Code.OtherError);
+                    } throw new DataAccessException("Error could not get user", DataAccessException.Code.OtherError);
                 }
 
             } catch (SQLException ex) {
-                throw new DataAccessException("could not get user" + ex, DataAccessException.Code.OtherError);}
+                throw new DataAccessException("Error could not get user" + ex, DataAccessException.Code.OtherError);}
 
         } catch (SQLException ex) {
-            throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);}
+            throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);}
     }
 
     public void createUser(String username, String password, String email) throws DataAccessException {
@@ -110,10 +110,10 @@ public class DatabaseUserData implements UserDataAccess{
                 preparedStatement.executeUpdate();
 
             } catch (SQLException ex) {
-                throw new DataAccessException("could not create user " + ex, DataAccessException.Code.OtherError); }
+                throw new DataAccessException("Error could not create user " + ex, DataAccessException.Code.OtherError); }
 
         } catch (SQLException ex) {
-            throw new DataAccessException("could not create database/ get connection" + ex, DataAccessException.Code.OtherError); }
+            throw new DataAccessException("Error could not create database/ get connection" + ex, DataAccessException.Code.OtherError); }
     }
 
 
