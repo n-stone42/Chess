@@ -100,8 +100,31 @@ public class DatabaseGameData implements GameDataAccess{
 
     }
 
-    public ArrayList<MemoryGameDAO.ModifiedGameData> listGame() throws DataAccessException {
-        return  null;
+    public ArrayList<MemoryGameDAO.ModifiedGameData> listGame() throws DataAccessException { //int gameID, String whiteUsername, String blackUsername, String gameName)
+        makeGameDataTables();
+        ArrayList<MemoryGameDAO.ModifiedGameData> gameList = new ArrayList<>();
+        try (Connection connection = DatabaseManager.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT gameID, whiteUser, blackUser, gameName FROM GameData")) {
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()){
+                        Integer gameID = resultSet.getInt("gameID");
+                        String whiteUser = resultSet.getString("whiteUser");
+                        String blackUser = resultSet.getString("blackUser");
+                        String gameName = resultSet.getString("gameName");
+                        gameList.add(new MemoryGameDAO.ModifiedGameData(gameID, whiteUser, blackUser, gameName));
+
+                    }
+                }
+                catch (SQLException exception){
+                    throw new DataAccessException("could not find get chess games",
+                            DataAccessException.Code.OtherError);
+                } return gameList;
+        }
+
+    } catch (SQLException ex) {
+        throw new DataAccessException("error in listing games " + ex, DataAccessException.Code.OtherError);}
     }
 
     public GameData getGame(int gameID) throws DataAccessException {
@@ -136,7 +159,6 @@ public class DatabaseGameData implements GameDataAccess{
                             "UPDATE GameData SET whiteUser =(?) WHERE gameID = (?)")) {
                         preparedStatement.setString(1, newUsername);
                         preparedStatement.setInt(2, gameID);
-
                         preparedStatement.executeUpdate();
                         return;
                         }
@@ -150,13 +172,14 @@ public class DatabaseGameData implements GameDataAccess{
             if (pendingGame.blackUsername() == null) {
                 try (Connection connection = DatabaseManager.getConnection()) {
                     try (PreparedStatement preparedStatement = connection.prepareStatement(
-                            "INSERT INTO GameData (blackUser) VALUES=(?)")) {
-                        preparedStatement.setString(1, pendingGame.blackUsername());
+                            "UPDATE GameData SET blackUser =(?) WHERE gameID = (?)")) {
+                        preparedStatement.setString(1, newUsername);
+                        preparedStatement.setInt(2, gameID);
+                        preparedStatement.executeUpdate();
                         return;
                     }
-                }
-                catch (SQLException ex) {
-                    throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);}
+                } catch (SQLException ex) {
+                    throw new DataAccessException("could not create database" + ex, DataAccessException.Code.AlreadyTaken);}
             }
             throw new DataAccessException("username taken", DataAccessException.Code.AlreadyTaken);
         } throw new DataAccessException("could not match color on pending join game request", DataAccessException.Code.OtherError);

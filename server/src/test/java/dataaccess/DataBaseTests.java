@@ -5,38 +5,44 @@ import model.AuthData;
 import model.GameData;
 import model.UserData;
 import org.eclipse.jetty.server.Authentication;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.xml.crypto.Data;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class DataBaseTests {
+    public static int gameID = 1;
+    private int newGameID() {
+        return gameID++;
+    }
     public DatabaseUserData databaseUserData = new DatabaseUserData();
     public DatabaseAuthData databaseAuthData = new DatabaseAuthData();
     public DatabaseGameData databaseGameData = new DatabaseGameData();
     public DatabaseManager manger = new DatabaseManager();
 
     public static UserData userBob = new UserData("Bob", "password", "B0BTheGoat67@gmail.com");
-
+    public static UserData userTom = new UserData("Tom", "words", "TomTheM0M@hotmainl.com");
     public AuthData testAuthData = new AuthData("token", userBob.username());
-    void addUserBob() throws DataAccessException{
-        databaseUserData.createUser(userBob.username(), userBob.password(), userBob.email());
+
+    void addUser(UserData user) throws DataAccessException {
+        databaseUserData.createUser(user.username(), user.password(), user.email());
     }
 
     void addAuthData() throws DataAccessException{
         databaseAuthData.createAuth(testAuthData.authToken(), userBob.username());
     }
 
-    void addChessGame() throws  DataAccessException{
-        databaseGameData.createGame(1, "testGame");
+    Integer addChessGame() throws  DataAccessException{
+        int gameID = newGameID();
+        databaseGameData.createGame(gameID, "testGame");
+        return gameID;
     }
 
-    void bobJoinsGame() throws DataAccessException{
-        databaseGameData.joinGame(1, ChessGame.TeamColor.WHITE, userBob.username());
+    void insertPlayerToGame(Integer gameID, ChessGame.TeamColor color, UserData user) throws DataAccessException{
+        databaseGameData.joinGame(gameID, color, user.username());
     }
 
     @BeforeEach
@@ -45,6 +51,7 @@ public class DataBaseTests {
         clearTables(); }
     catch (DataAccessException exception) {}
     createTables();
+    clearTables();
 
     }
 
@@ -83,13 +90,13 @@ public class DataBaseTests {
     @Test
     void createUserWithoutError() {
         assertDoesNotThrow( () -> {
-            addUserBob();
+            addUser(userBob);
         });
     }
 
     @Test
     void testGetUserData() throws DataAccessException{
-        addUserBob();
+        addUser(userBob);
         assertDoesNotThrow( () -> {
             assertEquals(userBob.username(), databaseUserData.getUser(userBob.username()).username());
             assertEquals(userBob.email(), databaseUserData.getUser(userBob.username()).email());
@@ -98,7 +105,7 @@ public class DataBaseTests {
 
     @Test
     void testMatchPassword()  throws DataAccessException{
-        addUserBob();
+        addUser(userBob);
         assertDoesNotThrow( () -> {
             assertTrue(databaseUserData.matchPassword(userBob.username(), userBob.password()));
         });
@@ -159,17 +166,43 @@ public class DataBaseTests {
     }
 
     @Test
-    void testJoingGame() throws DataAccessException{
-        addUserBob();
-        assertDoesNotThrow( () -> {
-            addChessGame();
-        });
-        assertDoesNotThrow( () -> {
-            bobJoinsGame();
-        });
+    void testJoinGame() throws DataAccessException{
+        addUser(userBob);
+        int gameID = addChessGame();
+        insertPlayerToGame(gameID, ChessGame.TeamColor.WHITE, userBob);
+
         ChessGame expectedGame = new ChessGame();
-        GameData expectedGameData = new GameData(1, userBob.username(), null, "testGame", expectedGame);
-        assertEquals(expectedGameData, databaseGameData.getGame(1));
+        GameData expectedGameData = new GameData(gameID, userBob.username(), null, "testGame", expectedGame);
+        assertEquals(expectedGameData, databaseGameData.getGame(gameID));
+
+        addUser(userTom);
+        insertPlayerToGame(gameID, ChessGame.TeamColor.BLACK, userTom);
+        GameData expectedGameData2 = new GameData(gameID, userBob.username(), userTom.username(), "testGame", expectedGame);
+        assertEquals(expectedGameData2, databaseGameData.getGame(gameID));
+    }
+
+    @Test
+    void testListGame() throws DataAccessException{
+        addUser(userBob);
+        addUser(userTom);
+        int gameID1 = addChessGame();
+        insertPlayerToGame(gameID1, ChessGame.TeamColor.WHITE, userBob);
+        insertPlayerToGame(gameID1, ChessGame.TeamColor.BLACK, userTom);
+        MemoryGameDAO.ModifiedGameData expectedGameData1 = new
+                MemoryGameDAO.ModifiedGameData(1, userBob.username(), userTom.username(), "testGame");
+
+        int gameID2 = addChessGame();
+        insertPlayerToGame(gameID2, ChessGame.TeamColor.WHITE, userTom);
+        assertThrows(DataAccessException.class, () -> insertPlayerToGame(gameID2, ChessGame.TeamColor.WHITE, userBob));
+        insertPlayerToGame(gameID2, ChessGame.TeamColor.BLACK, userBob);
+        MemoryGameDAO.ModifiedGameData expectedGameData2 = new
+                MemoryGameDAO.ModifiedGameData(2, userTom.username(), userBob.username(), "testGame");
+
+        ArrayList<MemoryGameDAO.ModifiedGameData> expectedGameList = new ArrayList<>();
+        expectedGameList.add(expectedGameData1);
+        expectedGameList.add(expectedGameData2);
+
+        assertEquals(expectedGameList, databaseGameData.listGame());
     }
 
 }
