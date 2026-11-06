@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="Phase 4- self made auth Data tests passing">
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="Phase 4- testing username and auth Token not found errors">
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/test/java/dataaccess/DataBaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/dataaccess/DataBaseTests.java" afterDir="false" />
     </list>
@@ -47,61 +47,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.3189901051814224E-7" />
-      <entry key="MS500" value="0.04710423636411826" />
-      <entry key="S2" value="0.47782723230101143" />
-      <entry key="S5" value="0.9079642287158677" />
-      <entry key="S10" value="1.315695389384472" />
-      <entry key="S30" value="2.3798400022669695" />
-      <entry key="S60" value="3.6830242097971286" />
-      <entry key="M2" value="5.574190037999719" />
-      <entry key="M5" value="10.598495528956038" />
-      <entry key="M10" value="17.641614546273953" />
-      <entry key="M15" value="23.452240696427197" />
-      <entry key="M30" value="44.713914670850016" />
-      <entry key="H1" value="95.56355609072753" />
-      <entry key="H2" value="168.50322944714333" />
-      <entry key="H4" value="247.28205978833105" />
-      <entry key="D1" value="595.782226026255" />
-      <entry key="W1" value="2790.588606993316" />
+      <entry key="MS100" value="1.3867722973409307E-115" />
+      <entry key="MS500" value="1.0977535352937586E-23" />
+      <entry key="S2" value="3.1566392412776497E-6" />
+      <entry key="S5" value="0.01519462073627944" />
+      <entry key="S10" value="0.28994857460382745" />
+      <entry key="S30" value="2.235976759599236" />
+      <entry key="S60" value="4.066141947871083" />
+      <entry key="M2" value="6.069074790176771" />
+      <entry key="M5" value="12.047560338232655" />
+      <entry key="M10" value="25.06393213864042" />
+      <entry key="M15" value="36.56707458168911" />
+      <entry key="M30" value="58.06758945458534" />
+      <entry key="H1" value="75.93520146413886" />
+      <entry key="H2" value="95.60951338358062" />
+      <entry key="H4" value="149.89552463125858" />
+      <entry key="D1" value="571.6396518772672" />
+      <entry key="W1" value="2804.555522132943" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.000002142906004" />
-      <entry key="S2" value="1.0382605122625064" />
-      <entry key="S5" value="1.271081789948273" />
-      <entry key="S10" value="1.5208049894554574" />
-      <entry key="S30" value="1.8764581732971606" />
-      <entry key="S60" value="2.273556127870405" />
-      <entry key="M2" value="3.1400365778640342" />
-      <entry key="M5" value="7.395222175376397" />
-      <entry key="M10" value="13.561265170173213" />
-      <entry key="M15" value="18.08572036467635" />
-      <entry key="M30" value="30.381750540501088" />
-      <entry key="H1" value="53.8023637739363" />
-      <entry key="H2" value="84.82371098089156" />
-      <entry key="H4" value="115.72452277626344" />
-      <entry key="D1" value="250.35399655830898" />
-      <entry key="W1" value="1022.0881788367846" />
+      <entry key="MS100" value="1.0000000000000704" />
+      <entry key="MS500" value="1.0023420701561914" />
+      <entry key="S2" value="1.221882364638003" />
+      <entry key="S5" value="1.6497397863817165" />
+      <entry key="S10" value="2.2607807324981244" />
+      <entry key="S30" value="3.807387235876428" />
+      <entry key="S60" value="4.698443304565436" />
+      <entry key="M2" value="5.570801802814605" />
+      <entry key="M5" value="8.818867932421675" />
+      <entry key="M10" value="14.835742425591185" />
+      <entry key="M15" value="19.26087186206724" />
+      <entry key="M30" value="26.327289232967694" />
+      <entry key="H1" value="31.52381534239698" />
+      <entry key="H2" value="38.399540638418884" />
+      <entry key="H4" value="61.039590861955965" />
+      <entry key="D1" value="231.4288700845291" />
+      <entry key="W1" value="1023.2890241223379" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.7833188920883486E-7" />
-      <entry key="MS500" value="0.07157025448324425" />
-      <entry key="S2" value="0.8852025736450279" />
-      <entry key="S5" value="1.777967502156359" />
-      <entry key="S10" value="2.568266652366125" />
-      <entry key="S30" value="4.123297857200514" />
-      <entry key="S60" value="5.864615724171942" />
-      <entry key="M2" value="8.64602789948639" />
-      <entry key="M5" value="17.930866309381052" />
-      <entry key="M10" value="31.146423545203564" />
-      <entry key="M15" value="41.487783771236515" />
-      <entry key="M30" value="75.05239566445627" />
-      <entry key="H1" value="149.32649657119146" />
-      <entry key="H2" value="253.2954249828655" />
-      <entry key="H4" value="362.98469173580725" />
-      <entry key="D1" value="846.127787117873" />
-      <entry key="W1" value="3812.6709809031026" />
+      <entry key="MS100" value="6.970243438958391E-11" />
+      <entry key="MS500" value="0.00933425640923603" />
+      <entry key="S2" value="0.385173726728774" />
+      <entry key="S5" value="1.0445861422512603" />
+      <entry key="S10" value="2.0643356276544247" />
+      <entry key="S30" value="5.757948394685285" />
+      <entry key="S60" value="8.589576049461634" />
+      <entry key="M2" value="11.537957764514982" />
+      <entry key="M5" value="20.800767569293196" />
+      <entry key="M10" value="39.83952359850957" />
+      <entry key="M15" value="55.773312572781805" />
+      <entry key="M30" value="84.35526170896105" />
+      <entry key="H1" value="107.43448629121752" />
+      <entry key="H2" value="133.99393481628306" />
+      <entry key="H4" value="210.923177151221" />
+      <entry key="D1" value="803.060727485838" />
+      <entry key="W1" value="3827.838767590095" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -137,6 +137,7 @@
     "JUnit.DataBaseTests.createThenDelateUserTable.executor": "Run",
     "JUnit.DataBaseTests.createThenDeleteTables.executor": "Run",
     "JUnit.DataBaseTests.createUserWithoutError.executor": "Run",
+    "JUnit.DataBaseTests.deleteGameTable.executor": "Run",
     "JUnit.DataBaseTests.executor": "Run",
     "JUnit.DataBaseTests.getUserData.executor": "Run",
     "JUnit.DataBaseTests.testAddAuthData.executor": "Run",
@@ -147,6 +148,7 @@
     "JUnit.DataBaseTests.testCreateWithoutError.executor": "Run",
     "JUnit.DataBaseTests.testDeleteAuth.executor": "Run",
     "JUnit.DataBaseTests.testDeleteTables.executor": "Run",
+    "JUnit.DataBaseTests.testGameCerilization.executor": "Run",
     "JUnit.DataBaseTests.testGetAuthData.executor": "Run",
     "JUnit.DataBaseTests.testGetUserData.executor": "Run",
     "JUnit.DataBaseTests.testMatchPassword.executor": "Run",
@@ -265,8 +267,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataBaseTests.testClearTables">
-    <configuration name="DataBaseTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.DataBaseTests.deleteGameTable">
+    <configuration name="DataBaseTests.deleteGameTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
         <pattern>
@@ -276,8 +278,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="dataaccess" />
       <option name="MAIN_CLASS_NAME" value="dataaccess.DataBaseTests" />
-      <option name="METHOD_NAME" value="testCreateUserTable" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="deleteGameTable" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -293,6 +295,22 @@
       <option name="PACKAGE_NAME" value="dataaccess" />
       <option name="MAIN_CLASS_NAME" value="dataaccess.DataBaseTests" />
       <option name="METHOD_NAME" value="testClearTables" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataBaseTests.testCreateTables" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dataaccess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dataaccess" />
+      <option name="MAIN_CLASS_NAME" value="dataaccess.DataBaseTests" />
+      <option name="METHOD_NAME" value="testCreateTables" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -314,50 +332,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DatabaseTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DataBaseTests.testGameCerilization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="passoff.server.*" />
+          <option name="PATTERN" value="dataaccess.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="passoff.server" />
-      <option name="MAIN_CLASS_NAME" value="passoff.server.DatabaseTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServiceTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="service" />
-      <option name="MAIN_CLASS_NAME" value="service.UserServiceTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="dataaccess" />
+      <option name="MAIN_CLASS_NAME" value="dataaccess.DataBaseTests" />
+      <option name="METHOD_NAME" value="testGameCerilization" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.DataBaseTests" />
+      <item itemvalue="JUnit.DataBaseTests.deleteGameTable" />
       <item itemvalue="JUnit.DataBaseTests.testClearTables" />
+      <item itemvalue="JUnit.DataBaseTests.testCreateTables" />
       <item itemvalue="JUnit.DataBaseTests.testDeleteAuth" />
-      <item itemvalue="JUnit.DatabaseTests" />
-      <item itemvalue="JUnit.UserServiceTests" />
+      <item itemvalue="JUnit.DataBaseTests.testGameCerilization" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DataBaseTests.deleteGameTable" />
         <item itemvalue="JUnit.DataBaseTests.testClearTables" />
+        <item itemvalue="JUnit.DataBaseTests.testCreateTables" />
+        <item itemvalue="JUnit.DataBaseTests.testGameCerilization" />
         <item itemvalue="JUnit.DataBaseTests.testDeleteAuth" />
-        <item itemvalue="JUnit.UserServiceTests" />
-        <item itemvalue="JUnit.DatabaseTests" />
-        <item itemvalue="JUnit.DataBaseTests" />
       </list>
     </recent_temporary>
   </component>
@@ -395,7 +399,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Phase 3- ALL API tests passing" />
     <MESSAGE value="Phase 3- changing tests and code for testing coverage" />
     <MESSAGE value="Phase 3- ALL API and custom test passing  thus far" />
     <MESSAGE value="Phase 3- more code qulity updates" />
@@ -420,7 +423,8 @@
     <MESSAGE value="Phase 4-  create and clear functions, adding email, tests super getto" />
     <MESSAGE value="Phase 4- added password hashing" />
     <MESSAGE value="Phase 4- self made auth Data tests passing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Phase 4- self made auth Data tests passing" />
+    <MESSAGE value="Phase 4- testing username and auth Token not found errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Phase 4- testing username and auth Token not found errors" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -455,18 +459,8 @@
           <option name="timeStamp" value="112" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="117" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/server/src/test/java/dataaccess/DataBaseTests.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="120" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java</url>
-          <line>82</line>
+          <line>81</line>
           <option name="timeStamp" value="121" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">

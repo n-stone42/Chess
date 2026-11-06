@@ -49,7 +49,6 @@ public class DatabaseUserData implements UserDataAccess{
     }
 
     public void makeUserTable() throws DataAccessException {
-
         DatabaseManager.createDatabase();
         try (Connection connection = DatabaseManager.getConnection()) {
             for (String statement : createUserTableStatement) {

@@ -1,5 +1,6 @@
 package dataaccess;
 
+import chess.ChessGame;
 import model.AuthData;
 import model.UserData;
 import org.eclipse.jetty.server.Authentication;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DataBaseTests {
     public DatabaseUserData databaseUserData = new DatabaseUserData();
     public DatabaseAuthData databaseAuthData = new DatabaseAuthData();
+    public DatabaseGameData databaseGameData = new DatabaseGameData();
     public DatabaseManager manger = new DatabaseManager();
 
     public static UserData userBob = new UserData("Bob", "password", "B0BTheGoat67@gmail.com");
@@ -29,8 +31,9 @@ public class DataBaseTests {
     @BeforeEach
     void setup()  throws DataAccessException {
         testCreateDBWithoutError();
-        testClearTables();
         testCreateTables();
+        testClearTables();
+
     }
 
     @Test
@@ -40,6 +43,9 @@ public class DataBaseTests {
         });
         assertDoesNotThrow(() -> {
             databaseAuthData.makeAuthDataTable();
+        });
+        assertDoesNotThrow(() -> {
+            databaseGameData.makeGameDataTables();
         });
     }
 
@@ -90,6 +96,7 @@ public class DataBaseTests {
     void testClearTables() throws DataAccessException{
         databaseUserData.clear();
         databaseAuthData.clear();
+        databaseGameData.clear();
         assertThrows(DataAccessException.class, () -> databaseUserData.getUser(userBob.username()));
         assertThrows(DataAccessException.class, () -> databaseAuthData.getAuth(testAuthData.authToken()));
     }
@@ -101,6 +108,20 @@ public class DataBaseTests {
             databaseAuthData.deleteAuth(testAuthData.authToken());
         });
         assertThrows(DataAccessException.class, () -> databaseAuthData.getAuth(testAuthData.authToken()));
+    }
+
+    @Test
+    void testGameCerilization() throws DataAccessException {
+        ChessGame testGame = new ChessGame();
+        String json = databaseGameData.chessGameToString(testGame);
+        assertEquals(testGame, databaseGameData.JSONtoChessGame(json));
+    }
+
+    @Test
+    void deleteGameTable() throws DataAccessException {
+        assertDoesNotThrow( () -> {
+            databaseGameData.deleteGameTable();
+        });
     }
 
 }
