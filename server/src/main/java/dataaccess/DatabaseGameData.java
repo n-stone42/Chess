@@ -3,7 +3,6 @@ package dataaccess;
 import chess.ChessGame;
 import com.google.gson.Gson;
 import model.GameData;
-import model.UserData;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -118,7 +117,7 @@ public class DatabaseGameData implements GameDataAccess{
                         String gameName = resultSet.getString("gameName");
                         ChessGame chessGame = JSONtoChessGame(resultSet.getString("chessGame"));
                         return new GameData(gameID,whiteUser, blackUser, gameName, chessGame);
-                    } throw new DataAccessException("could not get user", DataAccessException.Code.OtherError);
+                    } throw new DataAccessException("could not find chess game ID= " + gameID, DataAccessException.Code.OtherError);
                 }
 
             } catch (SQLException ex) {
@@ -129,6 +128,37 @@ public class DatabaseGameData implements GameDataAccess{
     }
 
     public void joinGame(int gameID, ChessGame.TeamColor playerColor, String newUsername) throws DataAccessException {
-        return;
+        GameData pendingGame = getGame(gameID);
+        if (playerColor == ChessGame.TeamColor.WHITE) {
+            if (pendingGame.whiteUsername() == null) {
+                try (Connection connection = DatabaseManager.getConnection()) {
+                    try (PreparedStatement preparedStatement = connection.prepareStatement(
+                            "UPDATE GameData SET whiteUser =(?) WHERE gameID = (?)")) {
+                        preparedStatement.setString(1, newUsername);
+                        preparedStatement.setInt(2, gameID);
+
+                        preparedStatement.executeUpdate();
+                        return;
+                        }
+                } catch (SQLException ex) {
+                    throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);}
+
+            } throw new DataAccessException("username taken", DataAccessException.Code.AlreadyTaken);
+        }
+
+        else if (playerColor == ChessGame.TeamColor.BLACK) {
+            if (pendingGame.blackUsername() == null) {
+                try (Connection connection = DatabaseManager.getConnection()) {
+                    try (PreparedStatement preparedStatement = connection.prepareStatement(
+                            "INSERT INTO GameData (blackUser) VALUES=(?)")) {
+                        preparedStatement.setString(1, pendingGame.blackUsername());
+                        return;
+                    }
+                }
+                catch (SQLException ex) {
+                    throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);}
+            }
+            throw new DataAccessException("username taken", DataAccessException.Code.AlreadyTaken);
+        } throw new DataAccessException("could not match color on pending join game request", DataAccessException.Code.OtherError);
     }
 }

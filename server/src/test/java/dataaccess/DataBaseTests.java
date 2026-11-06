@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.xml.crypto.Data;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -33,14 +35,31 @@ public class DataBaseTests {
         databaseGameData.createGame(1, "testGame");
     }
 
+    void bobJoinsGame() throws DataAccessException{
+        databaseGameData.joinGame(1, ChessGame.TeamColor.WHITE, userBob.username());
+    }
+
     @BeforeEach
     void setup()  throws DataAccessException {
-        testCreateDBWithoutError();
-        testCreateTables();
-        testClearTables();
+    try {
+        clearTables(); }
+    catch (DataAccessException exception) {}
+    createTables();
 
     }
 
+    private void clearTables() throws DataAccessException{
+        databaseUserData.clear();
+        databaseAuthData.clear();
+        databaseGameData.clear();
+    }
+
+    private void createTables() throws DataAccessException {
+        databaseUserData.makeUserTable();
+        databaseAuthData.makeAuthDataTable();
+        databaseGameData.makeGameDataTables();
+
+    }
     @Test
     void testCreateTables() {
         assertDoesNotThrow(() -> {
@@ -139,16 +158,18 @@ public class DataBaseTests {
         assertEquals(expectedGameData, databaseGameData.getGame(1));
     }
 
-//    CREATE TABLE IF NOT EXISTS GameData (
-//         `gameID` int NOT NULL,
-//         `whiteUser` VARCHAR(255),
-//         `blackUser` VARCHAR(255),
-//         `gameName` VARCHAR(255) NOT NULL,
-//         `chessGame` VARCHAR(4095) NOT NULL,
-//    PRIMARY KEY(`gameID`),
-//    INDEX(gameID),
-//    INDEX(whiteUser),
-//    INDEX(blackUser),
-//    INDEX(gameName)
+    @Test
+    void testJoingGame() throws DataAccessException{
+        addUserBob();
+        assertDoesNotThrow( () -> {
+            addChessGame();
+        });
+        assertDoesNotThrow( () -> {
+            bobJoinsGame();
+        });
+        ChessGame expectedGame = new ChessGame();
+        GameData expectedGameData = new GameData(1, userBob.username(), null, "testGame", expectedGame);
+        assertEquals(expectedGameData, databaseGameData.getGame(1));
+    }
 
 }
