@@ -47,12 +47,9 @@ public class DatabaseGameData implements GameDataAccess{
             for (String statement : createGameTableStatement) {
                 try (var preparedStatement = connection.prepareStatement(statement)) {
                     preparedStatement.executeUpdate();
-                } catch (SQLDataException exception) {
-                    return;
                 }
             }
-        } catch (SQLException ex) {
-            throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);
+        } catch (SQLException ex) {throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);
         }
     }
     public void clear() throws DataAccessException {
@@ -60,11 +57,8 @@ public class DatabaseGameData implements GameDataAccess{
         try (Connection connection = DatabaseManager.getConnection()) {
             try (var preparedStatement = connection.prepareStatement("TRUNCATE TABLE GameData")) {
                 preparedStatement.executeUpdate();
-            } catch (SQLException ex) {
-                throw new DataAccessException("Error could not clear Chess game data table " + ex, DataAccessException.Code.OtherError);
             }
-        } catch (SQLException ex) {
-            throw new DataAccessException("Error could not create Chess game data table " + ex, DataAccessException.Code.OtherError);
+        } catch (SQLException ex) {throw new DataAccessException("Error could not create Chess game data table " + ex, DataAccessException.Code.OtherError);
         }
     }
 
@@ -73,11 +67,8 @@ public class DatabaseGameData implements GameDataAccess{
         try (Connection connection = DatabaseManager.getConnection()) {
             try (var preparedStatement = connection.prepareStatement("DROP TABLE GameData")) {
                 preparedStatement.executeUpdate();
-            } catch (SQLException ex) {
-                throw new DataAccessException("Error could not delete Game Table" + ex, DataAccessException.Code.OtherError);
             }
-        } catch (SQLException ex) {
-            throw new DataAccessException("Error could not delete Game Table" + ex, DataAccessException.Code.OtherError);
+        } catch (SQLException ex) { throw new DataAccessException("Error could not delete Game Table" + ex, DataAccessException.Code.OtherError);
         }
     }
 
@@ -95,9 +86,7 @@ public class DatabaseGameData implements GameDataAccess{
                 }
 
         }
-        catch (SQLException exception) {
-        throw new DataAccessException("could not create game " + exception, DataAccessException.Code.OtherError); }
-
+        catch (SQLException exception) {throw new DataAccessException("could not create game " + exception, DataAccessException.Code.OtherError); }
     }
 
     public ArrayList<MemoryGameDAO.ModifiedGameData> listGame() throws DataAccessException { //int gameID, String whiteUsername, String blackUsername, String gameName)
@@ -116,15 +105,10 @@ public class DatabaseGameData implements GameDataAccess{
                         gameList.add(new MemoryGameDAO.ModifiedGameData(gameID, whiteUser, blackUser, gameName));
 
                     }
-                }
-                catch (SQLException exception){
-                    throw new DataAccessException("Error could not find get chess games",
-                            DataAccessException.Code.OtherError);
-                } return gameList;
+                }return gameList;
         }
 
-    } catch (SQLException ex) {
-        throw new DataAccessException("Error in listing games " + ex, DataAccessException.Code.OtherError);}
+    } catch (SQLException ex) {throw new DataAccessException("Error in listing games " + ex, DataAccessException.Code.OtherError);}
     }
 
     public GameData getGame(int gameID) throws DataAccessException {

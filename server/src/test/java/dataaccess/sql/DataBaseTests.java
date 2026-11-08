@@ -1,14 +1,19 @@
 package dataaccess.sql;
 
 import chess.ChessGame;
+import com.google.gson.Gson;
 import dataaccess.*;
 import model.AuthData;
 import model.GameData;
 import model.UserData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import service.ClearService;
+import service.GameService;
+import service.UserService;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -222,5 +227,10 @@ public class DataBaseTests {
         assertEquals(alreadyTaken.toHttpStatuscode(), 403);
         assertEquals(otherError.toHttpStatuscode(), 500);
     }
-
+    @Test
+    public void testDataAccessacception() throws DataAccessException {
+        DataAccessException test = new DataAccessException("test", DataAccessException.Code.OtherError);
+        String testString = test.toJson();
+        assertEquals(testString, new Gson().toJson(Map.of("message", "test", "status", DataAccessException.Code.OtherError)));
+    }
 }

@@ -37,8 +37,6 @@ public class DatabaseUserData implements UserDataAccess{
         try (Connection connection = DatabaseManager.getConnection()) {
             try (var preparedStatement = connection.prepareStatement("DROP TABLE User")) {
                 preparedStatement.executeUpdate();
-            } catch (SQLException ex) {
-                throw new DataAccessException("Error could not clear DataBase" + ex, DataAccessException.Code.OtherError);
             }
         } catch (SQLException ex) { throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);
         }
@@ -54,8 +52,7 @@ public class DatabaseUserData implements UserDataAccess{
                     return;
                 }
             }
-        } catch (SQLException ex) {
-            throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);
+        } catch (SQLException ex) {throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);
         }
     }
 
@@ -65,11 +62,8 @@ public class DatabaseUserData implements UserDataAccess{
         try (Connection connection = DatabaseManager.getConnection()) {
             try (var preparedStatement = connection.prepareStatement("TRUNCATE TABLE User")) {
                 preparedStatement.executeUpdate();
-            } catch (SQLException ex) {
-                throw new DataAccessException("Error could not clear DataBase" + ex, DataAccessException.Code.OtherError);
             }
-        } catch (SQLException ex) {
-            throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);
+        } catch (SQLException ex) {throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);
         }
     }
 
@@ -102,8 +96,7 @@ public class DatabaseUserData implements UserDataAccess{
 
                 preparedStatement.executeUpdate();
 
-            } catch (SQLException ex) {
-                throw new DataAccessException("Error could not create user" + ex, DataAccessException.Code.AlreadyTaken); }
+            } catch (SQLException ex) { throw new DataAccessException("Error could not create user" + ex, DataAccessException.Code.AlreadyTaken); }
 
         } catch (SQLException ex) { throw new DataAccessException("Error could not create database/ get connection" + ex, DataAccessException.Code.OtherError); }
     }
