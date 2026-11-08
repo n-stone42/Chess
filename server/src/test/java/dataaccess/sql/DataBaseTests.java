@@ -204,4 +204,23 @@ public class DataBaseTests {
         assertEquals(expectedGameList, databaseGameData.listGame());
     }
 
+    @Test
+    void testClearFunctions() {
+        //Delete tables
+        assertDoesNotThrow( () -> databaseUserData.deleteUserTable());
+        assertDoesNotThrow( () -> databaseGameData.deleteGameTable());
+        assertDoesNotThrow( () -> databaseAuthData.deleteAuthTable());
+    }
+    @Test
+    void toHTTP() {
+        var badRequest = new DataAccessException("test 400", DataAccessException.Code.BadRequest);
+        var unathurized = new DataAccessException("test 401", DataAccessException.Code.Unathurized);
+        var alreadyTaken = new DataAccessException("test 403", DataAccessException.Code.AlreadyTaken);
+        var otherError = new DataAccessException("test 500", DataAccessException.Code.OtherError);
+        assertEquals(badRequest.toHttpStatuscode(), 400);
+        assertEquals(unathurized.toHttpStatuscode(), 401);
+        assertEquals(alreadyTaken.toHttpStatuscode(), 403);
+        assertEquals(otherError.toHttpStatuscode(), 500);
+    }
+
 }

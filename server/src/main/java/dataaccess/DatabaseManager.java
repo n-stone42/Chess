@@ -28,8 +28,7 @@ public class DatabaseManager {
                 connectionUrl = String.format("jdbc:mysql://%s:%d", host, port);
 
             }
-        } catch (Exception ex) {
-            throw new RuntimeException("Error unable to process db.properties. " + ex.getMessage());
+        } catch (Exception ex) { throw new RuntimeException("Error unable to process db.properties. " + ex.getMessage());
         }
     }
 
@@ -41,8 +40,7 @@ public class DatabaseManager {
         try (Connection connection = DriverManager.getConnection(connectionUrl, dbUsername, dbPassword);
              PreparedStatement preparedStatement = connection.prepareStatement(result)) {
             preparedStatement.executeUpdate();
-        } catch (SQLException ex) {
-            throw new DataAccessException("Error could not create database", ex);
+        } catch (SQLException ex) { throw new DataAccessException("Error could not create database", ex);
         }
     }
 

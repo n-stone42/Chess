@@ -40,8 +40,7 @@ public class DatabaseUserData implements UserDataAccess{
             } catch (SQLException ex) {
                 throw new DataAccessException("Error could not clear DataBase" + ex, DataAccessException.Code.OtherError);
             }
-        } catch (SQLException ex) {
-            throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);
+        } catch (SQLException ex) { throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);
         }
     }
 
@@ -87,11 +86,9 @@ public class DatabaseUserData implements UserDataAccess{
                     } throw new DataAccessException("Error could not get user 1 ", DataAccessException.Code.Unathurized);
                 }
 
-            } catch (SQLException ex) {
-                throw new DataAccessException("Error could not get user 2" + ex, DataAccessException.Code.Unathurized);}
+            } catch (SQLException ex) {throw new DataAccessException("Error could not get user 2" + ex, DataAccessException.Code.Unathurized);}
 
-        } catch (SQLException ex) {
-            throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);}
+        } catch (SQLException ex) { throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);}
     }
 
     public void createUser(String username, String password, String email) throws DataAccessException {
@@ -108,8 +105,7 @@ public class DatabaseUserData implements UserDataAccess{
             } catch (SQLException ex) {
                 throw new DataAccessException("Error could not create user" + ex, DataAccessException.Code.AlreadyTaken); }
 
-        } catch (SQLException ex) {
-            throw new DataAccessException("Error could not create database/ get connection" + ex, DataAccessException.Code.OtherError); }
+        } catch (SQLException ex) { throw new DataAccessException("Error could not create database/ get connection" + ex, DataAccessException.Code.OtherError); }
     }
 
 
