@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="Phase 4- tests and code coverage">
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="Phase 4-  more tests and code coverage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/dataaccess/DataAccessException$Code.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/dataaccess/DataAccessException$Code.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/dataaccess/DataAccessException.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/dataaccess/DataAccessException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DataAccessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DataAccessException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/service/UserServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/service/UserServiceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/dataaccess/DataBaseTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,61 +52,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="7.502407826908171E-9" />
-      <entry key="MS500" value="0.025074470859000275" />
-      <entry key="S2" value="0.6914341829597572" />
-      <entry key="S5" value="1.8251724645101175" />
-      <entry key="S10" value="2.662648102021671" />
-      <entry key="S30" value="3.613119143410372" />
-      <entry key="S60" value="4.523495278339237" />
-      <entry key="M2" value="7.099812490301356" />
-      <entry key="M5" value="15.702175711556754" />
-      <entry key="M10" value="27.44551687822235" />
-      <entry key="M15" value="37.080500400930895" />
-      <entry key="M30" value="57.96694709323108" />
-      <entry key="H1" value="79.83416232960232" />
-      <entry key="H2" value="96.97422686427157" />
-      <entry key="H4" value="108.92614324871612" />
-      <entry key="D1" value="445.27149305937337" />
-      <entry key="W1" value="2851.130726841301" />
+      <entry key="MS100" value="1.5763556086316748" />
+      <entry key="MS500" value="2.9979592971314797" />
+      <entry key="S2" value="5.120766186312543" />
+      <entry key="S5" value="8.252090144979384" />
+      <entry key="S10" value="11.594599739689874" />
+      <entry key="S30" value="16.67683140717853" />
+      <entry key="S60" value="19.597304027766306" />
+      <entry key="M2" value="23.03505596675777" />
+      <entry key="M5" value="29.871627453939357" />
+      <entry key="M10" value="40.34451938530556" />
+      <entry key="M15" value="50.361353210018976" />
+      <entry key="M30" value="74.56168450129404" />
+      <entry key="H1" value="102.39323801334322" />
+      <entry key="H2" value="125.63369032814458" />
+      <entry key="H4" value="142.01383477247262" />
+      <entry key="D1" value="480.33423924602545" />
+      <entry key="W1" value="2886.5599775067058" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0000000102897688" />
-      <entry key="S10" value="1.0001159545545246" />
-      <entry key="S30" value="1.0722371852471406" />
-      <entry key="S60" value="1.4396765570543204" />
-      <entry key="M2" value="2.5956196553507365" />
-      <entry key="M5" value="6.109169895408861" />
-      <entry key="M10" value="10.587018858936673" />
-      <entry key="M15" value="14.190167366651764" />
-      <entry key="M30" value="21.382873851961758" />
-      <entry key="H1" value="28.02654902091756" />
-      <entry key="H2" value="32.78572953338005" />
-      <entry key="H4" value="36.09109339213915" />
-      <entry key="D1" value="174.19993719727694" />
-      <entry key="W1" value="1057.7908320721137" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="6.251210814230539E-165" />
+      <entry key="S5" value="2.081544321313602E-66" />
+      <entry key="S10" value="1.4429230946125817E-33" />
+      <entry key="S30" value="1.2115884954077004E-11" />
+      <entry key="S60" value="4.839461854891714E-6" />
+      <entry key="M2" value="0.0047589059646698535" />
+      <entry key="M5" value="0.49123424027918494" />
+      <entry key="M10" value="3.0021120695001042" />
+      <entry key="M15" value="6.124768248594318" />
+      <entry key="M30" value="14.048085607675299" />
+      <entry key="H1" value="22.716695721773863" />
+      <entry key="H2" value="29.517027482808786" />
+      <entry key="H4" value="34.24474394660645" />
+      <entry key="D1" value="172.6819621256794" />
+      <entry key="W1" value="1056.469092007463" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="8.479559522745742E-9" />
-      <entry key="MS500" value="0.03549206291165403" />
-      <entry key="S2" value="0.9896293808154579" />
-      <entry key="S5" value="2.4089376853955677" />
-      <entry key="S10" value="3.4131007862013822" />
-      <entry key="S30" value="4.581719133063345" />
-      <entry key="S60" value="5.890287766406484" />
-      <entry key="M2" value="9.627771420585097" />
-      <entry key="M5" value="21.74875526820428" />
-      <entry key="M10" value="37.980480801753174" />
-      <entry key="M15" value="51.22466312717725" />
-      <entry key="M30" value="79.31393187696821" />
-      <entry key="H1" value="107.83561822042685" />
-      <entry key="H2" value="129.74450301195733" />
-      <entry key="H4" value="145.00845358978725" />
-      <entry key="D1" value="619.46455438959" />
-      <entry key="W1" value="3908.9154525469594" />
+      <entry key="MS100" value="1.5014868703519169" />
+      <entry key="MS500" value="2.960206735701256" />
+      <entry key="S2" value="5.091569137983249" />
+      <entry key="S5" value="8.200192016918646" />
+      <entry key="S10" value="11.545364327606702" />
+      <entry key="S30" value="16.650921010070363" />
+      <entry key="S60" value="19.582482090615" />
+      <entry key="M2" value="23.03112219756112" />
+      <entry key="M5" value="30.352969442548066" />
+      <entry key="M10" value="43.32875421090706" />
+      <entry key="M15" value="56.46396064621971" />
+      <entry key="M30" value="88.58490007868812" />
+      <entry key="H1" value="125.08890810411435" />
+      <entry key="H2" value="155.13645079736796" />
+      <entry key="H4" value="176.2500649702972" />
+      <entry key="D1" value="653.0093550097421" />
+      <entry key="W1" value="3943.022966423242" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -290,7 +283,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataBaseTests">
+  <component name="RunManager" selected="JUnit.dataaccess.sql in server">
     <configuration name="All in server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <option name="PACKAGE_NAME" value="" />
@@ -303,7 +296,7 @@
       <module name="server" />
       <extension name="coverage" runner="jacoco">
         <pattern>
-          <option name="PATTERN" value="dataaccess.sql.*" />
+          <option name="PATTERN" value="dataaccess.*" />
           <option name="ENABLED" value="true" />
         </pattern>
         <pattern>
@@ -311,8 +304,8 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dataaccess.sql" />
-      <option name="MAIN_CLASS_NAME" value="dataaccess.sql.DataBaseTests" />
+      <option name="PACKAGE_NAME" value="dataaccess" />
+      <option name="MAIN_CLASS_NAME" value="dataaccess.DataBaseTests" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
@@ -338,7 +331,7 @@
       <module name="server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="service.*" />
+          <option name="PATTERN" value="dataaccess.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -354,7 +347,7 @@
       <module name="server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dataaccess.sql.*" />
+          <option name="PATTERN" value="dataaccess.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -373,10 +366,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.dataaccess.sql in server" />
         <item itemvalue="JUnit.DataBaseTests" />
         <item itemvalue="JUnit.UserServiceTests.testDataAccessacception" />
         <item itemvalue="JUnit.All in server" />
-        <item itemvalue="JUnit.dataaccess.sql in server" />
         <item itemvalue="JUnit.DatabaseTests" />
       </list>
     </recent_temporary>
@@ -415,7 +408,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Phase 3- chessagme duplicate code" />
     <MESSAGE value="Phase 3- chessPiece cleaning up pawn moves" />
     <MESSAGE value="Phase 3- making pawn move funciton" />
     <MESSAGE value="Phase 3- formatting and nestingDepth" />
@@ -440,7 +432,8 @@
     <MESSAGE value="Phase 4- removing test print statements" />
     <MESSAGE value="Phase 4- changed some error handeling" />
     <MESSAGE value="Phase 4- tests and code coverage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Phase 4- tests and code coverage" />
+    <MESSAGE value="Phase 4-  more tests and code coverage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Phase 4-  more tests and code coverage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -479,9 +472,9 @@
           <option name="timeStamp" value="111" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java</url>
-          <line>160</line>
-          <properties class="dataaccess.sql.DataBaseTests" method="testCreateGame">
+          <url>file://$PROJECT_DIR$/server/src/test/java/dataaccess/DataBaseTests.java</url>
+          <line>163</line>
+          <properties class="dataaccess.DataBaseTests">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -495,7 +488,7 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Chess$DataBaseTests.exec" NAME="DataBaseTests Coverage Results" MODIFIED="1794116131369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/Chess$DataBaseTests.exec" NAME="DataBaseTests Coverage Results" MODIFIED="1794116502146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>dataaccess.sql.*</FILTER>
       <FILTER>dataaccess.*</FILTER>
     </SUITE>
