@@ -1,13 +1,14 @@
-package dataaccess;
+package dataaccess.sql;
 
+import dataaccess.DataAccessException;
+import dataaccess.DatabaseManager;
+import dataaccess.UserDataAccess;
 import model.UserData;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 
-import static org.mindrot.jbcrypt.BCrypt.hashpw;
-
-public class DatabaseUserData implements UserDataAccess{
+public class DatabaseUserData implements UserDataAccess {
 
     public void databaseAccess() throws DataAccessException {
         makeUserTable();

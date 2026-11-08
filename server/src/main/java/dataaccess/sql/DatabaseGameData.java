@@ -1,13 +1,17 @@
-package dataaccess;
+package dataaccess.sql;
 
 import chess.ChessGame;
 import com.google.gson.Gson;
+import dataaccess.DataAccessException;
+import dataaccess.DatabaseManager;
+import dataaccess.GameDataAccess;
+import dataaccess.MemoryGameDAO;
 import model.GameData;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DatabaseGameData implements GameDataAccess{
+public class DatabaseGameData implements GameDataAccess {
 
     public void dataBaseAccess() throws DataAccessException {
         makeGameDataTables();

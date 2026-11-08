@@ -1,12 +1,13 @@
-package dataaccess;
+package dataaccess.sql;
 
+import dataaccess.AuthDataAccess;
+import dataaccess.DataAccessException;
+import dataaccess.DatabaseManager;
 import model.AuthData;
-import model.UserData;
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 
-public class DatabaseAuthData implements AuthDataAccess{
+public class DatabaseAuthData implements AuthDataAccess {
 
     public void databaseAccess() throws DataAccessException {
         makeAuthDataTable();
