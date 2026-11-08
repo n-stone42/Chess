@@ -48,7 +48,6 @@ public class DatabaseGameData implements GameDataAccess{
                 try (var preparedStatement = connection.prepareStatement(statement)) {
                     preparedStatement.executeUpdate();
                 } catch (SQLDataException exception) {
-                    System.out.print(exception);
                     return;
                 }
             }

@@ -41,7 +41,6 @@ public class DatabaseAuthData implements AuthDataAccess{
                 try (var preparedStatement = connection.prepareStatement(statement)) {
                     preparedStatement.executeUpdate();
                 } catch (SQLDataException exception) {
-                    System.out.print(exception);
                     return;
                 }
             }
@@ -93,7 +92,7 @@ public class DatabaseAuthData implements AuthDataAccess{
                 throw new DataAccessException("Error could not get user (auth data)" + ex, DataAccessException.Code.Unathurized);}
 
         } catch (SQLException ex) {
-            throw new DataAccessException("Error could not create table" + ex, DataAccessException.Code.OtherError);}
+            throw new DataAccessException("Error could not create table" + ex, DataAccessException.Code.Unathurized);}
     }
 
     public void deleteAuth(String authToken) throws DataAccessException {

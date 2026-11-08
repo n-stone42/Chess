@@ -92,8 +92,6 @@ public class Server {
     public void listGame(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
         GameService.ListGameResult result = gameService.listGames(authToken);
-        System.out.println("list game result: ");
-        System.out.println(new Gson().toJson(result));
         context.result(new Gson().toJson(result));
     }
 

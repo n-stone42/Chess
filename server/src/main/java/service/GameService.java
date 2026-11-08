@@ -42,14 +42,12 @@ public class GameService {
     public record JoinGameResult() {
     }
 
-    public Boolean verifyAuthToken(String authToken) {
-        try {
-            if (authData.getAuth(authToken) != null) {
-                return true;
-            }
-        } catch (Exception e) {
+    public Boolean verifyAuthToken(String authToken) throws DataAccessException{
+
+        if (authData.getAuth(authToken) != null) {
+            return true;
         }
-        return false;
+        throw new DataAccessException("verifyAuthToken function failed", DataAccessException.Code.Unathurized);
     }
 
     private int createGameID() {
@@ -65,7 +63,7 @@ public class GameService {
             gameData.createGame(newGameID, request.gameName());
             return new CreateGameResult(newGameID);
         }
-        throw new DataAccessException("Error: authToken not verfied", DataAccessException.Code.OtherError);
+        throw new DataAccessException("Error: authToken not verfied", DataAccessException.Code.Unathurized);
     }
 
     public JoinGameResult joinGame(String authToken, JoinGameRequest request) throws DataAccessException {
@@ -90,6 +88,6 @@ public class GameService {
         if (verifyAuthToken(authToken)) {
             return new ListGameResult(gameData.listGame());
         }
-        throw new DataAccessException("Error: authToken not verfied", DataAccessException.Code.Unathurized);
+        throw new DataAccessException("Error: authToken not verfied", DataAccessException.Code.OtherError); // changed 11-7
     }
 }

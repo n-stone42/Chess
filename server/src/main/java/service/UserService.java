@@ -68,8 +68,6 @@ public class UserService {
             if (userData.matchPassword(request.username(), request.password())) {
                 String authToken = generateToken();
                 authData.createAuth(authToken, request.username());
-                System.out.println("returning login result=");
-                System.out.println(new LoginResult(request.username(), authToken));
                 return new LoginResult(request.username(), authToken);
             }
             throw new DataAccessException("Error: Password does not match",

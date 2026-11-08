@@ -4,25 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="Phase 4- switching interface handeling and some changes to error functions">
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="Phase 4- removing test print statements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/dataaccess/DataAccessException$Code.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/dataaccess/DataAccessException$Code.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/dataaccess/DataAccessException.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/dataaccess/DataAccessException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/server/service/GameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/service/GameService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/service/UserService$LoginRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/service/UserService$LoginRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/service/UserService$LoginResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/service/UserService$LoginResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/service/UserService$LogoutRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/service/UserService$LogoutRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/service/UserService$LogoutResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/service/UserService$LogoutResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/service/UserService$RegisterRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/service/UserService$RegisterRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/service/UserService$RegisterResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/service/UserService$RegisterResult.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/server/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DataAccessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DataAccessException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/GameService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/dataaccess/DataBaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/dataaccess/DataBaseTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/test/java/passoff/server/StandardAPITests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/passoff/server/StandardAPITests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/server/passoff/server/StandardAPITests.class" beforeDir="false" afterPath="$PROJECT_DIR$/test/server/passoff/server/StandardAPITests.class" afterDir="false" />
     </list>
@@ -54,70 +43,77 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/dataaccess/DataAccessException.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseManager.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/server/src/main/java/dataaccess/GameDataAccess.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryGameDAO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/server/Server.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/server/src/main/java/service/GameService.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/service/UserService.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JavaCoverageOptionsProvider">
     <option name="myRunnerId" value="jacoco" />
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000000002787" />
-      <entry key="S2" value="1.001166356372858" />
-      <entry key="S5" value="1.1212631816694942" />
-      <entry key="S10" value="1.5950557523264823" />
-      <entry key="S30" value="2.744040246647949" />
-      <entry key="S60" value="3.293434879825235" />
-      <entry key="M2" value="3.7747926816980932" />
-      <entry key="M5" value="5.4459331923782806" />
-      <entry key="M10" value="8.782114121936072" />
-      <entry key="M15" value="11.393232871821075" />
-      <entry key="M30" value="15.708061189722823" />
-      <entry key="H1" value="18.869815579614272" />
-      <entry key="H2" value="20.798865169387906" />
-      <entry key="H4" value="23.059707346993946" />
-      <entry key="D1" value="360.28560995532536" />
-      <entry key="W1" value="2766.2400999791407" />
+      <entry key="MS100" value="1.1936871373498748E-8" />
+      <entry key="MS500" value="0.026024243032535057" />
+      <entry key="S2" value="0.40894797294471724" />
+      <entry key="S5" value="0.9843935294545664" />
+      <entry key="S10" value="1.8846843713904564" />
+      <entry key="S30" value="3.5637529578472495" />
+      <entry key="S60" value="4.4519627505213055" />
+      <entry key="M2" value="5.290342142767073" />
+      <entry key="M5" value="7.5875079665308" />
+      <entry key="M10" value="13.148528367432958" />
+      <entry key="M15" value="18.7897815104348" />
+      <entry key="M30" value="30.859337970493545" />
+      <entry key="H1" value="42.07239446614667" />
+      <entry key="H2" value="49.95796105917654" />
+      <entry key="H4" value="55.75553612959621" />
+      <entry key="D1" value="391.04903141763316" />
+      <entry key="W1" value="2796.7053373922117" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.4850278554126007E-21" />
-      <entry key="MS500" value="6.829239548614428E-5" />
-      <entry key="S2" value="0.09885659757670867" />
-      <entry key="S5" value="0.5278141785504872" />
-      <entry key="S10" value="0.9993090981568149" />
-      <entry key="S30" value="1.576748489288882" />
-      <entry key="S60" value="1.7743481818329156" />
-      <entry key="M2" value="1.8836433527156575" />
-      <entry key="M5" value="2.0057225388250983" />
-      <entry key="M10" value="2.302429599945944" />
-      <entry key="M15" value="2.5812041545523208" />
-      <entry key="M30" value="3.0848307549038627" />
-      <entry key="H1" value="3.474383021578039" />
-      <entry key="H2" value="3.7187111345750306" />
-      <entry key="H4" value="4.355723486016855" />
-      <entry key="D1" value="144.27984416873872" />
-      <entry key="W1" value="1027.6477033700985" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000004411536" />
+      <entry key="S2" value="1.0045829745831862" />
+      <entry key="S5" value="1.1160005707852243" />
+      <entry key="S10" value="1.3411415500363808" />
+      <entry key="S30" value="1.7806376750098776" />
+      <entry key="S60" value="2.1457320328211424" />
+      <entry key="M2" value="2.8017869529048953" />
+      <entry key="M5" value="5.075480233588752" />
+      <entry key="M10" value="7.889330456847092" />
+      <entry key="M15" value="9.698306605262097" />
+      <entry key="M30" value="12.595751702812041" />
+      <entry key="H1" value="14.82264067940916" />
+      <entry key="H2" value="16.261499914837074" />
+      <entry key="H4" value="17.542561650508084" />
+      <entry key="D1" value="155.86127157358712" />
+      <entry key="W1" value="1039.2298937037224" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.5823667932342279" />
-      <entry key="MS500" value="0.8975100708268148" />
-      <entry key="S2" value="0.9918842537561219" />
-      <entry key="S5" value="1.4017014845660978" />
-      <entry key="S10" value="2.34510832328207" />
-      <entry key="S30" value="4.182949628911647" />
-      <entry key="S60" value="4.988886381165974" />
-      <entry key="M2" value="5.614195918783732" />
-      <entry key="M5" value="7.424929529277263" />
-      <entry key="M10" value="11.06103932843912" />
-      <entry key="M15" value="13.953346476954264" />
-      <entry key="M30" value="18.777848001231686" />
-      <entry key="H1" value="22.33502978305962" />
-      <entry key="H2" value="24.512490552244667" />
-      <entry key="H4" value="27.412619183578816" />
-      <entry key="D1" value="504.55953807259317" />
-      <entry key="W1" value="3793.8818353287825" />
+      <entry key="MS100" value="1.3261918970004241E-8" />
+      <entry key="MS500" value="0.0367009911930884" />
+      <entry key="S2" value="0.7305962151298738" />
+      <entry key="S5" value="1.6967597469988607" />
+      <entry key="S10" value="2.9552048223329273" />
+      <entry key="S30" value="5.212148914515531" />
+      <entry key="S60" value="6.516187495081673" />
+      <entry key="M2" value="8.039618110657115" />
+      <entry key="M5" value="12.624661594260873" />
+      <entry key="M10" value="21.004042856355607" />
+      <entry key="M15" value="28.45720267089203" />
+      <entry key="M30" value="43.43096793522613" />
+      <entry key="H1" value="56.878857476366456" />
+      <entry key="H2" value="66.20989180377737" />
+      <entry key="H4" value="73.29274646110018" />
+      <entry key="D1" value="546.9040004486138" />
+      <entry key="W1" value="3835.929207689151" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -221,6 +217,7 @@
     "JUnit.StandardAPITests.clearMultipleTimes.executor": "Run",
     "JUnit.StandardAPITests.createGameBadRequest.executor": "Run",
     "JUnit.StandardAPITests.createGameSuccess.executor": "Run",
+    "JUnit.StandardAPITests.createGameUnauthorized.executor": "Run",
     "JUnit.StandardAPITests.executor": "Run",
     "JUnit.StandardAPITests.joinGameBadColor.executor": "Run",
     "JUnit.StandardAPITests.joinGameBadGameId.executor": "Run",
@@ -291,34 +288,11 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataBaseTests">
-    <configuration name="DataBaseTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.All in server">
+    <configuration name="All in server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dataaccess.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="dataaccess" />
-      <option name="MAIN_CLASS_NAME" value="dataaccess.DataBaseTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataBaseTests.testCreateGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dataaccess.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="dataaccess" />
-      <option name="MAIN_CLASS_NAME" value="dataaccess.DataBaseTests" />
-      <option name="METHOD_NAME" value="testCreateGame" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -354,7 +328,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StandardAPITests.uniqueAuthorizationTokensAllWork" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StandardAPITests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
         <pattern>
@@ -364,25 +338,40 @@
       </extension>
       <option name="PACKAGE_NAME" value="passoff.server" />
       <option name="MAIN_CLASS_NAME" value="passoff.server.StandardAPITests" />
-      <option name="METHOD_NAME" value="uniqueAuthorizationTokensAllWork" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StandardAPITests.createGameUnauthorized" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="passoff.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="passoff.server" />
+      <option name="MAIN_CLASS_NAME" value="passoff.server.StandardAPITests" />
+      <option name="METHOD_NAME" value="createGameUnauthorized" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.All in server" />
       <item itemvalue="JUnit.DatabaseTests" />
       <item itemvalue="JUnit.DatabaseTests.databaseErrorHandling" />
-      <item itemvalue="JUnit.StandardAPITests.uniqueAuthorizationTokensAllWork" />
-      <item itemvalue="JUnit.DataBaseTests" />
-      <item itemvalue="JUnit.DataBaseTests.testCreateGame" />
+      <item itemvalue="JUnit.StandardAPITests" />
+      <item itemvalue="JUnit.StandardAPITests.createGameUnauthorized" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DataBaseTests" />
-        <item itemvalue="JUnit.StandardAPITests.uniqueAuthorizationTokensAllWork" />
-        <item itemvalue="JUnit.DataBaseTests.testCreateGame" />
+        <item itemvalue="JUnit.All in server" />
         <item itemvalue="JUnit.DatabaseTests" />
+        <item itemvalue="JUnit.StandardAPITests" />
+        <item itemvalue="JUnit.StandardAPITests.createGameUnauthorized" />
         <item itemvalue="JUnit.DatabaseTests.databaseErrorHandling" />
       </list>
     </recent_temporary>
@@ -421,8 +410,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Phase 3- more renamming changes" />
-    <MESSAGE value="Phase 3- more re-naming changes" />
     <MESSAGE value="Phase 3- last renaming - I hope" />
     <MESSAGE value="Phase 3- splitting ip pieceMoves method" />
     <MESSAGE value="Phase 3- chessagme duplicate code" />
@@ -446,7 +433,9 @@
     <MESSAGE value="Phase 4- join game function" />
     <MESSAGE value="Phase 4- test list games passing" />
     <MESSAGE value="Phase 4- switching interface handeling and some changes to error functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Phase 4- switching interface handeling and some changes to error functions" />
+    <MESSAGE value="Phase 4- fixed delete authToken error" />
+    <MESSAGE value="Phase 4- removing test print statements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Phase 4- removing test print statements" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -462,7 +451,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java</url>
-          <line>65</line>
+          <line>64</line>
           <option name="timeStamp" value="109" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -472,18 +461,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java</url>
-          <line>84</line>
+          <line>81</line>
           <option name="timeStamp" value="137" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/service/GameService.java</url>
-          <line>61</line>
+          <line>59</line>
           <option name="timeStamp" value="144" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="148" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryAuthDAO.java</url>
