@@ -83,7 +83,6 @@ public class DatabaseGameData implements GameDataAccess{
     }
 
     public void createGame(int gameID, String gameName) throws DataAccessException {
-        System.out.println("in Database--------------------");
         makeGameDataTables();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(
@@ -93,13 +92,11 @@ public class DatabaseGameData implements GameDataAccess{
                 preparedStatement.setString(3, null);
                 preparedStatement.setString(4, gameName);
                 preparedStatement.setString(5, chessGameToString(new ChessGame()));
-                System.out.println("updating in Database--------------------");
                 preparedStatement.executeUpdate();
                 }
 
         }
         catch (SQLException exception) {
-        System.out.println("-------------------- this error in createGame");
         throw new DataAccessException("could not create game " + exception, DataAccessException.Code.OtherError); }
 
     }
@@ -155,10 +152,8 @@ public class DatabaseGameData implements GameDataAccess{
     }
 
     public void joinGame(int gameID, ChessGame.TeamColor playerColor, String newUsername) throws DataAccessException {
-        System.out.println("in join game");
         GameData pendingGame = getGame(gameID);
         if (playerColor == ChessGame.TeamColor.WHITE) {
-            System.out.println("player is WHITE");
             if (pendingGame.whiteUsername() == null) {
                 try (Connection connection = DatabaseManager.getConnection()) {
                     try (PreparedStatement preparedStatement = connection.prepareStatement(
@@ -175,7 +170,6 @@ public class DatabaseGameData implements GameDataAccess{
         }
 
         else if (playerColor == ChessGame.TeamColor.BLACK) {
-            System.out.println("player is BLACK");
             if (pendingGame.blackUsername() == null) {
                 try (Connection connection = DatabaseManager.getConnection()) {
                     try (PreparedStatement preparedStatement = connection.prepareStatement(

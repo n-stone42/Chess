@@ -62,13 +62,11 @@ public class DatabaseAuthData implements AuthDataAccess{
     }
 
     public void createAuth(String authToken, String username) throws DataAccessException {
-        System.out.println("in creatAuth data");
         makeAuthDataTable();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO AuthData (authToken, username) VALUES(?, ?)")) {
                 preparedStatement.setString(1, authToken);
                 preparedStatement.setString(2, username);
-                System.out.println("saving auth data");
                 preparedStatement.executeUpdate();
                 return;
 
@@ -80,7 +78,6 @@ public class DatabaseAuthData implements AuthDataAccess{
     }
 
     public AuthData getAuth(String authToken) throws DataAccessException {
-//        System.out.println("in get auth data");
         makeAuthDataTable();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT username FROM AuthData WHERE authToken=?")) {
@@ -88,7 +85,6 @@ public class DatabaseAuthData implements AuthDataAccess{
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()){
                         String username = resultSet.getString("username");
-//                        System.out.println("returning auth data");
                         return new AuthData(authToken, username);
                     } throw new DataAccessException("Error auth Token not found", DataAccessException.Code.Unathurized);
                 }

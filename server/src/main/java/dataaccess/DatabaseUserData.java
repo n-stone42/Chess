@@ -13,9 +13,6 @@ public class DatabaseUserData implements UserDataAccess{
         makeUserTable();
     }
 
-//    public void deleteDataBase() throws DataAccessException  {
-//        DatabaseManager.createDatabase();
-//    }
 
     private final String[] createUserTableStatement = {
         """

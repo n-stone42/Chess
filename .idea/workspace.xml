@@ -291,7 +291,22 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.StandardAPITests.uniqueAuthorizationTokensAllWork">
+  <component name="RunManager" selected="JUnit.DataBaseTests">
+    <configuration name="DataBaseTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dataaccess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dataaccess" />
+      <option name="MAIN_CLASS_NAME" value="dataaccess.DataBaseTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DataBaseTests.testCreateGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
@@ -303,22 +318,6 @@
       <option name="PACKAGE_NAME" value="dataaccess" />
       <option name="MAIN_CLASS_NAME" value="dataaccess.DataBaseTests" />
       <option name="METHOD_NAME" value="testCreateGame" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataBaseTests.testListGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dataaccess.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="dataaccess" />
-      <option name="MAIN_CLASS_NAME" value="dataaccess.DataBaseTests" />
-      <option name="METHOD_NAME" value="testListGame" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -372,19 +371,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.DataBaseTests.testListGame" />
       <item itemvalue="JUnit.DatabaseTests" />
       <item itemvalue="JUnit.DatabaseTests.databaseErrorHandling" />
       <item itemvalue="JUnit.StandardAPITests.uniqueAuthorizationTokensAllWork" />
+      <item itemvalue="JUnit.DataBaseTests" />
       <item itemvalue="JUnit.DataBaseTests.testCreateGame" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DataBaseTests" />
         <item itemvalue="JUnit.StandardAPITests.uniqueAuthorizationTokensAllWork" />
         <item itemvalue="JUnit.DataBaseTests.testCreateGame" />
         <item itemvalue="JUnit.DatabaseTests" />
         <item itemvalue="JUnit.DatabaseTests.databaseErrorHandling" />
-        <item itemvalue="JUnit.DataBaseTests.testListGame" />
       </list>
     </recent_temporary>
   </component>
