@@ -88,11 +88,11 @@ public class DatabaseUserData implements UserDataAccess{
                         String password = resultSet.getString("Password");
                         String email = resultSet.getString("Email");
                         return new UserData(username, password, email);
-                    } throw new DataAccessException("Error could not get user", DataAccessException.Code.OtherError);
+                    } throw new DataAccessException("Error could not get user 1 ", DataAccessException.Code.Unathurized);
                 }
 
             } catch (SQLException ex) {
-                throw new DataAccessException("Error could not get user" + ex, DataAccessException.Code.OtherError);}
+                throw new DataAccessException("Error could not get user 2" + ex, DataAccessException.Code.Unathurized);}
 
         } catch (SQLException ex) {
             throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);}
@@ -110,7 +110,7 @@ public class DatabaseUserData implements UserDataAccess{
                 preparedStatement.executeUpdate();
 
             } catch (SQLException ex) {
-                throw new DataAccessException("Error could not create user " + ex, DataAccessException.Code.OtherError); }
+                throw new DataAccessException("Error could not create user" + ex, DataAccessException.Code.AlreadyTaken); }
 
         } catch (SQLException ex) {
             throw new DataAccessException("Error could not create database/ get connection" + ex, DataAccessException.Code.OtherError); }

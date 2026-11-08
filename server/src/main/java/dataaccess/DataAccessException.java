@@ -15,6 +15,7 @@ public class DataAccessException extends Exception {
         Unathurized, //401
         AlreadyTaken, //403
         OtherError, //500
+        TestError,
     }
 //
     final private Code code;
@@ -35,6 +36,7 @@ public class DataAccessException extends Exception {
             case Unathurized -> 401;
             case AlreadyTaken -> 403;
             case OtherError -> 500;
+            case TestError-> 67;
         };
     }
 

@@ -62,45 +62,49 @@ public class DatabaseAuthData implements AuthDataAccess{
     }
 
     public void createAuth(String authToken, String username) throws DataAccessException {
+        System.out.println("in creatAuth data");
         makeAuthDataTable();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO AuthData (authToken, username) VALUES(?, ?)")) {
                 preparedStatement.setString(1, authToken);
                 preparedStatement.setString(2, username);
-
+                System.out.println("saving auth data");
                 preparedStatement.executeUpdate();
+                return;
 
             } catch (SQLException ex) {
                 throw new DataAccessException("Error could not add Auth Data " + ex, DataAccessException.Code.OtherError); }
 
         } catch (SQLException ex) {
             throw new DataAccessException("Error could not create database/ get connection" + ex, DataAccessException.Code.OtherError); }
-        return;
     }
 
     public AuthData getAuth(String authToken) throws DataAccessException {
-        DatabaseManager.createDatabase();
+//        System.out.println("in get auth data");
+        makeAuthDataTable();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT username FROM AuthData WHERE authToken=?")) {
                 preparedStatement.setString(1, authToken);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()){
                         String username = resultSet.getString("username");
+//                        System.out.println("returning auth data");
                         return new AuthData(authToken, username);
                     } throw new DataAccessException("Error auth Token not found", DataAccessException.Code.Unathurized);
                 }
 
             } catch (SQLException ex) {
-                throw new DataAccessException("Error could not get user" + ex, DataAccessException.Code.OtherError);}
+                throw new DataAccessException("Error could not get user (auth data)" + ex, DataAccessException.Code.Unathurized);}
 
         } catch (SQLException ex) {
-            throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);}
+            throw new DataAccessException("Error could not create table" + ex, DataAccessException.Code.OtherError);}
     }
 
     public void deleteAuth(String authToken) throws DataAccessException {
-        DatabaseManager.createDatabase();
+        makeAuthDataTable();
         try (Connection connection = DatabaseManager.getConnection()) {
-            try (var preparedStatement = connection.prepareStatement("DROP TABLE AuthData")) {
+            try (var preparedStatement = connection.prepareStatement("DELETE FROM AuthData WHERE authToken=?")) {
+                preparedStatement.setString(1, authToken);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException ex) {

@@ -60,12 +60,13 @@ public class GameService {
 
     public CreateGameResult creatGame(String authToken,
                                       CreateGameRequest request) throws DataAccessException {// returns the game ID
+        System.out.println("in createGame in GameService--------------------");
         if (verifyAuthToken(authToken)) {
             int newGameID = createGameID();
             gameData.createGame(newGameID, request.gameName());
             return new CreateGameResult(newGameID);
         }
-        throw new DataAccessException("Error: authToken not verfied", DataAccessException.Code.Unathurized);
+        throw new DataAccessException("Error: authToken not verfied", DataAccessException.Code.OtherError);
     }
 
     public JoinGameResult joinGame(String authToken, JoinGameRequest request) throws DataAccessException {
