@@ -2,9 +2,9 @@ package server;
 
 import com.google.gson.Gson;
 import dataaccess.*;
-import dataaccess.sql.DatabaseAuthData;
-import dataaccess.sql.DatabaseGameData;
-import dataaccess.sql.DatabaseUserData;
+import dataaccess.DatabaseAuthData;
+import dataaccess.DatabaseGameData;
+import dataaccess.DatabaseUserData;
 import io.javalin.*;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;

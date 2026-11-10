@@ -13,8 +13,6 @@ public class MemoryGameDAO implements GameDataAccess {
         mapGameData.clear();
     }
 
-    public record ModifiedGameData(int gameID, String whiteUsername, String blackUsername, String gameName) {
-    }
 
     public void createGame(int gameID, String gameName) throws DataAccessException {
         // we are creating a new chess game so this parameter will just be a new chess game from the starting position

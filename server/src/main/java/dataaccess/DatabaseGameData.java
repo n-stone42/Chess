@@ -1,12 +1,9 @@
-package dataaccess.sql;
+package dataaccess;
 
 import chess.ChessGame;
 import com.google.gson.Gson;
-import dataaccess.DataAccessException;
-import dataaccess.DatabaseManager;
-import dataaccess.GameDataAccess;
-import dataaccess.MemoryGameDAO;
 import model.GameData;
+import model.ModifiedGameData;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -93,9 +90,9 @@ public class DatabaseGameData implements GameDataAccess {
         catch (SQLException exception) {throw new DataAccessException("could not create game " + exception, DataAccessException.Code.OtherError); }
     }
 
-    public ArrayList<MemoryGameDAO.ModifiedGameData> listGame() throws DataAccessException { //int gameID, String whiteUsername, String blackUsername, String gameName)
+    public ArrayList<ModifiedGameData> listGame() throws DataAccessException { //int gameID, String whiteUsername, String blackUsername, String gameName)
         makeGameDataTables();
-        ArrayList<MemoryGameDAO.ModifiedGameData> gameList = new ArrayList<>();
+        ArrayList<model.ModifiedGameData> gameList = new ArrayList<>();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT gameID, whiteUser, blackUser, gameName FROM GameData")) {
@@ -106,7 +103,7 @@ public class DatabaseGameData implements GameDataAccess {
                         String whiteUser = resultSet.getString("whiteUser");
                         String blackUser = resultSet.getString("blackUser");
                         String gameName = resultSet.getString("gameName");
-                        gameList.add(new MemoryGameDAO.ModifiedGameData(gameID, whiteUser, blackUser, gameName));
+                        gameList.add(new model.ModifiedGameData(gameID, whiteUser, blackUser, gameName));
 
                     }
                 }return gameList;

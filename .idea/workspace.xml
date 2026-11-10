@@ -5,11 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="Phase 4-  restructure">
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/sql/DatabaseAuthData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/sql/DatabaseGameData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/sql/DatabaseUserData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/ServerFacade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/ui/EscapeSequences.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/GameRecordModels/CreateGameRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/GameRecordModels/CreateGameResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/GameRecordModels/JoinGameRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/GameRecordModels/JoinGameResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/GameRecordModels/ListGameResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/UserRecordsModels/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/UserRecordsModels/LoginResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/UserRecordsModels/LogoutRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/UserRecordsModels/LogoutResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/UserRecordsModels/RegisterRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/UserRecordsModels/RegisterResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/model/ModifiedGameData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/client/client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/server/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/server/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/GameDataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/GameDataAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryGameDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/sql/DatabaseAuthData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/sql/DatabaseGameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/sql/DatabaseUserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/dataaccess/DataBaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/GameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/test/java/service/UserServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/service/UserServiceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/model/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/model/UserData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,69 +71,82 @@
     <setting file="file://$PROJECT_DIR$/server/src/main/java/dataaccess/GameDataAccess.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryGameDAO.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/server/src/main/java/server/Server.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/server/ServerMain.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/service/ClearService.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/server/src/main/java/service/GameService.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/server/src/main/java/service/UserService.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/shared/src/main/java/GameRecordModels/CreateGameRequest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/shared/src/main/java/GameRecordModels/CreateGameResult.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/shared/src/main/java/GameRecordModels/JoinGameRequest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/shared/src/main/java/UserRecordsModels/LoginRequest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/shared/src/main/java/UserRecordsModels/LoginResult.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/shared/src/main/java/UserRecordsModels/LogoutRequest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/shared/src/main/java/UserRecordsModels/LogoutResult.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/shared/src/main/java/UserRecordsModels/RegisterRequest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/shared/src/main/java/UserRecordsModels/RegisterResult.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/shared/src/main/java/model/ModifiedGameData.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/shared/src/main/java/model/UserData.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JavaCoverageOptionsProvider">
     <option name="myRunnerId" value="jacoco" />
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.7526236105745134" />
-      <entry key="MS500" value="2.0130461063162626" />
-      <entry key="S2" value="3.8148739726415086" />
-      <entry key="S5" value="6.730539443539274" />
-      <entry key="S10" value="8.795858255960677" />
-      <entry key="S30" value="11.030474178661478" />
-      <entry key="S60" value="13.729641803795557" />
-      <entry key="M2" value="19.82724890103933" />
-      <entry key="M5" value="32.11487059350469" />
-      <entry key="M10" value="45.63014709723077" />
-      <entry key="M15" value="56.89495338164785" />
-      <entry key="M30" value="82.88048603706979" />
-      <entry key="H1" value="112.43980578084386" />
-      <entry key="H2" value="137.1918003685432" />
-      <entry key="H4" value="154.62901855592892" />
-      <entry key="D1" value="493.5564504327429" />
-      <entry key="W1" value="2899.893588054692" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000001917859027" />
+      <entry key="S2" value="1.0211593908313923" />
+      <entry key="S5" value="1.267722822187169" />
+      <entry key="S10" value="1.907294257121967" />
+      <entry key="S30" value="4.178024083636394" />
+      <entry key="S60" value="5.909627106760813" />
+      <entry key="M2" value="7.5369441043947045" />
+      <entry key="M5" value="9.562355604356027" />
+      <entry key="M10" value="12.979767518098306" />
+      <entry key="M15" value="19.73397930259152" />
+      <entry key="M30" value="51.05416148977857" />
+      <entry key="H1" value="108.46546291024863" />
+      <entry key="H2" value="171.2931262410266" />
+      <entry key="H4" value="234.31012738252056" />
+      <entry key="D1" value="624.4420012152715" />
+      <entry key="W1" value="3052.3467350264427" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="3.0897251409397026E-195" />
-      <entry key="S5" value="1.5702468944534641E-78" />
-      <entry key="S10" value="1.253240221969919E-39" />
-      <entry key="S30" value="1.1559849704099034E-13" />
-      <entry key="S60" value="4.727108758875159E-7" />
-      <entry key="M2" value="0.0014873267364904918" />
-      <entry key="M5" value="0.30849514618297014" />
-      <entry key="M10" value="2.379067437774928" />
-      <entry key="M15" value="5.244968632392782" />
-      <entry key="M30" value="13.000012280506416" />
-      <entry key="H1" value="21.85286936878557" />
-      <entry key="H2" value="28.9503803603824" />
-      <entry key="H4" value="33.91444781855654" />
-      <entry key="D1" value="172.4032489798777" />
-      <entry key="W1" value="1056.225327852842" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="3.293647450181746E-149" />
+      <entry key="S10" value="5.739030798340802E-75" />
+      <entry key="S30" value="1.7911192126598413E-25" />
+      <entry key="S60" value="4.385411506665127E-13" />
+      <entry key="M2" value="9.963400135085345E-7" />
+      <entry key="M5" value="0.016696389445755824" />
+      <entry key="M10" value="0.6407428292964853" />
+      <entry key="M15" value="2.49296953778033" />
+      <entry key="M30" value="11.38550995172166" />
+      <entry key="H1" value="26.596890849234537" />
+      <entry key="H2" value="42.06372401816823" />
+      <entry key="H4" value="56.12181667412059" />
+      <entry key="D1" value="181.5548771616937" />
+      <entry key="W1" value="1066.2644323217032" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.6175595213515093" />
-      <entry key="MS500" value="1.9672431595592326" />
-      <entry key="S2" value="3.7400281153149226" />
-      <entry key="S5" value="6.660202502179209" />
-      <entry key="S10" value="8.74636452991731" />
-      <entry key="S30" value="11.009183510028324" />
-      <entry key="S60" value="13.716972355244687" />
-      <entry key="M2" value="19.82021379438351" />
-      <entry key="M5" value="32.414780119886586" />
-      <entry key="M10" value="47.99385181912927" />
-      <entry key="M15" value="62.120145388150526" />
-      <entry key="M30" value="95.8570831474222" />
-      <entry key="H1" value="134.2722484819872" />
-      <entry key="H2" value="166.12808725887027" />
-      <entry key="H4" value="188.53498455355117" />
-      <entry key="D1" value="665.9528557338124" />
-      <entry key="W1" value="3956.1128130294555" />
+      <entry key="MS100" value="0.5212328804205607" />
+      <entry key="MS500" value="0.8778219763041986" />
+      <entry key="S2" value="0.9887346009573103" />
+      <entry key="S5" value="1.2521606300568477" />
+      <entry key="S10" value="1.8919119668678432" />
+      <entry key="S30" value="4.15811240993947" />
+      <entry key="S60" value="5.893778893766481" />
+      <entry key="M2" value="7.526756590089841" />
+      <entry key="M5" value="9.573943218138064" />
+      <entry key="M10" value="13.613281395549196" />
+      <entry key="M15" value="22.213964784072697" />
+      <entry key="M30" value="62.41372712999647" />
+      <entry key="H1" value="135.0318649766344" />
+      <entry key="H2" value="213.33228179340978" />
+      <entry key="H4" value="290.4154090344303" />
+      <entry key="D1" value="805.9889336504617" />
+      <entry key="W1" value="4118.604899948874" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -146,7 +183,7 @@
     "JUnit.DataBaseTests.createThenDeleteTables.executor": "Run",
     "JUnit.DataBaseTests.createUserWithoutError.executor": "Run",
     "JUnit.DataBaseTests.deleteGameTable.executor": "Run",
-    "JUnit.DataBaseTests.executor": "Coverage",
+    "JUnit.DataBaseTests.executor": "Run",
     "JUnit.DataBaseTests.getUserData.executor": "Run",
     "JUnit.DataBaseTests.testAddAuthData.executor": "Run",
     "JUnit.DataBaseTests.testClearTables.executor": "Run",
@@ -253,7 +290,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/natha/Desktop/cs240/Chess/server/src/test/java/passoff/server",
+    "last_opened_file_path": "C:/Users/natha/Desktop/cs240/Chess/client/src/test/java/client",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.detected.package.tslint": "true",
@@ -269,11 +306,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\natha\Desktop\cs240\Chess\client\src\test\java\client" />
+      <recent name="C:\Users\natha\Desktop\cs240\Chess\client\src\main\java\ui" />
       <recent name="C:\Users\natha\Desktop\cs240\Chess\server\src\test\java\passoff\server" />
       <recent name="C:\Users\natha\Desktop\cs240\Chess\server\src\main\java\dataaccess" />
       <recent name="C:\Users\natha\Desktop\cs240\Chess\server\src\main\resources" />
-      <recent name="C:\Users\natha\Desktop\cs240\Chess\server\src\test\java" />
-      <recent name="C:\Users\natha\Desktop\cs240\Chess\starter-code\3-web-api\server" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\natha\Desktop\cs240\Chess\server\src\main\java\server" />
@@ -282,13 +319,13 @@
       <recent name="C:\Users\natha\Desktop\cs240\Chess\shared\src\test" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="dataaccess.sql" />
       <recent name="dataaccess" />
+      <recent name="dataaccess.sql" />
       <recent name="service" />
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.dataaccess.sql in server">
+  <component name="RunManager" selected="JUnit.DataBaseTests">
     <configuration name="All in server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <option name="PACKAGE_NAME" value="" />
@@ -299,9 +336,9 @@
     </configuration>
     <configuration name="DataBaseTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
-      <extension name="coverage" runner="jacoco">
+      <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dataaccess.sql.*" />
+          <option name="PATTERN" value="dataaccess.*" />
           <option name="ENABLED" value="true" />
         </pattern>
         <pattern>
@@ -317,16 +354,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DatabaseTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="passoff.server.*" />
+          <option name="PATTERN" value="service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="passoff.server" />
-      <option name="MAIN_CLASS_NAME" value="passoff.server.DatabaseTests" />
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.UserServiceTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -336,7 +373,7 @@
       <module name="server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dataaccess.sql.*" />
+          <option name="PATTERN" value="dataaccess.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -352,7 +389,7 @@
       <module name="server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dataaccess.sql.*" />
+          <option name="PATTERN" value="dataaccess.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -363,19 +400,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.UserServiceTests" />
       <item itemvalue="JUnit.UserServiceTests.testDataAccessacception" />
       <item itemvalue="JUnit.dataaccess.sql in server" />
       <item itemvalue="JUnit.All in server" />
-      <item itemvalue="JUnit.DatabaseTests" />
       <item itemvalue="JUnit.DataBaseTests" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.dataaccess.sql in server" />
         <item itemvalue="JUnit.DataBaseTests" />
-        <item itemvalue="JUnit.UserServiceTests.testDataAccessacception" />
+        <item itemvalue="JUnit.UserServiceTests" />
         <item itemvalue="JUnit.All in server" />
-        <item itemvalue="JUnit.DatabaseTests" />
+        <item itemvalue="JUnit.dataaccess.sql in server" />
+        <item itemvalue="JUnit.UserServiceTests.testDataAccessacception" />
       </list>
     </recent_temporary>
   </component>
@@ -448,18 +485,18 @@
           <option name="timeStamp" value="77" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/sql/DatabaseAuthData.java</url>
-          <line>58</line>
+          <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java</url>
+          <line>56</line>
           <option name="timeStamp" value="109" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/sql/DatabaseAuthData.java</url>
-          <line>11</line>
+          <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java</url>
+          <line>9</line>
           <option name="timeStamp" value="112" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/sql/DatabaseAuthData.java</url>
-          <line>71</line>
+          <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java</url>
+          <line>69</line>
           <option name="timeStamp" value="137" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

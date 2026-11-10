@@ -1,8 +1,5 @@
-package dataaccess.sql;
+package dataaccess;
 
-import dataaccess.DataAccessException;
-import dataaccess.DatabaseManager;
-import dataaccess.UserDataAccess;
 import model.UserData;
 import org.mindrot.jbcrypt.BCrypt;
 

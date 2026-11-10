@@ -175,7 +175,7 @@ public class UserServiceTests {
         UserService.RegisterResult bobRegisterResult = registerBob();
         UserService.RegisterResult tomRegisterResult = registerTom();
 
-        ArrayList<MemoryGameDAO.ModifiedGameData> expectedList = new ArrayList<MemoryGameDAO.ModifiedGameData>();
+        ArrayList<model.ModifiedGameData> expectedList = new ArrayList<model.ModifiedGameData>();
 
         GameService.CreateGameResult createGameResult1 = createGame1(tomRegisterResult);
         int gameID1 = createGameResult1.gameID();
@@ -183,7 +183,7 @@ public class UserServiceTests {
         GameService.JoinGameRequest blackRequest1 = new GameService.JoinGameRequest("BLACK", gameID1);
         gameService.joinGame(bobRegisterResult.authToken(), whiteRequest1);
         gameService.joinGame(tomRegisterResult.authToken(), blackRequest1);
-        expectedList.add(new MemoryGameDAO.ModifiedGameData(gameID1, userBob.username(), userTom.username(), "Game1"));
+        expectedList.add(new model.ModifiedGameData(gameID1, userBob.username(), userTom.username(), "Game1"));
 
         GameService.CreateGameResult createGameResult2 = createGame2(tomRegisterResult);
         int gameID2 = createGameResult2.gameID();
@@ -191,7 +191,7 @@ public class UserServiceTests {
         GameService.JoinGameRequest blackRequest2 = new GameService.JoinGameRequest("BLACK", gameID2);
         gameService.joinGame(tomRegisterResult.authToken(), whiteRequest2);
         gameService.joinGame(bobRegisterResult.authToken(), blackRequest2);
-        expectedList.add(new MemoryGameDAO.ModifiedGameData(gameID2, userTom.username(), userBob.username(), "Game2"));
+        expectedList.add(new model.ModifiedGameData(gameID2, userTom.username(), userBob.username(), "Game2"));
 
         GameService.ListGameResult expectedResult = new GameService.ListGameResult(expectedList);
         assertEquals(expectedResult, gameService.listGames(tomRegisterResult.authToken()));

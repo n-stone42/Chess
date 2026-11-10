@@ -30,7 +30,7 @@ public class GameService {
 
 
     public record ListGameResult(
-            ArrayList<MemoryGameDAO.ModifiedGameData> games) {
+            ArrayList<model.ModifiedGameData> games) {
     }
 
     public record JoinGameRequest(

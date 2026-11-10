@@ -189,17 +189,17 @@ public class DataBaseTests {
         int gameID1 = addChessGame();
         insertPlayerToGame(gameID1, ChessGame.TeamColor.WHITE, userBob);
         insertPlayerToGame(gameID1, ChessGame.TeamColor.BLACK, userTom);
-        MemoryGameDAO.ModifiedGameData expectedGameData1 = new
-                MemoryGameDAO.ModifiedGameData(gameID1, userBob.username(), userTom.username(), "testGame");
+        model.ModifiedGameData expectedGameData1 = new
+                model.ModifiedGameData(gameID1, userBob.username(), userTom.username(), "testGame");
 
         int gameID2 = addChessGame();
         insertPlayerToGame(gameID2, ChessGame.TeamColor.WHITE, userTom);
         assertThrows(DataAccessException.class, () -> insertPlayerToGame(gameID2, ChessGame.TeamColor.WHITE, userBob));
         insertPlayerToGame(gameID2, ChessGame.TeamColor.BLACK, userBob);
-        MemoryGameDAO.ModifiedGameData expectedGameData2 = new
-                MemoryGameDAO.ModifiedGameData(gameID2, userTom.username(), userBob.username(), "testGame");
+        model.ModifiedGameData expectedGameData2 = new
+                model.ModifiedGameData(gameID2, userTom.username(), userBob.username(), "testGame");
 
-        ArrayList<MemoryGameDAO.ModifiedGameData> expectedGameList = new ArrayList<>();
+        ArrayList<model.ModifiedGameData> expectedGameList = new ArrayList<>();
         expectedGameList.add(expectedGameData1);
         expectedGameList.add(expectedGameData2);
 
