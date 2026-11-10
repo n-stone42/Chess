@@ -1,5 +1,6 @@
 package service;
 
+import UserRecordsModels.*;
 import dataaccess.AuthDataAccess;
 import dataaccess.DataAccessException;
 import dataaccess.UserDataAccess;
@@ -14,35 +15,6 @@ public class UserService {
     public UserService(UserDataAccess userData, AuthDataAccess authData) {
         this.userData = userData;
         this.authData = authData;
-    }
-
-    public record RegisterRequest(
-            String username,
-            String password,
-            String email) {
-    }
-
-    public record RegisterResult(
-            String username,
-            String authToken) {
-    }
-
-    public record LoginRequest(
-            String username,
-            String password) {
-    }
-
-    public record LoginResult(
-            String username,
-            String authToken) {
-    }
-
-    public record LogoutRequest(
-            String username,
-            String authToken) {
-    }
-
-    public record LogoutResult() {
     }
 
 

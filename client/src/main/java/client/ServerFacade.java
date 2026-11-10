@@ -1,3 +1,5 @@
+package client;
+
 import GameRecordModels.CreateGameResult;
 import GameRecordModels.ListGameResult;
 import com.google.gson.Gson;
@@ -9,6 +11,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import UserRecordsModels.*;
+import GameRecordModels.*;
 
 public class ServerFacade {
 
@@ -33,22 +37,22 @@ public class ServerFacade {
 
     //before login functions
     //help and quit are handled in the client, not here
-    public UserService.RegisterResult registerUser(UserService.RegisterRequest registerRequest) throws DataAccessException{
+    public RegisterResult registerUser(RegisterRequest registerRequest) throws DataAccessException{
         HttpRequest httpRequest = makeRequest("POST", "/session", registerRequest);
         HttpResponse httpResponse = sendRequest(httpRequest);
-        return handelResponse(httpResponse, UserService.RegisterResult.class);
+        return handelResponse(httpResponse, RegisterResult.class);
     }
 
-    public UserService.LoginResult login(UserService.LoginRequest loginRequest) throws DataAccessException{
+    public LoginResult login(LoginRequest loginRequest) throws DataAccessException{
         HttpRequest httpRequest = makeRequest("POST", "/session",loginRequest);
         HttpResponse httpResponse = sendRequest(httpRequest);
-        return handelResponse(httpResponse, UserService.LoginResult.class);
+        return handelResponse(httpResponse, LoginResult.class);
     }
 
-    public UserService.LogoutResult logout(UserService.LogoutRequest logoutRequest) throws DataAccessException{
+    public LogoutResult logout(LogoutRequest logoutRequest) throws DataAccessException{
         HttpRequest httpRequest = makeRequest("DELETE", "/session",logoutRequest);
         HttpResponse httpResponse = sendRequest(httpRequest);
-        return handelResponse(httpResponse, UserService.LogoutResult.class);
+        return handelResponse(httpResponse, LogoutResult.class);
     }
 
     public CreateGameResult createGame(CreateGameResult gameResult) throws DataAccessException{

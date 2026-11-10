@@ -36,21 +36,21 @@ public class UserServiceTests {
         gameMemory.clear();
     }
 
-    public UserService.RegisterResult registerBob() throws DataAccessException {
-        UserService.RegisterRequest request = new UserService.RegisterRequest(userBob.username(), userBob.password(),
+    public RegisterResult registerBob() throws DataAccessException {
+        RegisterRequest request = new RegisterRequest(userBob.username(), userBob.password(),
                 userBob.email());
         return userService.register(request);
     }
 
-    public UserService.RegisterResult registerTom() throws DataAccessException {
-        UserService.RegisterRequest request = new UserService.RegisterRequest(userTom.username(), userTom.password(),
+    public RegisterResult registerTom() throws DataAccessException {
+        RegisterRequest request = new RegisterRequest(userTom.username(), userTom.password(),
                 userTom.email());
         return userService.register(request);
     }
 
     @Test
     public void testBobGetUsername() throws DataAccessException {
-        UserService.RegisterResult result = registerBob();
+        RegisterResult result = registerBob();
         String authToken = result.authToken();
         assertEquals(authMemory.getUsername(authToken), userBob.username());
 
@@ -72,19 +72,19 @@ public class UserServiceTests {
     }
 
     public CreateGameResult createGame1(
-            UserService.RegisterResult bobRegisterResult) throws DataAccessException {
+            RegisterResult bobRegisterResult) throws DataAccessException {
         return gameService.creatGame(bobRegisterResult.authToken(), new CreateGameRequest(testGameName1));
     }
 
     public CreateGameResult createGame2(
-            UserService.RegisterResult tomRegisterResult) throws DataAccessException {
+            RegisterResult tomRegisterResult) throws DataAccessException {
         return gameService.creatGame(tomRegisterResult.authToken(), new CreateGameRequest(testGameName2));
     }
 
     @Test
     public void createUserInMemory() {
         try {
-            UserService.RegisterResult result = registerBob();
+            RegisterResult result = registerBob();
             String authToken = result.authToken();
             assertNotNull(authMemory.getAuth(authToken));
         } catch (Exception e) {
@@ -95,9 +95,9 @@ public class UserServiceTests {
     @Test
     public void testLogin() {
         try {
-            UserService.RegisterResult result = registerBob();
-            UserService.LoginResult loginResult = userService.login(
-                    new UserService.LoginRequest(userBob.username(), userBob.password()));
+            RegisterResult result = registerBob();
+            LoginResult loginResult = userService.login(
+                    new LoginRequest(userBob.username(), userBob.password()));
             assertTrue(loginResult.username() == userBob.username() && loginResult.authToken() != result.authToken());
             assertEquals(authMemory.getAuth(loginResult.authToken()),
                     new AuthData(loginResult.authToken(), userBob.username()));
@@ -109,12 +109,12 @@ public class UserServiceTests {
     @Test
     public void testLogout() {
         try {
-            UserService.RegisterResult result = registerBob();
-            UserService.LoginResult loginResult = userService.login(
-                    new UserService.LoginRequest(userBob.username(), userBob.password()));
-            UserService.LogoutRequest logoutRequest = new UserService.LogoutRequest(loginResult.username(),
+            RegisterResult result = registerBob();
+            LoginResult loginResult = userService.login(
+                    new LoginRequest(userBob.username(), userBob.password()));
+            LogoutRequest logoutRequest = new LogoutRequest(loginResult.username(),
                     loginResult.authToken());
-            assertEquals(userService.logout(logoutRequest), new UserService.LogoutResult());
+            assertEquals(userService.logout(logoutRequest), new LogoutResult());
             assertThrows(DataAccessException.class, () -> authMemory.getAuth(loginResult.authToken()));
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -123,7 +123,7 @@ public class UserServiceTests {
 
     @Test
     public void testCreateGame() throws DataAccessException {
-        UserService.RegisterResult bobRegisterResult = registerBob();
+        RegisterResult bobRegisterResult = registerBob();
         String testGameName = "What's A good game Name?";
         CreateGameResult createGameResult = gameService.
                 creatGame(bobRegisterResult.authToken(), new CreateGameRequest(testGameName));
@@ -133,7 +133,7 @@ public class UserServiceTests {
 
     @Test
     public void testBadCreateGame() throws DataAccessException {
-        UserService.RegisterResult bobRegisterResult = registerBob();
+        RegisterResult bobRegisterResult = registerBob();
         String testGameName = "What's A good game Name?";
         CreateGameResult createGameResult = gameService.
                 creatGame(bobRegisterResult.authToken(), new CreateGameRequest(testGameName));
@@ -143,7 +143,7 @@ public class UserServiceTests {
 
     @Test
     public void testBadPassword() throws DataAccessException {
-        UserService.RegisterResult bobRegisterResult = registerBob();
+        RegisterResult bobRegisterResult = registerBob();
         assertThrows(DataAccessException.class, () -> userMemory.matchPassword(userTom.username(), "bad password"));
     }
 
@@ -155,8 +155,8 @@ public class UserServiceTests {
 
     @Test
     public void testJoinGame() throws DataAccessException {
-        UserService.RegisterResult bobRegisterResult = registerBob();
-        UserService.RegisterResult tomRegisterResult = registerTom();
+        RegisterResult bobRegisterResult = registerBob();
+        RegisterResult tomRegisterResult = registerTom();
         String testGameName = "What's A good game Name?";
         CreateGameResult createGameResult = gameService.
                 creatGame(bobRegisterResult.authToken(), new CreateGameRequest(testGameName));
@@ -174,8 +174,8 @@ public class UserServiceTests {
     @Test
     public void testGameList() throws DataAccessException {
         //Register users
-        UserService.RegisterResult bobRegisterResult = registerBob();
-        UserService.RegisterResult tomRegisterResult = registerTom();
+        RegisterResult bobRegisterResult = registerBob();
+        RegisterResult tomRegisterResult = registerTom();
 
         ArrayList<model.ModifiedGameData> expectedList = new ArrayList<model.ModifiedGameData>();
 
@@ -201,8 +201,8 @@ public class UserServiceTests {
 
     @Test
     public void testClearAll() throws DataAccessException {
-        UserService.RegisterResult bobRegisterResult = registerBob();
-        UserService.RegisterResult tomRegisterResult = registerTom();
+        RegisterResult bobRegisterResult = registerBob();
+        RegisterResult tomRegisterResult = registerTom();
 
         createGame1(bobRegisterResult);
         CreateGameResult createGameResult2 = createGame2(bobRegisterResult);
@@ -235,7 +235,7 @@ public class UserServiceTests {
     @Test
     public void testBadLogins() throws  DataAccessException {
         registerBob();
-        assertThrows(DataAccessException.class, () -> userService.login(new UserService.LoginRequest("bad username", "bad password")));
-        assertThrows(DataAccessException.class, () -> userService.login(new UserService.LoginRequest(userBob.username(), "bad password")));
+        assertThrows(DataAccessException.class, () -> userService.login(new LoginRequest("bad username", "bad password")));
+        assertThrows(DataAccessException.class, () -> userService.login(new LoginRequest(userBob.username(), "bad password")));
     }
 }

@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="just in case what I am about  to do breaks the code">
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="restructure to put the request/ result records in a shared module">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/ServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/ServerFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/ServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ServerFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/GameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/test/java/service/UserServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/service/UserServiceTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,61 +70,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000000262117" />
-      <entry key="S5" value="1.0000585600092011" />
-      <entry key="S10" value="1.0078162064884206" />
-      <entry key="S30" value="1.2544244298742666" />
-      <entry key="S60" value="1.7922154601097122" />
-      <entry key="M2" value="3.2676160959636222" />
-      <entry key="M5" value="9.836423943372335" />
-      <entry key="M10" value="19.242579380458718" />
-      <entry key="M15" value="27.68392266718769" />
-      <entry key="M30" value="57.80468036473464" />
-      <entry key="H1" value="115.27147996468594" />
-      <entry key="H2" value="182.6947230658812" />
-      <entry key="H4" value="250.9859888700827" />
-      <entry key="D1" value="647.5333069221037" />
-      <entry key="W1" value="3076.980107755889" />
+      <entry key="MS100" value="1.0000000006677374" />
+      <entry key="MS500" value="1.014722336426977" />
+      <entry key="S2" value="1.4485158978311887" />
+      <entry key="S5" value="2.056890053833979" />
+      <entry key="S10" value="2.505991507572374" />
+      <entry key="S30" value="3.6250046271781065" />
+      <entry key="S60" value="4.896104821529288" />
+      <entry key="M2" value="7.475087959491544" />
+      <entry key="M5" value="15.157559202393992" />
+      <entry key="M10" value="25.309821375507223" />
+      <entry key="M15" value="34.28029493082688" />
+      <entry key="M30" value="62.948555689828744" />
+      <entry key="H1" value="119.86806451667731" />
+      <entry key="H2" value="192.41563814035428" />
+      <entry key="H4" value="267.45467596692646" />
+      <entry key="D1" value="672.8481901317477" />
+      <entry key="W1" value="3104.4770134174346" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="7.329504353844304E-207" />
-      <entry key="S10" value="8.561252451830691E-104" />
-      <entry key="S30" value="4.4091757329560926E-35" />
-      <entry key="S60" value="6.8806079013963174E-18" />
-      <entry key="M2" value="3.9465335683201025E-9" />
-      <entry key="M5" value="0.0018270307538728586" />
-      <entry key="M10" value="0.21195584646659632" />
-      <entry key="M15" value="1.1924076006521744" />
-      <entry key="M30" value="7.8741986901094" />
-      <entry key="H1" value="22.11860902434093" />
-      <entry key="H2" value="38.35934561899924" />
-      <entry key="H4" value="53.59366484670278" />
-      <entry key="D1" value="180.16546317515235" />
-      <entry key="W1" value="1065.0948805293317" />
+      <entry key="MS100" value="5.98562482107826E-146" />
+      <entry key="MS500" value="9.024474006349932E-30" />
+      <entry key="S2" value="5.4809453854063665E-8" />
+      <entry key="S5" value="0.0012460692816471366" />
+      <entry key="S10" value="0.03529970687221742" />
+      <entry key="S30" value="0.3288919372434213" />
+      <entry key="S60" value="0.6118073290647305" />
+      <entry key="M2" value="1.0319529172057684" />
+      <entry key="M5" value="1.7957029748689333" />
+      <entry key="M10" value="2.3360289274817405" />
+      <entry key="M15" value="2.9429554531606796" />
+      <entry key="M30" value="7.55365316809768" />
+      <entry key="H1" value="20.169875876125037" />
+      <entry key="H2" value="36.86236289808745" />
+      <entry key="H4" value="53.371077780122334" />
+      <entry key="D1" value="181.32786007927936" />
+      <entry key="W1" value="1066.5403366909889" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.46976137460700584" />
-      <entry key="MS500" value="0.8597564862430065" />
-      <entry key="S2" value="0.9629281107567115" />
-      <entry key="S5" value="0.9850613328855243" />
-      <entry key="S10" value="1.0002744754336337" />
-      <entry key="S30" value="1.2516010089800342" />
-      <entry key="S60" value="1.789132591267653" />
-      <entry key="M2" value="3.26121135908997" />
-      <entry key="M5" value="9.829511018035852" />
-      <entry key="M10" value="19.445899041464536" />
-      <entry key="M15" value="28.86531058354188" />
-      <entry key="M30" value="65.65815386056356" />
-      <entry key="H1" value="137.36323663080478" />
-      <entry key="H2" value="221.03088715196725" />
-      <entry key="H4" value="304.5634679580282" />
-      <entry key="D1" value="827.690819212895" />
-      <entry key="W1" value="4142.068718169735" />
+      <entry key="MS100" value="0.013415085509743453" />
+      <entry key="MS500" value="0.4363702822295483" />
+      <entry key="S2" value="1.224377930848819" />
+      <entry key="S5" value="1.9249319008343353" />
+      <entry key="S10" value="2.443318952321912" />
+      <entry key="S30" value="3.8610022246424798" />
+      <entry key="S60" value="5.428569605779149" />
+      <entry key="M2" value="8.445403467214025" />
+      <entry key="M5" value="16.91544839780776" />
+      <entry key="M10" value="27.621590847920757" />
+      <entry key="M15" value="37.20329384269184" />
+      <entry key="M30" value="70.48106656787094" />
+      <entry key="H1" value="140.0125565473226" />
+      <entry key="H2" value="229.25527106872408" />
+      <entry key="H4" value="320.80940906676193" />
+      <entry key="D1" value="854.1679918877119" />
+      <entry key="W1" value="4171.011062209889" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -420,7 +421,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Phase 3- formatting and nestingDepth" />
     <MESSAGE value="Phase 3- character length lines" />
     <MESSAGE value="Phase 3- removing commented code" />
     <MESSAGE value="Phase 3- adding addtional tests and restucture" />
@@ -445,7 +445,8 @@
     <MESSAGE value="Phase 4-  more tests and code coverage" />
     <MESSAGE value="Phase 4-  restructure" />
     <MESSAGE value="just in case what I am about  to do breaks the code" />
-    <option name="LAST_COMMIT_MESSAGE" value="just in case what I am about  to do breaks the code" />
+    <MESSAGE value="restructure to put the request/ result records in a shared module" />
+    <option name="LAST_COMMIT_MESSAGE" value="restructure to put the request/ result records in a shared module" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

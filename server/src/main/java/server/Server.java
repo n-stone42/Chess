@@ -57,29 +57,29 @@ public class Server {
     }
 
     public void registerUser(@NotNull Context context) throws DataAccessException {
-        UserService.RegisterRequest request = new Gson().fromJson(context.body(), UserService.RegisterRequest.class);
+        RegisterRequest request = new Gson().fromJson(context.body(), RegisterRequest.class);
         if (request.username() == null || request.password() == null) {
             throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
         }
-        UserService.RegisterResult result = userService.register(request);
+        RegisterResult result = userService.register(request);
         context.result(new Gson().toJson(result));
     }
 
     public void login(@NotNull Context context) throws DataAccessException {
-        UserService.LoginRequest request = new Gson().fromJson(context.body(), UserService.LoginRequest.class);
+        LoginRequest request = new Gson().fromJson(context.body(), LoginRequest.class);
         if (request.username() == null || request.password() == null) {
             throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
         }
-        UserService.LoginResult result = userService.login(request);
+        LoginResult result = userService.login(request);
         context.result(new Gson().toJson(result));
     }
 
     public void logout(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
         String username = authData.getAuth(authToken).username();
-        UserService.LogoutRequest logoutRequest = new UserService.LogoutRequest(username, authToken);
+        LogoutRequest logoutRequest = new LogoutRequest(username, authToken);
 
-        UserService.LogoutResult result = userService.logout(logoutRequest);
+        LogoutResult result = userService.logout(logoutRequest);
         context.result(new Gson().toJson(result));
     }
 

@@ -23,26 +23,6 @@ public class GameService {
         this.authData = authData;
     }
 
-//    public record CreateGameRequest(String gameName) {
-//    }
-//
-//    ;
-//
-//    public record CreateGameResult(
-//            int gameID) {
-//    }
-//
-//
-//    public record ListGameResult(
-//            ArrayList<model.ModifiedGameData> games) {
-//    }
-//
-//    public record JoinGameRequest(
-//            String playerColor,
-//            int gameID
-//    ) {
-//    }
-
     public record JoinGameResult() {
     }
 
