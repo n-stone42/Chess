@@ -1,5 +1,9 @@
 package service;
 
+import GameRecordModels.CreateGameRequest;
+import GameRecordModels.CreateGameResult;
+import GameRecordModels.JoinGameRequest;
+import GameRecordModels.ListGameResult;
 import chess.ChessGame;
 import dataaccess.*;
 import model.*;
@@ -19,25 +23,25 @@ public class GameService {
         this.authData = authData;
     }
 
-    public record CreateGameRequest(String gameName) {
-    }
-
-    ;
-
-    public record CreateGameResult(
-            int gameID) {
-    }
-
-
-    public record ListGameResult(
-            ArrayList<model.ModifiedGameData> games) {
-    }
-
-    public record JoinGameRequest(
-            String playerColor,
-            int gameID
-    ) {
-    }
+//    public record CreateGameRequest(String gameName) {
+//    }
+//
+//    ;
+//
+//    public record CreateGameResult(
+//            int gameID) {
+//    }
+//
+//
+//    public record ListGameResult(
+//            ArrayList<model.ModifiedGameData> games) {
+//    }
+//
+//    public record JoinGameRequest(
+//            String playerColor,
+//            int gameID
+//    ) {
+//    }
 
     public record JoinGameResult() {
     }
@@ -71,10 +75,10 @@ public class GameService {
             AuthData userAuthData = authData.getAuth(authToken);
             String username = userAuthData.username();
             ChessGame.TeamColor color;
-            if (request.playerColor.equals("WHITE")) {
+            if (request.playerColor().equals("WHITE")) {
                 gameData.joinGame(request.gameID(), ChessGame.TeamColor.WHITE, username);
                 return new JoinGameResult();
-            } else if (request.playerColor.equals("BLACK")) {
+            } else if (request.playerColor().equals("BLACK")) {
                 gameData.joinGame(request.gameID(), ChessGame.TeamColor.BLACK, username);
                 return new JoinGameResult();
             } else {

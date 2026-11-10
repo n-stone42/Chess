@@ -12,6 +12,9 @@ import handlers.*;
 import service.ClearService;
 import service.GameService;
 import service.UserService;
+import UserRecordsModels.*;
+import GameRecordModels.*;
+
 
 
 public class Server {
@@ -82,26 +85,26 @@ public class Server {
 
     public void createGame(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
-        GameService.CreateGameRequest request = new Gson().fromJson(context.body(),
-                GameService.CreateGameRequest.class);
+        CreateGameRequest request = new Gson().fromJson(context.body(),
+                CreateGameRequest.class);
         if (request.gameName() == null) {
             throw new DataAccessException("Error: Game name is null", DataAccessException.Code.BadRequest);
         }
-        GameService.CreateGameResult result = gameService.creatGame(authToken,
-                new Gson().fromJson(context.body(), GameService.CreateGameRequest.class));
+        CreateGameResult result = gameService.creatGame(authToken,
+                new Gson().fromJson(context.body(), CreateGameRequest.class));
         context.result(new Gson().toJson(result));
     }
 
     public void listGame(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
-        GameService.ListGameResult result = gameService.listGames(authToken);
+        ListGameResult result = gameService.listGames(authToken);
         context.result(new Gson().toJson(result));
     }
 
     public void joinGame(@NotNull Context context) throws DataAccessException {
 //        UserService.LoginRequest request = new Gson().fromJson(context.body(), UserService.LoginRequest.class);
         String authToken = context.header("authorization");
-        GameService.JoinGameRequest request = new Gson().fromJson(context.body(), GameService.JoinGameRequest.class);
+        JoinGameRequest request = new Gson().fromJson(context.body(), JoinGameRequest.class);
         if (request.playerColor() == null) {
             throw new DataAccessException("Error: player color in null", DataAccessException.Code.BadRequest);
         }

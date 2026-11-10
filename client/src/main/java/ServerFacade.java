@@ -1,3 +1,5 @@
+import GameRecordModels.CreateGameResult;
+import GameRecordModels.ListGameResult;
 import com.google.gson.Gson;
 import dataaccess.DataAccessException;
 import service.GameService;
@@ -49,16 +51,16 @@ public class ServerFacade {
         return handelResponse(httpResponse, UserService.LogoutResult.class);
     }
 
-    public GameService.CreateGameResult createGame(GameService.CreateGameResult gameResult) throws DataAccessException{
+    public CreateGameResult createGame(CreateGameResult gameResult) throws DataAccessException{
         HttpRequest httpRequest = makeRequest("POST", "/game",gameResult);
         HttpResponse httpResponse = sendRequest(httpRequest);
-        return handelResponse(httpResponse, GameService.CreateGameResult.class);
+        return handelResponse(httpResponse, CreateGameResult.class);
     }
 
-    public GameService.ListGameResult listGame() throws DataAccessException{
+    public ListGameResult listGame() throws DataAccessException{
         HttpRequest httpRequest = makeRequest("POST", "/game",null);
         HttpResponse httpResponse = sendRequest(httpRequest);
-        return handelResponse(httpResponse, GameService.ListGameResult.class);
+        return handelResponse(httpResponse, ListGameResult.class);
     }
 
 

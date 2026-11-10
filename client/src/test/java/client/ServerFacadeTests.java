@@ -15,7 +15,7 @@ public class ServerFacadeTests {
     // must have a positive and negative test for every method in serveFacade
 
     private static Server server;
-    static ServerFacade serverFacade;
+
 
     @BeforeAll
     public static void init() {
