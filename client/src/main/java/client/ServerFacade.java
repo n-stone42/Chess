@@ -4,8 +4,6 @@ import GameRecordModels.CreateGameResult;
 import GameRecordModels.ListGameResult;
 import com.google.gson.Gson;
 import dataaccess.DataAccessException;
-import service.GameService;
-import service.UserService;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -22,10 +20,10 @@ public class ServerFacade {
     //postlogin
     //help, logout, create game, list games, play game, observe game
 
-    private final String port;
+    private final String serverURL;
     private final HttpClient client = HttpClient.newHttpClient();
     public ServerFacade(String url) {
-        port = url;
+        serverURL = url;
     }
 
     // the pattern for each method for doing something is
@@ -38,8 +36,9 @@ public class ServerFacade {
     //before login functions
     //help and quit are handled in the client, not here
     public RegisterResult registerUser(RegisterRequest registerRequest) throws DataAccessException{
-        HttpRequest httpRequest = makeRequest("POST", "/session", registerRequest);
+        HttpRequest httpRequest = makeRequest("POST", "/user", registerRequest);
         HttpResponse httpResponse = sendRequest(httpRequest);
+        System.out.println(httpResponse);
         return handelResponse(httpResponse, RegisterResult.class);
     }
 
@@ -71,7 +70,7 @@ public class ServerFacade {
 
     private HttpRequest makeRequest(String action, String path, Object body) {
         HttpRequest.Builder request = HttpRequest.newBuilder()
-                .uri(URI.create(port + path))
+                .uri(URI.create(serverURL + path))
                 .method(action, handelBody(body));
         if (body != null) {
             request.setHeader("Content-Type", "application/json");
@@ -96,8 +95,7 @@ public class ServerFacade {
     }
 
     private <Object> Object handelResponse(HttpResponse<String> response, Class<Object> responseClass) throws DataAccessException {
-        int status = response.statusCode();
-        if (status == 200) {
+        if (response.statusCode() == 200) {
             String body = response.body();
             if (body != null) {
                 throw new DataAccessException("Error: " + body, DataAccessException.Code.OtherError);

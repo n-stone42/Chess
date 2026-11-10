@@ -19,10 +19,6 @@ import GameRecordModels.*;
 
 public class Server {
 
-    // the DAOs
-//    MemoryAuthDAO authDAO = new MemoryAuthDAO();
-//    MemoryGameDAO gameDAO = new MemoryGameDAO();
-//    MemoryUserDAO userDAO = new MemoryUserDAO();
     DatabaseAuthData authData = new DatabaseAuthData();
     DatabaseGameData gameData = new DatabaseGameData();
     DatabaseUserData userData = new DatabaseUserData();
@@ -102,7 +98,6 @@ public class Server {
     }
 
     public void joinGame(@NotNull Context context) throws DataAccessException {
-//        UserService.LoginRequest request = new Gson().fromJson(context.body(), UserService.LoginRequest.class);
         String authToken = context.header("authorization");
         JoinGameRequest request = new Gson().fromJson(context.body(), JoinGameRequest.class);
         if (request.playerColor() == null) {
