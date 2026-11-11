@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="restructure to put the request/ result records that were in UserService">
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="progress on passing self written postiveRegister user test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/client/client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/ServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ServerFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/server/Server.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/server/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,61 +69,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="3.2010915236692484E-20" />
-      <entry key="MS500" value="1.3478215986517767E-4" />
-      <entry key="S2" value="0.17553526590213983" />
-      <entry key="S5" value="0.9076120326643614" />
-      <entry key="S10" value="1.6308531587480286" />
-      <entry key="S30" value="2.4417299432582236" />
-      <entry key="S60" value="2.7055652444401908" />
-      <entry key="M2" value="2.848733615108197" />
-      <entry key="M5" value="2.9750932781668245" />
-      <entry key="M10" value="4.1747745997161685" />
-      <entry key="M15" value="7.272322398324723" />
-      <entry key="M30" value="22.885120004602204" />
-      <entry key="H1" value="66.28298840079431" />
-      <entry key="H2" value="147.2105473342846" />
-      <entry key="H4" value="248.3503456863352" />
-      <entry key="D1" value="700.2499952790521" />
-      <entry key="W1" value="3144.7783193843443" />
+      <entry key="MS100" value="1.0000263835824985" />
+      <entry key="MS500" value="1.1214135038157471" />
+      <entry key="S2" value="1.6065149239488576" />
+      <entry key="S5" value="2.04371901545134" />
+      <entry key="S10" value="2.6909937722507795" />
+      <entry key="S30" value="4.788369494793223" />
+      <entry key="S60" value="6.618939041405122" />
+      <entry key="M2" value="8.456112318965252" />
+      <entry key="M5" value="10.267946570057024" />
+      <entry key="M10" value="11.162768542126749" />
+      <entry key="M15" value="12.075093472852972" />
+      <entry key="M30" value="18.713412355405715" />
+      <entry key="H1" value="46.43619017348187" />
+      <entry key="H2" value="117.68130404377193" />
+      <entry key="H4" value="226.50574992557307" />
+      <entry key="D1" value="710.0649281886418" />
+      <entry key="W1" value="3165.624601290917" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.000000000000066" />
-      <entry key="M2" value="1.0000009033781598" />
-      <entry key="M5" value="1.0196177435387048" />
-      <entry key="M10" value="1.6317369672555158" />
-      <entry key="M15" value="3.15289307634641" />
-      <entry key="M30" value="9.210432652777815" />
-      <entry key="H1" value="21.38430771180651" />
-      <entry key="H2" value="41.13405240885642" />
-      <entry key="H4" value="64.26921528533933" />
-      <entry key="D1" value="201.14532689502832" />
-      <entry key="W1" value="1088.37232086247" />
+      <entry key="MS100" value="9.293836580879348E-24" />
+      <entry key="MS500" value="2.476334554250494E-5" />
+      <entry key="S2" value="0.08052465568227417" />
+      <entry key="S5" value="0.5430851315178197" />
+      <entry key="S10" value="1.4134536580356014" />
+      <entry key="S30" value="3.995312122507398" />
+      <entry key="S60" value="5.663898618188893" />
+      <entry key="M2" value="6.9657063342858665" />
+      <entry key="M5" value="8.055551087525458" />
+      <entry key="M10" value="8.518025565496647" />
+      <entry key="M15" value="8.797339785223057" />
+      <entry key="M30" value="10.528137577781786" />
+      <entry key="H1" value="17.863275087498792" />
+      <entry key="H2" value="35.599832183877496" />
+      <entry key="H4" value="61.206567228021335" />
+      <entry key="D1" value="204.68057567869255" />
+      <entry key="W1" value="1093.7828969984446" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.398405292277163E-4" />
-      <entry key="MS500" value="0.22973722686206405" />
-      <entry key="S2" value="0.7727269162012567" />
-      <entry key="S5" value="1.5245379580007132" />
-      <entry key="S10" value="2.3224980632361896" />
-      <entry key="S30" value="3.2936494451074085" />
-      <entry key="S60" value="3.624025250149208" />
-      <entry key="M2" value="3.8059186497802733" />
-      <entry key="M5" value="3.976866563155032" />
-      <entry key="M10" value="5.794327298608344" />
-      <entry key="M15" value="10.41175777745431" />
-      <entry key="M30" value="32.07768738795394" />
-      <entry key="H1" value="87.64585071074332" />
-      <entry key="H2" value="188.32280846634083" />
-      <entry key="H4" value="312.6019458203983" />
-      <entry key="D1" value="901.3865877745832" />
-      <entry key="W1" value="4233.144240072589" />
+      <entry key="MS100" value="3.033201279163023E-5" />
+      <entry key="MS500" value="0.15506571374474415" />
+      <entry key="S2" value="1.0885006087442364" />
+      <entry key="S5" value="2.2088496312454224" />
+      <entry key="S10" value="3.791381258554931" />
+      <entry key="S30" value="8.531575405017419" />
+      <entry key="S60" value="12.098752294928172" />
+      <entry key="M2" value="15.303379424980559" />
+      <entry key="M5" value="18.266292168329546" />
+      <entry key="M10" value="19.649910206075358" />
+      <entry key="M15" value="20.85060967901575" />
+      <entry key="M30" value="29.226496725911577" />
+      <entry key="H1" value="64.2837647517256" />
+      <entry key="H2" value="153.26329424756213" />
+      <entry key="H4" value="287.6960192544795" />
+      <entry key="D1" value="914.7366459436818" />
+      <entry key="W1" value="4259.401066052506" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -166,6 +164,7 @@
     "JUnit.DataBaseTests.executor": "Run",
     "JUnit.DataBaseTests.getUserData.executor": "Run",
     "JUnit.DataBaseTests.testAddAuthData.executor": "Run",
+    "JUnit.DataBaseTests.testClearFunctions.executor": "Run",
     "JUnit.DataBaseTests.testClearTables.executor": "Run",
     "JUnit.DataBaseTests.testClearUserTableWithoutError.executor": "Run",
     "JUnit.DataBaseTests.testCreateGame.executor": "Run",
@@ -320,6 +319,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DataBaseTests.testClearFunctions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dataaccess.sql.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dataaccess.sql" />
+      <option name="MAIN_CLASS_NAME" value="dataaccess.sql.DataBaseTests" />
+      <option name="METHOD_NAME" value="testClearFunctions" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServerFacadeTests.negativeLogin (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="client" />
       <extension name="coverage">
@@ -368,36 +383,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServerFacadeTests.positiveRegister" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="client" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="java.client.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="java.client" />
-      <option name="MAIN_CLASS_NAME" value="java.client.ServerFacadeTests" />
-      <option name="METHOD_NAME" value="positiveRegister" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
+      <item itemvalue="JUnit.DataBaseTests.testClearFunctions" />
       <item itemvalue="JUnit.All in client" />
       <item itemvalue="JUnit.ServerFacadeTests.negativeLogin" />
       <item itemvalue="JUnit.ServerFacadeTests.negativeLogin (1)" />
-      <item itemvalue="JUnit.ServerFacadeTests.positiveRegister" />
       <item itemvalue="JUnit.ServerFacadeTests.positiveRegister (1)" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ServerFacadeTests.positiveRegister (1)" />
+        <item itemvalue="JUnit.DataBaseTests.testClearFunctions" />
         <item itemvalue="JUnit.ServerFacadeTests.negativeLogin (1)" />
         <item itemvalue="JUnit.ServerFacadeTests.negativeLogin" />
         <item itemvalue="JUnit.All in client" />
-        <item itemvalue="JUnit.ServerFacadeTests.positiveRegister" />
       </list>
     </recent_temporary>
   </component>
@@ -435,7 +434,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Phase 3- removing commented code" />
     <MESSAGE value="Phase 3- adding addtional tests and restucture" />
     <MESSAGE value="Phase 3- move tests" />
     <MESSAGE value="Phase 3- more file formatting" />
@@ -460,7 +458,8 @@
     <MESSAGE value="just in case what I am about  to do breaks the code" />
     <MESSAGE value="restructure to put the request/ result records in a shared module" />
     <MESSAGE value="restructure to put the request/ result records that were in UserService" />
-    <option name="LAST_COMMIT_MESSAGE" value="restructure to put the request/ result records that were in UserService" />
+    <MESSAGE value="progress on passing self written postiveRegister user test" />
+    <option name="LAST_COMMIT_MESSAGE" value="progress on passing self written postiveRegister user test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

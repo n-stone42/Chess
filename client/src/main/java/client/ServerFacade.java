@@ -97,7 +97,7 @@ public class ServerFacade {
     private <Object> Object handelResponse(HttpResponse<String> response, Class<Object> responseClass) throws DataAccessException {
         if (response.statusCode() == 200) {
             String body = response.body();
-            if (body != null) {
+            if (body == null) {
                 throw new DataAccessException("Error: " + body, DataAccessException.Code.OtherError);
             }
         }

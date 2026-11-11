@@ -57,7 +57,7 @@ public class DataBaseTests {
 
     }
 
-    private void clearTables() throws DataAccessException{
+    public void clearTables() throws DataAccessException{
         databaseUserData.clear();
         databaseAuthData.clear();
         databaseGameData.clear();

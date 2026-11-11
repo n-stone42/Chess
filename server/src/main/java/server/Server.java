@@ -15,6 +15,7 @@ import service.UserService;
 import UserRecordsModels.*;
 import GameRecordModels.*;
 
+import javax.xml.crypto.Data;
 
 
 public class Server {
@@ -54,10 +55,12 @@ public class Server {
 
     public void registerUser(@NotNull Context context) throws DataAccessException {
         RegisterRequest request = new Gson().fromJson(context.body(), RegisterRequest.class);
+        System.out.println("in Server.registerUser registerRequest is: "+ request);
         if (request.username() == null || request.password() == null) {
             throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
         }
         RegisterResult result = userService.register(request);
+        System.out.println("in Server.registerUser registerResult is: "+ result);
         context.result(new Gson().toJson(result));
     }
 
@@ -123,5 +126,11 @@ public class Server {
 
     public void stop() {
         javalin.stop();
+    }
+
+    public void clear() throws DataAccessException {
+        authData.clear();
+        gameData.clear();
+        userData.clear();
     }
 }

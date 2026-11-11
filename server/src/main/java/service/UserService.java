@@ -25,12 +25,15 @@ public class UserService {
     public RegisterResult register(RegisterRequest request) throws DataAccessException {
         try {
             userData.getUser(request.username()); // username not in database
+            System.out.print("username already exists");
             throw new DataAccessException("Error: Username already exists", DataAccessException.Code.AlreadyTaken);
 
         } catch (Exception e) {
             userData.createUser(request.username(), request.password(), request.email());
             String authToken = generateToken();
+
             authData.createAuth(authToken, request.username());
+            System.out.println("auth Token given in UserService.register is: " +authToken);
             return new RegisterResult(request.username(), authToken);
         }
     }
