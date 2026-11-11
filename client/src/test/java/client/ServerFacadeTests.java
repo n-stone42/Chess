@@ -48,15 +48,26 @@ public class ServerFacadeTests {
 
 
     UserData userBob = new UserData("Bob", "password", "BobTheGOAT67Gmail.com");
+
+    public RegisterResult registerUser(UserData user) throws DataAccessException{
+        return serverFacade.registerUser(new RegisterRequest(user.username(), user.password(), user.email()));
+    }
+
+    public LoginResult loginUser(UserData user) throws DataAccessException{
+        return serverFacade.login(new LoginRequest(user.username(), user.password()));
+    }
+
+
     @Test
-    public void negativeLogin() { // login before register
+    public void negativeLogin() throws DataAccessException{ // login before register
+        serverFacade.clear();
         assertThrows(DataAccessException.class, () -> serverFacade.login(new LoginRequest(userBob.username(), userBob.password())));
     }
 
     @Test
     public void positiveRegister() {
         try {
-            server.clear();
+            serverFacade.clear();
             RegisterResult expectedResult = new RegisterResult(userBob.username(), "someAuthToken");
             RegisterResult result = serverFacade.registerUser(new RegisterRequest(userBob.username(), userBob.password(), userBob.email()));
             System.out.println(result);
@@ -68,125 +79,11 @@ public class ServerFacadeTests {
         }
     }
 
-//    @Test
-//    public void positiveLogin() throws DataAccessException {
-//        assertEquals("some string",serverFacade.login(new LoginRequest(userBob.username(), userBob.password())));
-//    }
+    @Test
+    public void positiveLogin() throws DataAccessException {
+        serverFacade.clear();
+        serverFacade.login(new LoginRequest(userBob.username(), userBob.password()));
+        serverFacade.clear();
+    }
 
-            // some randon auto generated code
-//            @NotNull
-//            @Override
-//            public HttpServletRequest req() {
-//                return null;
-//            }
-//
-//            @NotNull
-//            @Override
-//            public HttpServletResponse res() {
-//                return null;
-//            }
-//
-//            @NotNull
-//            @Override
-//            public HandlerType handlerType() {
-//                return null;
-//            }
-//
-//            @NotNull
-//            @Override
-//            public String matchedPath() {
-//                return "";
-//            }
-//
-//            @NotNull
-//            @Override
-//            public String endpointHandlerPath() {
-//                return "";
-//            }
-//
-//            @Override
-//            public <T> T appData(@NotNull Key<T> key) {
-//                return null;
-//            }
-//
-//            @NotNull
-//            @Override
-//            public JsonMapper jsonMapper() {
-//                return null;
-//            }
-//
-//            @Override
-//            public <T> T with(@NotNull Class<? extends ContextPlugin<?, T>> aClass) {
-//                return null;
-//            }
-//
-//            @Override
-//            public boolean strictContentTypes() {
-//                return false;
-//            }
-//
-//            @NotNull
-//            @Override
-//            public String pathParam(@NotNull String s) {
-//                return "";
-//            }
-//
-//            @NotNull
-//            @Override
-//            public Map<String, String> pathParamMap() {
-//                return Map.of();
-//            }
-//
-//            @NotNull
-//            @Override
-//            public ServletOutputStream outputStream() {
-//                return null;
-//            }
-//
-//            @NotNull
-//            @Override
-//            public Context minSizeForCompression(int i) {
-//                return null;
-//            }
-//
-//            @NotNull
-//            @Override
-//            public Context result(@NotNull InputStream inputStream) {
-//                return null;
-//            }
-//
-//            @Nullable
-//            @Override
-//            public InputStream resultInputStream() {
-//                return null;
-//            }
-//
-//            @Override
-//            public void future(@NotNull Supplier<? extends CompletableFuture<?>> supplier) {
-//
-//            }
-//
-//            @Override
-//            public void redirect(@NotNull String s, @NotNull HttpStatus httpStatus) {
-//
-//            }
-//
-//            @Override
-//            public void writeJsonStream(@NotNull Stream<?> stream) {
-//
-//            }
-//
-//            @NotNull
-//            @Override
-//            public Context skipRemainingHandlers() {
-//                return null;
-//            }
-//
-//            @NotNull
-//            @Override
-//            public Set<RouteRole> routeRoles() {
-//                return Set.of();
-//            }
-//        });
-//    }
 }

@@ -21,8 +21,6 @@ public class DatabaseAuthData implements AuthDataAccess {
         );
         """};
 
-
-
     public void makeAuthDataTable() throws DataAccessException {
         DatabaseManager.createDatabase();
         try (Connection connection = DatabaseManager.getConnection()) {

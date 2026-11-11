@@ -45,6 +45,7 @@ public class ServerFacade {
     public LoginResult login(LoginRequest loginRequest) throws DataAccessException{
         HttpRequest httpRequest = makeRequest("POST", "/session",loginRequest);
         HttpResponse httpResponse = sendRequest(httpRequest);
+        System.out.println("httpResponce in serverFacade" + httpResponse);
         return handelResponse(httpResponse, LoginResult.class);
     }
 
@@ -93,6 +94,10 @@ public class ServerFacade {
             throw new DataAccessException("error in sending request" + exception, DataAccessException.Code.OtherError);
         }
     }
+    public void clear() throws DataAccessException{
+        HttpRequest httpRequest = makeRequest("DELETE", "/db", null);
+        sendRequest(httpRequest);
+    }
 
     private <Object> Object handelResponse(HttpResponse<String> response, Class<Object> responseClass) throws DataAccessException {
         if (response.statusCode() == 200) {
@@ -100,15 +105,20 @@ public class ServerFacade {
             if (body == null) {
                 throw new DataAccessException("Error: " + body, DataAccessException.Code.OtherError);
             }
-        }
 
-        if (responseClass != null) {
-            // change it to JSON and then return
-            return new Gson().fromJson(response.body(), responseClass);
-        }
 
-        return null;
+            if (responseClass != null) {
+                // change it to JSON and then return
+                return new Gson().fromJson(response.body(), responseClass);
+            }
+        } else {// message was an error
+            String body = response.body();
+            if (body != null) {
+                throw DataAccessException.fromJson(body);
+            }
+        }return null;
     }
+
 
     // pet shop pattern
     // method (id list)

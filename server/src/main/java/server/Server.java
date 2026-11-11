@@ -70,6 +70,7 @@ public class Server {
             throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
         }
         LoginResult result = userService.login(request);
+        System.out.println("LoginResult in server:" + result);
         context.result(new Gson().toJson(result));
     }
 

@@ -29,9 +29,6 @@ public class DatabaseUserData implements UserDataAccess {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
-
-
-
     public void makeUserTable() throws DataAccessException {
         DatabaseManager.createDatabase();
         try (Connection connection = DatabaseManager.getConnection()) {

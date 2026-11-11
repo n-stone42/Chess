@@ -17,7 +17,7 @@ public class DataAccessException extends Exception {
         OtherError, //500
     }
 //
-    final private Code code;
+    final public Code code;
 
     public DataAccessException(String message, Code code) {
         super(message);
@@ -40,5 +40,12 @@ public class DataAccessException extends Exception {
 
     public String toJson() {
         return new Gson().toJson(Map.of("message", getMessage(), "status", code));
+    }
+
+    public static DataAccessException fromJson(String json) {
+        Map map = new Gson().fromJson(json, HashMap.class);
+        DataAccessException.Code code = Code.valueOf(map.get("status").toString());
+        String errorMessage = map.get("message").toString();
+        return new DataAccessException(errorMessage, code);
     }
 }
