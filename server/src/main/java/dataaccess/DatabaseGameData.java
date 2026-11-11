@@ -63,16 +63,6 @@ public class DatabaseGameData implements GameDataAccess {
         }
     }
 
-    public void deleteGameTable() throws DataAccessException{
-        makeGameDataTables();
-        try (Connection connection = DatabaseManager.getConnection()) {
-            try (var preparedStatement = connection.prepareStatement("DROP TABLE GameData")) {
-                preparedStatement.executeUpdate();
-            }
-        } catch (SQLException ex) { throw new DataAccessException("Error could not delete Game Table" + ex, DataAccessException.Code.OtherError);
-        }
-    }
-
     public void createGame(int gameID, String gameName) throws DataAccessException {
         makeGameDataTables();
         try (Connection connection = DatabaseManager.getConnection()) {

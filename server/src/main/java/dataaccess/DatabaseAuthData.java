@@ -21,15 +21,7 @@ public class DatabaseAuthData implements AuthDataAccess {
         );
         """};
 
-    public void deleteAuthTable() throws DataAccessException{
-        DatabaseManager.createDatabase();
-        try (Connection connection = DatabaseManager.getConnection()) {
-            try (var preparedStatement = connection.prepareStatement("DROP TABLE AuthData")) {
-                preparedStatement.executeUpdate();
-            }
-        } catch (SQLException ex) {throw new DataAccessException("Error could not create clear AuthData table" + ex, DataAccessException.Code.OtherError);
-        }
-    }
+
 
     public void makeAuthDataTable() throws DataAccessException {
         DatabaseManager.createDatabase();

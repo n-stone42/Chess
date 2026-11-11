@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="progress on passing self written postiveRegister user test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,157 +137,157 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ServerMain.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "true",
-    "JUnit.All in client.executor": "Run",
-    "JUnit.All in server.executor": "Run",
-    "JUnit.All in shared.executor": "Run",
-    "JUnit.BishopMoveTests.bishopCaptureEnemy.executor": "Run",
-    "JUnit.BishopMoveTests.bishopMoveUntilEdge.executor": "Run",
-    "JUnit.BishopMoveTests.executor": "Run",
-    "JUnit.ChessBoardTests and 3 more.executor": "Run",
-    "JUnit.ChessBoardTests.defaultGameBoard.executor": "Run",
-    "JUnit.ChessBoardTests.executor": "Run",
-    "JUnit.ChessGameTests.executor": "Run",
-    "JUnit.ChessMoveTests.executor": "Run",
-    "JUnit.ChessMoveTests.hashSetTest.Equals & HashCode Testing.executor": "Run",
-    "JUnit.ChessPieceTests.executor": "Run",
-    "JUnit.ChessPositionTests.executor": "Run",
-    "JUnit.DataAccessTests.clearUserData.executor": "Run",
-    "JUnit.DataBaseTests.createThenDelateUserTable.executor": "Run",
-    "JUnit.DataBaseTests.createThenDeleteTables.executor": "Run",
-    "JUnit.DataBaseTests.createUserWithoutError.executor": "Run",
-    "JUnit.DataBaseTests.deleteGameTable.executor": "Run",
-    "JUnit.DataBaseTests.executor": "Run",
-    "JUnit.DataBaseTests.getUserData.executor": "Run",
-    "JUnit.DataBaseTests.testAddAuthData.executor": "Run",
-    "JUnit.DataBaseTests.testClearFunctions.executor": "Run",
-    "JUnit.DataBaseTests.testClearTables.executor": "Run",
-    "JUnit.DataBaseTests.testClearUserTableWithoutError.executor": "Run",
-    "JUnit.DataBaseTests.testCreateGame.executor": "Run",
-    "JUnit.DataBaseTests.testCreateTables.executor": "Run",
-    "JUnit.DataBaseTests.testCreateUserTable.executor": "Run",
-    "JUnit.DataBaseTests.testCreateWithoutError.executor": "Run",
-    "JUnit.DataBaseTests.testDeleteAuth.executor": "Run",
-    "JUnit.DataBaseTests.testDeleteTables.executor": "Run",
-    "JUnit.DataBaseTests.testGameCerilization.executor": "Run",
-    "JUnit.DataBaseTests.testGetAuthData.executor": "Run",
-    "JUnit.DataBaseTests.testGetUserData.executor": "Run",
-    "JUnit.DataBaseTests.testJoinGame.executor": "Run",
-    "JUnit.DataBaseTests.testJoingGame.executor": "Run",
-    "JUnit.DataBaseTests.testListGame.executor": "Run",
-    "JUnit.DataBaseTests.testMatchPassword.executor": "Run",
-    "JUnit.DatabaseTests.databaseErrorHandling.executor": "Run",
-    "JUnit.DatabaseTests.executor": "Run",
-    "JUnit.DatabaseTests.persistenceTest.executor": "Debug",
-    "JUnit.FullGameTest.executor": "Run",
-    "JUnit.GameServiceTests.executor": "Run",
-    "JUnit.GameServiceTests.testClearAll.executor": "Run",
-    "JUnit.GameServiceTests.testCreateGame.executor": "Run",
-    "JUnit.GameServiceTests.testGameList.executor": "Run",
-    "JUnit.GameServiceTests.testJoinGame.executor": "Run",
-    "JUnit.GameStatusTests.blackCheck.executor": "Run",
-    "JUnit.GameStatusTests.checkmateNotStalemate.executor": "Debug",
-    "JUnit.GameStatusTests.escapeCheckByCapturingThreateningPiece.executor": "Debug",
-    "JUnit.GameStatusTests.executor": "Run",
-    "JUnit.GameStatusTests.newGame.executor": "Run",
-    "JUnit.GameStatusTests.noGameStatuses.executor": "Run",
-    "JUnit.GameStatusTests.stalemate.executor": "Debug",
-    "JUnit.GameStatusTests.whiteTeamCheckmate.executor": "Run",
-    "JUnit.KingMoveTests.executor": "Run",
-    "JUnit.KingMoveTests.kingMiddleOfBoard.executor": "Run",
-    "JUnit.KnightMoveTests.executor": "Run",
-    "JUnit.MakeMoveTests.executor": "Run",
-    "JUnit.MakeMoveTests.invalidMakeMoveInCheck.executor": "Run",
-    "JUnit.MakeMoveTests.invalidMakeMoveNoPiece.executor": "Run",
-    "JUnit.MakeMoveTests.promotionMoves.[1] QUEEN.executor": "Run",
-    "JUnit.MakeMoveTests.promotionMoves.executor": "Run",
-    "JUnit.PawnMoveTests.captureAndPromoteBlack.executor": "Run",
-    "JUnit.PawnMoveTests.edgePromotionBlack.executor": "Run",
-    "JUnit.PawnMoveTests.executor": "Run",
-    "JUnit.PawnMoveTests.pawnAdvanceBlockedDoubleMoveBlack.executor": "Run",
-    "JUnit.PawnMoveTests.pawnAdvanceBlockedDoubleMoveWhite.executor": "Run",
-    "JUnit.PawnMoveTests.pawnAdvanceBlockedWhite.executor": "Debug",
-    "JUnit.PawnMoveTests.pawnCaptureFromStartBlack.executor": "Run",
-    "JUnit.PawnMoveTests.pawnMoveFromEdgeWhite.executor": "Run",
-    "JUnit.QueenMoveTests.executor": "Run",
-    "JUnit.RookMoveTests.executor": "Run",
-    "JUnit.ServerFacadeTests.negativeLogin (1).executor": "Run",
-    "JUnit.ServerFacadeTests.negativeLogin.executor": "Run",
-    "JUnit.ServerFacadeTests.positiveLogin.executor": "Run",
-    "JUnit.ServerFacadeTests.positiveRegister (1).executor": "Run",
-    "JUnit.ServerFacadeTests.positiveRegister.executor": "Run",
-    "JUnit.ServerTests.basicCleartest.executor": "Run",
-    "JUnit.ServiceTests.duplicateUser.executor": "Run",
-    "JUnit.ServiceTests.executor": "Coverage",
-    "JUnit.ServiceTests.testBadCreateGame.executor": "Run",
-    "JUnit.ServiceTests.testBadPassword.executor": "Run",
-    "JUnit.ServiceTests.testBobGetUsername.executor": "Run",
-    "JUnit.ServiceTests.testClearAll.executor": "Run",
-    "JUnit.ServiceTests.testGameList.executor": "Run",
-    "JUnit.ServiceTests.testJoinGame.executor": "Run",
-    "JUnit.ServiceTests.toHttpStatusCode.executor": "Run",
-    "JUnit.StandardAPITests.clearData.executor": "Run",
-    "JUnit.StandardAPITests.clearMultipleTimes.executor": "Run",
-    "JUnit.StandardAPITests.createGameBadRequest.executor": "Run",
-    "JUnit.StandardAPITests.createGameSuccess.executor": "Run",
-    "JUnit.StandardAPITests.createGameUnauthorized.executor": "Run",
-    "JUnit.StandardAPITests.executor": "Run",
-    "JUnit.StandardAPITests.joinGameBadColor.executor": "Run",
-    "JUnit.StandardAPITests.joinGameBadGameId.executor": "Run",
-    "JUnit.StandardAPITests.joinGameStealColor.executor": "Run",
-    "JUnit.StandardAPITests.joinGameSuccess.executor": "Run",
-    "JUnit.StandardAPITests.loginBadRequest.executor": "Run",
-    "JUnit.StandardAPITests.loginUnauthorized.executor": "Run",
-    "JUnit.StandardAPITests.logoutSuccess.executor": "Run",
-    "JUnit.StandardAPITests.logoutTwice.executor": "Run",
-    "JUnit.StandardAPITests.registerBadRequest.executor": "Run",
-    "JUnit.StandardAPITests.registerTwice.executor": "Run",
-    "JUnit.StandardAPITests.staticFilesSuccess.executor": "Run",
-    "JUnit.StandardAPITests.uniqueAuthorizationTokensAllWork.executor": "Run",
-    "JUnit.UserServiceTests.CreateUserInMemory.executor": "Run",
-    "JUnit.UserServiceTests.executor": "Run",
-    "JUnit.UserServiceTests.testDataAccessacception.executor": "Run",
-    "JUnit.UserServiceTests.testLogin.executor": "Run",
-    "JUnit.UserServiceTests.testLogout.executor": "Run",
-    "JUnit.UserServiceTests.testRegisterUser.executor": "Run",
-    "JUnit.ValidMovesTests.executor": "Run",
-    "JUnit.chess in shared.executor": "Run",
-    "JUnit.dataaccess.sql in server.executor": "Run",
-    "JUnit.passoff.chess in shared.executor": "Run",
-    "JUnit.passoff.chess.game in shared.executor": "Run",
-    "JUnit.passoff.chess.piecemoves in shared.executor": "Run",
-    "JUnit.passoff.server in server.executor": "Run",
-    "JUnit.service.executor": "Coverage",
-    "JUnit.service.testBadLogins.executor": "Run",
-    "JUnit.test in server.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/natha/Desktop/cs240/Chess/client/src/test/java/client",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.sourceCode.JAVA"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ServerMain.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;JUnit.All in client.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in server.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in shared.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BishopMoveTests.bishopCaptureEnemy.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BishopMoveTests.bishopMoveUntilEdge.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BishopMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessBoardTests and 3 more.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessBoardTests.defaultGameBoard.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessBoardTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessGameTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessMoveTests.hashSetTest.Equals &amp; HashCode Testing.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessPieceTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessPositionTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataAccessTests.clearUserData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.createThenDelateUserTable.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.createThenDeleteTables.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.createUserWithoutError.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.deleteGameTable.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.getUserData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testAddAuthData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testClearFunctions.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testClearTables.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testClearUserTableWithoutError.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testCreateGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testCreateTables.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testCreateUserTable.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testCreateWithoutError.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testDeleteAuth.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testDeleteTables.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testGameCerilization.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testGetAuthData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testGetUserData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testJoinGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testJoingGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testListGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testMatchPassword.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DatabaseTests.databaseErrorHandling.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DatabaseTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DatabaseTests.persistenceTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.FullGameTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameServiceTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameServiceTests.testClearAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameServiceTests.testCreateGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameServiceTests.testGameList.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameServiceTests.testJoinGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameStatusTests.blackCheck.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameStatusTests.checkmateNotStalemate.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.GameStatusTests.escapeCheckByCapturingThreateningPiece.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.GameStatusTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameStatusTests.newGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameStatusTests.noGameStatuses.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameStatusTests.stalemate.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.GameStatusTests.whiteTeamCheckmate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.KingMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.KingMoveTests.kingMiddleOfBoard.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.KnightMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MakeMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MakeMoveTests.invalidMakeMoveInCheck.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MakeMoveTests.invalidMakeMoveNoPiece.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MakeMoveTests.promotionMoves.[1] QUEEN.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MakeMoveTests.promotionMoves.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.captureAndPromoteBlack.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.edgePromotionBlack.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.pawnAdvanceBlockedDoubleMoveBlack.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.pawnAdvanceBlockedDoubleMoveWhite.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.pawnAdvanceBlockedWhite.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.PawnMoveTests.pawnCaptureFromStartBlack.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.pawnMoveFromEdgeWhite.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueenMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RookMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.negativeLogin (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.negativeLogin.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.positiveLogin.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.positiveRegister (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.positiveRegister.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerTests.basicCleartest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.duplicateUser.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ServiceTests.testBadCreateGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.testBadPassword.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.testBobGetUsername.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.testClearAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.testGameList.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.testJoinGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.toHttpStatusCode.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.clearData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.clearMultipleTimes.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.createGameBadRequest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.createGameSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.createGameUnauthorized.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.joinGameBadColor.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.joinGameBadGameId.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.joinGameStealColor.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.joinGameSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.loginBadRequest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.loginUnauthorized.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.logoutSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.logoutTwice.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.registerBadRequest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.registerTwice.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.staticFilesSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.uniqueAuthorizationTokensAllWork.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTests.CreateUserInMemory.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTests.testDataAccessacception.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTests.testLogin.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTests.testLogout.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTests.testRegisterUser.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ValidMovesTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.chess in shared.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.dataaccess.sql in server.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.passoff.chess in shared.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.passoff.chess.game in shared.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.passoff.chess.piecemoves in shared.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.passoff.server in server.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.service.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.service.testBadLogins.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.test in server.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/natha/Desktop/cs240/Chess/client/src/test/java/client&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.JAVA&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\natha\Desktop\cs240\Chess\client\src\test\java\client" />
@@ -310,15 +309,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ServerFacadeTests.positiveRegister (1)">
-    <configuration name="All in client" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="client" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.StandardAPITests">
     <configuration name="DataBaseTests.testClearFunctions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
@@ -383,20 +374,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StandardAPITests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="passoff.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="passoff.server" />
+      <option name="MAIN_CLASS_NAME" value="passoff.server.StandardAPITests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
+      <item itemvalue="JUnit.StandardAPITests" />
       <item itemvalue="JUnit.DataBaseTests.testClearFunctions" />
-      <item itemvalue="JUnit.All in client" />
       <item itemvalue="JUnit.ServerFacadeTests.negativeLogin" />
       <item itemvalue="JUnit.ServerFacadeTests.negativeLogin (1)" />
       <item itemvalue="JUnit.ServerFacadeTests.positiveRegister (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StandardAPITests" />
         <item itemvalue="JUnit.ServerFacadeTests.positiveRegister (1)" />
         <item itemvalue="JUnit.DataBaseTests.testClearFunctions" />
         <item itemvalue="JUnit.ServerFacadeTests.negativeLogin (1)" />
         <item itemvalue="JUnit.ServerFacadeTests.negativeLogin" />
-        <item itemvalue="JUnit.All in client" />
       </list>
     </recent_temporary>
   </component>
@@ -474,7 +480,7 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java</url>
-          <line>56</line>
+          <line>48</line>
           <option name="timeStamp" value="109" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -484,7 +490,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java</url>
-          <line>69</line>
+          <line>61</line>
           <option name="timeStamp" value="137" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
@@ -495,15 +501,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java</url>
-          <line>160</line>
-          <properties class="dataaccess.sql.DataBaseTests" method="testCreateGame">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="123" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

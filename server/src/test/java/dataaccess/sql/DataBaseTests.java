@@ -150,12 +150,6 @@ public class DataBaseTests {
         assertEquals(testGame, databaseGameData.JSONtoChessGame(json));
     }
 
-    @Test
-    void deleteGameTable() {
-        assertDoesNotThrow( () -> {
-            databaseGameData.deleteGameTable();
-        });
-    }
 
     @Test
     void testCreateGame() throws DataAccessException{
@@ -206,13 +200,7 @@ public class DataBaseTests {
         assertEquals(expectedGameList, databaseGameData.listGame());
     }
 
-    @Test
-    void testClearFunctions() {
-        //Delete tables
-        assertDoesNotThrow( () -> databaseUserData.deleteUserTable());
-        assertDoesNotThrow( () -> databaseGameData.deleteGameTable());
-        assertDoesNotThrow( () -> databaseAuthData.deleteAuthTable());
-    }
+
     @Test
     void toHTTP() {
         var badRequest = new DataAccessException("test 400", DataAccessException.Code.BadRequest);

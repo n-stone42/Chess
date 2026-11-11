@@ -30,15 +30,7 @@ public class DatabaseUserData implements UserDataAccess {
     }
 
 
-    public void deleteUserTable() throws DataAccessException{
-        DatabaseManager.createDatabase();
-        try (Connection connection = DatabaseManager.getConnection()) {
-            try (var preparedStatement = connection.prepareStatement("DROP TABLE User")) {
-                preparedStatement.executeUpdate();
-            }
-        } catch (SQLException ex) { throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);
-        }
-    }
+
 
     public void makeUserTable() throws DataAccessException {
         DatabaseManager.createDatabase();
