@@ -155,7 +155,25 @@ public class ServerFacadeTests {
         expectedGameList.add(expectedGameData);
         ListGameResult expectedResult = new ListGameResult(expectedGameList);
         assertEquals(expectedResult, serverFacade.listGame(loginResult.authToken()));
+    }
 
+    @Test
+    public void negativeJoinGame() throws DataAccessException{
+        serverFacade.clear();
+        registerUser(userBob);
+        LoginResult loginResult = loginUser(userBob);
+        CreateGameResult createGameResult = serverFacade.createGame(new CreateGameRequest("testgame"), loginResult.authToken());
+        assertThrows(DataAccessException.class, () -> serverFacade.joinGame("bad auth token", "Banana", createGameResult.gameID()));
+        assertThrows(DataAccessException.class, () -> serverFacade.joinGame(loginResult.authToken(), "Banana", createGameResult.gameID()));
+        assertThrows(DataAccessException.class, () -> serverFacade.joinGame(loginResult.authToken(), "WHITE", 5));
+        JoinGameResult joinGameResult = serverFacade.joinGame(loginResult.authToken(), "WHITE",
+                createGameResult.gameID());
+        assertThrows(DataAccessException.class, () -> serverFacade.joinGame(loginResult.authToken(), "WHITE", createGameResult.gameID()));
+//        ArrayList<ModifiedGameData> expectedGameList = new ArrayList<>();
+//        ModifiedGameData expectedGameData = new ModifiedGameData(createGameResult.gameID(), userBob.username(), null, "testgame");
+//        expectedGameList.add(expectedGameData);
+//        ListGameResult expectedResult = new ListGameResult(expectedGameList);
+//        assertEquals(expectedResult, serverFacade.listGame(loginResult.authToken()));
     }
 
 }

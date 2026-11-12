@@ -315,7 +315,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ServerFacadeTests.joinGameTest">
+  <component name="RunManager" selected="JUnit.ServerFacadeTests.negativeJoinGame">
     <configuration name="ServerFacadeTests.badListGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="client" />
       <extension name="coverage">
@@ -380,7 +380,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServerFacadeTests.testMakeGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ServerFacadeTests.negativeJoinGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="client" />
       <extension name="coverage">
         <pattern>
@@ -390,7 +390,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="client" />
       <option name="MAIN_CLASS_NAME" value="client.ServerFacadeTests" />
-      <option name="METHOD_NAME" value="testMakeGame" />
+      <option name="METHOD_NAME" value="negativeJoinGame" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -400,16 +400,16 @@
       <item itemvalue="JUnit.ServerFacadeTests.badListGame" />
       <item itemvalue="JUnit.ServerFacadeTests.joinGameTest" />
       <item itemvalue="JUnit.ServerFacadeTests.listGame" />
+      <item itemvalue="JUnit.ServerFacadeTests.negativeJoinGame" />
       <item itemvalue="JUnit.ServerFacadeTests.badMakeGame" />
-      <item itemvalue="JUnit.ServerFacadeTests.testMakeGame" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ServerFacadeTests.negativeJoinGame" />
         <item itemvalue="JUnit.ServerFacadeTests.joinGameTest" />
         <item itemvalue="JUnit.ServerFacadeTests.badListGame" />
         <item itemvalue="JUnit.ServerFacadeTests.listGame" />
         <item itemvalue="JUnit.ServerFacadeTests.badMakeGame" />
-        <item itemvalue="JUnit.ServerFacadeTests.testMakeGame" />
       </list>
     </recent_temporary>
   </component>
