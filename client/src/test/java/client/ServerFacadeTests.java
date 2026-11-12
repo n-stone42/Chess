@@ -1,8 +1,6 @@
 package client;
 
-import GameRecordModels.CreateGameRequest;
-import GameRecordModels.ListGameRequest;
-import GameRecordModels.ListGameResult;
+import GameRecordModels.*;
 import client.ServerFacade;
 import dataaccess.DataAccessException;
 import dataaccess.sql.DataBaseTests;
@@ -135,6 +133,29 @@ public class ServerFacadeTests {
         expectedGameList.add(expectedGameData);
         ListGameResult expectedResult = new ListGameResult(expectedGameList);
         assertEquals(expectedResult, serverFacade.listGame(loginResult.authToken()));
+    }
+
+    @Test
+    public void  badListGame() throws DataAccessException{
+        serverFacade.clear();
+        assertThrows(DataAccessException.class, () -> serverFacade.listGame("bad auth token") );
+        registerUser(userBob);
+    }
+
+    @Test
+    public void joinGameTest() throws DataAccessException{
+        serverFacade.clear();
+        registerUser(userBob);
+        LoginResult loginResult = loginUser(userBob);
+        CreateGameResult createGameResult = serverFacade.createGame(new CreateGameRequest("testgame"), loginResult.authToken());
+        JoinGameResult joinGameResult = serverFacade.joinGame(loginResult.authToken(), "WHITE",
+                createGameResult.gameID());
+        ArrayList<ModifiedGameData> expectedGameList = new ArrayList<>();
+        ModifiedGameData expectedGameData = new ModifiedGameData(createGameResult.gameID(), userBob.username(), null, "testgame");
+        expectedGameList.add(expectedGameData);
+        ListGameResult expectedResult = new ListGameResult(expectedGameList);
+        assertEquals(expectedResult, serverFacade.listGame(loginResult.authToken()));
+
     }
 
 }

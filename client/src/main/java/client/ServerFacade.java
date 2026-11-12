@@ -31,8 +31,6 @@ public class ServerFacade {
     //send request
     //return handleResponse
 
-
-
     //before login functions
     //help and quit are handled in the client, not here
     public RegisterResult registerUser(RegisterRequest registerRequest) throws DataAccessException{
@@ -65,6 +63,13 @@ public class ServerFacade {
         HttpRequest httpRequest = makeRequest("GET", "/game",null, authToken);
         HttpResponse httpResponse = sendRequest(httpRequest);
         return handelResponse(httpResponse, ListGameResult.class);
+    }
+
+    public JoinGameResult joinGame(String authToken, String playerColor, int gameID) throws DataAccessException{
+        JoinGameRequest request = new JoinGameRequest(playerColor, gameID);
+        HttpRequest httpRequest = makeRequest("PUT", "/game",request, authToken);
+        HttpResponse httpResponse = sendRequest(httpRequest);
+        return handelResponse(httpResponse, JoinGameResult.class);
     }
 
 
