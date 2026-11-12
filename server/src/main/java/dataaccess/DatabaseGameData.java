@@ -81,7 +81,7 @@ public class DatabaseGameData implements GameDataAccess {
     }
 
     public ArrayList<ModifiedGameData> listGame() throws DataAccessException { //int gameID, String whiteUsername, String blackUsername, String gameName)
-        makeGameDataTables();
+        System.out.println("in database game data 1");
         ArrayList<model.ModifiedGameData> gameList = new ArrayList<>();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(
@@ -94,9 +94,8 @@ public class DatabaseGameData implements GameDataAccess {
                         String blackUser = resultSet.getString("blackUser");
                         String gameName = resultSet.getString("gameName");
                         gameList.add(new model.ModifiedGameData(gameID, whiteUser, blackUser, gameName));
-
                     }
-                }return gameList;
+                } return gameList;
         }
 
     } catch (SQLException ex) {throw new DataAccessException("Error in listing games " + ex, DataAccessException.Code.OtherError);}

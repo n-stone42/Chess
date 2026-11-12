@@ -62,7 +62,7 @@ public class ServerFacade {
     }
 
     public ListGameResult listGame(String authToken) throws DataAccessException{
-        HttpRequest httpRequest = makeRequest("POST", "/game",null, authToken);
+        HttpRequest httpRequest = makeRequest("GET", "/game",null, authToken);
         HttpResponse httpResponse = sendRequest(httpRequest);
         return handelResponse(httpResponse, ListGameResult.class);
     }

@@ -1,6 +1,8 @@
 package client;
 
 import GameRecordModels.CreateGameRequest;
+import GameRecordModels.ListGameRequest;
+import GameRecordModels.ListGameResult;
 import client.ServerFacade;
 import dataaccess.DataAccessException;
 import dataaccess.sql.DataBaseTests;
@@ -14,6 +16,7 @@ import io.javalin.security.RouteRole;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.ModifiedGameData;
 import model.UserData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -22,6 +25,8 @@ import server.Server;
 import service.UserService;
 import UserRecordsModels.*;
 
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -117,6 +122,19 @@ public class ServerFacadeTests {
         registerUser(userBob);
         LoginResult loginResult = loginUser(userBob);
         assertThrows(DataAccessException.class, () -> serverFacade.createGame(new CreateGameRequest(null), loginResult.authToken()));
+    }
+
+    @Test
+    public void listGame() throws DataAccessException {
+        serverFacade.clear();
+        registerUser(userBob);
+        LoginResult loginResult = loginUser(userBob);
+        serverFacade.createGame(new CreateGameRequest("testgame"), loginResult.authToken());
+        ArrayList<ModifiedGameData> expectedGameList = new ArrayList<>();
+        ModifiedGameData expectedGameData = new ModifiedGameData(1, null,null, "testgame");
+        expectedGameList.add(expectedGameData);
+        ListGameResult expectedResult = new ListGameResult(expectedGameList);
+        assertEquals(expectedResult, serverFacade.listGame(loginResult.authToken()));
     }
 
 }
