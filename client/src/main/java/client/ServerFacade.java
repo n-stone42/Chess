@@ -55,8 +55,8 @@ public class ServerFacade {
         return handelResponse(httpResponse, LogoutResult.class);
     }
 
-    public CreateGameResult createGame(String authToken) throws DataAccessException{
-        HttpRequest httpRequest = makeRequest("POST", "/game", null, authToken);
+    public CreateGameResult createGame(CreateGameRequest gameRequest, String authToken) throws DataAccessException{
+        HttpRequest httpRequest = makeRequest("POST", "/game", gameRequest, authToken);
         HttpResponse httpResponse = sendRequest(httpRequest);
         return handelResponse(httpResponse, CreateGameResult.class);
     }

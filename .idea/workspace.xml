@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- added in same error handleing as eariler today">
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- positive Logout working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/client/ServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ServerFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/server/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/server/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,61 +66,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000002405608057" />
-      <entry key="MS500" value="1.0729619867637648" />
-      <entry key="S2" value="1.8670594181596578" />
-      <entry key="S5" value="2.4377943914856055" />
-      <entry key="S10" value="2.787261931523099" />
-      <entry key="S30" value="4.304790869283568" />
-      <entry key="S60" value="7.230852847785501" />
-      <entry key="M2" value="11.528864664610728" />
-      <entry key="M5" value="17.427044430513988" />
-      <entry key="M10" value="21.64621526122438" />
-      <entry key="M15" value="24.008698287198463" />
-      <entry key="M30" value="28.665185554925966" />
-      <entry key="H1" value="43.18001085201288" />
-      <entry key="H2" value="93.05624867237393" />
-      <entry key="H4" value="202.32833715237797" />
-      <entry key="D1" value="755.0467581776481" />
-      <entry key="W1" value="3243.0896211988897" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000351650474686" />
+      <entry key="S5" value="1.0166407485885138" />
+      <entry key="S10" value="1.1429826330532857" />
+      <entry key="S30" value="1.8907667316838102" />
+      <entry key="S60" value="2.622303569218997" />
+      <entry key="M2" value="3.7112204819440158" />
+      <entry key="M5" value="8.920627210935105" />
+      <entry key="M10" value="19.219848416608443" />
+      <entry key="M15" value="27.181918424507494" />
+      <entry key="M30" value="41.354095902407906" />
+      <entry key="H1" value="61.26088512435312" />
+      <entry key="H2" value="111.86182153372344" />
+      <entry key="H4" value="220.9413230668569" />
+      <entry key="D1" value="779.0547438280562" />
+      <entry key="W1" value="3270.2585379360407" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="3.1835851135183824E-130" />
-      <entry key="MS500" value="1.2606173876927694E-26" />
-      <entry key="S2" value="3.3507792996691337E-7" />
-      <entry key="S5" value="0.0025714507235401578" />
-      <entry key="S10" value="0.051608961533918765" />
-      <entry key="S30" value="0.5422873342746861" />
-      <entry key="S60" value="1.3964946569808914" />
-      <entry key="M2" value="2.6181707183907954" />
-      <entry key="M5" value="4.965510407488624" />
-      <entry key="M10" value="7.892937173318463" />
-      <entry key="M15" value="9.895633522430321" />
-      <entry key="M30" value="13.630515904637004" />
-      <entry key="H1" value="21.269245166444207" />
-      <entry key="H2" value="39.8733511734247" />
-      <entry key="H4" value="72.50027923312865" />
-      <entry key="D1" value="238.36663780608632" />
-      <entry key="W1" value="1134.8904109504797" />
+      <entry key="MS100" value="2.3057873253229813E-205" />
+      <entry key="MS500" value="1.181854054708762E-41" />
+      <entry key="S2" value="5.864268154557697E-11" />
+      <entry key="S5" value="8.485383780034129E-5" />
+      <entry key="S10" value="0.012361918026786253" />
+      <entry key="S30" value="0.5187880204925388" />
+      <entry key="S60" value="1.4740416741480569" />
+      <entry key="M2" value="2.7812859283404148" />
+      <entry key="M5" value="5.014651123592029" />
+      <entry key="M10" value="7.814581570501746" />
+      <entry key="M15" value="10.255954871294115" />
+      <entry key="M30" value="15.531379040234665" />
+      <entry key="H1" value="24.19052867073514" />
+      <entry key="H2" value="43.00696808737377" />
+      <entry key="H4" value="76.02471336101463" />
+      <entry key="D1" value="243.8898365266252" />
+      <entry key="W1" value="1141.2074336812818" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.02468885236091407" />
-      <entry key="MS500" value="0.5351147487817225" />
-      <entry key="S2" value="1.653172146405029" />
-      <entry key="S5" value="2.3384841070307623" />
-      <entry key="S10" value="2.778954160662495" />
-      <entry key="S30" value="4.802525642301993" />
-      <entry key="S60" value="8.576865754283315" />
-      <entry key="M2" value="14.099482450668166" />
-      <entry key="M5" value="22.35681857009336" />
-      <entry key="M10" value="29.511374047001002" />
-      <entry key="M15" value="33.881241931871976" />
-      <entry key="M30" value="42.27967683888206" />
-      <entry key="H1" value="64.43599384136752" />
-      <entry key="H2" value="132.91527871175848" />
-      <entry key="H4" value="274.8136238231929" />
-      <entry key="D1" value="993.4039554305222" />
-      <entry key="W1" value="4377.97347182188" />
+      <entry key="MS100" value="1.2291937866903307E-4" />
+      <entry key="MS500" value="0.1651673007072831" />
+      <entry key="S2" value="0.6375353016090023" />
+      <entry key="S5" value="0.8516960726627184" />
+      <entry key="S10" value="1.0662061503580749" />
+      <entry key="S30" value="2.346525295357909" />
+      <entry key="S60" value="4.0343781917977" />
+      <entry key="M2" value="6.440336645943614" />
+      <entry key="M5" value="13.898137280362866" />
+      <entry key="M10" value="27.005252698425085" />
+      <entry key="M15" value="37.412429957071495" />
+      <entry key="M30" value="56.86631085336104" />
+      <entry key="H1" value="85.43608501043713" />
+      <entry key="H2" value="154.85357565152393" />
+      <entry key="H4" value="296.95064478955464" />
+      <entry key="D1" value="1022.9350171987168" />
+      <entry key="W1" value="4411.459389504346" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -217,12 +212,15 @@
     "JUnit.PawnMoveTests.pawnMoveFromEdgeWhite.executor": "Run",
     "JUnit.QueenMoveTests.executor": "Run",
     "JUnit.RookMoveTests.executor": "Run",
+    "JUnit.ServerFacadeTests.badLogout.executor": "Run",
+    "JUnit.ServerFacadeTests.badMakeGame.executor": "Run",
     "JUnit.ServerFacadeTests.negativeLogin (1).executor": "Run",
     "JUnit.ServerFacadeTests.negativeLogin.executor": "Run",
     "JUnit.ServerFacadeTests.positiveLogin.executor": "Run",
     "JUnit.ServerFacadeTests.positiveLogout.executor": "Run",
     "JUnit.ServerFacadeTests.positiveRegister (1).executor": "Run",
     "JUnit.ServerFacadeTests.positiveRegister.executor": "Run",
+    "JUnit.ServerFacadeTests.testMakeGame.executor": "Run",
     "JUnit.ServerTests.basicCleartest.executor": "Run",
     "JUnit.ServiceTests.duplicateUser.executor": "Run",
     "JUnit.ServiceTests.executor": "Coverage",
@@ -314,18 +312,42 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ServerFacadeTests.positiveLogout">
-    <configuration name="DatabaseTests.databaseErrorHandling" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ServerFacadeTests.badMakeGame">
+    <configuration name="All in server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerFacadeTests.badLogout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="client" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="passoff.server.*" />
+          <option name="PATTERN" value="client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="passoff.server" />
-      <option name="MAIN_CLASS_NAME" value="passoff.server.DatabaseTests" />
-      <option name="METHOD_NAME" value="databaseErrorHandling" />
+      <option name="PACKAGE_NAME" value="client" />
+      <option name="MAIN_CLASS_NAME" value="client.ServerFacadeTests" />
+      <option name="METHOD_NAME" value="badLogout" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerFacadeTests.badMakeGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="client" />
+      <option name="MAIN_CLASS_NAME" value="client.ServerFacadeTests" />
+      <option name="METHOD_NAME" value="badMakeGame" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -347,67 +369,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StandardAPITests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="server" />
+    <configuration name="ServerFacadeTests.testMakeGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="client" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="passoff.server.*" />
+          <option name="PATTERN" value="client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="passoff.server" />
-      <option name="MAIN_CLASS_NAME" value="passoff.server.StandardAPITests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StandardAPITests.loginSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="passoff.server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="passoff.server" />
-      <option name="MAIN_CLASS_NAME" value="passoff.server.StandardAPITests" />
-      <option name="METHOD_NAME" value="loginSuccess" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StandardAPITests.logoutSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="passoff.server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="passoff.server" />
-      <option name="MAIN_CLASS_NAME" value="passoff.server.StandardAPITests" />
-      <option name="METHOD_NAME" value="logoutSuccess" />
+      <option name="PACKAGE_NAME" value="client" />
+      <option name="MAIN_CLASS_NAME" value="client.ServerFacadeTests" />
+      <option name="METHOD_NAME" value="testMakeGame" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.DatabaseTests.databaseErrorHandling" />
+      <item itemvalue="JUnit.All in server" />
+      <item itemvalue="JUnit.ServerFacadeTests.badLogout" />
+      <item itemvalue="JUnit.ServerFacadeTests.badMakeGame" />
       <item itemvalue="JUnit.ServerFacadeTests.positiveLogout" />
-      <item itemvalue="JUnit.StandardAPITests" />
-      <item itemvalue="JUnit.StandardAPITests.loginSuccess" />
-      <item itemvalue="JUnit.StandardAPITests.logoutSuccess" />
+      <item itemvalue="JUnit.ServerFacadeTests.testMakeGame" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ServerFacadeTests.badMakeGame" />
+        <item itemvalue="JUnit.ServerFacadeTests.testMakeGame" />
+        <item itemvalue="JUnit.ServerFacadeTests.badLogout" />
+        <item itemvalue="JUnit.All in server" />
         <item itemvalue="JUnit.ServerFacadeTests.positiveLogout" />
-        <item itemvalue="JUnit.StandardAPITests.logoutSuccess" />
-        <item itemvalue="JUnit.StandardAPITests.loginSuccess" />
-        <item itemvalue="JUnit.StandardAPITests" />
-        <item itemvalue="JUnit.DatabaseTests.databaseErrorHandling" />
       </list>
     </recent_temporary>
   </component>
@@ -445,7 +436,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Phase 3- more file formatting" />
     <MESSAGE value="Phase 4-  basic test passed for creating database" />
     <MESSAGE value="Phase 4-  basic test passed for creating UserTable" />
     <MESSAGE value="Phase 4-  testClearUserTableWithoutError clearing" />
@@ -470,7 +460,8 @@
     <MESSAGE value="progress on passing self written postiveRegister user test" />
     <MESSAGE value="phase 5- removed delete tables functions" />
     <MESSAGE value="phase 5- added in same error handleing as eariler today" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase 5- added in same error handleing as eariler today" />
+    <MESSAGE value="phase 5- positive Logout working" />
+    <option name="LAST_COMMIT_MESSAGE" value="phase 5- positive Logout working" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -496,15 +487,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java</url>
-          <line>90</line>
-          <properties class="client.ServerFacadeTests" method="positiveLogout">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="172" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -97,13 +97,26 @@ public class ServerFacadeTests {
         assertThrows(DataAccessException.class, () -> serverFacade.logout(loginResult.authToken() ) );
     }
 
-//    @Test
-//    public void testMakeGame() throws DataAccessException {
-//        serverFacade.clear();
-//        registerUser(userBob);
-//        loginUser(userBob);
-//        serverFacade.createGame(new CreateGameRequest("testgame"));
-//
-//    }
+    @Test
+    public void badLogout() throws DataAccessException { //logout before login
+        serverFacade.clear();
+        assertThrows(DataAccessException.class, () -> serverFacade.logout("bad auth token" ) );
+    }
+
+    @Test
+    public void testMakeGame() throws DataAccessException {
+        serverFacade.clear();
+        registerUser(userBob);
+        LoginResult loginResult = loginUser(userBob);
+        serverFacade.createGame(new CreateGameRequest("testgame"), loginResult.authToken());
+    }
+
+    @Test
+    public void badMakeGame() throws DataAccessException {
+        serverFacade.clear();
+        registerUser(userBob);
+        LoginResult loginResult = loginUser(userBob);
+        assertThrows(DataAccessException.class, () -> serverFacade.createGame(new CreateGameRequest(null), loginResult.authToken()));
+    }
 
 }
