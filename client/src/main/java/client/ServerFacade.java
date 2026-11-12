@@ -36,45 +36,48 @@ public class ServerFacade {
     //before login functions
     //help and quit are handled in the client, not here
     public RegisterResult registerUser(RegisterRequest registerRequest) throws DataAccessException{
-        HttpRequest httpRequest = makeRequest("POST", "/user", registerRequest);
+        HttpRequest httpRequest = makeRequest("POST", "/user", registerRequest, null);
         HttpResponse httpResponse = sendRequest(httpRequest);
         System.out.println(httpResponse);
         return handelResponse(httpResponse, RegisterResult.class);
     }
 
     public LoginResult login(LoginRequest loginRequest) throws DataAccessException{
-        HttpRequest httpRequest = makeRequest("POST", "/session",loginRequest);
+        HttpRequest httpRequest = makeRequest("POST", "/session", loginRequest, null);
         HttpResponse httpResponse = sendRequest(httpRequest);
         System.out.println("httpResponce in serverFacade" + httpResponse);
         return handelResponse(httpResponse, LoginResult.class);
     }
 
-    public LogoutResult logout(LogoutRequest logoutRequest) throws DataAccessException{
-        HttpRequest httpRequest = makeRequest("DELETE", "/session",logoutRequest);
+    public LogoutResult logout(String authToken) throws DataAccessException{
+        HttpRequest httpRequest = makeRequest("DELETE", "/session", null, authToken);
         HttpResponse httpResponse = sendRequest(httpRequest);
         return handelResponse(httpResponse, LogoutResult.class);
     }
 
-    public CreateGameResult createGame(CreateGameResult gameResult) throws DataAccessException{
-        HttpRequest httpRequest = makeRequest("POST", "/game",gameResult);
+    public CreateGameResult createGame(String authToken) throws DataAccessException{
+        HttpRequest httpRequest = makeRequest("POST", "/game", null, authToken);
         HttpResponse httpResponse = sendRequest(httpRequest);
         return handelResponse(httpResponse, CreateGameResult.class);
     }
 
-    public ListGameResult listGame() throws DataAccessException{
-        HttpRequest httpRequest = makeRequest("POST", "/game",null);
+    public ListGameResult listGame(String authToken) throws DataAccessException{
+        HttpRequest httpRequest = makeRequest("POST", "/game",null, authToken);
         HttpResponse httpResponse = sendRequest(httpRequest);
         return handelResponse(httpResponse, ListGameResult.class);
     }
 
 
 
-    private HttpRequest makeRequest(String action, String path, Object body) {
+    private HttpRequest makeRequest(String action, String path, Object body, String authToken) {
         HttpRequest.Builder request = HttpRequest.newBuilder()
                 .uri(URI.create(serverURL + path))
                 .method(action, handelBody(body));
         if (body != null) {
             request.setHeader("Content-Type", "application/json");
+        }
+        if (authToken != null) {
+            request.setHeader("authorization", authToken);
         }
 
         return request.build();
@@ -84,6 +87,7 @@ public class ServerFacade {
         if (request == null) {
             return HttpRequest.BodyPublishers.noBody();
         }
+
         return HttpRequest.BodyPublishers.ofString(new Gson().toJson(request));
     }
 
@@ -94,8 +98,8 @@ public class ServerFacade {
             throw new DataAccessException("error in sending request" + exception, DataAccessException.Code.OtherError);
         }
     }
-    public void clear() throws DataAccessException{
-        HttpRequest httpRequest = makeRequest("DELETE", "/db", null);
+    public void clear() throws DataAccessException{ //TODO add needing auth token, for not its easier to keep without
+        HttpRequest httpRequest = makeRequest("DELETE", "/db", null, null);
         sendRequest(httpRequest);
     }
 

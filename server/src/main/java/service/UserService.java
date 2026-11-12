@@ -43,7 +43,7 @@ public class UserService {
             if (userData.matchPassword(request.username(), request.password())) {
                 String authToken = generateToken();
                 authData.createAuth(authToken, request.username());
-                System.out.println("LoginResult in server returning successful");
+//                System.out.println("LoginResult in server returning successful");
                 return new LoginResult(request.username(), authToken);
             }
             System.out.println("password no match");
@@ -54,10 +54,12 @@ public class UserService {
     }
 
     public LogoutResult logout(LogoutRequest request) throws DataAccessException {
+        System.out.println("logout request in userService: " + request);
         if (authData.getAuth(request.authToken()) != null) {
             authData.deleteAuth(request.authToken());
             return new LogoutResult();
         }
         return null;
+
     }
 }

@@ -17,7 +17,8 @@ public class DatabaseAuthData implements AuthDataAccess {
          `authToken` VARCHAR(255) NOT NULL,
          `username` VARCHAR(255) NOT NULL,
          PRIMARY KEY(`authToken`),
-         INDEX(authToken)
+         INDEX(authToken),
+         INDEX(username)
         );
         """};
 
@@ -57,6 +58,7 @@ public class DatabaseAuthData implements AuthDataAccess {
 
     public AuthData getAuth(String authToken) throws DataAccessException {
         makeAuthDataTable();
+        System.out.println("request in getAuth: "+ authToken);
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT username FROM AuthData WHERE authToken=?")) {
                 preparedStatement.setString(1, authToken);
@@ -64,8 +66,8 @@ public class DatabaseAuthData implements AuthDataAccess {
                     while (resultSet.next()){
                         String username = resultSet.getString("username");
                         return new AuthData(authToken, username);
-                    } throw new DataAccessException("Error auth Token not found", DataAccessException.Code.Unathurized);
-                }
+                    }
+                } throw new DataAccessException("Error auth Token not found---", DataAccessException.Code.Unathurized);
             }
         } catch (SQLException ex) {throw new DataAccessException("Error could not create table" + ex, DataAccessException.Code.Unathurized);}
     }

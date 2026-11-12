@@ -1,5 +1,6 @@
 package client;
 
+import GameRecordModels.CreateGameRequest;
 import client.ServerFacade;
 import dataaccess.DataAccessException;
 import dataaccess.sql.DataBaseTests;
@@ -82,8 +83,27 @@ public class ServerFacadeTests {
     @Test
     public void positiveLogin() throws DataAccessException {
         serverFacade.clear();
+        serverFacade.registerUser(new RegisterRequest(userBob.username(), userBob.password(), userBob.email()));
         serverFacade.login(new LoginRequest(userBob.username(), userBob.password()));
-        serverFacade.clear();
     }
+
+    @Test
+    public void positiveLogout() throws DataAccessException {
+        serverFacade.clear();
+        serverFacade.registerUser(new RegisterRequest(userBob.username(), userBob.password(), userBob.email()));
+        LoginResult loginResult = serverFacade.login(new LoginRequest(userBob.username(), userBob.password()));
+        System.out.println("now trying logout");
+        serverFacade.logout(loginResult.authToken());
+        assertThrows(DataAccessException.class, () -> serverFacade.logout(loginResult.authToken() ) );
+    }
+
+//    @Test
+//    public void testMakeGame() throws DataAccessException {
+//        serverFacade.clear();
+//        registerUser(userBob);
+//        loginUser(userBob);
+//        serverFacade.createGame(new CreateGameRequest("testgame"));
+//
+//    }
 
 }

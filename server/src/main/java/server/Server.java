@@ -55,12 +55,12 @@ public class Server {
 
     public void registerUser(@NotNull Context context) throws DataAccessException {
         RegisterRequest request = new Gson().fromJson(context.body(), RegisterRequest.class);
-        System.out.println("in Server.registerUser registerRequest is: "+ request);
+//        System.out.println("in Server.registerUser registerRequest is: "+ request);
         if (request.username() == null || request.password() == null) {
             throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
         }
         RegisterResult result = userService.register(request);
-        System.out.println("in Server.registerUser registerResult is: "+ result);
+//        System.out.println("in Server.registerUser registerResult is: "+ result);
         context.result(new Gson().toJson(result));
     }
 
@@ -70,17 +70,28 @@ public class Server {
             throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
         }
         LoginResult result = userService.login(request);
-        System.out.println("LoginResult in server:" + result);
+//        System.out.println("LoginResult in server:" + result);
         context.result(new Gson().toJson(result));
     }
 
     public void logout(@NotNull Context context) throws DataAccessException {
+        // the context fed is the authToken
+        System.out.println("context fed to logout body: " + context.body() + "header " + context.header("authorization"));
+
         String authToken = context.header("authorization");
         String username = authData.getAuth(authToken).username();
         LogoutRequest logoutRequest = new LogoutRequest(username, authToken);
 
         LogoutResult result = userService.logout(logoutRequest);
         context.result(new Gson().toJson(result));
+
+//        LogoutRequest request = new Gson().fromJson(context.body(), LogoutRequest.class);
+//        if (request.username() == null || request.authToken() == null) {
+//            throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
+//        }
+//        LogoutResult result = userService.logout(request);
+////        System.out.println("LoginResult in server:" + result);
+//        context.result(new Gson().toJson(result));
     }
 
     public void createGame(@NotNull Context context) throws DataAccessException {
