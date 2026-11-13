@@ -4,43 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- code quality 2">
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/ChessClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ChessClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ClientMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/ServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ServerFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/test/java/client/TestPrintBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/client/TestPrintBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/AuthDataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/AuthDataAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/GameDataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/GameDataAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryAuthDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryAuthDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryGameDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryUserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/UserDataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/UserDataAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/handlers/ClearHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/handlers/ClearHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/service/ClearService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/ClearService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/GameService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/dataaccess/sql/DataBaseTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/service/UserServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/service/UserServiceTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/dataAccessException/dataAccessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/exception/DataAccessException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/gameRecordModels/CreateGameRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/gamerecord/CreateGameRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/gameRecordModels/CreateGameResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/gamerecord/CreateGameResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/gameRecordModels/JoinGameRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/gamerecord/JoinGameRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/gameRecordModels/JoinGameResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/gamerecord/JoinGameResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/gameRecordModels/ListGameRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/gamerecord/ListGameRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/gameRecordModels/ListGameResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/gamerecord/ListGameResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/userRecordsModels/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/userrecords/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/userRecordsModels/LoginResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/userrecords/LoginResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/userRecordsModels/LogoutRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/userrecords/LogoutRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/userRecordsModels/LogoutResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/userrecords/LogoutResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/userRecordsModels/RegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/userrecords/RegisterRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/userRecordsModels/RegisterResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/userrecords/RegisterResult.java" afterDir="false" />
-    </list>
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- code quality 4" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,60 +63,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000743032214" />
-      <entry key="S2" value="1.0165101838984012" />
-      <entry key="S5" value="1.1936871904614017" />
-      <entry key="S10" value="1.440434918048831" />
-      <entry key="S30" value="1.8898477706241923" />
-      <entry key="S60" value="2.5722239673728318" />
-      <entry key="M2" value="4.172666682038908" />
-      <entry key="M5" value="9.60490973748033" />
-      <entry key="M10" value="18.884445180322174" />
-      <entry key="M15" value="29.112564823459685" />
-      <entry key="M30" value="63.982566875965546" />
-      <entry key="H1" value="138.79015618428613" />
-      <entry key="H2" value="276.9746539625384" />
-      <entry key="H4" value="492.6537913048232" />
-      <entry key="D1" value="1361.7657582484374" />
-      <entry key="W1" value="3995.5180391366807" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0000001217251357" />
+      <entry key="S10" value="1.0005808273685008" />
+      <entry key="S30" value="1.2172754838286932" />
+      <entry key="S60" value="2.1194029888052457" />
+      <entry key="M2" value="4.11408531143937" />
+      <entry key="M5" value="9.799337240273925" />
+      <entry key="M10" value="19.131377821834455" />
+      <entry key="M15" value="29.174039999505297" />
+      <entry key="M30" value="63.35933847487887" />
+      <entry key="H1" value="137.4969894649256" />
+      <entry key="H2" value="275.6702011829586" />
+      <entry key="H4" value="492.2498496238647" />
+      <entry key="D1" value="1365.3474574791542" />
+      <entry key="W1" value="4001.085901229252" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="2.173024176623301E-171" />
-      <entry key="MS500" value="7.369073896973501E-35" />
-      <entry key="S2" value="2.9299029019215026E-9" />
-      <entry key="S5" value="3.861368871293404E-4" />
-      <entry key="S10" value="0.01965036608132537" />
-      <entry key="S30" value="0.269891288713351" />
-      <entry key="S60" value="0.5294154112902821" />
-      <entry key="M2" value="0.917809692420969" />
-      <entry key="M5" value="2.3812999023348276" />
-      <entry key="M10" value="4.803036547364713" />
-      <entry key="M15" value="8.04032277139235" />
-      <entry key="M30" value="22.040178504749747" />
-      <entry key="H1" value="54.97338066882669" />
-      <entry key="H2" value="117.5729549555524" />
-      <entry key="H4" value="211.4228891465432" />
-      <entry key="D1" value="526.6533141342596" />
-      <entry key="W1" value="1475.9813278776103" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="4.876902600954169E-223" />
+      <entry key="S2" value="2.642627928751372E-56" />
+      <entry key="S5" value="5.872383479527413E-23" />
+      <entry key="S10" value="7.663147838544549E-12" />
+      <entry key="S30" value="1.971822054847846E-4" />
+      <entry key="S60" value="0.01430988046218448" />
+      <entry key="M2" value="0.15089413260188156" />
+      <entry key="M5" value="1.1565967814915667" />
+      <entry key="M10" value="3.347340051349223" />
+      <entry key="M15" value="6.320179970327897" />
+      <entry key="M30" value="19.54083368717641" />
+      <entry key="H1" value="51.76264210683788" />
+      <entry key="H2" value="114.08785861229347" />
+      <entry key="H4" value="208.26582013217433" />
+      <entry key="D1" value="525.3343767980497" />
+      <entry key="W1" value="1475.4527015762596" />
     </decayedSelected>
     <decayedShown>
       <entry key="MS100" value="0.9659363289248456" />
-      <entry key="MS500" value="0.9930925691247837" />
-      <entry key="S2" value="1.0147445223329827" />
-      <entry key="S5" value="1.1931730493675672" />
-      <entry key="S10" value="1.4583263060780436" />
-      <entry key="S30" value="2.151951656390317" />
-      <entry key="S60" value="3.091106843470979" />
-      <entry key="M2" value="5.078192252590509" />
-      <entry key="M5" value="11.972574925959155" />
-      <entry key="M10" value="23.6725849498229" />
-      <entry key="M15" value="37.135052007008895" />
-      <entry key="M30" value="85.9967738643733" />
-      <entry key="H1" value="193.73019274321695" />
-      <entry key="H2" value="394.5112982035917" />
-      <entry key="H4" value="704.0429648692838" />
-      <entry key="D1" value="1888.4027527706514" />
-      <entry key="W1" value="5471.4915994749135" />
+      <entry key="MS500" value="0.9930924954370359" />
+      <entry key="S2" value="0.9982686325973925" />
+      <entry key="S5" value="0.9993072085604712" />
+      <entry key="S10" value="1.0002161330504384" />
+      <entry key="S30" value="1.2153530757501465" />
+      <entry key="S60" value="2.129097192846693" />
+      <entry key="M2" value="4.258506402711869" />
+      <entry key="M5" value="10.946558851846818" />
+      <entry key="M10" value="22.46674409951879" />
+      <entry key="M15" value="35.479086093323794" />
+      <entry key="M30" value="82.87656108126598" />
+      <entry key="H1" value="189.22793538949236" />
+      <entry key="H2" value="389.72267379977467" />
+      <entry key="H4" value="700.4823813683079" />
+      <entry key="D1" value="1890.6655427605967" />
+      <entry key="W1" value="5476.530836221513" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -355,26 +319,13 @@
       <recent name="service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in server">
+  <component name="RunManager" selected="JUnit.ServerFacadeTests">
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client.ClientMain" />
       <module name="client" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="client.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="server.ServerMain" />
-      <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -400,7 +351,7 @@
     </configuration>
     <configuration name="ServerFacadeTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="client" />
-      <extension name="coverage">
+      <extension name="coverage" runner="jacoco">
         <pattern>
           <option name="PATTERN" value="client.*" />
           <option name="ENABLED" value="true" />
@@ -413,20 +364,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="passoff.chess in shared" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="shared" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="passoff.chess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="passoff.chess" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.ClientMain" />
-      <item itemvalue="Application.ServerMain" />
       <item itemvalue="JUnit.All in client" />
       <item itemvalue="JUnit.All in server" />
       <item itemvalue="JUnit.ServerFacadeTests" />
+      <item itemvalue="JUnit.passoff.chess in shared" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in server" />
         <item itemvalue="JUnit.ServerFacadeTests" />
         <item itemvalue="JUnit.All in client" />
+        <item itemvalue="JUnit.passoff.chess in shared" />
+        <item itemvalue="JUnit.All in server" />
         <item itemvalue="Application.ClientMain" />
-        <item itemvalue="Application.ServerMain" />
       </list>
     </recent_temporary>
   </component>
@@ -464,8 +429,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Phase 4-  more tests and code coverage" />
-    <MESSAGE value="Phase 4-  restructure" />
     <MESSAGE value="just in case what I am about  to do breaks the code" />
     <MESSAGE value="restructure to put the request/ result records in a shared module" />
     <MESSAGE value="restructure to put the request/ result records that were in UserService" />
@@ -489,7 +452,9 @@
     <MESSAGE value="phase 5- more restructure" />
     <MESSAGE value="phase 5- code quality 1" />
     <MESSAGE value="phase 5- code quality 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase 5- code quality 2" />
+    <MESSAGE value="phase 5- code quality 3" />
+    <MESSAGE value="phase 5- code quality 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="phase 5- code quality 4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
