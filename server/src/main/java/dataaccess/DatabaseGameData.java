@@ -81,7 +81,6 @@ public class DatabaseGameData implements GameDataAccess {
     }
 
     public ArrayList<ModifiedGameData> listGame() throws DataAccessException { //int gameID, String whiteUsername, String blackUsername, String gameName)
-        System.out.println("in database game data 1");
         ArrayList<model.ModifiedGameData> gameList = new ArrayList<>();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(

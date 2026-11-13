@@ -33,7 +33,6 @@ public class UserService {
             String authToken = generateToken();
 
             authData.createAuth(authToken, request.username());
-            System.out.println("auth Token given in UserService.register is: " +authToken);
             return new RegisterResult(request.username(), authToken);
         }
     }
@@ -43,7 +42,6 @@ public class UserService {
             if (userData.matchPassword(request.username(), request.password())) {
                 String authToken = generateToken();
                 authData.createAuth(authToken, request.username());
-//                System.out.println("LoginResult in server returning successful");
                 return new LoginResult(request.username(), authToken);
             }
             System.out.println("password no match");

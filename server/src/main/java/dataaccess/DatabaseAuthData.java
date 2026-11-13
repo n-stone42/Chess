@@ -58,7 +58,6 @@ public class DatabaseAuthData implements AuthDataAccess {
 
     public AuthData getAuth(String authToken) throws DataAccessException {
         makeAuthDataTable();
-        System.out.println("request in getAuth: "+ authToken);
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT username FROM AuthData WHERE authToken=?")) {
                 preparedStatement.setString(1, authToken);

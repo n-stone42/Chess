@@ -71,7 +71,6 @@ public class GameService {
 
     public ListGameResult listGames(String authToken) throws DataAccessException {
         if (verifyAuthToken(authToken)) {
-            System.out.println("auth token verfied in list games");
             return new ListGameResult(gameData.listGame());
         }
         throw new DataAccessException("Error: authToken not verfied", DataAccessException.Code.OtherError); // changed 11-7

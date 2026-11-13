@@ -76,7 +76,6 @@ public class Server {
 
     public void logout(@NotNull Context context) throws DataAccessException {
         // the context fed is the authToken
-        System.out.println("context fed to logout body: " + context.body() + "header " + context.header("authorization"));
 
         String authToken = context.header("authorization");
         String username = authData.getAuth(authToken).username();
@@ -84,14 +83,6 @@ public class Server {
 
         LogoutResult result = userService.logout(logoutRequest);
         context.result(new Gson().toJson(result));
-
-//        LogoutRequest request = new Gson().fromJson(context.body(), LogoutRequest.class);
-//        if (request.username() == null || request.authToken() == null) {
-//            throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
-//        }
-//        LogoutResult result = userService.logout(request);
-////        System.out.println("LoginResult in server:" + result);
-//        context.result(new Gson().toJson(result));
     }
 
     public void createGame(@NotNull Context context) throws DataAccessException {
