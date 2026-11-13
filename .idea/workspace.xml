@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- list games working">
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- negative join game">
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/ChessClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/REPL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ClientMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/client/ServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ServerFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,60 +71,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.000000000713784" />
-      <entry key="S10" value="1.000028571019927" />
-      <entry key="S30" value="1.0608478333536289" />
-      <entry key="S60" value="1.7137129808915588" />
-      <entry key="M2" value="4.415891132584603" />
-      <entry key="M5" value="14.512182493343493" />
-      <entry key="M10" value="29.287199542925414" />
-      <entry key="M15" value="41.8970816620812" />
-      <entry key="M30" value="69.97106838334213" />
-      <entry key="H1" value="104.49246299279304" />
-      <entry key="H2" value="162.41161511851075" />
-      <entry key="H4" value="274.78377355676736" />
-      <entry key="D1" value="846.5704973530138" />
-      <entry key="W1" value="3344.6712104340586" />
+      <entry key="MS500" value="1.0000001315395521" />
+      <entry key="S2" value="1.0190442594636995" />
+      <entry key="S5" value="1.2050716548134477" />
+      <entry key="S10" value="1.4528551956898828" />
+      <entry key="S30" value="1.8102443657707905" />
+      <entry key="S60" value="2.425318415106006" />
+      <entry key="M2" value="5.197908039669775" />
+      <entry key="M5" value="18.114037825984596" />
+      <entry key="M10" value="39.28254039595981" />
+      <entry key="M15" value="55.51122653085134" />
+      <entry key="M30" value="89.28434145351731" />
+      <entry key="H1" value="139.2554673399546" />
+      <entry key="H2" value="216.6533609678802" />
+      <entry key="H4" value="344.43218151445365" />
+      <entry key="D1" value="963.0951793210805" />
+      <entry key="W1" value="3483.4681354805407" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="8.591678184490707E-126" />
-      <entry key="MS500" value="9.700979800395762E-26" />
-      <entry key="S2" value="5.581228434022674E-7" />
-      <entry key="S5" value="0.003217115700737174" />
-      <entry key="S10" value="0.06447987176501871" />
-      <entry key="S30" value="0.7998263563541266" />
-      <entry key="S60" value="2.5034304118332584" />
-      <entry key="M2" value="6.185127332186235" />
-      <entry key="M5" value="14.71990595870152" />
-      <entry key="M10" value="23.573818962912664" />
-      <entry key="M15" value="29.65290066800082" />
-      <entry key="M30" value="41.58648927316994" />
-      <entry key="H1" value="55.91154223045115" />
-      <entry key="H2" value="77.99364449476376" />
-      <entry key="H4" value="113.38393258446594" />
-      <entry key="D1" value="286.6595018975391" />
-      <entry key="W1" value="1185.8560912744558" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="3.1153694506587486E-203" />
+      <entry key="S2" value="2.362530364386358E-51" />
+      <entry key="S5" value="5.6222643506563526E-21" />
+      <entry key="S10" value="8.033597340769549E-11" />
+      <entry key="S30" value="0.0010966103384170956" />
+      <entry key="S60" value="0.10567558610985237" />
+      <entry key="M2" value="1.1863269239599274" />
+      <entry key="M5" value="6.158809524522087" />
+      <entry key="M10" value="13.163172421164363" />
+      <entry key="M15" value="18.346163691258056" />
+      <entry key="M30" value="29.825671180771206" />
+      <entry key="H1" value="49.30417497846226" />
+      <entry key="H2" value="80.38129288192702" />
+      <entry key="H4" value="125.353375117782" />
+      <entry key="D1" value="319.16869346716766" />
+      <entry key="W1" value="1225.2568440403331" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.574127766252825E-7" />
-      <entry key="MS500" value="0.053958722410900745" />
-      <entry key="S2" value="0.48196514033208054" />
-      <entry key="S5" value="0.7490897471073186" />
-      <entry key="S10" value="0.9188638346296938" />
-      <entry key="S30" value="1.774271805798696" />
-      <entry key="S60" value="4.1308630079637805" />
-      <entry key="M2" value="10.501537093876639" />
-      <entry key="M5" value="29.126740987126105" />
-      <entry key="M10" value="52.76988118020178" />
-      <entry key="M15" value="71.4712393043267" />
-      <entry key="M30" value="111.5010367024474" />
-      <entry key="H1" value="160.365773425701" />
-      <entry key="H2" value="240.37766140901672" />
-      <entry key="H4" value="388.145892293744" />
-      <entry key="D1" value="1133.21921185953" />
-      <entry key="W1" value="4530.520534998494" />
+      <entry key="MS100" value="2.5308824029981727E-5" />
+      <entry key="MS500" value="0.12040776133149357" />
+      <entry key="S2" value="0.6015865695270072" />
+      <entry key="S5" value="0.9826207308580996" />
+      <entry key="S10" value="1.3159885792746062" />
+      <entry key="S30" value="1.7547980133437535" />
+      <entry key="S60" value="2.495753859345187" />
+      <entry key="M2" value="6.348874304669524" />
+      <entry key="M5" value="24.22354198731571" />
+      <entry key="M10" value="52.391537600510624" />
+      <entry key="M15" value="73.80582923514154" />
+      <entry key="M30" value="119.06701862482767" />
+      <entry key="H1" value="188.52396283886767" />
+      <entry key="H2" value="297.00535471343517" />
+      <entry key="H4" value="469.761600070551" />
+      <entry key="D1" value="1282.252149737466" />
+      <entry key="W1" value="4708.718045595337" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -137,6 +141,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ClientMain.executor": "Run",
     "Application.ServerMain.executor": "Run",
     "Downloaded.Files.Path.Enabled": "true",
     "JUnit.All in client.executor": "Run",
@@ -217,6 +222,7 @@
     "JUnit.ServerFacadeTests.badMakeGame.executor": "Run",
     "JUnit.ServerFacadeTests.joinGameTest.executor": "Run",
     "JUnit.ServerFacadeTests.listGame.executor": "Run",
+    "JUnit.ServerFacadeTests.negativeJoinGame.executor": "Run",
     "JUnit.ServerFacadeTests.negativeLogin (1).executor": "Run",
     "JUnit.ServerFacadeTests.negativeLogin.executor": "Run",
     "JUnit.ServerFacadeTests.positiveLogin.executor": "Run",
@@ -315,7 +321,20 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ServerFacadeTests.negativeJoinGame">
+  <component name="RunManager" selected="Application.ClientMain">
+    <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.ClientMain" />
+      <module name="client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServerFacadeTests.badListGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="client" />
       <extension name="coverage">
@@ -327,22 +346,6 @@
       <option name="PACKAGE_NAME" value="client" />
       <option name="MAIN_CLASS_NAME" value="client.ServerFacadeTests" />
       <option name="METHOD_NAME" value="badListGame" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ServerFacadeTests.badMakeGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="client" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="client.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="client" />
-      <option name="MAIN_CLASS_NAME" value="client.ServerFacadeTests" />
-      <option name="METHOD_NAME" value="badMakeGame" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -397,19 +400,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.ClientMain" />
       <item itemvalue="JUnit.ServerFacadeTests.badListGame" />
       <item itemvalue="JUnit.ServerFacadeTests.joinGameTest" />
       <item itemvalue="JUnit.ServerFacadeTests.listGame" />
       <item itemvalue="JUnit.ServerFacadeTests.negativeJoinGame" />
-      <item itemvalue="JUnit.ServerFacadeTests.badMakeGame" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ClientMain" />
         <item itemvalue="JUnit.ServerFacadeTests.negativeJoinGame" />
         <item itemvalue="JUnit.ServerFacadeTests.joinGameTest" />
         <item itemvalue="JUnit.ServerFacadeTests.badListGame" />
         <item itemvalue="JUnit.ServerFacadeTests.listGame" />
-        <item itemvalue="JUnit.ServerFacadeTests.badMakeGame" />
       </list>
     </recent_temporary>
   </component>
@@ -447,8 +450,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Phase 4-  testClearUserTableWithoutError clearing" />
-    <MESSAGE value="Phase 4-  create and clear functions, adding email, tests super getto" />
     <MESSAGE value="Phase 4- added password hashing" />
     <MESSAGE value="Phase 4- self made auth Data tests passing" />
     <MESSAGE value="Phase 4- testing username and auth Token not found errors" />
@@ -472,7 +473,9 @@
     <MESSAGE value="phase 5- positive Logout working" />
     <MESSAGE value="phase 5- make game tests working" />
     <MESSAGE value="phase 5- list games working" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase 5- list games working" />
+    <MESSAGE value="phase 5- positive join game" />
+    <MESSAGE value="phase 5- negative join game" />
+    <option name="LAST_COMMIT_MESSAGE" value="phase 5- negative join game" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

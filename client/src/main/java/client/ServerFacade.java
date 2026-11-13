@@ -72,8 +72,6 @@ public class ServerFacade {
         return handelResponse(httpResponse, JoinGameResult.class);
     }
 
-
-
     private HttpRequest makeRequest(String action, String path, Object body, String authToken) {
         HttpRequest.Builder request = HttpRequest.newBuilder()
                 .uri(URI.create(serverURL + path))
