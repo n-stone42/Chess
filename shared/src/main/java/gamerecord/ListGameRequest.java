@@ -1,4 +1,4 @@
-package gameRecordModels;
+package gamerecord;
 
 public record ListGameRequest() {
 }

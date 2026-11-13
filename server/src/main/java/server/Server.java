@@ -1,7 +1,7 @@
 package server;
 
 import com.google.gson.Gson;
-import dataAccessException.dataAccessException;
+import exception.DataAccessException;
 import dataaccess.DatabaseAuthData;
 import dataaccess.DatabaseGameData;
 import dataaccess.DatabaseUserData;
@@ -12,8 +12,8 @@ import handlers.*;
 import service.ClearService;
 import service.GameService;
 import service.UserService;
-import userRecordsModels.*;
-import gameRecordModels.*;
+import userrecords.*;
+import gamerecord.*;
 
 
 public class Server {
@@ -42,37 +42,37 @@ public class Server {
         javalin.post("/game", this::createGame);
         javalin.put("/game", this::joinGame);
         javalin.delete("/db", this::clearDb);
-        javalin.exception(dataAccessException.class, this::exceptionHandler);
+        javalin.exception(DataAccessException.class, this::exceptionHandler);
 
     }
 
-    public void clearDb(@NotNull Context context) throws dataAccessException {
+    public void clearDb(@NotNull Context context) throws DataAccessException {
         clearHandler.clear();
         context.status(200);
     }
 
-    public void registerUser(@NotNull Context context) throws dataAccessException {
+    public void registerUser(@NotNull Context context) throws DataAccessException {
         RegisterRequest request = new Gson().fromJson(context.body(), RegisterRequest.class);
 //        System.out.println("in Server.registerUser registerRequest is: "+ request);
         if (request.username() == null || request.password() == null) {
-            throw new dataAccessException("Error: Username or password is null", dataAccessException.Code.BadRequest);
+            throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
         }
         RegisterResult result = userService.register(request);
 //        System.out.println("in Server.registerUser registerResult is: "+ result);
         context.result(new Gson().toJson(result));
     }
 
-    public void login(@NotNull Context context) throws dataAccessException {
+    public void login(@NotNull Context context) throws DataAccessException {
         LoginRequest request = new Gson().fromJson(context.body(), LoginRequest.class);
         if (request.username() == null || request.password() == null) {
-            throw new dataAccessException("Error: Username or password is null", dataAccessException.Code.BadRequest);
+            throw new DataAccessException("Error: Username or password is null", DataAccessException.Code.BadRequest);
         }
         LoginResult result = userService.login(request);
 //        System.out.println("LoginResult in server:" + result);
         context.result(new Gson().toJson(result));
     }
 
-    public void logout(@NotNull Context context) throws dataAccessException {
+    public void logout(@NotNull Context context) throws DataAccessException {
         // the context fed is the authToken
 
         String authToken = context.header("authorization");
@@ -83,35 +83,35 @@ public class Server {
         context.result(new Gson().toJson(result));
     }
 
-    public void createGame(@NotNull Context context) throws dataAccessException {
+    public void createGame(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
         CreateGameRequest request = new Gson().fromJson(context.body(),
                 CreateGameRequest.class);
         if (request.gameName() == null) {
-            throw new dataAccessException("Error: Game name is null", dataAccessException.Code.BadRequest);
+            throw new DataAccessException("Error: Game name is null", DataAccessException.Code.BadRequest);
         }
         CreateGameResult result = gameService.creatGame(authToken,
                 new Gson().fromJson(context.body(), CreateGameRequest.class));
         context.result(new Gson().toJson(result));
     }
 
-    public void listGame(@NotNull Context context) throws dataAccessException {
+    public void listGame(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
         ListGameResult result = gameService.listGames(authToken);
         context.result(new Gson().toJson(result));
     }
 
-    public void joinGame(@NotNull Context context) throws dataAccessException {
+    public void joinGame(@NotNull Context context) throws DataAccessException {
         String authToken = context.header("authorization");
         JoinGameRequest request = new Gson().fromJson(context.body(), JoinGameRequest.class);
         if (request.playerColor() == null) {
-            throw new dataAccessException("Error: player color in null", dataAccessException.Code.BadRequest);
+            throw new DataAccessException("Error: player color in null", DataAccessException.Code.BadRequest);
         }
         GameService.JoinGameResult result = gameService.joinGame(authToken, request);
         context.result(new Gson().toJson(result));
     }
 
-    public void exceptionHandler(dataAccessException exception, Context context) {
+    public void exceptionHandler(DataAccessException exception, Context context) {
         context.status(exception.toHttpStatuscode());
         context.result(exception.toJson());
     }
@@ -129,7 +129,7 @@ public class Server {
         javalin.stop();
     }
 
-    public void clear() throws dataAccessException {
+    public void clear() throws DataAccessException {
         authData.clear();
         gameData.clear();
         userData.clear();

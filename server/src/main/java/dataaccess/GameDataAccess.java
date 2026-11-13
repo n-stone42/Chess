@@ -1,20 +1,20 @@
 package dataaccess;
 
 import chess.ChessGame;
-import dataAccessException.dataAccessException;
+import exception.DataAccessException;
 import model.GameData;
 import model.ModifiedGameData;
 
 import java.util.ArrayList;
 
 public interface GameDataAccess {
-    void clear() throws dataAccessException;
+    void clear() throws DataAccessException;
 
-    void createGame(int gameID, String gameName) throws dataAccessException;
+    void createGame(int gameID, String gameName) throws DataAccessException;
 
-    ArrayList<ModifiedGameData> listGame() throws dataAccessException;
+    ArrayList<ModifiedGameData> listGame() throws DataAccessException;
 
-    GameData getGame(int gameID) throws dataAccessException;
+    GameData getGame(int gameID) throws DataAccessException;
 
-    void joinGame(int gameID, ChessGame.TeamColor playerColor, String newUsername) throws dataAccessException;
+    void joinGame(int gameID, ChessGame.TeamColor playerColor, String newUsername) throws DataAccessException;
 }

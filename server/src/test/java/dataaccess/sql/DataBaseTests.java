@@ -3,7 +3,7 @@ package dataaccess.sql;
 import chess.ChessGame;
 import com.google.gson.Gson;
 import dataaccess.*;
-import dataAccessException.dataAccessException;
+import exception.DataAccessException;
 import model.AuthData;
 import model.GameData;
 import model.UserData;
@@ -30,31 +30,31 @@ public class DataBaseTests {
     public static UserData userTom = new UserData("Tom", "words", "TomTheM0M@hotmainl.com");
     public AuthData testAuthData = new AuthData("token", userBob.username());
 
-    void addUser(UserData user) throws dataAccessException {
+    void addUser(UserData user) throws DataAccessException {
         databaseUserData.createUser(user.username(), user.password(), user.email());
     }
 
-    void addAuthData() throws dataAccessException {
+    void addAuthData() throws DataAccessException {
         databaseAuthData.createAuth(testAuthData.authToken(), userBob.username());
     }
 
-    Integer addChessGame() throws dataAccessException {
+    Integer addChessGame() throws DataAccessException {
         int gameID = newGameID();
         databaseGameData.createGame(gameID, "testGame");
         return gameID;
     }
 
-    void insertPlayerToGame(Integer gameID, ChessGame.TeamColor color, UserData user) throws dataAccessException {
+    void insertPlayerToGame(Integer gameID, ChessGame.TeamColor color, UserData user) throws DataAccessException {
         databaseGameData.joinGame(gameID, color, user.username());
     }
 
     @BeforeEach
-    void setup()  throws dataAccessException {
+    void setup()  throws DataAccessException {
     clearTables();
 
     }
 
-    public void clearTables() throws dataAccessException {
+    public void clearTables() throws DataAccessException {
         databaseUserData.clear();
         databaseAuthData.clear();
         databaseGameData.clear();
@@ -88,7 +88,7 @@ public class DataBaseTests {
     }
 
     @Test
-    void testGetUserData() throws dataAccessException {
+    void testGetUserData() throws DataAccessException {
         addUser(userBob);
         assertDoesNotThrow( () -> {
             assertEquals(userBob.username(), databaseUserData.getUser(userBob.username()).username());
@@ -97,7 +97,7 @@ public class DataBaseTests {
     }
 
     @Test
-    void testMatchPassword()  throws dataAccessException {
+    void testMatchPassword()  throws DataAccessException {
         addUser(userBob);
         assertDoesNotThrow( () -> {
             assertTrue(databaseUserData.matchPassword(userBob.username(), userBob.password()));
@@ -117,33 +117,33 @@ public class DataBaseTests {
         });
     }
     @Test
-    void testClearTables() throws dataAccessException {
+    void testClearTables() throws DataAccessException {
         databaseUserData.clear();
         databaseAuthData.clear();
         databaseGameData.clear();
-        assertThrows(dataAccessException.class, () -> databaseUserData.getUser(userBob.username()));
-        assertThrows(dataAccessException.class, () -> databaseAuthData.getAuth(testAuthData.authToken()));
+        assertThrows(DataAccessException.class, () -> databaseUserData.getUser(userBob.username()));
+        assertThrows(DataAccessException.class, () -> databaseAuthData.getAuth(testAuthData.authToken()));
     }
 
     @Test
-    void testDeleteAuth() throws dataAccessException {
+    void testDeleteAuth() throws DataAccessException {
         addAuthData();
         assertDoesNotThrow( () -> {
             databaseAuthData.deleteAuth(testAuthData.authToken());
         });
-        assertThrows(dataAccessException.class, () -> databaseAuthData.getAuth(testAuthData.authToken()));
+        assertThrows(DataAccessException.class, () -> databaseAuthData.getAuth(testAuthData.authToken()));
     }
 
     @Test
-    void testGameCerilization() throws dataAccessException {
+    void testGameCerilization() throws DataAccessException {
         ChessGame testGame = new ChessGame();
         String json = databaseGameData.chessGameToString(testGame);
-        assertEquals(testGame, databaseGameData.JSONtoChessGame(json));
+        assertEquals(testGame, databaseGameData.jsonToChessGame(json));
     }
 
 
     @Test
-    void testCreateGame() throws dataAccessException {
+    void testCreateGame() throws DataAccessException {
 
         int gameID = addChessGame();
         ChessGame expectedGame = new ChessGame();
@@ -152,7 +152,7 @@ public class DataBaseTests {
     }
 
     @Test
-    void testJoinGame() throws dataAccessException {
+    void testJoinGame() throws DataAccessException {
         addUser(userBob);
         int gameID = addChessGame();
         insertPlayerToGame(gameID, ChessGame.TeamColor.WHITE, userBob);
@@ -168,7 +168,7 @@ public class DataBaseTests {
     }
 
     @Test
-    void testListGame() throws dataAccessException {
+    void testListGame() throws DataAccessException {
         addUser(userBob);
         addUser(userTom);
         int gameID1 = addChessGame();
@@ -179,7 +179,7 @@ public class DataBaseTests {
 
         int gameID2 = addChessGame();
         insertPlayerToGame(gameID2, ChessGame.TeamColor.WHITE, userTom);
-        assertThrows(dataAccessException.class, () -> insertPlayerToGame(gameID2, ChessGame.TeamColor.WHITE, userBob));
+        assertThrows(DataAccessException.class, () -> insertPlayerToGame(gameID2, ChessGame.TeamColor.WHITE, userBob));
         insertPlayerToGame(gameID2, ChessGame.TeamColor.BLACK, userBob);
         model.ModifiedGameData expectedGameData2 = new
                 model.ModifiedGameData(gameID2, userTom.username(), userBob.username(), "testGame");
@@ -194,19 +194,19 @@ public class DataBaseTests {
 
     @Test
     void toHTTP() {
-        var badRequest = new dataAccessException("test 400", dataAccessException.Code.BadRequest);
-        var unathurized = new dataAccessException("test 401", dataAccessException.Code.Unathurized);
-        var alreadyTaken = new dataAccessException("test 403", dataAccessException.Code.AlreadyTaken);
-        var otherError = new dataAccessException("test 500", dataAccessException.Code.OtherError);
+        var badRequest = new DataAccessException("test 400", DataAccessException.Code.BadRequest);
+        var unathurized = new DataAccessException("test 401", DataAccessException.Code.Unathurized);
+        var alreadyTaken = new DataAccessException("test 403", DataAccessException.Code.AlreadyTaken);
+        var otherError = new DataAccessException("test 500", DataAccessException.Code.OtherError);
         assertEquals(badRequest.toHttpStatuscode(), 400);
         assertEquals(unathurized.toHttpStatuscode(), 401);
         assertEquals(alreadyTaken.toHttpStatuscode(), 403);
         assertEquals(otherError.toHttpStatuscode(), 500);
     }
     @Test
-    public void testDataAccessacception() throws dataAccessException {
-        dataAccessException test = new dataAccessException("test", dataAccessException.Code.OtherError);
+    public void testDataAccessacception() throws DataAccessException {
+        DataAccessException test = new DataAccessException("test", DataAccessException.Code.OtherError);
         String testString = test.toJson();
-        assertEquals(testString, new Gson().toJson(Map.of("message", "test", "status", dataAccessException.Code.OtherError)));
+        assertEquals(testString, new Gson().toJson(Map.of("message", "test", "status", DataAccessException.Code.OtherError)));
     }
 }

@@ -1,6 +1,6 @@
 package dataaccess;
 
-import dataAccessException.dataAccessException;
+import exception.DataAccessException;
 import model.UserData;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -25,7 +25,7 @@ public class DatabaseUserData implements UserDataAccess {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
-    public void makeUserTable() throws dataAccessException {
+    public void makeUserTable() throws DataAccessException {
         DatabaseManager.createDatabase();
         try (Connection connection = DatabaseManager.getConnection()) {
             for (String statement : createUserTableStatement) {
@@ -35,22 +35,22 @@ public class DatabaseUserData implements UserDataAccess {
                     return;
                 }
             }
-        } catch (SQLException ex) {throw new dataAccessException("could not create database" + ex, dataAccessException.Code.OtherError);
+        } catch (SQLException ex) {throw new DataAccessException("could not create database" + ex, DataAccessException.Code.OtherError);
         }
     }
 
 
-    public void clear() throws dataAccessException {
+    public void clear() throws DataAccessException {
         makeUserTable();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (var preparedStatement = connection.prepareStatement("TRUNCATE TABLE User")) {
                 preparedStatement.executeUpdate();
             }
-        } catch (SQLException ex) {throw new dataAccessException("Error could not create database" + ex, dataAccessException.Code.OtherError);
+        } catch (SQLException ex) {throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);
         }
     }
 
-    public UserData getUser(String username) throws dataAccessException {
+    public UserData getUser(String username) throws DataAccessException {
         makeUserTable();
         try (Connection connection = DatabaseManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT Password, Email FROM User WHERE Username=?")) {
@@ -60,15 +60,15 @@ public class DatabaseUserData implements UserDataAccess {
                         String password = resultSet.getString("Password");
                         String email = resultSet.getString("Email");
                         return new UserData(username, password, email);
-                    } throw new dataAccessException("Error could not get user 1 ", dataAccessException.Code.Unathurized);
+                    } throw new DataAccessException("Error could not get user 1 ", DataAccessException.Code.Unathurized);
                 }
 
-            } catch (SQLException ex) {throw new dataAccessException("Error could not get user 2" + ex, dataAccessException.Code.Unathurized);}
+            } catch (SQLException ex) {throw new DataAccessException("Error could not get user 2" + ex, DataAccessException.Code.Unathurized);}
 
-        } catch (SQLException ex) { throw new dataAccessException("Error could not create database" + ex, dataAccessException.Code.OtherError);}
+        } catch (SQLException ex) { throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);}
     }
 
-    public void createUser(String username, String password, String email) throws dataAccessException {
+    public void createUser(String username, String password, String email) throws DataAccessException {
         makeUserTable();
         String hashedPassword = hashPassoword(password);
         try (Connection connection = DatabaseManager.getConnection()) {
@@ -79,14 +79,14 @@ public class DatabaseUserData implements UserDataAccess {
 
                 preparedStatement.executeUpdate();
 
-            } catch (SQLException ex) { throw new dataAccessException("Error could not create user" + ex, dataAccessException.Code.AlreadyTaken); }
+            } catch (SQLException ex) { throw new DataAccessException("Error could not create user" + ex, DataAccessException.Code.AlreadyTaken); }
 
-        } catch (SQLException ex) { throw new dataAccessException(
-                "Error could not create database/ get connection" + ex.getMessage(), dataAccessException.Code.OtherError); }
+        } catch (SQLException ex) { throw new DataAccessException(
+                "Error could not create database/ get connection" + ex.getMessage(), DataAccessException.Code.OtherError); }
     }
 
 
-    public boolean matchPassword(String username, String password) throws dataAccessException {
+    public boolean matchPassword(String username, String password) throws DataAccessException {
         UserData userData = getUser(username);
         return BCrypt.checkpw(password, userData.password());
     }

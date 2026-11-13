@@ -3,7 +3,7 @@ package dataaccess;
 import java.util.HashMap;
 import java.util.Objects;
 
-import dataAccessException.dataAccessException;
+import exception.DataAccessException;
 import model.*;
 
 public class MemoryUserDAO implements UserDataAccess {
@@ -13,25 +13,25 @@ public class MemoryUserDAO implements UserDataAccess {
         mapUserData.clear();
     }
 
-    public UserData getUser(String username) throws dataAccessException {
+    public UserData getUser(String username) throws DataAccessException {
         if (mapUserData.get(username) != null) {
             return mapUserData.get(username);
         }
-        throw new dataAccessException("Error: Username not found MU19", dataAccessException.Code.Unathurized);
+        throw new DataAccessException("Error: Username not found MU19", DataAccessException.Code.Unathurized);
     }
 
-    public void createUser(String username, String password, String email) throws dataAccessException {
+    public void createUser(String username, String password, String email) throws DataAccessException {
         if (mapUserData.get(username) == null) { //oppsite of get User Check
             mapUserData.put(username, new UserData(username, password, email));
             return;
         }
-        throw new dataAccessException("Error: Duplicate Username MU26", dataAccessException.Code.AlreadyTaken);
+        throw new DataAccessException("Error: Duplicate Username MU26", DataAccessException.Code.AlreadyTaken);
     }
 
-    public boolean matchPassword(String username, String password) throws dataAccessException {
+    public boolean matchPassword(String username, String password) throws DataAccessException {
         if (mapUserData.containsKey(username)) {
             return Objects.equals(mapUserData.get(username).password(), password);
         }
-        throw new dataAccessException("Error: Password did not match", dataAccessException.Code.BadRequest);
+        throw new DataAccessException("Error: Password did not match", DataAccessException.Code.BadRequest);
     }
 }

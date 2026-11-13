@@ -1,7 +1,7 @@
 package service;
 
 import dataaccess.*;
-import dataAccessException.dataAccessException;
+import exception.DataAccessException;
 
 public class ClearService {
 
@@ -15,7 +15,7 @@ public class ClearService {
         this.authData = authData;
     }
 
-    public void eraseAllData() throws dataAccessException {
+    public void eraseAllData() throws DataAccessException {
         userData.clear();
         gameData.clear();
         authData.clear();

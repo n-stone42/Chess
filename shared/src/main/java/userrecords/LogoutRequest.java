@@ -1,6 +1,6 @@
-package userRecordsModels;
+package userrecords;
 
-public record LoginResult(
+public record LogoutRequest(
         String username,
         String authToken) {
 }

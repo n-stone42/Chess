@@ -1,4 +1,4 @@
-package dataAccessException;
+package exception;
 
 import com.google.gson.Gson;
 
@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Indicates there was an error connecting to the database
  */
-public class dataAccessException extends Exception {
+public class DataAccessException extends Exception {
 
     public enum Code {
         BadRequest, //400
@@ -19,12 +19,12 @@ public class dataAccessException extends Exception {
 //
     final public Code code;
 
-    public dataAccessException(String message, Code code) {
+    public DataAccessException(String message, Code code) {
         super(message);
         this.code = code;
     }
 
-    public dataAccessException(String message, Throwable ex) {
+    public DataAccessException(String message, Throwable ex) {
         super(message, ex);
         this.code = Code.OtherError;
     }
@@ -42,10 +42,10 @@ public class dataAccessException extends Exception {
         return new Gson().toJson(Map.of("message", getMessage(), "status", code));
     }
 
-    public static dataAccessException fromJson(String json) {
+    public static DataAccessException fromJson(String json) {
         Map map = new Gson().fromJson(json, HashMap.class);
-        dataAccessException.Code code = Code.valueOf(map.get("status").toString());
+        DataAccessException.Code code = Code.valueOf(map.get("status").toString());
         String errorMessage = map.get("message").toString();
-        return new dataAccessException(errorMessage, code);
+        return new DataAccessException(errorMessage, code);
     }
 }

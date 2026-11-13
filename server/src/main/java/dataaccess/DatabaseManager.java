@@ -1,6 +1,6 @@
 package dataaccess;
 
-import dataAccessException.dataAccessException;
+import exception.DataAccessException;
 
 import java.io.InputStream;
 import java.sql.*;
@@ -37,12 +37,12 @@ public class DatabaseManager {
     /**
      * Creates the database if it does not already exist.
      */
-    static public void createDatabase() throws dataAccessException {
+    static public void createDatabase() throws DataAccessException {
         String result = "CREATE DATABASE IF NOT EXISTS " + databaseName;
         try (Connection connection = DriverManager.getConnection(connectionUrl, dbUsername, dbPassword);
              PreparedStatement preparedStatement = connection.prepareStatement(result)) {
             preparedStatement.executeUpdate();
-        } catch (SQLException ex) { throw new dataAccessException("Error could not create database", ex);
+        } catch (SQLException ex) { throw new DataAccessException("Error could not create database", ex);
         }
     }
 
@@ -58,14 +58,14 @@ public class DatabaseManager {
      * }
      * </code>
      */
-    static Connection getConnection() throws dataAccessException {
+    static Connection getConnection() throws DataAccessException {
         try {
             //do not wrap the following line with a try-with-resources
             Connection connection = DriverManager.getConnection(connectionUrl, dbUsername, dbPassword);
             connection.setCatalog(databaseName);
             return connection;
         } catch (SQLException ex) {
-            throw new dataAccessException("Error failed to get connection", ex);
+            throw new DataAccessException("Error failed to get connection", ex);
         }
     }
 

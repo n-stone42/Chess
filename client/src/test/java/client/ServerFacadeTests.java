@@ -1,12 +1,12 @@
 package client;
 
-import gameRecordModels.*;
-import dataAccessException.dataAccessException;
+import gamerecord.*;
+import exception.DataAccessException;
 import model.ModifiedGameData;
 import model.UserData;
 import org.junit.jupiter.api.*;
 import server.Server;
-import userRecordsModels.*;
+import userrecords.*;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,19 +35,19 @@ public class ServerFacadeTests {
 
     UserData userBob = new UserData("Bob", "password", "BobTheGOAT67Gmail.com");
 
-    public RegisterResult registerUser(UserData user) throws dataAccessException {
+    public RegisterResult registerUser(UserData user) throws DataAccessException {
         return serverFacade.registerUser(new RegisterRequest(user.username(), user.password(), user.email()));
     }
 
-    public LoginResult loginUser(UserData user) throws dataAccessException {
+    public LoginResult loginUser(UserData user) throws DataAccessException {
         return serverFacade.login(new LoginRequest(user.username(), user.password()));
     }
 
 
     @Test
-    public void negativeLogin() throws dataAccessException { // login before register
+    public void negativeLogin() throws DataAccessException { // login before register
         serverFacade.clear();
-        assertThrows(dataAccessException.class, () -> serverFacade.login(new LoginRequest(userBob.username(), userBob.password())));
+        assertThrows(DataAccessException.class, () -> serverFacade.login(new LoginRequest(userBob.username(), userBob.password())));
     }
 
     @Test
@@ -60,36 +60,36 @@ public class ServerFacadeTests {
             assertEquals(expectedResult.username(), result.username());
             assertNotNull(result.authToken());
         }
-        catch (dataAccessException exception) {
+        catch (DataAccessException exception) {
             assertFalse(true, "test failed, threw Error: " + exception);
         }
     }
 
     @Test
-    public void positiveLogin() throws dataAccessException {
+    public void positiveLogin() throws DataAccessException {
         serverFacade.clear();
         serverFacade.registerUser(new RegisterRequest(userBob.username(), userBob.password(), userBob.email()));
         serverFacade.login(new LoginRequest(userBob.username(), userBob.password()));
     }
 
     @Test
-    public void positiveLogout() throws dataAccessException {
+    public void positiveLogout() throws DataAccessException {
         serverFacade.clear();
         serverFacade.registerUser(new RegisterRequest(userBob.username(), userBob.password(), userBob.email()));
         LoginResult loginResult = serverFacade.login(new LoginRequest(userBob.username(), userBob.password()));
         System.out.println("now trying logout");
         serverFacade.logout(loginResult.authToken());
-        assertThrows(dataAccessException.class, () -> serverFacade.logout(loginResult.authToken() ) );
+        assertThrows(DataAccessException.class, () -> serverFacade.logout(loginResult.authToken() ) );
     }
 
     @Test
-    public void badLogout() throws dataAccessException { //logout before login
+    public void badLogout() throws DataAccessException { //logout before login
         serverFacade.clear();
-        assertThrows(dataAccessException.class, () -> serverFacade.logout("bad auth token" ) );
+        assertThrows(DataAccessException.class, () -> serverFacade.logout("bad auth token" ) );
     }
 
     @Test
-    public void testMakeGame() throws dataAccessException {
+    public void testMakeGame() throws DataAccessException {
         serverFacade.clear();
         registerUser(userBob);
         LoginResult loginResult = loginUser(userBob);
@@ -97,15 +97,15 @@ public class ServerFacadeTests {
     }
 
     @Test
-    public void badMakeGame() throws dataAccessException {
+    public void badMakeGame() throws DataAccessException {
         serverFacade.clear();
         registerUser(userBob);
         LoginResult loginResult = loginUser(userBob);
-        assertThrows(dataAccessException.class, () -> serverFacade.createGame(new CreateGameRequest(null), loginResult.authToken()));
+        assertThrows(DataAccessException.class, () -> serverFacade.createGame(new CreateGameRequest(null), loginResult.authToken()));
     }
 
     @Test
-    public void listGame() throws dataAccessException {
+    public void listGame() throws DataAccessException {
         serverFacade.clear();
         registerUser(userBob);
         LoginResult loginResult = loginUser(userBob);
@@ -118,14 +118,14 @@ public class ServerFacadeTests {
     }
 
     @Test
-    public void  badListGame() throws dataAccessException {
+    public void  badListGame() throws DataAccessException {
         serverFacade.clear();
-        assertThrows(dataAccessException.class, () -> serverFacade.listGame("bad auth token") );
+        assertThrows(DataAccessException.class, () -> serverFacade.listGame("bad auth token") );
         registerUser(userBob);
     }
 
     @Test
-    public void joinGameTest() throws dataAccessException {
+    public void joinGameTest() throws DataAccessException {
         serverFacade.clear();
         registerUser(userBob);
         LoginResult loginResult = loginUser(userBob);
@@ -140,17 +140,17 @@ public class ServerFacadeTests {
     }
 
     @Test
-    public void negativeJoinGame() throws dataAccessException {
+    public void negativeJoinGame() throws DataAccessException {
         serverFacade.clear();
         registerUser(userBob);
         LoginResult loginResult = loginUser(userBob);
         CreateGameResult createGameResult = serverFacade.createGame(new CreateGameRequest("testgame"), loginResult.authToken());
-        assertThrows(dataAccessException.class, () -> serverFacade.joinGame("bad auth token", "Banana", createGameResult.gameID()));
-        assertThrows(dataAccessException.class, () -> serverFacade.joinGame(loginResult.authToken(), "Banana", createGameResult.gameID()));
-        assertThrows(dataAccessException.class, () -> serverFacade.joinGame(loginResult.authToken(), "WHITE", 5));
+        assertThrows(DataAccessException.class, () -> serverFacade.joinGame("bad auth token", "Banana", createGameResult.gameID()));
+        assertThrows(DataAccessException.class, () -> serverFacade.joinGame(loginResult.authToken(), "Banana", createGameResult.gameID()));
+        assertThrows(DataAccessException.class, () -> serverFacade.joinGame(loginResult.authToken(), "WHITE", 5));
         JoinGameResult joinGameResult = serverFacade.joinGame(loginResult.authToken(), "WHITE",
                 createGameResult.gameID());
-        assertThrows(dataAccessException.class, () -> serverFacade.joinGame(loginResult.authToken(), "WHITE", createGameResult.gameID()));
+        assertThrows(DataAccessException.class, () -> serverFacade.joinGame(loginResult.authToken(), "WHITE", createGameResult.gameID()));
     }
 
 }

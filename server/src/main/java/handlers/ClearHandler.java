@@ -1,6 +1,6 @@
 package handlers;
 
-import dataAccessException.dataAccessException;
+import exception.DataAccessException;
 import service.ClearService;
 
 public class ClearHandler {
@@ -10,7 +10,7 @@ public class ClearHandler {
         this.clearService = clearService;
     }
 
-    public void clear() throws dataAccessException {
+    public void clear() throws DataAccessException {
         clearService.eraseAllData();
     }
 }

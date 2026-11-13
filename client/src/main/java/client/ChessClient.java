@@ -1,14 +1,14 @@
 package client;
 
 
-import gameRecordModels.CreateGameRequest;
-import gameRecordModels.CreateGameResult;
-import gameRecordModels.JoinGameResult;
-import gameRecordModels.ListGameResult;
-import userRecordsModels.*;
+import gamerecord.CreateGameRequest;
+import gamerecord.CreateGameResult;
+import gamerecord.JoinGameResult;
+import gamerecord.ListGameResult;
+import userrecords.*;
 import chess.ChessBoard;
 import chess.ChessGame;
-import dataAccessException.dataAccessException;
+import exception.DataAccessException;
 import model.ModifiedGameData;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class ChessClient  {
     private ServerFacade serverFacade;
     private DrawBoard drawBoard = new DrawBoard();
 
-    public ChessClient(String url) throws dataAccessException {
+    public ChessClient(String url) throws DataAccessException {
         serverFacade = new ServerFacade(url);
     }
 
@@ -104,17 +104,17 @@ public class ChessClient  {
                 """;
     }
 
-    public String register(String[] params) throws dataAccessException {
+    public String register(String[] params) throws DataAccessException {
         if (params.length != 3) {
-            throw new dataAccessException("Error finding parameters, expected <Username> <Client> <email>",
-                    dataAccessException.Code.BadRequest);
+            throw new DataAccessException("Error finding parameters, expected <Username> <Client> <email>",
+                    DataAccessException.Code.BadRequest);
         }
         String username = params[0];
         String password = params[1];
         String email = params[2];
         try {
             if (isSignedIn()) {
-                throw new dataAccessException("already registered", dataAccessException.Code.BadRequest);
+                throw new DataAccessException("already registered", DataAccessException.Code.BadRequest);
             }
             RegisterResult result = serverFacade.registerUser(new RegisterRequest(username, password, email));
             sessionAuthToken = result.authToken();
@@ -124,10 +124,10 @@ public class ChessClient  {
         }
     }
 
-    public String login(String[] params) throws dataAccessException {
+    public String login(String[] params) throws DataAccessException {
         if (params.length != 2) {
-            throw new dataAccessException("error finding paramerts, expected <Username> <Password>",
-                    dataAccessException.Code.BadRequest);
+            throw new DataAccessException("error finding paramerts, expected <Username> <Password>",
+                    DataAccessException.Code.BadRequest);
         }
         String username = params[0];
         String password = params[1];
@@ -146,16 +146,16 @@ public class ChessClient  {
                 LogoutResult result = serverFacade.logout(sessionAuthToken);
                 sessionAuthToken = null;
             }
-            else {throw new dataAccessException("Not logged in, must be logged in first to logout",
-                    dataAccessException.Code.BadRequest); }
+            else {throw new DataAccessException("Not logged in, must be logged in first to logout",
+                    DataAccessException.Code.BadRequest); }
 
-        } catch (dataAccessException e) {
+        } catch (DataAccessException e) {
             throw new RuntimeException(e.getMessage());
         }
         return "logged out";
     }
 
-    public String list() throws dataAccessException {
+    public String list() throws DataAccessException {
         if (isSignedIn()) {
             try {
                 int gameNumber =1;
@@ -167,16 +167,16 @@ public class ChessClient  {
                             + " Player of White: " + gameData.whiteUsername() + " Player of Black: " + gameData.blackUsername() + "\n";
                 }
                 return output;
-            } catch (dataAccessException e) {
+            } catch (DataAccessException e) {
                 throw new RuntimeException(e.getMessage());
             }
-        } throw new dataAccessException("not signed in", dataAccessException.Code.Unathurized);
+        } throw new DataAccessException("not signed in", DataAccessException.Code.Unathurized);
     }
 
-    public String createGame(String[] params) throws dataAccessException {
+    public String createGame(String[] params) throws DataAccessException {
         if (params.length != 1) {
-            throw new dataAccessException("error finding parameters, expected <gameName>",
-                    dataAccessException.Code.BadRequest);
+            throw new DataAccessException("error finding parameters, expected <gameName>",
+                    DataAccessException.Code.BadRequest);
         }
         if (isSignedIn()) {
             try {
@@ -185,16 +185,16 @@ public class ChessClient  {
             } catch (Exception exception) {
                 throw new RuntimeException(exception.getMessage());
             }
-        } throw new dataAccessException("not signed in", dataAccessException.Code.Unathurized);
+        } throw new DataAccessException("not signed in", DataAccessException.Code.Unathurized);
     }
 
-    public String joinGame(String[] params) throws dataAccessException {
+    public String joinGame(String[] params) throws DataAccessException {
         if (!isSignedIn()) {
-            throw new dataAccessException("not signed in", dataAccessException.Code.Unathurized);
+            throw new DataAccessException("not signed in", DataAccessException.Code.Unathurized);
         }
         if (params.length != 2) {
-            throw new dataAccessException("error finding parameters, expected <gameID> playerColor <White or Black>",
-                    dataAccessException.Code.BadRequest);
+            throw new DataAccessException("error finding parameters, expected <gameID> playerColor <White or Black>",
+                    DataAccessException.Code.BadRequest);
         }
         try {
             try {
@@ -211,20 +211,20 @@ public class ChessClient  {
                 }
                 return output;
             } catch (NumberFormatException exception) {
-                throw new dataAccessException("expected number for gameID, got " + params[0],
-                    dataAccessException.Code.BadRequest);}
-        } catch (dataAccessException exception) {
+                throw new DataAccessException("expected number for gameID, got " + params[0],
+                    DataAccessException.Code.BadRequest);}
+        } catch (DataAccessException exception) {
             throw new RuntimeException(exception.getMessage());
         }
     }
 
-    public String viewGame(String[] params) throws dataAccessException {
+    public String viewGame(String[] params) throws DataAccessException {
         if (!isSignedIn()) {
-            throw new dataAccessException("not signed in", dataAccessException.Code.Unathurized);
+            throw new DataAccessException("not signed in", DataAccessException.Code.Unathurized);
         }
         if (params.length != 1) {
-            throw new dataAccessException("error finding parameters, expected <gameID>",
-                    dataAccessException.Code.BadRequest);
+            throw new DataAccessException("error finding parameters, expected <gameID>",
+                    DataAccessException.Code.BadRequest);
         }
         try {
             int gameID = Integer.parseInt(params[0]);
@@ -237,10 +237,10 @@ public class ChessClient  {
                     return drawBoard.toString(board, ChessGame.TeamColor.WHITE);
                 }
             }
-            throw new dataAccessException("game ID " + String.valueOf(gameID) + " not found", dataAccessException.Code.BadRequest);
+            throw new DataAccessException("game ID " + String.valueOf(gameID) + " not found", DataAccessException.Code.BadRequest);
 
         } catch (NumberFormatException exception) {
-            throw new dataAccessException("Error : expected number for gameID, got " + params[0],
-                    dataAccessException.Code.BadRequest);}
+            throw new DataAccessException("Error : expected number for gameID, got " + params[0],
+                    DataAccessException.Code.BadRequest);}
     }
 }

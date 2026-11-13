@@ -1,8 +1,8 @@
 package service;
 
-import userRecordsModels.*;
+import userrecords.*;
 import dataaccess.AuthDataAccess;
-import dataAccessException.dataAccessException;
+import exception.DataAccessException;
 import dataaccess.UserDataAccess;
 
 import java.util.UUID;
@@ -22,11 +22,11 @@ public class UserService {
         return UUID.randomUUID().toString();
     }
 
-    public RegisterResult register(RegisterRequest request) throws dataAccessException {
+    public RegisterResult register(RegisterRequest request) throws DataAccessException {
         try {
             userData.getUser(request.username()); // username not in database
             System.out.print("username already exists");
-            throw new dataAccessException("Error: Username already exists", dataAccessException.Code.AlreadyTaken);
+            throw new DataAccessException("Error: Username already exists", DataAccessException.Code.AlreadyTaken);
 
         } catch (Exception e) {
             userData.createUser(request.username(), request.password(), request.email());
@@ -37,7 +37,7 @@ public class UserService {
         }
     }
 
-    public LoginResult login(LoginRequest request) throws dataAccessException {
+    public LoginResult login(LoginRequest request) throws DataAccessException {
         if (userData.getUser(request.username()) != null) {
             if (userData.matchPassword(request.username(), request.password())) {
                 String authToken = generateToken();
@@ -45,13 +45,13 @@ public class UserService {
                 return new LoginResult(request.username(), authToken);
             }
             System.out.println("password no match");
-            throw new dataAccessException("Error: Password does not match",
-                    dataAccessException.Code.Unathurized); //change
+            throw new DataAccessException("Error: Password does not match",
+                    DataAccessException.Code.Unathurized); //change
         }
-        throw new dataAccessException("Error: Username not found", dataAccessException.Code.Unathurized); // change
+        throw new DataAccessException("Error: Username not found", DataAccessException.Code.Unathurized); // change
     }
 
-    public LogoutResult logout(LogoutRequest request) throws dataAccessException {
+    public LogoutResult logout(LogoutRequest request) throws DataAccessException {
         System.out.println("logout request in userService: " + request);
         if (authData.getAuth(request.authToken()) != null) {
             authData.deleteAuth(request.authToken());

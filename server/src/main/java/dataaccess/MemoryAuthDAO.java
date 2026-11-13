@@ -3,7 +3,7 @@ package dataaccess;
 import java.util.HashMap;
 
 
-import dataAccessException.dataAccessException;
+import exception.DataAccessException;
 import model.*;
 
 
@@ -14,30 +14,30 @@ public class MemoryAuthDAO implements AuthDataAccess {
         mapAuthData.clear();
     }
 
-    public void createAuth(String authToken, String username) throws dataAccessException {
+    public void createAuth(String authToken, String username) throws DataAccessException {
         if (mapAuthData.get(authToken) != null) {
 
         }
         mapAuthData.put(authToken, new AuthData(authToken, username));
     }
 
-    public AuthData getAuth(String authToken) throws dataAccessException {
+    public AuthData getAuth(String authToken) throws DataAccessException {
         if (mapAuthData.get(authToken) == null) {
-            throw new dataAccessException("Error: Auth Token invalid", dataAccessException.Code.Unathurized);
+            throw new DataAccessException("Error: Auth Token invalid", DataAccessException.Code.Unathurized);
         }
         return mapAuthData.get(authToken);
     }
 
-    public String getUsername(String authToken) throws dataAccessException {
+    public String getUsername(String authToken) throws DataAccessException {
         if (mapAuthData.get(authToken) == null) {
-            throw new dataAccessException("Error: Auth Token invalid", dataAccessException.Code.Unathurized);
+            throw new DataAccessException("Error: Auth Token invalid", DataAccessException.Code.Unathurized);
         }
         return mapAuthData.get(authToken).username();
     }
 
-    public void deleteAuth(String authToken) throws dataAccessException {
+    public void deleteAuth(String authToken) throws DataAccessException {
         if (mapAuthData.get(authToken) == null) {
-            throw new dataAccessException("Auth Token invalid", dataAccessException.Code.Unathurized);
+            throw new DataAccessException("Auth Token invalid", DataAccessException.Code.Unathurized);
         }
         mapAuthData.remove(authToken);
     }

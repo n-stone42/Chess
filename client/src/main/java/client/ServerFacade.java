@@ -1,16 +1,16 @@
 package client;
 
-import gameRecordModels.CreateGameResult;
-import gameRecordModels.ListGameResult;
+import gamerecord.CreateGameResult;
+import gamerecord.ListGameResult;
 import com.google.gson.Gson;
-import dataAccessException.dataAccessException;
+import exception.DataAccessException;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import userRecordsModels.*;
-import gameRecordModels.*;
+import userrecords.*;
+import gamerecord.*;
 
 public class ServerFacade {
 
@@ -26,38 +26,38 @@ public class ServerFacade {
         serverURL = url;
     }
 
-    public RegisterResult registerUser(RegisterRequest registerRequest) throws dataAccessException {
+    public RegisterResult registerUser(RegisterRequest registerRequest) throws DataAccessException {
         HttpRequest httpRequest = makeRequest("POST", "/user", registerRequest, null);
         HttpResponse httpResponse = sendRequest(httpRequest);
         System.out.println(httpResponse);
         return handelResponse(httpResponse, RegisterResult.class);
     }
 
-    public LoginResult login(LoginRequest loginRequest) throws dataAccessException {
+    public LoginResult login(LoginRequest loginRequest) throws DataAccessException {
         HttpRequest httpRequest = makeRequest("POST", "/session", loginRequest, null);
         HttpResponse httpResponse = sendRequest(httpRequest);
         return handelResponse(httpResponse, LoginResult.class);
     }
 
-    public LogoutResult logout(String authToken) throws dataAccessException {
+    public LogoutResult logout(String authToken) throws DataAccessException {
         HttpRequest httpRequest = makeRequest("DELETE", "/session", null, authToken);
         HttpResponse httpResponse = sendRequest(httpRequest);
         return handelResponse(httpResponse, LogoutResult.class);
     }
 
-    public CreateGameResult createGame(CreateGameRequest gameRequest, String authToken) throws dataAccessException {
+    public CreateGameResult createGame(CreateGameRequest gameRequest, String authToken) throws DataAccessException {
         HttpRequest httpRequest = makeRequest("POST", "/game", gameRequest, authToken);
         HttpResponse httpResponse = sendRequest(httpRequest);
         return handelResponse(httpResponse, CreateGameResult.class);
     }
 
-    public ListGameResult listGame(String authToken) throws dataAccessException {
+    public ListGameResult listGame(String authToken) throws DataAccessException {
         HttpRequest httpRequest = makeRequest("GET", "/game",null, authToken);
         HttpResponse httpResponse = sendRequest(httpRequest);
         return handelResponse(httpResponse, ListGameResult.class);
     }
 
-    public JoinGameResult joinGame(String authToken, String playerColor, int gameID) throws dataAccessException {
+    public JoinGameResult joinGame(String authToken, String playerColor, int gameID) throws DataAccessException {
         JoinGameRequest request = new JoinGameRequest(playerColor, gameID);
         HttpRequest httpRequest = makeRequest("PUT", "/game",request, authToken);
         HttpResponse httpResponse = sendRequest(httpRequest);
@@ -86,23 +86,23 @@ public class ServerFacade {
         return HttpRequest.BodyPublishers.ofString(new Gson().toJson(request));
     }
 
-    private HttpResponse<String> sendRequest(HttpRequest request) throws dataAccessException {
+    private HttpResponse<String> sendRequest(HttpRequest request) throws DataAccessException {
         try {
             return client.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (Exception exception) {
-            throw new dataAccessException("error in sending request " + exception, dataAccessException.Code.OtherError);
+            throw new DataAccessException("error in sending request " + exception, DataAccessException.Code.OtherError);
         }
     }
-    public void clear() throws dataAccessException {
+    public void clear() throws DataAccessException {
         HttpRequest httpRequest = makeRequest("DELETE", "/db", null, null);
         sendRequest(httpRequest);
     }
 
-    private <object> object handelResponse(HttpResponse<String> response, Class<object> responseClass) throws dataAccessException {
+    private <object> object handelResponse(HttpResponse<String> response, Class<object> responseClass) throws DataAccessException {
         if (response.statusCode() == 200) {
             String body = response.body();
             if (body == null) {
-                throw new dataAccessException("Error: " + body, dataAccessException.Code.OtherError);
+                throw new DataAccessException("Error: " + body, DataAccessException.Code.OtherError);
             }
 
 
@@ -113,7 +113,7 @@ public class ServerFacade {
         } else {// message was an error
             String body = response.body();
             if (body != null) {
-                throw dataAccessException.fromJson(body);
+                throw DataAccessException.fromJson(body);
             }
         }return null;
     }

@@ -1,4 +1,4 @@
-package gameRecordModels;
+package gamerecord;
 
 import model.ModifiedGameData;
 
