@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- join game">
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/DrawBoard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/test/java/client/testPrintBoard.java" afterDir="false" />
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- some board drawing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/ChessClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ChessClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/ServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ServerFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/DrawBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/DrawBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/test/java/client/testPrintBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/client/testPrintBoard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,61 +66,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0000000000000002" />
-      <entry key="S10" value="1.000000015771291" />
-      <entry key="S30" value="1.0060562281738648" />
-      <entry key="S60" value="1.2475268536023933" />
-      <entry key="M2" value="2.937535004168904" />
-      <entry key="M5" value="12.752538371490427" />
-      <entry key="M10" value="35.15675607029248" />
-      <entry key="M15" value="55.53766661000591" />
-      <entry key="M30" value="101.97867554081287" />
-      <entry key="H1" value="174.80843721204928" />
-      <entry key="H2" value="294.6930086954727" />
-      <entry key="H4" value="475.5965103370518" />
-      <entry key="D1" value="1235.8080577042087" />
-      <entry key="W1" value="3819.3667703499573" />
+      <entry key="MS100" value="1.0000029784005715" />
+      <entry key="MS500" value="1.1362308854543983" />
+      <entry key="S2" value="2.021594971862445" />
+      <entry key="S5" value="2.5376040132962583" />
+      <entry key="S10" value="2.9378584854269096" />
+      <entry key="S30" value="4.555118468781199" />
+      <entry key="S60" value="6.081015808079026" />
+      <entry key="M2" value="9.19254073550195" />
+      <entry key="M5" value="18.13869890069738" />
+      <entry key="M10" value="29.53937429305339" />
+      <entry key="M15" value="41.15359260679907" />
+      <entry key="M30" value="79.76422428040728" />
+      <entry key="H1" value="154.4681069545957" />
+      <entry key="H2" value="282.0162817313256" />
+      <entry key="H4" value="474.92102899994694" />
+      <entry key="D1" value="1269.3394035404622" />
+      <entry key="W1" value="3868.2579042532457" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="6.495368679725313E-36" />
-      <entry key="MS500" value="9.17319786644496E-8" />
-      <entry key="S2" value="0.01740324324425755" />
-      <entry key="S5" value="0.19781174593488784" />
-      <entry key="S10" value="0.4447633076472667" />
-      <entry key="S30" value="0.7932893954389155" />
-      <entry key="S60" value="1.3807089758436284" />
-      <entry key="M2" value="3.338819565265932" />
-      <entry key="M5" value="8.688523030280216" />
-      <entry key="M10" value="16.30047501734975" />
-      <entry key="M15" value="22.78481775897598" />
-      <entry key="M30" value="40.408726333265776" />
-      <entry key="H1" value="74.65093239561034" />
-      <entry key="H2" value="131.32655937061614" />
-      <entry key="H4" value="208.1610669792031" />
-      <entry key="D1" value="470.6739262990441" />
-      <entry key="W1" value="1399.939669670741" />
+      <entry key="MS100" value="3.7940997376630494E-59" />
+      <entry key="MS500" value="2.1126707507147892E-12" />
+      <entry key="S2" value="0.0016583307957970116" />
+      <entry key="S5" value="0.1203876512516857" />
+      <entry key="S10" value="0.5763321922133405" />
+      <entry key="S30" value="1.9595052379695532" />
+      <entry key="S60" value="2.960161833436541" />
+      <entry key="M2" value="4.69998473371576" />
+      <entry key="M5" value="9.011150035339021" />
+      <entry key="M10" value="13.756914637245368" />
+      <entry key="M15" value="18.081357721940268" />
+      <entry key="M30" value="32.46857748778002" />
+      <entry key="H1" value="64.43671159206292" />
+      <entry key="H2" value="122.42244784444608" />
+      <entry key="H4" value="204.63293682705833" />
+      <entry key="D1" value="483.2677930156906" />
+      <entry key="W1" value="1418.5084227442733" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.3336912854432656E-8" />
-      <entry key="MS500" value="0.02660796152671213" />
-      <entry key="S2" value="0.4173747453848058" />
-      <entry key="S5" value="0.8745005266659158" />
-      <entry key="S10" value="1.2568632269389113" />
-      <entry key="S30" value="1.7262268360051418" />
-      <entry key="S60" value="2.574147062417266" />
-      <entry key="M2" value="6.211514734701738" />
-      <entry key="M5" value="21.36533103196454" />
-      <entry key="M10" value="51.38073228812702" />
-      <entry key="M15" value="78.25009188542845" />
-      <entry key="M30" value="142.32596062155392" />
-      <entry key="H1" value="249.40730735508637" />
-      <entry key="H2" value="425.97578894727866" />
-      <entry key="H4" value="683.7224505401902" />
-      <entry key="D1" value="1706.4667081165164" />
-      <entry key="W1" value="5219.2989008795485" />
+      <entry key="MS100" value="0.021198483105493025" />
+      <entry key="MS500" value="0.5772606690305903" />
+      <entry key="S2" value="1.802409064153885" />
+      <entry key="S5" value="2.546502120888794" />
+      <entry key="S10" value="3.430162169760954" />
+      <entry key="S30" value="6.448309403970913" />
+      <entry key="S60" value="8.99076179778291" />
+      <entry key="M2" value="13.847360050446069" />
+      <entry key="M5" value="27.107867232640025" />
+      <entry key="M10" value="43.2598737868643" />
+      <entry key="M15" value="59.19932211953252" />
+      <entry key="M30" value="112.19463849498459" />
+      <entry key="H1" value="218.8645984790534" />
+      <entry key="H2" value="404.4000206597333" />
+      <entry key="H4" value="679.5205464254472" />
+      <entry key="D1" value="1752.5917986789254" />
+      <entry key="W1" value="5286.758746149976" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -323,7 +321,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.testPrintBoard()">
+  <component name="RunManager" selected="JUnit.testPrintBoard">
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client.ClientMain" />
       <module name="client" />
@@ -409,8 +407,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.testPrintBoard()" />
         <item itemvalue="JUnit.testPrintBoard" />
+        <item itemvalue="JUnit.testPrintBoard()" />
         <item itemvalue="JUnit.testPrintBoard.testPrintBoard" />
         <item itemvalue="Application.ClientMain" />
         <item itemvalue="Application.ServerMain" />
@@ -451,7 +449,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Phase 4- game Data add user" />
     <MESSAGE value="Phase 4- join game function" />
     <MESSAGE value="Phase 4- test list games passing" />
     <MESSAGE value="Phase 4- switching interface handeling and some changes to error functions" />
@@ -476,7 +473,8 @@
     <MESSAGE value="phase 5- login, logout and register" />
     <MESSAGE value="phase 5- list and create game" />
     <MESSAGE value="phase 5- join game" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase 5- join game" />
+    <MESSAGE value="phase 5- some board drawing" />
+    <option name="LAST_COMMIT_MESSAGE" value="phase 5- some board drawing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

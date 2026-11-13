@@ -9,7 +9,11 @@ public class testPrintBoard {
 
     DrawBoard drawBoard = new DrawBoard(new ChessBoard());
     @Test
-    public void testPrintBoard() {
+    public void testPrintBoardWhite() {
         System.out.print(drawBoard.toString(ChessGame.TeamColor.WHITE));
+    }
+    @Test
+    public void testPrintBoardBlack() {
+        System.out.print(drawBoard.toString(ChessGame.TeamColor.BLACK));
     }
 }
