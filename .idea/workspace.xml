@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- code quality 5 and more cleanup">
-      <change beforePath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" afterDir="false" />
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- fixing what port to run on">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/client/client/REPL.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/server/dataaccess/DatabaseGameData.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/dataaccess/DatabaseGameData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/server/dataaccess/DatabaseUserData.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/dataaccess/DatabaseUserData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseUserData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,61 +69,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.032080594374001" />
-      <entry key="MS500" value="1.7457323510297378" />
-      <entry key="S2" value="3.340087803166979" />
-      <entry key="S5" value="4.1938887246006935" />
-      <entry key="S10" value="4.56798449564167" />
-      <entry key="S30" value="4.8606137360822546" />
-      <entry key="S60" value="5.130848202955855" />
-      <entry key="M2" value="6.24815845648149" />
-      <entry key="M5" value="11.140098968893206" />
-      <entry key="M10" value="20.15512097173782" />
-      <entry key="M15" value="29.9802441252137" />
-      <entry key="M30" value="63.632226549293065" />
-      <entry key="H1" value="137.27000794549713" />
-      <entry key="H2" value="275.38027121394924" />
-      <entry key="H4" value="492.5042551772794" />
-      <entry key="D1" value="1368.1448897112548" />
-      <entry key="W1" value="4005.163203622306" />
-    </decayedCancelled>
-    <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.3564314691385942E-86" />
-      <entry key="S5" value="4.497375427938213E-35" />
-      <entry key="S10" value="6.7062474066702065E-18" />
-      <entry key="S30" value="1.8860730477246644E-6" />
-      <entry key="S60" value="0.0013995273836067813" />
-      <entry key="M2" value="0.047189464622540235" />
-      <entry key="M5" value="0.726525828447889" />
-      <entry key="M10" value="2.6529824276539014" />
-      <entry key="M15" value="5.412764575794719" />
-      <entry key="M30" value="18.08372670137139" />
-      <entry key="H1" value="49.79535800013565" />
-      <entry key="H2" value="111.89885438852133" />
-      <entry key="H4" value="206.25814458550124" />
-      <entry key="D1" value="524.4869321897177" />
-      <entry key="W1" value="1475.1124476087066" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="2.2077610994099645E-264" />
+      <entry key="S60" value="4.017715138906328E-132" />
+      <entry key="M2" value="6.064404615901325E-66" />
+      <entry key="M5" value="4.4511899857235116E-26" />
+      <entry key="M10" value="1.2641157369192605E-12" />
+      <entry key="M15" value="4.692006514901092E-8" />
+      <entry key="M30" value="0.0024858589788244226" />
+      <entry key="H1" value="0.8531724611256959" />
+      <entry key="H2" value="21.699653643785282" />
+      <entry key="H4" value="138.44551500529172" />
+      <entry key="D1" value="1110.3560600479361" />
+      <entry key="W1" value="3891.4247033210954" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.0000000000008908" />
+      <entry key="MS500" value="1.0038902408191823" />
+      <entry key="S2" value="1.2709591978668908" />
+      <entry key="S5" value="1.788246471379032" />
+      <entry key="S10" value="2.2204491372852178" />
+      <entry key="S30" value="2.685137922491889" />
+      <entry key="S60" value="2.8342848493023567" />
+      <entry key="M2" value="2.9149470328583655" />
+      <entry key="M5" value="2.965435093427757" />
+      <entry key="M10" value="2.982625484975678" />
+      <entry key="M15" value="2.9883964301168118" />
+      <entry key="M30" value="2.994816674089502" />
+      <entry key="H1" value="3.290715491880487" />
+      <entry key="H2" value="11.591194156894398" />
+      <entry key="H4" value="60.15527207642384" />
+      <entry key="D1" value="426.4898450622513" />
+      <entry key="W1" value="1433.7208346285133" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.913908707114712" />
-      <entry key="MS500" value="1.717601851433177" />
-      <entry key="S2" value="3.3315264971230305" />
-      <entry key="S5" value="4.190156467288919" />
-      <entry key="S10" value="4.566051446291088" />
-      <entry key="S30" value="4.859934281114998" />
-      <entry key="S60" value="5.131463559977631" />
-      <entry key="M2" value="6.293156652714295" />
-      <entry key="M5" value="11.860668794339725" />
-      <entry key="M10" value="22.7985799339622" />
-      <entry key="M15" value="35.38002533563897" />
-      <entry key="M30" value="81.69409161933265" />
-      <entry key="H1" value="187.03486882121135" />
-      <entry key="H2" value="387.2444157665543" />
-      <entry key="H4" value="698.7294308781134" />
-      <entry key="D1" value="1892.615556432418" />
-      <entry key="W1" value="5480.2678864048285" />
+      <entry key="MS100" value="1.4040949258803753E-5" />
+      <entry key="MS500" value="0.10729033154430416" />
+      <entry key="S2" value="0.7079756509282279" />
+      <entry key="S5" value="1.3853345825452932" />
+      <entry key="S10" value="1.9396453776026672" />
+      <entry key="S30" value="2.5612914579962474" />
+      <entry key="S60" value="2.7673366469108305" />
+      <entry key="M2" value="2.8800984293578065" />
+      <entry key="M5" value="2.951149362319567" />
+      <entry key="M10" value="2.9754234803905315" />
+      <entry key="M15" value="2.983581891047372" />
+      <entry key="M30" value="2.994887827685289" />
+      <entry key="H1" value="4.142499452573425" />
+      <entry key="H2" value="33.28757752403884" />
+      <entry key="H4" value="198.59134829342207" />
+      <entry key="D1" value="1536.8327211858111" />
+      <entry key="W1" value="5325.13799956382" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -321,7 +326,7 @@
       <recent name="service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ServerFacadeTests">
+  <component name="RunManager" selected="Application.ClientMain">
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client.ClientMain" />
       <module name="client" />
@@ -335,16 +340,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in client" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="client" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+    <configuration name="ServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.ServerMain" />
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="server" />
+    <configuration name="All in client" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="client" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
@@ -382,18 +392,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.ClientMain" />
+      <item itemvalue="Application.ServerMain" />
       <item itemvalue="JUnit.All in client" />
-      <item itemvalue="JUnit.All in server" />
       <item itemvalue="JUnit.ServerFacadeTests" />
       <item itemvalue="JUnit.passoff.chess in shared" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ClientMain" />
+        <item itemvalue="Application.ServerMain" />
         <item itemvalue="JUnit.ServerFacadeTests" />
         <item itemvalue="JUnit.All in client" />
         <item itemvalue="JUnit.passoff.chess in shared" />
-        <item itemvalue="JUnit.All in server" />
-        <item itemvalue="Application.ClientMain" />
       </list>
     </recent_temporary>
   </component>
@@ -431,7 +441,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="restructure to put the request/ result records in a shared module" />
     <MESSAGE value="restructure to put the request/ result records that were in UserService" />
     <MESSAGE value="progress on passing self written postiveRegister user test" />
     <MESSAGE value="phase 5- removed delete tables functions" />
@@ -456,7 +465,8 @@
     <MESSAGE value="phase 5- code quality 3" />
     <MESSAGE value="phase 5- code quality 4" />
     <MESSAGE value="phase 5- code quality 5 and more cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase 5- code quality 5 and more cleanup" />
+    <MESSAGE value="phase 5- fixing what port to run on" />
+    <option name="LAST_COMMIT_MESSAGE" value="phase 5- fixing what port to run on" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

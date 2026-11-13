@@ -141,7 +141,7 @@ public class DatabaseGameData implements GameDataAccess {
                 } catch (SQLException ex) {
                     throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);}
 
-            } throw new DataAccessException("Error username taken", DataAccessException.Code.AlreadyTaken);
+            } throw new DataAccessException("Error player color already taken", DataAccessException.Code.AlreadyTaken);
         }
 
         else if (playerColor == ChessGame.TeamColor.BLACK) {
@@ -157,7 +157,7 @@ public class DatabaseGameData implements GameDataAccess {
                 } catch (SQLException ex) {
                     throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.AlreadyTaken);}
             }
-            throw new DataAccessException("Error username taken", DataAccessException.Code.AlreadyTaken);
+            throw new DataAccessException("Error player color already taken", DataAccessException.Code.AlreadyTaken);
         } throw new DataAccessException("Error could not match color on pending join game request", DataAccessException.Code.OtherError);
     }
 }

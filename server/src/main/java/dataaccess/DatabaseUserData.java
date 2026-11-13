@@ -63,9 +63,9 @@ public class DatabaseUserData implements UserDataAccess {
                     } throw new DataAccessException("Error could not get user 1 ", DataAccessException.Code.Unathurized);
                 }
 
-            } catch (SQLException ex) {throw new DataAccessException("Error could not get user 2" + ex, DataAccessException.Code.Unathurized);}
+            } catch (SQLException ex) {throw new DataAccessException("Error could not get user 2" + ex.getMessage(), DataAccessException.Code.Unathurized);}
 
-        } catch (SQLException ex) { throw new DataAccessException("Error could not create database" + ex, DataAccessException.Code.OtherError);}
+        } catch (SQLException ex) { throw new DataAccessException("Error could not create database" + ex.getMessage(), DataAccessException.Code.OtherError);}
     }
 
     public void createUser(String username, String password, String email) throws DataAccessException {
@@ -79,7 +79,7 @@ public class DatabaseUserData implements UserDataAccess {
 
                 preparedStatement.executeUpdate();
 
-            } catch (SQLException ex) { throw new DataAccessException("Error could not create user" + ex, DataAccessException.Code.AlreadyTaken); }
+            } catch (SQLException ex) { throw new DataAccessException("Error could not create user" + ex.getMessage(), DataAccessException.Code.AlreadyTaken); }
 
         } catch (SQLException ex) { throw new DataAccessException(
                 "Error could not create database/ get connection" + ex.getMessage(), DataAccessException.Code.OtherError); }
