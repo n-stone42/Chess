@@ -29,7 +29,6 @@ public class ServerFacade {
     public RegisterResult registerUser(RegisterRequest registerRequest) throws DataAccessException {
         HttpRequest httpRequest = makeRequest("POST", "/user", registerRequest, null);
         HttpResponse httpResponse = sendRequest(httpRequest);
-        System.out.println(httpResponse);
         return handelResponse(httpResponse, RegisterResult.class);
     }
 

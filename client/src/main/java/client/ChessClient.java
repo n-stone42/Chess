@@ -163,7 +163,7 @@ public class ChessClient  {
                 ListGameResult result = serverFacade.listGame(sessionAuthToken);
                 ArrayList<ModifiedGameData> gameList = result.games();
                 for (ModifiedGameData gameData: gameList) {
-                    output += "Game " + gameNumber++ + " gameID=" + gameData.gameID()
+                    output += "Game " + gameNumber++ + " Game Name " + gameData.gameName()
                             + " Player of White: " + gameData.whiteUsername() + " Player of Black: " + gameData.blackUsername() + "\n";
                 }
                 return output;
@@ -237,7 +237,7 @@ public class ChessClient  {
                     return drawBoard.toString(board, ChessGame.TeamColor.WHITE);
                 }
             }
-            throw new DataAccessException("game ID " + String.valueOf(gameID) + " not found", DataAccessException.Code.BadRequest);
+            throw new DataAccessException("game not found", DataAccessException.Code.BadRequest);
 
         } catch (NumberFormatException exception) {
             throw new DataAccessException("Error : expected number for gameID, got " + params[0],

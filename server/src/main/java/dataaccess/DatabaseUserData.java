@@ -79,7 +79,7 @@ public class DatabaseUserData implements UserDataAccess {
 
                 preparedStatement.executeUpdate();
 
-            } catch (SQLException ex) { throw new DataAccessException("Error could not create user" + ex.getMessage(), DataAccessException.Code.AlreadyTaken); }
+            } catch (SQLException ex) { throw new DataAccessException("Error could not create user", DataAccessException.Code.AlreadyTaken); }
 
         } catch (SQLException ex) { throw new DataAccessException(
                 "Error could not create database/ get connection" + ex.getMessage(), DataAccessException.Code.OtherError); }

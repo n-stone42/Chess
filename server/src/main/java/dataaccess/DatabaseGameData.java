@@ -116,7 +116,7 @@ public class DatabaseGameData implements GameDataAccess {
                         ChessGame chessGame = jsonToChessGame(resultSet.getString("chessGame"));
                         return new GameData(gameID,whiteUser, blackUser, gameName, chessGame);
                     } throw new DataAccessException(
-                            "Error could not find chess game ID= " + gameID, DataAccessException.Code.BadRequest);
+                            "Error could not find chess game", DataAccessException.Code.BadRequest);
                 }
 
             } catch (SQLException ex) {

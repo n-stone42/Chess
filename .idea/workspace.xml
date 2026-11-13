@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- fixing what port to run on">
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- better error messages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/client/client/REPL.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/ChessClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ChessClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/ServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ServerFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/client/client/ChessClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/client/client/ChessClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/client/client/ServerFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/client/client/ServerFacade.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/server/dataaccess/DatabaseGameData.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/dataaccess/DatabaseGameData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/server/dataaccess/DatabaseUserData.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/dataaccess/DatabaseUserData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" afterDir="false" />
@@ -69,61 +72,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="2.2077610994099645E-264" />
-      <entry key="S60" value="4.017715138906328E-132" />
-      <entry key="M2" value="6.064404615901325E-66" />
-      <entry key="M5" value="4.4511899857235116E-26" />
-      <entry key="M10" value="1.2641157369192605E-12" />
-      <entry key="M15" value="4.692006514901092E-8" />
-      <entry key="M30" value="0.0024858589788244226" />
-      <entry key="H1" value="0.8531724611256959" />
-      <entry key="H2" value="21.699653643785282" />
-      <entry key="H4" value="138.44551500529172" />
-      <entry key="D1" value="1110.3560600479361" />
-      <entry key="W1" value="3891.4247033210954" />
+      <entry key="MS100" value="2.1011935249007307E-11" />
+      <entry key="MS500" value="0.0073196988036908234" />
+      <entry key="S2" value="0.2924982706243575" />
+      <entry key="S5" value="0.611574432619669" />
+      <entry key="S10" value="0.7820322452556986" />
+      <entry key="S30" value="0.9213151658466688" />
+      <entry key="S60" value="0.9598537407164605" />
+      <entry key="M2" value="0.9832725526171284" />
+      <entry key="M5" value="1.2988082150066806" />
+      <entry key="M10" value="2.3530464492811958" />
+      <entry key="M15" value="3.2246770040252066" />
+      <entry key="M30" value="4.655726888211301" />
+      <entry key="H1" value="6.312123104175015" />
+      <entry key="H2" value="24.938358553988188" />
+      <entry key="H4" value="134.94602764449735" />
+      <entry key="D1" value="1103.3086021656475" />
+      <entry key="W1" value="3891.375535614127" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0000000000008908" />
-      <entry key="MS500" value="1.0038902408191823" />
-      <entry key="S2" value="1.2709591978668908" />
-      <entry key="S5" value="1.788246471379032" />
-      <entry key="S10" value="2.2204491372852178" />
-      <entry key="S30" value="2.685137922491889" />
-      <entry key="S60" value="2.8342848493023567" />
-      <entry key="M2" value="2.9149470328583655" />
-      <entry key="M5" value="2.965435093427757" />
-      <entry key="M10" value="2.982625484975678" />
-      <entry key="M15" value="2.9883964301168118" />
-      <entry key="M30" value="2.994816674089502" />
-      <entry key="H1" value="3.290715491880487" />
-      <entry key="H2" value="11.591194156894398" />
-      <entry key="H4" value="60.15527207642384" />
-      <entry key="D1" value="426.4898450622513" />
-      <entry key="W1" value="1433.7208346285133" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0000000000000004" />
+      <entry key="S60" value="1.0000000335123498" />
+      <entry key="M2" value="1.000316965037651" />
+      <entry key="M5" value="1.0770265949806168" />
+      <entry key="M10" value="1.480700819991307" />
+      <entry key="M15" value="1.8850251955138573" />
+      <entry key="M30" value="2.6297798923523077" />
+      <entry key="H1" value="3.4275584314358705" />
+      <entry key="H2" value="10.955609620390076" />
+      <entry key="H4" value="56.74982834432465" />
+      <entry key="D1" value="422.1178671732155" />
+      <entry key="W1" value="1432.1269627128263" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.4040949258803753E-5" />
-      <entry key="MS500" value="0.10729033154430416" />
-      <entry key="S2" value="0.7079756509282279" />
-      <entry key="S5" value="1.3853345825452932" />
-      <entry key="S10" value="1.9396453776026672" />
-      <entry key="S30" value="2.5612914579962474" />
-      <entry key="S60" value="2.7673366469108305" />
-      <entry key="M2" value="2.8800984293578065" />
-      <entry key="M5" value="2.951149362319567" />
-      <entry key="M10" value="2.9754234803905315" />
-      <entry key="M15" value="2.983581891047372" />
-      <entry key="M30" value="2.994887827685289" />
-      <entry key="H1" value="4.142499452573425" />
-      <entry key="H2" value="33.28757752403884" />
-      <entry key="H4" value="198.59134829342207" />
-      <entry key="D1" value="1536.8327211858111" />
-      <entry key="W1" value="5325.13799956382" />
+      <entry key="MS100" value="8.87213305567524E-10" />
+      <entry key="MS500" value="0.015978208221357433" />
+      <entry key="S2" value="0.502537253751601" />
+      <entry key="S5" value="1.1271203835107617" />
+      <entry key="S10" value="1.4959682784456783" />
+      <entry key="S30" value="1.814016095382573" />
+      <entry key="S60" value="1.9045477341949966" />
+      <entry key="M2" value="1.955505060824476" />
+      <entry key="M5" value="2.3641220887947827" />
+      <entry key="M10" value="3.8268894813099323" />
+      <entry key="M15" value="5.104469586738786" />
+      <entry key="M30" value="7.28228342061473" />
+      <entry key="H1" value="9.737700693395103" />
+      <entry key="H2" value="35.8906805307928" />
+      <entry key="H4" value="191.68686888741814" />
+      <entry key="D1" value="1525.4134115286336" />
+      <entry key="W1" value="5323.494967872157" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -138,173 +141,173 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ClientMain.executor": "Run",
-    "Application.ServerMain.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "true",
-    "JUnit.All in client.executor": "Run",
-    "JUnit.All in server.executor": "Run",
-    "JUnit.All in shared.executor": "Run",
-    "JUnit.BishopMoveTests.bishopCaptureEnemy.executor": "Run",
-    "JUnit.BishopMoveTests.bishopMoveUntilEdge.executor": "Run",
-    "JUnit.BishopMoveTests.executor": "Run",
-    "JUnit.ChessBoardTests and 3 more.executor": "Run",
-    "JUnit.ChessBoardTests.defaultGameBoard.executor": "Run",
-    "JUnit.ChessBoardTests.executor": "Run",
-    "JUnit.ChessGameTests.executor": "Run",
-    "JUnit.ChessMoveTests.executor": "Run",
-    "JUnit.ChessMoveTests.hashSetTest.Equals & HashCode Testing.executor": "Run",
-    "JUnit.ChessPieceTests.executor": "Run",
-    "JUnit.ChessPositionTests.executor": "Run",
-    "JUnit.DataAccessTests.clearUserData.executor": "Run",
-    "JUnit.DataBaseTests.createThenDelateUserTable.executor": "Run",
-    "JUnit.DataBaseTests.createThenDeleteTables.executor": "Run",
-    "JUnit.DataBaseTests.createUserWithoutError.executor": "Run",
-    "JUnit.DataBaseTests.deleteGameTable.executor": "Run",
-    "JUnit.DataBaseTests.executor": "Run",
-    "JUnit.DataBaseTests.getUserData.executor": "Run",
-    "JUnit.DataBaseTests.testAddAuthData.executor": "Run",
-    "JUnit.DataBaseTests.testClearFunctions.executor": "Run",
-    "JUnit.DataBaseTests.testClearTables.executor": "Run",
-    "JUnit.DataBaseTests.testClearUserTableWithoutError.executor": "Run",
-    "JUnit.DataBaseTests.testCreateGame.executor": "Run",
-    "JUnit.DataBaseTests.testCreateTables.executor": "Run",
-    "JUnit.DataBaseTests.testCreateUserTable.executor": "Run",
-    "JUnit.DataBaseTests.testCreateWithoutError.executor": "Run",
-    "JUnit.DataBaseTests.testDeleteAuth.executor": "Run",
-    "JUnit.DataBaseTests.testDeleteTables.executor": "Run",
-    "JUnit.DataBaseTests.testGameCerilization.executor": "Run",
-    "JUnit.DataBaseTests.testGetAuthData.executor": "Run",
-    "JUnit.DataBaseTests.testGetUserData.executor": "Run",
-    "JUnit.DataBaseTests.testJoinGame.executor": "Run",
-    "JUnit.DataBaseTests.testJoingGame.executor": "Run",
-    "JUnit.DataBaseTests.testListGame.executor": "Run",
-    "JUnit.DataBaseTests.testMatchPassword.executor": "Run",
-    "JUnit.DatabaseTests.databaseErrorHandling.executor": "Run",
-    "JUnit.DatabaseTests.executor": "Run",
-    "JUnit.DatabaseTests.persistenceTest.executor": "Debug",
-    "JUnit.FullGameTest.executor": "Run",
-    "JUnit.GameServiceTests.executor": "Run",
-    "JUnit.GameServiceTests.testClearAll.executor": "Run",
-    "JUnit.GameServiceTests.testCreateGame.executor": "Run",
-    "JUnit.GameServiceTests.testGameList.executor": "Run",
-    "JUnit.GameServiceTests.testJoinGame.executor": "Run",
-    "JUnit.GameStatusTests.blackCheck.executor": "Run",
-    "JUnit.GameStatusTests.checkmateNotStalemate.executor": "Debug",
-    "JUnit.GameStatusTests.escapeCheckByCapturingThreateningPiece.executor": "Debug",
-    "JUnit.GameStatusTests.executor": "Run",
-    "JUnit.GameStatusTests.newGame.executor": "Run",
-    "JUnit.GameStatusTests.noGameStatuses.executor": "Run",
-    "JUnit.GameStatusTests.stalemate.executor": "Debug",
-    "JUnit.GameStatusTests.whiteTeamCheckmate.executor": "Run",
-    "JUnit.KingMoveTests.executor": "Run",
-    "JUnit.KingMoveTests.kingMiddleOfBoard.executor": "Run",
-    "JUnit.KnightMoveTests.executor": "Run",
-    "JUnit.MakeMoveTests.executor": "Run",
-    "JUnit.MakeMoveTests.invalidMakeMoveInCheck.executor": "Run",
-    "JUnit.MakeMoveTests.invalidMakeMoveNoPiece.executor": "Run",
-    "JUnit.MakeMoveTests.promotionMoves.[1] QUEEN.executor": "Run",
-    "JUnit.MakeMoveTests.promotionMoves.executor": "Run",
-    "JUnit.PawnMoveTests.captureAndPromoteBlack.executor": "Run",
-    "JUnit.PawnMoveTests.edgePromotionBlack.executor": "Run",
-    "JUnit.PawnMoveTests.executor": "Run",
-    "JUnit.PawnMoveTests.pawnAdvanceBlockedDoubleMoveBlack.executor": "Run",
-    "JUnit.PawnMoveTests.pawnAdvanceBlockedDoubleMoveWhite.executor": "Run",
-    "JUnit.PawnMoveTests.pawnAdvanceBlockedWhite.executor": "Debug",
-    "JUnit.PawnMoveTests.pawnCaptureFromStartBlack.executor": "Run",
-    "JUnit.PawnMoveTests.pawnMoveFromEdgeWhite.executor": "Run",
-    "JUnit.QueenMoveTests.executor": "Run",
-    "JUnit.RookMoveTests.executor": "Run",
-    "JUnit.ServerFacadeTests.badListGame.executor": "Run",
-    "JUnit.ServerFacadeTests.badLogout.executor": "Run",
-    "JUnit.ServerFacadeTests.badMakeGame.executor": "Run",
-    "JUnit.ServerFacadeTests.executor": "Coverage",
-    "JUnit.ServerFacadeTests.joinGameTest.executor": "Run",
-    "JUnit.ServerFacadeTests.listGame.executor": "Run",
-    "JUnit.ServerFacadeTests.negativeJoinGame.executor": "Run",
-    "JUnit.ServerFacadeTests.negativeLogin (1).executor": "Run",
-    "JUnit.ServerFacadeTests.negativeLogin.executor": "Run",
-    "JUnit.ServerFacadeTests.positiveLogin.executor": "Run",
-    "JUnit.ServerFacadeTests.positiveLogout.executor": "Run",
-    "JUnit.ServerFacadeTests.positiveRegister (1).executor": "Run",
-    "JUnit.ServerFacadeTests.positiveRegister.executor": "Run",
-    "JUnit.ServerFacadeTests.testMakeGame.executor": "Run",
-    "JUnit.ServerTests.basicCleartest.executor": "Run",
-    "JUnit.ServiceTests.duplicateUser.executor": "Run",
-    "JUnit.ServiceTests.executor": "Coverage",
-    "JUnit.ServiceTests.testBadCreateGame.executor": "Run",
-    "JUnit.ServiceTests.testBadPassword.executor": "Run",
-    "JUnit.ServiceTests.testBobGetUsername.executor": "Run",
-    "JUnit.ServiceTests.testClearAll.executor": "Run",
-    "JUnit.ServiceTests.testGameList.executor": "Run",
-    "JUnit.ServiceTests.testJoinGame.executor": "Run",
-    "JUnit.ServiceTests.toHttpStatusCode.executor": "Run",
-    "JUnit.StandardAPITests.clearData.executor": "Run",
-    "JUnit.StandardAPITests.clearMultipleTimes.executor": "Run",
-    "JUnit.StandardAPITests.createGameBadRequest.executor": "Run",
-    "JUnit.StandardAPITests.createGameSuccess.executor": "Run",
-    "JUnit.StandardAPITests.createGameUnauthorized.executor": "Run",
-    "JUnit.StandardAPITests.executor": "Run",
-    "JUnit.StandardAPITests.joinGameBadColor.executor": "Run",
-    "JUnit.StandardAPITests.joinGameBadGameId.executor": "Run",
-    "JUnit.StandardAPITests.joinGameStealColor.executor": "Run",
-    "JUnit.StandardAPITests.joinGameSuccess.executor": "Run",
-    "JUnit.StandardAPITests.loginBadRequest.executor": "Run",
-    "JUnit.StandardAPITests.loginSuccess.executor": "Run",
-    "JUnit.StandardAPITests.loginUnauthorized.executor": "Run",
-    "JUnit.StandardAPITests.logoutSuccess.executor": "Run",
-    "JUnit.StandardAPITests.logoutTwice.executor": "Run",
-    "JUnit.StandardAPITests.registerBadRequest.executor": "Run",
-    "JUnit.StandardAPITests.registerTwice.executor": "Run",
-    "JUnit.StandardAPITests.staticFilesSuccess.executor": "Run",
-    "JUnit.StandardAPITests.uniqueAuthorizationTokensAllWork.executor": "Run",
-    "JUnit.UserServiceTests.CreateUserInMemory.executor": "Run",
-    "JUnit.UserServiceTests.executor": "Run",
-    "JUnit.UserServiceTests.testDataAccessacception.executor": "Run",
-    "JUnit.UserServiceTests.testLogin.executor": "Run",
-    "JUnit.UserServiceTests.testLogout.executor": "Run",
-    "JUnit.UserServiceTests.testRegisterUser.executor": "Run",
-    "JUnit.ValidMovesTests.executor": "Run",
-    "JUnit.chess in shared.executor": "Run",
-    "JUnit.dataaccess.sql in server.executor": "Run",
-    "JUnit.passoff.chess in shared.executor": "Run",
-    "JUnit.passoff.chess.game in shared.executor": "Run",
-    "JUnit.passoff.chess.piecemoves in shared.executor": "Run",
-    "JUnit.passoff.server in server.executor": "Run",
-    "JUnit.service.executor": "Coverage",
-    "JUnit.service.testBadLogins.executor": "Run",
-    "JUnit.test in server.executor": "Run",
-    "JUnit.testPrintBoard().executor": "Run",
-    "JUnit.testPrintBoard.executor": "Run",
-    "JUnit.testPrintBoard.testPrintBoard.executor": "Run",
-    "JUnit.testPrintBoard.testPrintBoardWhite.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/natha/Desktop/cs240/Chess/shared/src/main/java",
-    "last_opened_file_path": "C:/Users/natha/Desktop/cs240/Chess/client/src/test/java/client",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.sourceCode.JAVA"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ClientMain.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ServerMain.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;JUnit.All in client.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in server.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in shared.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BishopMoveTests.bishopCaptureEnemy.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BishopMoveTests.bishopMoveUntilEdge.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BishopMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessBoardTests and 3 more.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessBoardTests.defaultGameBoard.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessBoardTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessGameTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessMoveTests.hashSetTest.Equals &amp; HashCode Testing.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessPieceTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessPositionTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataAccessTests.clearUserData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.createThenDelateUserTable.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.createThenDeleteTables.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.createUserWithoutError.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.deleteGameTable.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.getUserData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testAddAuthData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testClearFunctions.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testClearTables.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testClearUserTableWithoutError.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testCreateGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testCreateTables.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testCreateUserTable.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testCreateWithoutError.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testDeleteAuth.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testDeleteTables.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testGameCerilization.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testGetAuthData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testGetUserData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testJoinGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testJoingGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testListGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataBaseTests.testMatchPassword.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DatabaseTests.databaseErrorHandling.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DatabaseTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DatabaseTests.persistenceTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.FullGameTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameServiceTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameServiceTests.testClearAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameServiceTests.testCreateGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameServiceTests.testGameList.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameServiceTests.testJoinGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameStatusTests.blackCheck.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameStatusTests.checkmateNotStalemate.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.GameStatusTests.escapeCheckByCapturingThreateningPiece.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.GameStatusTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameStatusTests.newGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameStatusTests.noGameStatuses.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameStatusTests.stalemate.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.GameStatusTests.whiteTeamCheckmate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.KingMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.KingMoveTests.kingMiddleOfBoard.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.KnightMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MakeMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MakeMoveTests.invalidMakeMoveInCheck.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MakeMoveTests.invalidMakeMoveNoPiece.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MakeMoveTests.promotionMoves.[1] QUEEN.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MakeMoveTests.promotionMoves.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.captureAndPromoteBlack.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.edgePromotionBlack.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.pawnAdvanceBlockedDoubleMoveBlack.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.pawnAdvanceBlockedDoubleMoveWhite.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.pawnAdvanceBlockedWhite.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.PawnMoveTests.pawnCaptureFromStartBlack.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PawnMoveTests.pawnMoveFromEdgeWhite.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QueenMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RookMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.badListGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.badLogout.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.badMakeGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ServerFacadeTests.joinGameTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.listGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.negativeJoinGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.negativeLogin (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.negativeLogin.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.positiveLogin.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.positiveLogout.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.positiveRegister (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.positiveRegister.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerFacadeTests.testMakeGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServerTests.basicCleartest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.duplicateUser.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ServiceTests.testBadCreateGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.testBadPassword.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.testBobGetUsername.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.testClearAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.testGameList.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.testJoinGame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServiceTests.toHttpStatusCode.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.clearData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.clearMultipleTimes.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.createGameBadRequest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.createGameSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.createGameUnauthorized.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.joinGameBadColor.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.joinGameBadGameId.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.joinGameStealColor.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.joinGameSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.loginBadRequest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.loginSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.loginUnauthorized.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.logoutSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.logoutTwice.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.registerBadRequest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.registerTwice.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.staticFilesSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StandardAPITests.uniqueAuthorizationTokensAllWork.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTests.CreateUserInMemory.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTests.testDataAccessacception.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTests.testLogin.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTests.testLogout.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTests.testRegisterUser.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ValidMovesTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.chess in shared.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.dataaccess.sql in server.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.passoff.chess in shared.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.passoff.chess.game in shared.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.passoff.chess.piecemoves in shared.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.passoff.server in server.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.service.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.service.testBadLogins.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.test in server.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.testPrintBoard().executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.testPrintBoard.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.testPrintBoard.testPrintBoard.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.testPrintBoard.testPrintBoardWhite.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/natha/Desktop/cs240/Chess/shared/src/main/java&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/natha/Desktop/cs240/Chess/client/src/test/java/client&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.JAVA&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\natha\Desktop\cs240\Chess\client\src\test\java\client" />
@@ -363,7 +366,7 @@
     </configuration>
     <configuration name="ServerFacadeTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="client" />
-      <extension name="coverage" runner="jacoco">
+      <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="client.*" />
           <option name="ENABLED" value="true" />
@@ -441,7 +444,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="restructure to put the request/ result records that were in UserService" />
     <MESSAGE value="progress on passing self written postiveRegister user test" />
     <MESSAGE value="phase 5- removed delete tables functions" />
     <MESSAGE value="phase 5- added in same error handleing as eariler today" />
@@ -466,7 +468,8 @@
     <MESSAGE value="phase 5- code quality 4" />
     <MESSAGE value="phase 5- code quality 5 and more cleanup" />
     <MESSAGE value="phase 5- fixing what port to run on" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase 5- fixing what port to run on" />
+    <MESSAGE value="phase 5- better error messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="phase 5- better error messages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
