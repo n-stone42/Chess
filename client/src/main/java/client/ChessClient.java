@@ -229,11 +229,19 @@ public class ChessClient  {
         }
         try {
             int gameID = Integer.parseInt(params[0]);
+            ListGameResult result = serverFacade.listGame(sessionAuthToken);
+            ArrayList<ModifiedGameData> gameList = result.games();
+            for (ModifiedGameData gameData: gameList) {
+                if (gameData.gameID() == gameID) {
+                    ChessBoard board = new ChessBoard();
+                    board.resetBoard();
+                    return drawBoard.toString(board, ChessGame.TeamColor.WHITE);
+                }
+            }
+            throw new DataAccessException("game ID " + String.valueOf(gameID) + " not found", DataAccessException.Code.BadRequest);
+
         } catch (NumberFormatException exception) {
             throw new DataAccessException("Error : expected number for gameID, got " + params[0],
                     DataAccessException.Code.BadRequest);}
-        ChessBoard board = new ChessBoard();
-        board.resetBoard();
-        return drawBoard.toString(board, ChessGame.TeamColor.WHITE);
     }
 }
