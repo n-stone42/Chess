@@ -98,7 +98,7 @@ public class ServerFacade {
         sendRequest(httpRequest);
     }
 
-    private <object> object handelResponse(HttpResponse<String> response, Class<object> responseClass) throws DataAccessException {
+    private <T> T handelResponse(HttpResponse<String> response, Class<T> responseClass) throws DataAccessException {
         if (response.statusCode() == 200) {
             String body = response.body();
             if (body == null) {

@@ -195,12 +195,12 @@ public class DataBaseTests {
     @Test
     void toHTTP() {
         var badRequest = new DataAccessException("test 400", DataAccessException.Code.BadRequest);
-        var unathurized = new DataAccessException("test 401", DataAccessException.Code.Unathurized);
-        var alreadyTaken = new DataAccessException("test 403", DataAccessException.Code.AlreadyTaken);
-        var otherError = new DataAccessException("test 500", DataAccessException.Code.OtherError);
         assertEquals(badRequest.toHttpStatuscode(), 400);
+        var unathurized = new DataAccessException("test 401", DataAccessException.Code.Unathurized);
         assertEquals(unathurized.toHttpStatuscode(), 401);
+        var alreadyTaken = new DataAccessException("test 403", DataAccessException.Code.AlreadyTaken);
         assertEquals(alreadyTaken.toHttpStatuscode(), 403);
+        var otherError = new DataAccessException("test 500", DataAccessException.Code.OtherError);
         assertEquals(otherError.toHttpStatuscode(), 500);
     }
     @Test

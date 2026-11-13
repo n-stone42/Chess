@@ -9,12 +9,12 @@ public class TestPrintBoard {
     DrawBoard drawBoard = new DrawBoard();
     ChessBoard board = new ChessBoard();
     @Test
-    public void PrintBoardWhite() {
+    public void printBoardWhite() {
         board.resetBoard();
         System.out.print(drawBoard.toString(board, ChessGame.TeamColor.WHITE));
     }
     @Test
-    public void PrintBoardBlack() {
+    public void printBoardBlack() {
         board.resetBoard();
         System.out.print(drawBoard.toString(board, ChessGame.TeamColor.BLACK));
     }
