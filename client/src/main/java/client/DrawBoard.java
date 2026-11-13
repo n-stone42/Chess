@@ -8,19 +8,13 @@ import chess.ChessPosition;
 import static ui.EscapeSequences.*;
 
 public class DrawBoard {
-    public ChessBoard board;
-
-    public DrawBoard(ChessBoard board) {
-        this.board = board;
-    }
-
-    public String toString(ChessGame.TeamColor playerColor) {
+    public String toString(ChessBoard board, ChessGame.TeamColor playerColor) {
         if (playerColor == ChessGame.TeamColor.WHITE) {
             String returnString = "";
             String rowOfLettersForward = RESET_TEXT_COLOR + "   a   b   c  d   e   f  g   h" + "\n";
             returnString += rowOfLettersForward;
             for (int i = 8; i > 0; i--) {
-                returnString += printRow(i, true);
+                returnString += printRow(board, i, true);
             }
             returnString += rowOfLettersForward;
             return returnString;
@@ -30,26 +24,26 @@ public class DrawBoard {
             String rowOfLettersBackwards = RESET_TEXT_COLOR + "   h   g   f  e   d   c  b   a " + "\n";
             returnString += rowOfLettersBackwards;
             for (int i = 1; i <= 8; i++) {
-                returnString += printRow(i, false);
+                returnString += printRow(board, i, false);
             }
             returnString += rowOfLettersBackwards;
             return returnString;
         }
     }
 
-    private String printRow(int row, boolean forward) {
+    private String printRow(ChessBoard board, int row, boolean forward) {
         String returnString = "";
         returnString += RESET_TEXT_COLOR +row + " ";
         if (forward) {
             for (int j = 1; j <= 8; j++) {
                 returnString += squareColor(row, j);
-                returnString += getObjectInSquare(row, j);
+                returnString += getObjectInSquare(board, row, j);
             }
         }
         else {
         for (int j = 8; j > 0; j--) {
             returnString += squareColor(row, j);
-            returnString += getObjectInSquare(row, j);
+            returnString += getObjectInSquare(board, row, j);
             }
         }
 
@@ -60,7 +54,7 @@ public class DrawBoard {
     }
 
 
-    private String getObjectInSquare(int row, int col)  {
+    private String getObjectInSquare(ChessBoard board, int row, int col)  {
         board.resetBoard();
         ChessPiece piece = board.getPiece(new ChessPosition(row,col));
         if (board.getPiece(new ChessPosition(row,col)) == null) {

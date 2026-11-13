@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- some board drawing">
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- board drawing function is good">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/ChessClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ChessClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/client/DrawBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/DrawBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/test/java/client/testPrintBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/client/testPrintBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseGameData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,61 +68,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000029784005715" />
-      <entry key="MS500" value="1.1362308854543983" />
-      <entry key="S2" value="2.021594971862445" />
-      <entry key="S5" value="2.5376040132962583" />
-      <entry key="S10" value="2.9378584854269096" />
-      <entry key="S30" value="4.555118468781199" />
-      <entry key="S60" value="6.081015808079026" />
-      <entry key="M2" value="9.19254073550195" />
-      <entry key="M5" value="18.13869890069738" />
-      <entry key="M10" value="29.53937429305339" />
-      <entry key="M15" value="41.15359260679907" />
-      <entry key="M30" value="79.76422428040728" />
-      <entry key="H1" value="154.4681069545957" />
-      <entry key="H2" value="282.0162817313256" />
-      <entry key="H4" value="474.92102899994694" />
-      <entry key="D1" value="1269.3394035404622" />
-      <entry key="W1" value="3868.2579042532457" />
+      <entry key="MS100" value="1.7890754572190928E-150" />
+      <entry key="MS500" value="1.1447788353102442E-30" />
+      <entry key="S2" value="4.465114674884506E-8" />
+      <entry key="S5" value="0.0016925435419475913" />
+      <entry key="S10" value="0.05802534801967616" />
+      <entry key="S30" value="0.8130697021291531" />
+      <entry key="S60" value="2.4489884019383648" />
+      <entry key="M2" value="5.140389689795457" />
+      <entry key="M5" value="10.686834415480329" />
+      <entry key="M10" value="22.412961921932652" />
+      <entry key="M15" value="35.68292711760831" />
+      <entry key="M30" value="76.3541755230248" />
+      <entry key="H1" value="154.12591246246242" />
+      <entry key="H2" value="288.3285951505061" />
+      <entry key="H4" value="491.97578032749794" />
+      <entry key="D1" value="1318.117295313891" />
+      <entry key="W1" value="3931.4258153071064" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="3.7940997376630494E-59" />
-      <entry key="MS500" value="2.1126707507147892E-12" />
-      <entry key="S2" value="0.0016583307957970116" />
-      <entry key="S5" value="0.1203876512516857" />
-      <entry key="S10" value="0.5763321922133405" />
-      <entry key="S30" value="1.9595052379695532" />
-      <entry key="S60" value="2.960161833436541" />
-      <entry key="M2" value="4.69998473371576" />
-      <entry key="M5" value="9.011150035339021" />
-      <entry key="M10" value="13.756914637245368" />
-      <entry key="M15" value="18.081357721940268" />
-      <entry key="M30" value="32.46857748778002" />
-      <entry key="H1" value="64.43671159206292" />
-      <entry key="H2" value="122.42244784444608" />
-      <entry key="H4" value="204.63293682705833" />
-      <entry key="D1" value="483.2677930156906" />
-      <entry key="W1" value="1418.5084227442733" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000002700602" />
+      <entry key="S2" value="1.0040539718810912" />
+      <entry key="S5" value="1.112286640931521" />
+      <entry key="S10" value="1.3754179512226363" />
+      <entry key="S30" value="2.1743386090911967" />
+      <entry key="S60" value="3.1504719399685674" />
+      <entry key="M2" value="4.502664572283639" />
+      <entry key="M5" value="7.957657801726504" />
+      <entry key="M10" value="15.836559565663272" />
+      <entry key="M15" value="23.691723951296094" />
+      <entry key="M30" value="43.826408231745894" />
+      <entry key="H1" value="79.15820302304024" />
+      <entry key="H2" value="140.46220479682745" />
+      <entry key="H4" value="228.26986080827393" />
+      <entry key="D1" value="522.4832359793446" />
+      <entry key="W1" value="1463.5085046217105" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.021198483105493025" />
-      <entry key="MS500" value="0.5772606690305903" />
-      <entry key="S2" value="1.802409064153885" />
-      <entry key="S5" value="2.546502120888794" />
-      <entry key="S10" value="3.430162169760954" />
-      <entry key="S30" value="6.448309403970913" />
-      <entry key="S60" value="8.99076179778291" />
-      <entry key="M2" value="13.847360050446069" />
-      <entry key="M5" value="27.107867232640025" />
-      <entry key="M10" value="43.2598737868643" />
-      <entry key="M15" value="59.19932211953252" />
-      <entry key="M30" value="112.19463849498459" />
-      <entry key="H1" value="218.8645984790534" />
-      <entry key="H2" value="404.4000206597333" />
-      <entry key="H4" value="679.5205464254472" />
-      <entry key="D1" value="1752.5917986789254" />
-      <entry key="W1" value="5286.758746149976" />
+      <entry key="MS100" value="0.001688549279898174" />
+      <entry key="MS500" value="0.2789348306149051" />
+      <entry key="S2" value="0.7291432232404206" />
+      <entry key="S5" value="0.9727698164046822" />
+      <entry key="S10" value="1.3297947368862297" />
+      <entry key="S30" value="2.9083011205778755" />
+      <entry key="S60" value="5.533735793620853" />
+      <entry key="M2" value="9.59333423779378" />
+      <entry key="M5" value="18.605003265849298" />
+      <entry key="M10" value="38.20433199041696" />
+      <entry key="M15" value="59.327129934202944" />
+      <entry key="M30" value="120.13294155860787" />
+      <entry key="H1" value="233.2381592245938" />
+      <entry key="H2" value="428.7484098932237" />
+      <entry key="H4" value="720.2096520766132" />
+      <entry key="D1" value="1840.5843320191825" />
+      <entry key="W1" value="5394.92660185629" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -275,6 +277,7 @@
     "JUnit.testPrintBoard().executor": "Run",
     "JUnit.testPrintBoard.executor": "Run",
     "JUnit.testPrintBoard.testPrintBoard.executor": "Run",
+    "JUnit.testPrintBoard.testPrintBoardWhite.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -321,7 +324,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.testPrintBoard">
+  <component name="RunManager" selected="Application.ClientMain">
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client.ClientMain" />
       <module name="client" />
@@ -382,7 +385,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testPrintBoard.testPrintBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="testPrintBoard.testPrintBoardWhite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="client" />
       <extension name="coverage">
         <pattern>
@@ -392,7 +395,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="client" />
       <option name="MAIN_CLASS_NAME" value="client.testPrintBoard" />
-      <option name="METHOD_NAME" value="testPrintBoard" />
+      <option name="METHOD_NAME" value="testPrintBoardWhite" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -403,15 +406,15 @@
       <item itemvalue="Application.ServerMain" />
       <item itemvalue="JUnit.testPrintBoard" />
       <item itemvalue="JUnit.testPrintBoard()" />
-      <item itemvalue="JUnit.testPrintBoard.testPrintBoard" />
+      <item itemvalue="JUnit.testPrintBoard.testPrintBoardWhite" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.testPrintBoard" />
-        <item itemvalue="JUnit.testPrintBoard()" />
-        <item itemvalue="JUnit.testPrintBoard.testPrintBoard" />
         <item itemvalue="Application.ClientMain" />
         <item itemvalue="Application.ServerMain" />
+        <item itemvalue="JUnit.testPrintBoard" />
+        <item itemvalue="JUnit.testPrintBoard.testPrintBoardWhite" />
+        <item itemvalue="JUnit.testPrintBoard()" />
       </list>
     </recent_temporary>
   </component>
@@ -449,7 +452,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Phase 4- join game function" />
     <MESSAGE value="Phase 4- test list games passing" />
     <MESSAGE value="Phase 4- switching interface handeling and some changes to error functions" />
     <MESSAGE value="Phase 4- fixed delete authToken error" />
@@ -474,7 +476,8 @@
     <MESSAGE value="phase 5- list and create game" />
     <MESSAGE value="phase 5- join game" />
     <MESSAGE value="phase 5- some board drawing" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase 5- some board drawing" />
+    <MESSAGE value="phase 5- board drawing function is good" />
+    <option name="LAST_COMMIT_MESSAGE" value="phase 5- board drawing function is good" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -497,9 +500,14 @@
           <option name="timeStamp" value="112" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/client/src/main/java/client/ChessClient.java</url>
-          <line>172</line>
-          <option name="timeStamp" value="149" />
+          <url>file://$PROJECT_DIR$/client/src/main/java/client/DrawBoard.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/client/src/main/java/client/DrawBoard.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="154" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryAuthDAO.java</url>

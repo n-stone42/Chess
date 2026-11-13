@@ -7,13 +7,16 @@ import org.junit.jupiter.api.Test;
 
 public class testPrintBoard {
 
-    DrawBoard drawBoard = new DrawBoard(new ChessBoard());
+    DrawBoard drawBoard = new DrawBoard();
+    ChessBoard board = new ChessBoard();
     @Test
     public void testPrintBoardWhite() {
-        System.out.print(drawBoard.toString(ChessGame.TeamColor.WHITE));
+        board.resetBoard();
+        System.out.print(drawBoard.toString(board, ChessGame.TeamColor.WHITE));
     }
     @Test
     public void testPrintBoardBlack() {
-        System.out.print(drawBoard.toString(ChessGame.TeamColor.BLACK));
+        board.resetBoard();
+        System.out.print(drawBoard.toString(board, ChessGame.TeamColor.BLACK));
     }
 }

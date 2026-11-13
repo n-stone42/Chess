@@ -6,6 +6,9 @@ import GameRecordModels.CreateGameResult;
 import GameRecordModels.JoinGameResult;
 import GameRecordModels.ListGameResult;
 import UserRecordsModels.*;
+import chess.ChessBoard;
+import chess.ChessGame;
+import chess.ChessPiece;
 import dataaccess.DataAccessException;
 import model.ModifiedGameData;
 
@@ -18,6 +21,7 @@ public class ChessClient  {
 
     private String sessionAuthToken;
     private ServerFacade serverFacade;
+    private DrawBoard drawBoard = new DrawBoard();
 
     public ChessClient(String url) throws DataAccessException {
         serverFacade = new ServerFacade(url);
@@ -75,6 +79,7 @@ public class ChessClient  {
                 case "list" -> list();
                 case "create" -> createGame(params);
                 case "join" -> joinGame(params);
+                case "observe" -> viewGame(params);
             };
         } catch (Exception exception) {
             return exception.getMessage();
@@ -189,19 +194,46 @@ public class ChessClient  {
             throw new DataAccessException("not signed in", DataAccessException.Code.Unathurized);
         }
         if (params.length != 2) {
-            throw new DataAccessException("error finding parameters, expected <gameID> playerColor <White or Black.",
+            throw new DataAccessException("error finding parameters, expected <gameID> playerColor <White or Black>",
                     DataAccessException.Code.BadRequest);
         }
         try {
             try {
                 int gameID = Integer.parseInt(params[0]);
                 JoinGameResult result = serverFacade.joinGame(sessionAuthToken, params[1], gameID );
-                return "joined game:" + gameID;
+                String output =  "joined game:" + gameID + "\n";
+                ChessBoard board = new ChessBoard();
+                board.resetBoard();
+                if (params[1].toLowerCase(Locale.ROOT).equals("white")) {
+                    output += drawBoard.toString(board, ChessGame.TeamColor.WHITE);
+                }
+                else {
+                    output += drawBoard.toString(board, ChessGame.TeamColor.BLACK);
+                }
+                return output;
             } catch (NumberFormatException exception) {
                 throw new DataAccessException("expected number for gameID, got " + params[0],
                     DataAccessException.Code.BadRequest);}
         } catch (DataAccessException exception) {
             throw new RuntimeException(exception.getMessage());
         }
+    }
+
+    public String viewGame(String[] params) throws DataAccessException {
+        if (!isSignedIn()) {
+            throw new DataAccessException("not signed in", DataAccessException.Code.Unathurized);
+        }
+        if (params.length != 1) {
+            throw new DataAccessException("error finding parameters, expected <gameID>",
+                    DataAccessException.Code.BadRequest);
+        }
+        try {
+            int gameID = Integer.parseInt(params[0]);
+        } catch (NumberFormatException exception) {
+            throw new DataAccessException("Error : expected number for gameID, got " + params[0],
+                    DataAccessException.Code.BadRequest);}
+        ChessBoard board = new ChessBoard();
+        board.resetBoard();
+        return drawBoard.toString(board, ChessGame.TeamColor.WHITE);
     }
 }

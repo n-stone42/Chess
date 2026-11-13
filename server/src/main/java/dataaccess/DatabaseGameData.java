@@ -77,7 +77,7 @@ public class DatabaseGameData implements GameDataAccess {
                 }
 
         }
-        catch (SQLException exception) {throw new DataAccessException("could not create game " + exception, DataAccessException.Code.OtherError); }
+        catch (SQLException exception) {throw new DataAccessException("could not create game " + exception.getMessage(), DataAccessException.Code.OtherError); }
     }
 
     public ArrayList<ModifiedGameData> listGame() throws DataAccessException { //int gameID, String whiteUsername, String blackUsername, String gameName)
