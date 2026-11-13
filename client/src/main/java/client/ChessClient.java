@@ -3,6 +3,7 @@ package client;
 
 import GameRecordModels.CreateGameRequest;
 import GameRecordModels.CreateGameResult;
+import GameRecordModels.JoinGameResult;
 import GameRecordModels.ListGameResult;
 import UserRecordsModels.*;
 import dataaccess.DataAccessException;
@@ -73,6 +74,7 @@ public class ChessClient  {
                 case "logout" -> logout();
                 case "list" -> list();
                 case "create" -> createGame(params);
+                case "join" -> joinGame(params);
             };
         } catch (Exception exception) {
             return exception.getMessage();
@@ -90,6 +92,7 @@ public class ChessClient  {
         return """
                 create <GameName> - create a new chess game
                 list - list chess games
+                join <gameID> <White or Black>
                 observe <GameID> - to watch a Chess game
                 logout  - logs out current user
                 quit - quits program
@@ -154,7 +157,7 @@ public class ChessClient  {
                 ArrayList<ModifiedGameData> gameList = result.games();
                 for (ModifiedGameData gameData: gameList) {
                     output += "Game " + GameNumber++ + " gameID=" + gameData.gameID()
-                            + " White: " + gameData.whiteUsername() + " Black: " + gameData.blackUsername() + "\n";
+                            + " Player of White: " + gameData.whiteUsername() + " Player of Black: " + gameData.blackUsername() + "\n";
                 }
                 return output;
             } catch (DataAccessException e) {
@@ -176,5 +179,22 @@ public class ChessClient  {
                 throw new RuntimeException(exception);
             }
         } throw new DataAccessException("not signed in", DataAccessException.Code.Unathurized);
+    }
+
+    public String joinGame(String[] params) throws DataAccessException {
+        if (!isSignedIn()) {
+            throw new DataAccessException("not signed in", DataAccessException.Code.Unathurized);
+        }
+        if (params.length != 2) {
+            throw new DataAccessException("error finding parameters, expected <gameID> playerColor <White or Black.",
+                    DataAccessException.Code.BadRequest);
+        }
+        try {
+            int gameID = Integer.parseInt(params[0]);
+            JoinGameResult result = serverFacade.joinGame(sessionAuthToken, params[1], gameID );
+            return "joined game:" + gameID;
+        } catch (DataAccessException exception) {
+            throw new RuntimeException(exception);
+        }
     }
 }

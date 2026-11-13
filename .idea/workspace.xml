@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- login, logout and register">
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- list and create game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/client/ChessClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/ChessClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/server/service/GameService$JoinGameResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/service/GameService$JoinGameResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/server/service/GameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/server/service/GameService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/GameService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,61 +68,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="5.220058643179983E-28" />
-      <entry key="MS500" value="4.0130381837627105E-6" />
-      <entry key="S2" value="0.0823882990280009" />
-      <entry key="S5" value="0.692870635588581" />
-      <entry key="S10" value="1.4357671950372872" />
-      <entry key="S30" value="2.6040501116802988" />
-      <entry key="S60" value="3.755577002168471" />
-      <entry key="M2" value="6.100467652712306" />
-      <entry key="M5" value="15.981859728620309" />
-      <entry key="M10" value="32.43072238096862" />
-      <entry key="M15" value="46.19874527657907" />
-      <entry key="M30" value="82.19612184801825" />
-      <entry key="H1" value="145.88532759433494" />
-      <entry key="H2" value="247.88351528225147" />
-      <entry key="H4" value="401.95950195874576" />
-      <entry key="D1" value="1086.523665683791" />
-      <entry key="W1" value="3636.0469838102726" />
+      <entry key="MS100" value="2.2101232154514216E-81" />
+      <entry key="MS500" value="1.307947276657444E-16" />
+      <entry key="S2" value="2.6173436258797875E-4" />
+      <entry key="S5" value="0.08343137113794818" />
+      <entry key="S10" value="0.5760779527872799" />
+      <entry key="S30" value="2.0953833921490075" />
+      <entry key="S60" value="2.8978196301891215" />
+      <entry key="M2" value="3.556586138692224" />
+      <entry key="M5" value="7.093575816164129" />
+      <entry key="M10" value="17.465480459698362" />
+      <entry key="M15" value="29.66802708754301" />
+      <entry key="M30" value="66.62420329288413" />
+      <entry key="H1" value="134.04969483929023" />
+      <entry key="H2" value="242.8404913165909" />
+      <entry key="H4" value="405.23221512546473" />
+      <entry key="D1" value="1110.4776260395108" />
+      <entry key="W1" value="3668.9632248098774" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000000000002" />
-      <entry key="S5" value="1.0000004469448007" />
-      <entry key="S10" value="1.0006685393121528" />
-      <entry key="S30" value="1.0880183111898896" />
-      <entry key="S60" value="1.3708719583133933" />
-      <entry key="M2" value="2.637831442534738" />
-      <entry key="M5" value="9.927579986129228" />
-      <entry key="M10" value="21.645836952401094" />
-      <entry key="M15" value="30.785420209769946" />
-      <entry key="M30" value="51.72346987146938" />
-      <entry key="H1" value="82.25231403928842" />
-      <entry key="H2" value="125.87024059310946" />
-      <entry key="H4" value="184.41534544200155" />
-      <entry key="D1" value="406.98710428797375" />
-      <entry key="W1" value="1322.8095168310829" />
+      <entry key="MS500" value="1.0000226530354563" />
+      <entry key="S2" value="1.0762131808282835" />
+      <entry key="S5" value="1.5836147994337524" />
+      <entry key="S10" value="2.4186605415036073" />
+      <entry key="S30" value="3.7855295890342546" />
+      <entry key="S60" value="4.333680485907734" />
+      <entry key="M2" value="4.753615315791338" />
+      <entry key="M5" value="6.884044863340766" />
+      <entry key="M10" value="12.92726982374045" />
+      <entry key="M15" value="20.18151546508449" />
+      <entry key="M30" value="41.721875897696314" />
+      <entry key="H1" value="76.48264471540885" />
+      <entry key="H2" value="125.82350324469307" />
+      <entry key="H4" value="190.18105836541028" />
+      <entry key="D1" value="423.5856257568637" />
+      <entry key="W1" value="1342.8657228202694" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.014884968719436526" />
-      <entry key="MS500" value="0.4310723004412095" />
-      <entry key="S2" value="0.8553969130695345" />
-      <entry key="S5" value="1.4555576429071666" />
-      <entry key="S10" value="2.2192033460962692" />
-      <entry key="S30" value="3.5674562735997504" />
-      <entry key="S60" value="5.041295810743056" />
-      <entry key="M2" value="8.672044752987636" />
-      <entry key="M5" value="25.840147706352635" />
-      <entry key="M10" value="54.00676376545988" />
-      <entry key="M15" value="76.91870827258711" />
-      <entry key="M30" value="133.86376186182525" />
-      <entry key="H1" value="228.09097916216962" />
-      <entry key="H2" value="373.7157366770057" />
-      <entry key="H4" value="586.3447599768707" />
-      <entry key="D1" value="1493.4972703232127" />
-      <entry key="W1" value="4958.8492692132595" />
+      <entry key="MS100" value="0.0011295783045950066" />
+      <entry key="MS500" value="0.25738916068355105" />
+      <entry key="S2" value="0.7601903990983052" />
+      <entry key="S5" value="1.41689311124019" />
+      <entry key="S10" value="2.756379405043874" />
+      <entry key="S30" value="5.733666238169378" />
+      <entry key="S60" value="7.143495098884676" />
+      <entry key="M2" value="8.259847761869157" />
+      <entry key="M5" value="13.941944936664004" />
+      <entry key="M10" value="30.35412611744622" />
+      <entry key="M15" value="49.807866509204416" />
+      <entry key="M30" value="108.30157423821798" />
+      <entry key="H1" value="210.4896696378476" />
+      <entry key="H2" value="368.62673729558793" />
+      <entry key="H4" value="595.382894447558" />
+      <entry key="D1" value="1534.0494488496909" />
+      <entry key="W1" value="5011.821658789368" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -442,7 +445,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Phase 4- testing username and auth Token not found errors" />
     <MESSAGE value="Phase 4- starting to add GameData stuff" />
     <MESSAGE value="Phase 4- game Data add user" />
     <MESSAGE value="Phase 4- join game function" />
@@ -467,7 +469,8 @@
     <MESSAGE value="phase 5- negative join game" />
     <MESSAGE value="phase 5- help and quit working" />
     <MESSAGE value="phase 5- login, logout and register" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase 5- login, logout and register" />
+    <MESSAGE value="phase 5- list and create game" />
+    <option name="LAST_COMMIT_MESSAGE" value="phase 5- list and create game" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -488,6 +491,11 @@
           <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/DatabaseAuthData.java</url>
           <line>9</line>
           <option name="timeStamp" value="112" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/client/src/main/java/client/ChessClient.java</url>
+          <line>169</line>
+          <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryAuthDAO.java</url>

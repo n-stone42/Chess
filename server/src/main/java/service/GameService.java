@@ -9,6 +9,7 @@ import dataaccess.*;
 import model.*;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class GameService {
     private UserDataAccess userData;
@@ -54,11 +55,11 @@ public class GameService {
         if (gameData.getGame(request.gameID()) != null) {
             AuthData userAuthData = authData.getAuth(authToken);
             String username = userAuthData.username();
-            ChessGame.TeamColor color;
-            if (request.playerColor().equals("WHITE")) {
+            String playerColor = request.playerColor().toLowerCase();
+            if (playerColor.equals("white")) {
                 gameData.joinGame(request.gameID(), ChessGame.TeamColor.WHITE, username);
                 return new JoinGameResult();
-            } else if (request.playerColor().equals("BLACK")) {
+            } else if (playerColor.equals("black")) {
                 gameData.joinGame(request.gameID(), ChessGame.TeamColor.BLACK, username);
                 return new JoinGameResult();
             } else {
