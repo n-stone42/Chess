@@ -1,9 +1,14 @@
 package client;
 
 
+import GameRecordModels.CreateGameRequest;
+import GameRecordModels.CreateGameResult;
+import GameRecordModels.ListGameResult;
 import UserRecordsModels.*;
 import dataaccess.DataAccessException;
+import model.ModifiedGameData;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
@@ -66,6 +71,8 @@ public class ChessClient  {
                 case "register" -> register(params);
                 case "login" -> login(params);
                 case "logout" -> logout();
+                case "list" -> list();
+                case "create" -> createGame(params);
             };
         } catch (Exception exception) {
             return exception.getMessage();
@@ -136,5 +143,38 @@ public class ChessClient  {
             throw new RuntimeException(e);
         }
         return "logged out";
+    }
+
+    public String list() throws DataAccessException{
+        if (isSignedIn()) {
+            try {
+                int GameNumber =1;
+                String output ="";
+                ListGameResult result = serverFacade.listGame(sessionAuthToken);
+                ArrayList<ModifiedGameData> gameList = result.games();
+                for (ModifiedGameData gameData: gameList) {
+                    output += "Game " + GameNumber++ + " gameID=" + gameData.gameID()
+                            + " White: " + gameData.whiteUsername() + " Black: " + gameData.blackUsername() + "\n";
+                }
+                return output;
+            } catch (DataAccessException e) {
+                throw new RuntimeException(e);
+            }
+        } throw new DataAccessException("not signed in", DataAccessException.Code.Unathurized);
+    }
+
+    public String createGame(String[] params) throws DataAccessException {
+        if (params.length != 1) {
+            throw new DataAccessException("error finding parameters, expected <gameName>",
+                    DataAccessException.Code.BadRequest);
+        }
+        if (isSignedIn()) {
+            try {
+                CreateGameResult result = serverFacade.createGame(new CreateGameRequest(params[0]) , sessionAuthToken);
+                return "Created game:" + params[0];
+            } catch (Exception exception) {
+                throw new RuntimeException(exception);
+            }
+        } throw new DataAccessException("not signed in", DataAccessException.Code.Unathurized);
     }
 }
