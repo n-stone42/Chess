@@ -3,7 +3,7 @@ package client;
 import GameRecordModels.CreateGameResult;
 import GameRecordModels.ListGameResult;
 import com.google.gson.Gson;
-import dataaccess.DataAccessException;
+import dataAccessException.DataAccessException;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -100,7 +100,7 @@ public class ServerFacade {
             throw new DataAccessException("error in sending request " + exception, DataAccessException.Code.OtherError);
         }
     }
-    public void clear() throws DataAccessException{ //TODO add needing auth token, for not its easier to keep without
+    public void clear() throws DataAccessException{
         HttpRequest httpRequest = makeRequest("DELETE", "/db", null, null);
         sendRequest(httpRequest);
     }

@@ -1,6 +1,6 @@
 package handlers;
 
-import dataaccess.DataAccessException;
+import dataAccessException.DataAccessException;
 import service.ClearService;
 
 public class ClearHandler {

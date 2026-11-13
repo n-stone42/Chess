@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import chess.ChessGame;
+import dataAccessException.DataAccessException;
 import model.*;
 
 public class MemoryGameDAO implements GameDataAccess {

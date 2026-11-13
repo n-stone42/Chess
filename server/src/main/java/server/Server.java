@@ -1,7 +1,7 @@
 package server;
 
 import com.google.gson.Gson;
-import dataaccess.*;
+import dataAccessException.DataAccessException;
 import dataaccess.DatabaseAuthData;
 import dataaccess.DatabaseGameData;
 import dataaccess.DatabaseUserData;
@@ -14,8 +14,6 @@ import service.GameService;
 import service.UserService;
 import UserRecordsModels.*;
 import GameRecordModels.*;
-
-import javax.xml.crypto.Data;
 
 
 public class Server {

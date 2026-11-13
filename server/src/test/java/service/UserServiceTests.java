@@ -1,16 +1,15 @@
 package service;
 
 import chess.ChessGame;
-import com.google.gson.Gson;
 import dataaccess.*;
+import dataAccessException.DataAccessException;
 import model.AuthData;
 import model.GameData;
 import model.UserData;
 import org.junit.jupiter.api.*;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
-import java.util.Map;
+
 import UserRecordsModels.*;
 import GameRecordModels.*;
 

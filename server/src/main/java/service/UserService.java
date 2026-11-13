@@ -2,7 +2,7 @@ package service;
 
 import UserRecordsModels.*;
 import dataaccess.AuthDataAccess;
-import dataaccess.DataAccessException;
+import dataAccessException.DataAccessException;
 import dataaccess.UserDataAccess;
 
 import java.util.UUID;

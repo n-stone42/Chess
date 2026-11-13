@@ -3,6 +3,7 @@ package dataaccess.sql;
 import chess.ChessGame;
 import com.google.gson.Gson;
 import dataaccess.*;
+import dataAccessException.DataAccessException;
 import model.AuthData;
 import model.GameData;
 import model.UserData;
@@ -49,10 +50,6 @@ public class DataBaseTests {
 
     @BeforeEach
     void setup()  throws DataAccessException {
-    try {
-        clearTables(); }
-    catch (DataAccessException exception) {}
-    createTables();
     clearTables();
 
     }

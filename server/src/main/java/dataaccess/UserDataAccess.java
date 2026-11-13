@@ -1,5 +1,6 @@
 package dataaccess;
 
+import dataAccessException.DataAccessException;
 import model.UserData;
 
 public interface UserDataAccess {

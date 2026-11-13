@@ -1,6 +1,7 @@
 package dataaccess;
 
 import chess.ChessGame;
+import dataAccessException.DataAccessException;
 import model.GameData;
 import model.ModifiedGameData;
 

@@ -1,31 +1,13 @@
 package client;
 
 import GameRecordModels.*;
-import client.ServerFacade;
-import dataaccess.DataAccessException;
-import dataaccess.sql.DataBaseTests;
-import io.javalin.config.Key;
-import io.javalin.http.Context;
-import io.javalin.http.HandlerType;
-import io.javalin.http.HttpStatus;
-import io.javalin.json.JsonMapper;
-import io.javalin.plugin.ContextPlugin;
-import io.javalin.security.RouteRole;
-import jakarta.servlet.ServletOutputStream;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import dataAccessException.DataAccessException;
 import model.ModifiedGameData;
 import model.UserData;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.junit.jupiter.api.*;
 import server.Server;
-import service.UserService;
 import UserRecordsModels.*;
-
-
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 

@@ -8,8 +8,7 @@ import GameRecordModels.ListGameResult;
 import UserRecordsModels.*;
 import chess.ChessBoard;
 import chess.ChessGame;
-import chess.ChessPiece;
-import dataaccess.DataAccessException;
+import dataAccessException.DataAccessException;
 import model.ModifiedGameData;
 
 import java.util.ArrayList;

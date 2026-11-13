@@ -2,6 +2,7 @@ package dataaccess;
 
 import chess.ChessGame;
 import com.google.gson.Gson;
+import dataAccessException.DataAccessException;
 import model.GameData;
 import model.ModifiedGameData;
 
@@ -42,7 +43,7 @@ public class DatabaseGameData implements GameDataAccess {
         return serializer.fromJson(json, ChessGame.class);
     }
 
-    public void makeGameDataTables() throws DataAccessException{
+    public void makeGameDataTables() throws DataAccessException {
         DatabaseManager.createDatabase();
         try (Connection connection = DatabaseManager.getConnection()) {
             for (String statement : createGameTableStatement) {

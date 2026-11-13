@@ -6,10 +6,8 @@ import GameRecordModels.JoinGameRequest;
 import GameRecordModels.ListGameResult;
 import chess.ChessGame;
 import dataaccess.*;
+import dataAccessException.DataAccessException;
 import model.*;
-
-import java.util.ArrayList;
-import java.util.Locale;
 
 public class GameService {
     private UserDataAccess userData;
@@ -27,7 +25,7 @@ public class GameService {
     public record JoinGameResult() {
     }
 
-    public Boolean verifyAuthToken(String authToken) throws DataAccessException{
+    public Boolean verifyAuthToken(String authToken) throws DataAccessException {
 
         if (authData.getAuth(authToken) != null) {
             return true;
