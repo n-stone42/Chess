@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- code quality 4" />
+    <list default="true" id="398cd535-758a-4a46-bd8a-fa67c1eacd61" name="Changes" comment="phase 5- code quality 5 and more cleanup">
+      <change beforePath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,61 +64,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0000001217251357" />
-      <entry key="S10" value="1.0005808273685008" />
-      <entry key="S30" value="1.2172754838286932" />
-      <entry key="S60" value="2.1194029888052457" />
-      <entry key="M2" value="4.11408531143937" />
-      <entry key="M5" value="9.799337240273925" />
-      <entry key="M10" value="19.131377821834455" />
-      <entry key="M15" value="29.174039999505297" />
-      <entry key="M30" value="63.35933847487887" />
-      <entry key="H1" value="137.4969894649256" />
-      <entry key="H2" value="275.6702011829586" />
-      <entry key="H4" value="492.2498496238647" />
-      <entry key="D1" value="1365.3474574791542" />
-      <entry key="W1" value="4001.085901229252" />
+      <entry key="MS100" value="1.032080594374001" />
+      <entry key="MS500" value="1.7457323510297378" />
+      <entry key="S2" value="3.340087803166979" />
+      <entry key="S5" value="4.1938887246006935" />
+      <entry key="S10" value="4.56798449564167" />
+      <entry key="S30" value="4.8606137360822546" />
+      <entry key="S60" value="5.130848202955855" />
+      <entry key="M2" value="6.24815845648149" />
+      <entry key="M5" value="11.140098968893206" />
+      <entry key="M10" value="20.15512097173782" />
+      <entry key="M15" value="29.9802441252137" />
+      <entry key="M30" value="63.632226549293065" />
+      <entry key="H1" value="137.27000794549713" />
+      <entry key="H2" value="275.38027121394924" />
+      <entry key="H4" value="492.5042551772794" />
+      <entry key="D1" value="1368.1448897112548" />
+      <entry key="W1" value="4005.163203622306" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="4.876902600954169E-223" />
-      <entry key="S2" value="2.642627928751372E-56" />
-      <entry key="S5" value="5.872383479527413E-23" />
-      <entry key="S10" value="7.663147838544549E-12" />
-      <entry key="S30" value="1.971822054847846E-4" />
-      <entry key="S60" value="0.01430988046218448" />
-      <entry key="M2" value="0.15089413260188156" />
-      <entry key="M5" value="1.1565967814915667" />
-      <entry key="M10" value="3.347340051349223" />
-      <entry key="M15" value="6.320179970327897" />
-      <entry key="M30" value="19.54083368717641" />
-      <entry key="H1" value="51.76264210683788" />
-      <entry key="H2" value="114.08785861229347" />
-      <entry key="H4" value="208.26582013217433" />
-      <entry key="D1" value="525.3343767980497" />
-      <entry key="W1" value="1475.4527015762596" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.3564314691385942E-86" />
+      <entry key="S5" value="4.497375427938213E-35" />
+      <entry key="S10" value="6.7062474066702065E-18" />
+      <entry key="S30" value="1.8860730477246644E-6" />
+      <entry key="S60" value="0.0013995273836067813" />
+      <entry key="M2" value="0.047189464622540235" />
+      <entry key="M5" value="0.726525828447889" />
+      <entry key="M10" value="2.6529824276539014" />
+      <entry key="M15" value="5.412764575794719" />
+      <entry key="M30" value="18.08372670137139" />
+      <entry key="H1" value="49.79535800013565" />
+      <entry key="H2" value="111.89885438852133" />
+      <entry key="H4" value="206.25814458550124" />
+      <entry key="D1" value="524.4869321897177" />
+      <entry key="W1" value="1475.1124476087066" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9659363289248456" />
-      <entry key="MS500" value="0.9930924954370359" />
-      <entry key="S2" value="0.9982686325973925" />
-      <entry key="S5" value="0.9993072085604712" />
-      <entry key="S10" value="1.0002161330504384" />
-      <entry key="S30" value="1.2153530757501465" />
-      <entry key="S60" value="2.129097192846693" />
-      <entry key="M2" value="4.258506402711869" />
-      <entry key="M5" value="10.946558851846818" />
-      <entry key="M10" value="22.46674409951879" />
-      <entry key="M15" value="35.479086093323794" />
-      <entry key="M30" value="82.87656108126598" />
-      <entry key="H1" value="189.22793538949236" />
-      <entry key="H2" value="389.72267379977467" />
-      <entry key="H4" value="700.4823813683079" />
-      <entry key="D1" value="1890.6655427605967" />
-      <entry key="W1" value="5476.530836221513" />
+      <entry key="MS100" value="0.913908707114712" />
+      <entry key="MS500" value="1.717601851433177" />
+      <entry key="S2" value="3.3315264971230305" />
+      <entry key="S5" value="4.190156467288919" />
+      <entry key="S10" value="4.566051446291088" />
+      <entry key="S30" value="4.859934281114998" />
+      <entry key="S60" value="5.131463559977631" />
+      <entry key="M2" value="6.293156652714295" />
+      <entry key="M5" value="11.860668794339725" />
+      <entry key="M10" value="22.7985799339622" />
+      <entry key="M15" value="35.38002533563897" />
+      <entry key="M30" value="81.69409161933265" />
+      <entry key="H1" value="187.03486882121135" />
+      <entry key="H2" value="387.2444157665543" />
+      <entry key="H4" value="698.7294308781134" />
+      <entry key="D1" value="1892.615556432418" />
+      <entry key="W1" value="5480.2678864048285" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -212,7 +214,7 @@
     "JUnit.ServerFacadeTests.badListGame.executor": "Run",
     "JUnit.ServerFacadeTests.badLogout.executor": "Run",
     "JUnit.ServerFacadeTests.badMakeGame.executor": "Run",
-    "JUnit.ServerFacadeTests.executor": "Run",
+    "JUnit.ServerFacadeTests.executor": "Coverage",
     "JUnit.ServerFacadeTests.joinGameTest.executor": "Run",
     "JUnit.ServerFacadeTests.listGame.executor": "Run",
     "JUnit.ServerFacadeTests.negativeJoinGame.executor": "Run",
@@ -429,7 +431,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="just in case what I am about  to do breaks the code" />
     <MESSAGE value="restructure to put the request/ result records in a shared module" />
     <MESSAGE value="restructure to put the request/ result records that were in UserService" />
     <MESSAGE value="progress on passing self written postiveRegister user test" />
@@ -454,7 +455,8 @@
     <MESSAGE value="phase 5- code quality 2" />
     <MESSAGE value="phase 5- code quality 3" />
     <MESSAGE value="phase 5- code quality 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase 5- code quality 4" />
+    <MESSAGE value="phase 5- code quality 5 and more cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="phase 5- code quality 5 and more cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -506,6 +508,9 @@
       <FILTER>passoff.server.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Chess$service.exec" NAME="service Coverage Results" MODIFIED="1793511472788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Chess$ServerFacadeTests.exec" NAME="ServerFacadeTests Coverage Results" MODIFIED="1794554914602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>client.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Chess$passoff_server_in_server.exec" NAME="passoff.server in server Coverage Results" MODIFIED="1793508896230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>dataaccess.MemoryUserDAO</FILTER>
       <FILTER>server.*</FILTER>

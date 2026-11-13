@@ -20,7 +20,8 @@ public class ServerFacadeTests {
     @BeforeAll
     public static void init() {
         server = new Server();
-        int port = server.run(8080);
+
+        int port = server.run(0);
         String url = "http://localhost:" + port;
         serverFacade = new ServerFacade(url);
         System.out.println("Started test HTTP server on " + port);
