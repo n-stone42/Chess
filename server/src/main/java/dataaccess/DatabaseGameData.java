@@ -35,7 +35,7 @@ public class DatabaseGameData implements GameDataAccess {
         return serializer.toJson(chessGame);
     }
 
-    public ChessGame JSONtoChessGame(String json) {
+    public ChessGame jsonToChessGame(String json) {
         Gson serializer = new Gson();
         return serializer.fromJson(json, ChessGame.class);
     }
@@ -113,7 +113,7 @@ public class DatabaseGameData implements GameDataAccess {
                         String whiteUser = resultSet.getString("whiteUser");
                         String blackUser = resultSet.getString("blackUser");
                         String gameName = resultSet.getString("gameName");
-                        ChessGame chessGame = JSONtoChessGame(resultSet.getString("chessGame"));
+                        ChessGame chessGame = jsonToChessGame(resultSet.getString("chessGame"));
                         return new GameData(gameID,whiteUser, blackUser, gameName, chessGame);
                     } throw new dataAccessException(
                             "Error could not find chess game ID= " + gameID, dataAccessException.Code.BadRequest);

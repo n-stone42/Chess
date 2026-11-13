@@ -2,10 +2,9 @@ package client;
 
 import chess.ChessBoard;
 import chess.ChessGame;
-import chess.ChessPiece;
 import org.junit.jupiter.api.Test;
 
-public class testPrintBoard {
+public class TestPrintBoard {
 
     DrawBoard drawBoard = new DrawBoard();
     ChessBoard board = new ChessBoard();

@@ -158,12 +158,12 @@ public class ChessClient  {
     public String list() throws dataAccessException {
         if (isSignedIn()) {
             try {
-                int GameNumber =1;
+                int gameNumber =1;
                 String output ="";
                 ListGameResult result = serverFacade.listGame(sessionAuthToken);
                 ArrayList<ModifiedGameData> gameList = result.games();
                 for (ModifiedGameData gameData: gameList) {
-                    output += "Game " + GameNumber++ + " gameID=" + gameData.gameID()
+                    output += "Game " + gameNumber++ + " gameID=" + gameData.gameID()
                             + " Player of White: " + gameData.whiteUsername() + " Player of Black: " + gameData.blackUsername() + "\n";
                 }
                 return output;
