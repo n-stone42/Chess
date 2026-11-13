@@ -43,7 +43,6 @@ public class ServerFacade {
     public LoginResult login(LoginRequest loginRequest) throws DataAccessException{
         HttpRequest httpRequest = makeRequest("POST", "/session", loginRequest, null);
         HttpResponse httpResponse = sendRequest(httpRequest);
-        System.out.println("httpResponce in serverFacade" + httpResponse);
         return handelResponse(httpResponse, LoginResult.class);
     }
 

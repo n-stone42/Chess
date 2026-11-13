@@ -116,7 +116,7 @@ public class ChessClient  {
             sessionAuthToken = result.authToken();
             return username + " registered successfully";
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -132,7 +132,7 @@ public class ChessClient  {
             sessionAuthToken = result.authToken();
             return username + " signed in successfully";
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -142,8 +142,11 @@ public class ChessClient  {
                 LogoutResult result = serverFacade.logout(sessionAuthToken);
                 sessionAuthToken = null;
             }
+            else {throw new DataAccessException("Not logged in, must be logged in first to logout",
+                    DataAccessException.Code.BadRequest); }
+
         } catch (DataAccessException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
         return "logged out";
     }
@@ -161,7 +164,7 @@ public class ChessClient  {
                 }
                 return output;
             } catch (DataAccessException e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException(e.getMessage());
             }
         } throw new DataAccessException("not signed in", DataAccessException.Code.Unathurized);
     }
@@ -176,7 +179,7 @@ public class ChessClient  {
                 CreateGameResult result = serverFacade.createGame(new CreateGameRequest(params[0]) , sessionAuthToken);
                 return "Created game:" + params[0];
             } catch (Exception exception) {
-                throw new RuntimeException(exception);
+                throw new RuntimeException(exception.getMessage());
             }
         } throw new DataAccessException("not signed in", DataAccessException.Code.Unathurized);
     }
@@ -190,11 +193,15 @@ public class ChessClient  {
                     DataAccessException.Code.BadRequest);
         }
         try {
-            int gameID = Integer.parseInt(params[0]);
-            JoinGameResult result = serverFacade.joinGame(sessionAuthToken, params[1], gameID );
-            return "joined game:" + gameID;
+            try {
+                int gameID = Integer.parseInt(params[0]);
+                JoinGameResult result = serverFacade.joinGame(sessionAuthToken, params[1], gameID );
+                return "joined game:" + gameID;
+            } catch (NumberFormatException exception) {
+                throw new DataAccessException("expected number for gameID, got " + params[0],
+                    DataAccessException.Code.BadRequest);}
         } catch (DataAccessException exception) {
-            throw new RuntimeException(exception);
+            throw new RuntimeException(exception.getMessage());
         }
     }
 }
