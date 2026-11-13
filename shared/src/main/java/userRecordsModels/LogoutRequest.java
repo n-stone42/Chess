@@ -1,4 +1,4 @@
-package UserRecordsModels;
+package userRecordsModels;
 
 public record LogoutRequest(
         String username,

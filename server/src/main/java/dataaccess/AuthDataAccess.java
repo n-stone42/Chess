@@ -1,14 +1,14 @@
 package dataaccess;
 
-import dataAccessException.DataAccessException;
+import dataAccessException.dataAccessException;
 import model.AuthData;
 
 public interface AuthDataAccess {
-    void clear() throws DataAccessException;
+    void clear() throws dataAccessException;
 
-    void createAuth(String authToken, String username) throws DataAccessException;
+    void createAuth(String authToken, String username) throws dataAccessException;
 
-    AuthData getAuth(String authToken) throws DataAccessException;
+    AuthData getAuth(String authToken) throws dataAccessException;
 
-    void deleteAuth(String authToken) throws DataAccessException;
+    void deleteAuth(String authToken) throws dataAccessException;
 }

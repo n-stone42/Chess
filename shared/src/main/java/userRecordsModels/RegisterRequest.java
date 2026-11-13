@@ -1,4 +1,4 @@
-package UserRecordsModels;
+package userRecordsModels;
 
 public record RegisterRequest(
         String username,

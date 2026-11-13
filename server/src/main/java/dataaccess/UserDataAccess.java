@@ -1,14 +1,14 @@
 package dataaccess;
 
-import dataAccessException.DataAccessException;
+import dataAccessException.dataAccessException;
 import model.UserData;
 
 public interface UserDataAccess {
-    void clear() throws DataAccessException;
+    void clear() throws dataAccessException;
 
-    UserData getUser(String username) throws DataAccessException;
+    UserData getUser(String username) throws dataAccessException;
 
-    void createUser(String username, String password, String email) throws DataAccessException;
+    void createUser(String username, String password, String email) throws dataAccessException;
 
-    boolean matchPassword(String username, String password) throws DataAccessException;
+    boolean matchPassword(String username, String password) throws dataAccessException;
 }

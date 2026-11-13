@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Indicates there was an error connecting to the database
  */
-public class DataAccessException extends Exception {
+public class dataAccessException extends Exception {
 
     public enum Code {
         BadRequest, //400
@@ -19,12 +19,12 @@ public class DataAccessException extends Exception {
 //
     final public Code code;
 
-    public DataAccessException(String message, Code code) {
+    public dataAccessException(String message, Code code) {
         super(message);
         this.code = code;
     }
 
-    public DataAccessException(String message, Throwable ex) {
+    public dataAccessException(String message, Throwable ex) {
         super(message, ex);
         this.code = Code.OtherError;
     }
@@ -42,10 +42,10 @@ public class DataAccessException extends Exception {
         return new Gson().toJson(Map.of("message", getMessage(), "status", code));
     }
 
-    public static DataAccessException fromJson(String json) {
+    public static dataAccessException fromJson(String json) {
         Map map = new Gson().fromJson(json, HashMap.class);
-        DataAccessException.Code code = Code.valueOf(map.get("status").toString());
+        dataAccessException.Code code = Code.valueOf(map.get("status").toString());
         String errorMessage = map.get("message").toString();
-        return new DataAccessException(errorMessage, code);
+        return new dataAccessException(errorMessage, code);
     }
 }

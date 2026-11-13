@@ -1,7 +1,7 @@
 package client;
 
 import chess.*;
-import dataAccessException.DataAccessException;
+import dataAccessException.dataAccessException;
 
 public class ClientMain {
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class ClientMain {
             client.read();
 
         }
-        catch (DataAccessException exception) {
+        catch (dataAccessException exception) {
             System.out.print("can't start server, RIP" + exception);
         }
     }

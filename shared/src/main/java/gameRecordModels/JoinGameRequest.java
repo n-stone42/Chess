@@ -1,6 +1,4 @@
-package GameRecordModels;
-
-import java.util.ArrayList;
+package gameRecordModels;
 
 public record JoinGameRequest(
         String playerColor,

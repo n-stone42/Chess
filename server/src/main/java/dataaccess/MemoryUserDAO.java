@@ -3,7 +3,7 @@ package dataaccess;
 import java.util.HashMap;
 import java.util.Objects;
 
-import dataAccessException.DataAccessException;
+import dataAccessException.dataAccessException;
 import model.*;
 
 public class MemoryUserDAO implements UserDataAccess {
@@ -13,25 +13,25 @@ public class MemoryUserDAO implements UserDataAccess {
         mapUserData.clear();
     }
 
-    public UserData getUser(String username) throws DataAccessException {
+    public UserData getUser(String username) throws dataAccessException {
         if (mapUserData.get(username) != null) {
             return mapUserData.get(username);
         }
-        throw new DataAccessException("Error: Username not found MU19", DataAccessException.Code.Unathurized);
+        throw new dataAccessException("Error: Username not found MU19", dataAccessException.Code.Unathurized);
     }
 
-    public void createUser(String username, String password, String email) throws DataAccessException {
+    public void createUser(String username, String password, String email) throws dataAccessException {
         if (mapUserData.get(username) == null) { //oppsite of get User Check
             mapUserData.put(username, new UserData(username, password, email));
             return;
         }
-        throw new DataAccessException("Error: Duplicate Username MU26", DataAccessException.Code.AlreadyTaken);
+        throw new dataAccessException("Error: Duplicate Username MU26", dataAccessException.Code.AlreadyTaken);
     }
 
-    public boolean matchPassword(String username, String password) throws DataAccessException {
+    public boolean matchPassword(String username, String password) throws dataAccessException {
         if (mapUserData.containsKey(username)) {
             return Objects.equals(mapUserData.get(username).password(), password);
         }
-        throw new DataAccessException("Error: Password did not match", DataAccessException.Code.BadRequest);
+        throw new dataAccessException("Error: Password did not match", dataAccessException.Code.BadRequest);
     }
 }

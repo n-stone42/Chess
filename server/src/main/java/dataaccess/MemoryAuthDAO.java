@@ -3,7 +3,7 @@ package dataaccess;
 import java.util.HashMap;
 
 
-import dataAccessException.DataAccessException;
+import dataAccessException.dataAccessException;
 import model.*;
 
 
@@ -14,30 +14,30 @@ public class MemoryAuthDAO implements AuthDataAccess {
         mapAuthData.clear();
     }
 
-    public void createAuth(String authToken, String username) throws DataAccessException {
+    public void createAuth(String authToken, String username) throws dataAccessException {
         if (mapAuthData.get(authToken) != null) {
 
         }
         mapAuthData.put(authToken, new AuthData(authToken, username));
     }
 
-    public AuthData getAuth(String authToken) throws DataAccessException {
+    public AuthData getAuth(String authToken) throws dataAccessException {
         if (mapAuthData.get(authToken) == null) {
-            throw new DataAccessException("Error: Auth Token invalid", DataAccessException.Code.Unathurized);
+            throw new dataAccessException("Error: Auth Token invalid", dataAccessException.Code.Unathurized);
         }
         return mapAuthData.get(authToken);
     }
 
-    public String getUsername(String authToken) throws DataAccessException {
+    public String getUsername(String authToken) throws dataAccessException {
         if (mapAuthData.get(authToken) == null) {
-            throw new DataAccessException("Error: Auth Token invalid", DataAccessException.Code.Unathurized);
+            throw new dataAccessException("Error: Auth Token invalid", dataAccessException.Code.Unathurized);
         }
         return mapAuthData.get(authToken).username();
     }
 
-    public void deleteAuth(String authToken) throws DataAccessException {
+    public void deleteAuth(String authToken) throws dataAccessException {
         if (mapAuthData.get(authToken) == null) {
-            throw new DataAccessException("Auth Token invalid", DataAccessException.Code.Unathurized);
+            throw new dataAccessException("Auth Token invalid", dataAccessException.Code.Unathurized);
         }
         mapAuthData.remove(authToken);
     }
