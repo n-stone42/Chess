@@ -127,9 +127,9 @@ public class ServerFacadeTests {
         serverFacade.clear();
         registerUser(userBob);
         LoginResult loginResult = loginUser(userBob);
-        serverFacade.createGame(new CreateGameRequest("testgame"), loginResult.authToken());
+        CreateGameResult result = serverFacade.createGame(new CreateGameRequest("testgame"), loginResult.authToken());
         ArrayList<ModifiedGameData> expectedGameList = new ArrayList<>();
-        ModifiedGameData expectedGameData = new ModifiedGameData(1, null,null, "testgame");
+        ModifiedGameData expectedGameData = new ModifiedGameData(result.gameID(), null,null, "testgame");
         expectedGameList.add(expectedGameData);
         ListGameResult expectedResult = new ListGameResult(expectedGameList);
         assertEquals(expectedResult, serverFacade.listGame(loginResult.authToken()));

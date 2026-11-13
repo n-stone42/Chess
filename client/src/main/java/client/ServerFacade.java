@@ -98,7 +98,7 @@ public class ServerFacade {
         try {
             return client.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (Exception exception) {
-            throw new DataAccessException("error in sending request" + exception, DataAccessException.Code.OtherError);
+            throw new DataAccessException("error in sending request " + exception, DataAccessException.Code.OtherError);
         }
     }
     public void clear() throws DataAccessException{ //TODO add needing auth token, for not its easier to keep without
